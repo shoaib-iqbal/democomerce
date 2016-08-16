@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
- <title>SB Admin 2 - Bootstrap Admin Theme</title>
-     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<head>
+	 <title>SB Admin 2 - Bootstrap Admin Theme</title>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="description" content="">
+	  <meta name="author" content="">
 
-   
+	   
 
-  <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
-  
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-<%= javascript_include_tag 'all_admin' %>
-</body>
+	  <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
+	  
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="wrapper">
+			<%= render :partial => '/admin/shared/sidebar' %>
+			<div id="page-wrapper">
+				<%= yield %>
+			</div>
+			<%= javascript_include_tag 'all_admin' %>
+		</div>
+	</body>
 </html>

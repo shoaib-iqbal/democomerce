@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class Admin::ProductsController < AdminController
   before_action :set_admin_product, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/products
@@ -14,7 +14,7 @@ class Admin::ProductsController < ApplicationController
 
   # GET /admin/products/new
   def new
-    @admin_product = Admin::Product.new
+     @admin_product = Admin::Product.new
   end
 
   # GET /admin/products/1/edit
@@ -69,6 +69,6 @@ class Admin::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_product_params
-      params.fetch(:admin_product, {})
+       params.require(:admin_product).permit(:name,:avatar,:price,:discounted_pric)
     end
 end
