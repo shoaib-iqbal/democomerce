@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
 
-
+ resources :products, only: [:show, :index]
  resources :admin, only: [:index]
-
+  # get 'delimg', to: 'admin_products#delimg' , as: :delimgpath
  root 'home#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
