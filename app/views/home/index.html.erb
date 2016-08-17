@@ -63,9 +63,10 @@
 							<div class="product-img-content">
 								<!--Product Image-->
 								<div class="product-img">
-									<a href="product-simple.html" title="<%= product.name %>">
-										<%=image_tag product.images.first.avatar.url(:normal)%>
-
+									<a href="<%=product_path(product.id)%>" title="<%= product.name %>">
+										<%if product.images.present? %>
+											<%=image_tag product.images.first.avatar.url(:large)%>
+										<%end%>
 
 									</a>		                                    
 								</div>
@@ -88,7 +89,7 @@
 								</div>
 								<!--Product Price-->
 								<div class="product-price">
-									<span class="new-price">£ <%= product.price %>9</span>
+									<span class="new-price">£ <%= product.price %></span>
 								</div>
 							</div>
 						</div>
