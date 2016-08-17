@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :vendor_admins
   namespace :admin do
+    resources :users
     resources :products
-    resources :vendors
-  end
+    end
   devise_for :users, :controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
