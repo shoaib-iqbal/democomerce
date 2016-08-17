@@ -11,14 +11,18 @@ class Admin::ProductsController < AdminController
   # GET /admin/products/1.json
   def show
   end
-
+  # def delimg
+  #   byebug
+  # end
   # GET /admin/products/new
   def new
      @admin_product = Admin::Product.new
+     @admin_product.images.build 
   end
 
   # GET /admin/products/1/edit
   def edit
+    @admin_product.images.build 
   end
 
   # POST /admin/products
@@ -28,6 +32,13 @@ class Admin::ProductsController < AdminController
 
     respond_to do |format|
       if @admin_product.save
+        
+        if params[:admin_product][:image][:avatar]
+           params[:admin_product][:image][:avatar].each { |image|
+            @admin_product.images.create(avatar: image)
+          }
+        end
+
         format.html { redirect_to @admin_product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @admin_product }
       else
@@ -42,6 +53,11 @@ class Admin::ProductsController < AdminController
   def update
     respond_to do |format|
       if @admin_product.update(admin_product_params)
+         if params[:admin_product][:image][:avatar]
+           params[:admin_product][:image][:avatar].each { |image|
+            @admin_product.images.create(avatar: image)
+          }
+        end
         format.html { redirect_to @admin_product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_product }
       else
@@ -69,6 +85,6 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_product_params
-       params.require(:admin_product).permit(:name,:avatar,:price,:discounted_pric)
+       params.require(:admin_product).permit(:name,:avatar,:price,:discounted_pric, images_attributes: [:avatar => []])
     end
 end

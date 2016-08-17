@@ -1,6 +1,11 @@
 /*
 *= require admin/sbadmin/font-awesome
 *= require admin/sbadmin/bootstrap.min
-*= require admin/sbadmin/metisMenu.min
+*= require frontend/dataTables.bootstrap
+*= require frontend/dataTables.responsive
 *= require admin/sbadmin/sb-admin-2
+*= require admin/sbadmin/metisMenu.min
+
+	
+
 */

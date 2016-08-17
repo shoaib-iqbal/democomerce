@@ -18,6 +18,10 @@
 *= require frontend/main
 *= require frontend/style
 *= require frontend/responsive
-
+*= require frontend/dataTables.bootstrap
 *= require frontend/flexslider
+*= require frontend/dataTables.responsive	 
+
+
+
 */

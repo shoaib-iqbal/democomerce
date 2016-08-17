@@ -21,15 +21,30 @@
                                <%=f.label :discounted_pric%>
                                 <%=f.text_field :discounted_pric ,class: 'form-control', placeholder: 'Discounted Price'%>
                             </div>
-                            <div class="form-group">
-                                <%=f.label :avatar%>
-                                 <%=f.file_field :avatar%>
-                            </div>
+                            <div class="file_field">
+                                 <%= f.fields_for :image do |images_form| %>
+                                   <%= images_form.file_field :avatar , multiple: true%>
+                                 <% end %>
+                              </div>
+ <!--                            <%#= f.fields_for :images do |asset_fields| %>
+                                <%# if asset_fields.object.new_record? %>
+                                  <p><%#= file_field_tag "avatar[]", type: :file, multiple: true, onchange: "document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])"%></p>
+                                <% #end %>
+                            <%# end %> -->
                            
                             
+                            <div><img id="blah" alt="your image" width="100" height="100" /></div>
                             
                             
-                            
+                                  <%= f.fields_for :images do |asset_fields| %>
+
+                                    <% unless asset_fields.object.new_record? %>
+                                      <%= link_to image_tag(asset_fields.object.avatar.url(:thumbnail)), 
+                                                  asset_fields.object.avatar.url(:original) %>
+
+                                    <% end %>
+                                  <% end %>
+
                             <%= f.submit 'Submit Button', class: "btn btn-default" %>
                             <button type="reset" class="btn btn-default">Reset Button</button>
                         <%end%>
