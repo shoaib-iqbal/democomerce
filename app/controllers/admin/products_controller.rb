@@ -82,7 +82,7 @@ class Admin::ProductsController < AdminController
             @admin_product.images.create(avatar: image)
           }
         end
-        format.html { redirect_to @admin_product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_product }
       else
         format.html { render :edit }
@@ -112,6 +112,6 @@ class Admin::ProductsController < AdminController
       if current_user.has_role? :vendoradmin
         params[:admin_product][:user_id] = current_user.id
       end
-       params.require(:admin_product).permit(:name,:avatar,:price,:user_id,:discounted_pric, images_attributes: [:avatar => []])
+       params.require(:admin_product).permit(:name,:avatar,:featured,:price,:user_id,:discounted_pric, images_attributes: [:avatar => []])
     end
 end

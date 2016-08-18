@@ -1,0 +1,50 @@
+<% @vendor_product.each do |product| %>
+<div class="col-xs-12 col-sm-6 col-md-4 ">
+	<div class="single-product">
+		<!--product Content-->
+		<div class="product-img-content">
+			<!--Product Image-->
+			<div class="product-img">
+				<a href="<%=product_path(product.id)%>" title="<%= product.name %>">
+					<%if product.images.present? %>
+						<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block", style:  "max-height:200px"%>
+					<%end%>
+				</a>                                            
+			</div>
+			<span class="new-label">New</span>
+			<%if product.discounted_pric?%>
+				<span class="sale-label">Sale!</span>
+			<%end%>
+			<!--Product Action-->
+			<div class="product-action">
+				<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+				<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+			</div>
+		</div>
+		<div class="product-content">
+			<h5 class="clearfix">
+				<div class="pull-left"><a href="<%=product_path(product.id)%>" title="<%= product.name %>"><%= product.name %></a></div>
+				<div class="pull-right"><a href="/products?vendor=<%= product.user.id %>" title="<%= product.user.name %>"><%= product.name %></a></div>
+			</h5>
+			<!--Product Rating-->
+			<div class="rating-icon">
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+			</div>
+			<!--Product Price-->
+			<div class="product-price">
+				<span class="new-price">£ <%= product.price %></span>
+				<%if product.discounted_pric?%>
+					<span class="old-price"><%=product.discounted_pric  %></span>
+				<%end%>
+			</div>
+		</div>
+	</div>									
+</div>
+
+
+<% end %> 
+
