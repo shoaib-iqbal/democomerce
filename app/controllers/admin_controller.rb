@@ -6,7 +6,7 @@ class AdminController < ApplicationController
 
 
   def is_admin?
-		if current_user.has_role? 'vednoradmin' or current_user.has_role? 'superadmin'
+		if current_user.has_role? 'vendoradmin' or current_user.has_role? 'superadmin'
   			true
 		else
   		render :text => 'Who are you to doing this? :)'

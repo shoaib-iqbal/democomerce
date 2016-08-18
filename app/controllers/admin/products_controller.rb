@@ -4,7 +4,28 @@ class Admin::ProductsController < AdminController
   # GET /admin/products
   # GET /admin/products.json
   def index
-    @admin_products = Admin::Product.all
+    # @admin_products = Admin::Product.all
+    
+    if current_user.has_role? :superadmin
+      @admin_products = Admin::Product.all
+      @users = User.all
+    else
+      @admin_products = Admin::Product.where(:user_id => current_user.id)
+    end
+
+
+    if request.xhr?
+     @admin_products=Admin::Product.where(:user_id => 1)
+
+      render :template => "/admin/products/vendor_products" , :locals=> { @admin_products=>  @admin_products}
+    end
+
+     respond_to do |format|
+        format.html
+        format.js { render :content_type => 'text/javascript' }
+
+      end
+
   end
 
   # GET /admin/products/1
@@ -30,6 +51,7 @@ class Admin::ProductsController < AdminController
   def create
     @admin_product = Admin::Product.new(admin_product_params)
 
+     @admin_product.user_id = current_user.id if current_user 
     respond_to do |format|
       if @admin_product.save
         

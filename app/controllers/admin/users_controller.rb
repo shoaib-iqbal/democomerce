@@ -28,7 +28,7 @@ class Admin::UsersController < AdminController
 
     respond_to do |format|
       if@user.save
-        format.html { redirect_to@user, notice: 'Product was successfully created.' }
+        format.html { redirect_to admin_users_path, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location:@user }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::UsersController < AdminController
   def update
     respond_to do |format|
       if@user.update(admin_user_params)
-        format.html { redirect_to @user, notice: 'Product was successfully updated.' }
+        format.html { redirect_to admin_users_path, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location:@user }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Admin::UsersController < AdminController
   def destroy
    @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to admin_users_path, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,7 @@ class Admin::UsersController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_user_params
-       params.require(:admin_user).permit(:name,:avatar,:price,:discounted_pric)
+   
+       params.require(:user).permit(:name,:location,:email,:password)
     end
 end

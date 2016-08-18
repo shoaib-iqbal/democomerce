@@ -243,27 +243,29 @@
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Products<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/admin/products/new">New Product</a>
+                            <a href="/admin/products">All Products</a>
                         </li>
                         <li>
-                            <a href="/admin/products">All Products</a>
+                            <a href="/admin/products/new">New Product</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <!-- links for Vendors -->
-                <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Vendors<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="/admin/users/new">New Vendor</a>
-                        </li>
-                        <li>
-                            <a href="/admin/vendors">All Vendors</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
+                <%if current_user.has_role? :superadmin%>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Vendors<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admin/users">All Vendors</a>
+                            </li>
+                            <li>
+                                <a href="/admin/users/new">New Vendor</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                <%end%>
                 <li>
                     <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
