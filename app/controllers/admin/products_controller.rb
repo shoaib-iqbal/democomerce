@@ -8,21 +8,25 @@ class Admin::ProductsController < AdminController
     
     if current_user.has_role? :superadmin
       @admin_products = Admin::Product.all
-      @users = User.all
     else
       @admin_products = Admin::Product.where(:user_id => current_user.id)
     end
 
 
     if request.xhr?
-     @admin_products=Admin::Product.where(:user_id => 1)
-
-      render :template => "/admin/products/vendor_products" , :locals=> { @admin_products=>  @admin_products}
+      if params[:user_id].present?
+        @admin_products=Admin::Product.where(:user_id => params[:user_id])
+        
+      else
+        @admin_products = Admin::Product.all
+      end
+     
     end
 
      respond_to do |format|
+        format.js {}
         format.html
-        format.js { render :content_type => 'text/javascript' }
+        
 
       end
 

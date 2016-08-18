@@ -1,0 +1,15 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<div style="">
+    <select  class="form-control" style="width:40%" onchange="fetch_specfic_vendor_items('/admin/products',this.value)">
+        <option value="">All Vendors</option>
+        <% @users.each do |user| %>
+            <option value="<%=user.id%>"><%=user.name%></option>
+        
+        <%end%>
+    </select>
+</div>
+
+<script type="text/javascript">
+  $('select').select2();
+</script>
