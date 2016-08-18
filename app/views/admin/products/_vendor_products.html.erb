@@ -7,6 +7,7 @@
                 <th>Discounted Price</th>
                 <th>Description</th>
                 <th>Picture</th>
+                <th>Vendor</th>
                 <th>Tools</th>
             </tr>
         </thead>
@@ -20,10 +21,13 @@
                 <td><%= product.discounted_pric %></td>
                 <td class="center"><%= product.description %></td>
                 <td class="center">
-                    <% for image in product.images %>
-                      <%= image_tag image.avatar.url(:thumbnail) %>
-                    <%end%>
+                    <%# for image in product.images %>
+                      <%#= image_tag image.avatar.url(:thumbnail) %>
+                    <%#end%>
+                    <%#= product.images.first %>
+                    <%= image_tag product.images.first.avatar.url(:thumbnail) %>
                 </td>
+                <td><%= product.user.name %></td>
                 <td class="center">
                     <span><%= link_to '', edit_admin_product_path(product),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
                     <span>

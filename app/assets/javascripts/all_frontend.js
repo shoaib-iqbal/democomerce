@@ -1,5 +1,5 @@
 /*
-
+*= require select2.min
 *= require frontend/jquery-1.11.3.min
 *= require frontend/bootstrap.min
 *= require frontend/wow.min

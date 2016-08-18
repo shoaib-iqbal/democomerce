@@ -1,5 +1,7 @@
 
 /*
+*= require select2.min
+
 *= require admin_products
 *= require admin/jquery.min
 *= require admin/bootstrap.min

@@ -1,10 +1,12 @@
 /*
+*= require select2.min
 *= require admin/sbadmin/font-awesome
 *= require admin/sbadmin/bootstrap.min
 *= require frontend/dataTables.bootstrap
 *= require frontend/dataTables.responsive
 *= require admin/sbadmin/sb-admin-2
 *= require admin/sbadmin/metisMenu.min
+
 
 	
 

@@ -54,8 +54,6 @@ class Admin::ProductsController < AdminController
   # POST /admin/products.json
   def create
     @admin_product = Admin::Product.new(admin_product_params)
-
-     @admin_product.user_id = current_user.id if current_user 
     respond_to do |format|
       if @admin_product.save
         
@@ -65,7 +63,7 @@ class Admin::ProductsController < AdminController
           }
         end
 
-        format.html { redirect_to @admin_product, notice: 'Product was successfully created.' }
+        format.html { redirect_to admin_products_url, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @admin_product }
       else
         format.html { render :new }
@@ -79,7 +77,7 @@ class Admin::ProductsController < AdminController
   def update
     respond_to do |format|
       if @admin_product.update(admin_product_params)
-         if params[:admin_product][:image][:avatar]
+         if params[:admin_product][:image] and params[:admin_product][:image][:avatar]
            params[:admin_product][:image][:avatar].each { |image|
             @admin_product.images.create(avatar: image)
           }
@@ -111,6 +109,9 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_product_params
-       params.require(:admin_product).permit(:name,:avatar,:price,:discounted_pric, images_attributes: [:avatar => []])
+      if current_user.has_role? :vendoradmin
+        params[:admin_product][:user_id] = current_user.id
+      end
+       params.require(:admin_product).permit(:name,:avatar,:price,:user_id,:discounted_pric, images_attributes: [:avatar => []])
     end
 end
