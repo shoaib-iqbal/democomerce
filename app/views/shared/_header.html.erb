@@ -7,22 +7,29 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="header-default pull-left">
-								<p>Default Welcome Msg!</p>
+								<p>Welcome to Demo Store!</p>
 							</div>
 						</div>
 						<div class="col-lg-9 col-md-9 col-sm-12">
 							<div class="header-top-right pull-right">
 								
 								<div class="header-user-info pull-right">
-									<a href="#" title="My account">
-									   <i class="fa fa-user"></i> 
-									   My account
-									</a>
-									<a href="#" title="My wishlist">
-									   <i class="fa fa-unlock-alt"></i> 
-									   Sign in
-									</a>
-									<a href="#" title="My wishlist">
+									<% if current_user %>
+                    <a href="#" title="account">
+  									   <i class="fa fa-user"></i> 
+  									   My account
+  									</a>
+  									<a href="/users/sign_out" title="Sign out">
+  									   <i class="fa fa-unlock-alt"></i> 
+  									   Sign out
+  									</a>
+                  <%else%>
+                    <a href="/users/sign_in" title="Sign in">
+                       <i class="fa fa-unlock-alt"></i> 
+                       Sign in
+                    </a>
+                  <%end%>
+									<a href="#" title="check out">
 									   <i class="fa fa-share-square-o"></i> 
 									   Check out
 									</a>
@@ -51,19 +58,19 @@
 						        <div class="header-bottom-right-inner">
 						            <ul>
 						                <li>
-						                    <a class="cart-toggler search-icon" href="javascript:void(0)">
-						                        <i class="fa fa-search"></i>
-						                    </a>
-                                            <div class="header-bottom-search">
-                                                <form class="search-box" action="#" method="POST">
-                                                    <div>
-                                                        <input type="text" value="" placeholder="Search" autocomplete="off">
-                                                        <button class="btn btn-search" type="submit">
-                                                            <i class="fa fa-search"></i>
-                                                        </button>
-                                                    </div>
-                                                </form>						            
-                                            </div>
+					                    <a class="cart-toggler search-icon" href="javascript:void(0)">
+					                        <i class="fa fa-search"></i>
+					                    </a>
+                              <div class="header-bottom-search">
+                                <form class="search-box" action="#" method="POST">
+                                  <div>
+                                    <input type="text" value="" placeholder="Search" autocomplete="off">
+                                    <button class="btn btn-search" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                  </div>
+                                </form>						            
+                              </div>
 						                </li>
 						                <li>
 						                    <a class="cart-toggler mini-cart-icon" href="javascript:void(0)">
