@@ -1,11 +1,37 @@
 class LineItem < ActiveRecord::Base
 	belongs_to :order
-	belongs_to :product
+	belongs_to :product , class_name: 'Admin::Product'
 
 	def get_name
 		
-		Admin::Product.where(:id => self.product_id).first.name
-		
+		Admin::Product.where(:id => self.product_id).first.name rescue''
+	end
+
+	def get_image
+		Admin::Product.where(:id => self.product_id).first.images.first.avatar.url rescue''
+	end
+
+	def get_size
+		Admin::Product.where(:id => self.product_id).first.images.first.avatar.url rescue''
+	end
+	def size_name
+		Admin::Size.find(self.size_id).name rescue''
 		
 	end
+	def color_name
+		Admin::Color.find(self.color_id).name rescue''
+		
+	end
+	
+	def total
+
+		if self.product.discounted_pric.present?
+			return self.quantity*product.discounted_pric
+		else 
+			return self.quantity*product.price
+		end
+
+		
+	end
+
 end

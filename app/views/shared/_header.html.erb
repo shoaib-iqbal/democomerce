@@ -29,7 +29,7 @@
                        Sign in
                     </a>
                   <%end%>
-									<a href="#" title="check out">
+									<a href="/carts" title="check out">
 									   <i class="fa fa-share-square-o"></i> 
 									   Check out
 									</a>
@@ -75,7 +75,7 @@
 						                <li>
 						                    <a class="cart-toggler mini-cart-icon" href="javascript:void(0)">
                                                 <i class="fa fa-shopping-cart"></i>
-						                        <span>2</span>
+						                        <span><%=@current_order.line_items.count rescue '0'%></span>
 						                    </a>
                                             <div id="cart_list" class="cart-list">
                                                 <div class="product">
@@ -134,7 +134,7 @@
                                                     </div>
                                                 </div>
                                                 <p class="cart-buttons">
-                                                    <a class="btn btn-default button-small" href="#" title="Check out">
+                                                    <a class="btn btn-default button-small" href="/carts" title="Check out">
                                                         <span>
                                                             Check out
                                                             <i class="fa fa-angle-right"></i>
@@ -152,8 +152,8 @@
 							<div class="mainmenu">
 								<nav>
 									<ul>
-										<li><a href="index.html">Home</a></li>
-										<li><a href="shop.html">Shop</a></li>
+										<li><a href="/">Home</a></li>
+										<li><a href="/products">Shop</a></li>
 										<li><a href="about.html">About Us</a></li>
 										<li><a href="#">Blog</a></li>
 										<li><a href="contact.html">Contact Us</a></li>

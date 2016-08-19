@@ -54,9 +54,11 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    @order.destroy
+    session['order_number']=nil
+    # byebug
+    @current_order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
