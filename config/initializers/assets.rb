@@ -4,7 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( all_frontend.css )
 
-
+Rails.application.config.assets.precompile += %w( select2.min.js )
 
 Rails.application.config.assets.precompile += %w( all_frontend.js )
 Rails.application.config.assets.precompile += %w( admin.css )

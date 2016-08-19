@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :orders
   devise_for :vendor_admins
   namespace :admin do
+    resources :sizes
+  end
+  namespace :admin do
     resources :users
     resources :products
     end

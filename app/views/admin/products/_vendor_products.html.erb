@@ -6,6 +6,7 @@
                 <th>Price</th>
                 <th>Discounted Price</th>
                 <th>Description</th>
+                <th>Sizes</th>
                 <th>Picture</th>
                 <th>Vendor</th>
                 <th>Tools</th>
@@ -20,6 +21,14 @@
                 <td><%= product.price %></td>
                 <td><%= product.discounted_pric %></td>
                 <td class="center"><%= product.description %></td>
+                <td class="center">
+                <% for size in product.sizes %>
+                    <%= size.name %>
+                <%end%>
+
+                
+                    
+                </td>
                 <td class="center">
                     <%# for image in product.images %>
                       <%#= image_tag image.avatar.url(:thumbnail) %>

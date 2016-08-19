@@ -75,13 +75,24 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /admin/products/1.json
   def update
     respond_to do |format|
+
       if @admin_product.update(admin_product_params)
-         if params[:admin_product][:image] and params[:admin_product][:image][:avatar]
-           params[:admin_product][:image][:avatar].each { |image|
-            @admin_product.images.create(avatar: image)
-          }
-        end
-        format.html { redirect_to @admin_product, notice: 'Product was successfully updated.' }
+          if params[:admin_product][:image] and params[:admin_product][:image][:avatar]
+              params[:admin_product][:image][:avatar].each { |image|
+                @admin_product.images.create(avatar: image)
+              }
+          end
+          @admin_product.update(admin_product_params)
+         
+          # if params[:admin_product][:size_ids]
+          #   params[:admin_product][:size_ids].each {|size|
+          #     @admin_product.sizes.create(name: size)
+          #   }
+
+          # end
+
+
+        format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_product }
       else
         format.html { render :edit }
@@ -111,6 +122,6 @@ class Admin::ProductsController < AdminController
       if current_user.has_role? :vendoradmin
         params[:admin_product][:user_id] = current_user.id
       end
-       params.require(:admin_product).permit(:name,:avatar,:price,:user_id,:discounted_pric, images_attributes: [:avatar => []])
+       params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_pric, images_attributes: [:avatar => []], size_ids: [])
     end
 end
