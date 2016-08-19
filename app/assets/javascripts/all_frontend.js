@@ -19,7 +19,7 @@
 *= require frontend/jquery.easing
 *= require frontend/jquery.flexslider
 
-*= require frontend/custom
+*= require frontend_custom
 
 
 */

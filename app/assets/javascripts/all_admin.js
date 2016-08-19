@@ -2,7 +2,7 @@
 /*
 *= require select2.min
 
-*= require admin_products
+*= require admin_custom
 *= require admin/jquery.min
 *= require admin/bootstrap.min
 *= require admin/metisMenu.min
