@@ -78,7 +78,12 @@
 				<div class="pd-center-column">
 					<h2><%= @product.name %></h2>
 					<div class="media-body">
-						<p class="media-body-title">£ <%= @product.price %><span>&nbsp;tax incl.</span></p>
+						<p class="media-body-title">
+
+							<span class="new-price">£ <%= @product.discounted_pric %></span>
+							<span class="old-price">£ <%= @product.price %></span>
+
+						</p>
 						<p><label>Reference: </label> <span>demo_2</span></p>
 						<p><label>Condition: </label> <span>New product</span></p>
 					</div>
@@ -402,7 +407,7 @@
         <div class="row">
 			<!--Product List Start-->
 			<div class="featured-product-list indicator-style">
-			
+
 				<%@vendor_product.limit(6).each do |product|%>
 					<!--Single Product -->
 					<div class="col-md-3 col-sm-6">

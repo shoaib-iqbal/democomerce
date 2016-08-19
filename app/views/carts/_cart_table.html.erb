@@ -10,7 +10,7 @@
          <div class="col-md-10 col-sm-12 col-xs-12 order-item padding-top-30">
            
               <div class="col-md-2 col-sm-12 col-xs-12 order-size allan " >
-                  <h3> <%= item.get_name %> <br><strong><%#= number_to_currency item.unit_price %> 
+                  <h3><strong>Name: </strong> <%= item.get_name %> <br><strong><%#= number_to_currency item.unit_price %> 
                    <small>
                    <!-- PKR -->
                    </small>
@@ -20,13 +20,17 @@
                 <%#= hidden_field_tag :item_id,{}, :value=>item.id  %>
                <!-- <p class="details-cart">peltro distressed (H38222)</p> -->
                <%# if item.ordered_item.has_sizes? %>
+               <% if item.size_name.present? %>
                  <strong>Size: </strong><%= item.size_name %>
+                <%end%>
                  <%#= select_tag 'size', options_for_select(item.ordered_item.get_available_sizes.collect(&:name), item.size), :class=> "qty size-select", :onChange=>"updateOrderItem(this)" %>
                <%# end %>
               </div>
               <div class="col-md-3 col-sm-12 col-xs-12 order-size allan">
                 <%# if item.ordered_item.has_available_colors? %>
-                <strong><span class="qty-font">COLOR: </span></strong><%= item.color_name %>
+                <%if  item.color_name.present? %>
+                    <strong><span class="qty-font">COLOR: </span></strong><%= item.color_name %>
+                <%end%>
                 <%#= select_tag 'color', options_for_select(item.ordered_item.get_available_variants.collect{ |v| [v.name, v.id] }, item.ordered_item.id), :class=> "qty size-select", :style=>"", :onChange=>"updateOrderItem(this)" %>
               <%# end %>
               </div>

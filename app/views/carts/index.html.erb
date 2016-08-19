@@ -66,8 +66,10 @@
                   <div class="all_clear"></div>
                   
                </center>
+               <%if @current_order.present?%>
                <%= link_to 'Empty Your Cart', order_path(@current_order),
                         method: :delete, data: { confirm: 'Are you sure?' } ,class: 'btn btn-default'%>
+                        <%end%>
    </div>
  </div>
 
