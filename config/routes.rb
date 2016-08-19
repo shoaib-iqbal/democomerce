@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :products
     resources :colors
     resources :sizes
+    resources :orders
     end
   devise_for :users, :controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation: first created -> highest priority.
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
  resources :admin, only: [:index]
   # get 'delimg', to: 'admin_products#delimg' , as: :delimgpath
  root 'home#index'
+ match "checkout", to: "orders#checkout", as: "checkout", via: [:get]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
