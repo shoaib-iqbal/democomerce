@@ -94,40 +94,7 @@
 							<span>In stock</span>
 						</p>
 					</div>
-					<p class="shop-select">
-						<label>Size</label>
-						<select>
-							<option value="volvo">S</option>
-							<option value="saab">M</option>
-							<option value="mercedes">L</option>
-						</select> 										
-					</p>	
-					<p class="shop-select">
-						<label>Color</label>
-						<select>
-							<option value="volvo">Black</option>
-							<option value="saab">White</option>
-						</select> 										
-					</p>
-					<div class="product-attributes clearfix">
-						<span id="quantity-wanted-p" class="pull-left">
-							<span class="dec qtybutton">-</span>
-							<input type="text" class="cart-plus-minus-box" value="1">
-							<span class="inc qtybutton">+</span>	
-						</span>
-						<span>
-							<a href="" onclick="create_cart(<%=@product.id%>,3); return false; "class="cart-btn">
-							<i class="fa fa-shopping-cart"></i>
-							<span>Add to Cart</span></a>
-						</span>
-						<div class="usefull-link-block">
-							<ul>
-								<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-								<li><a href="#"><i class="fa fa-print"></i></a></li>
-								<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-							</ul>
-						</div>
-					</div>
+						<%= render :partial => 'cart_form' %>
 					<p class="socialsharing-product">
 						<button type="button" class="btn btn-default btn-twitter">
 							<i class="fa fa-twitter"></i>Tweet
@@ -818,4 +785,4 @@
         </div>
     </div>
 </div>
-<!--End of Quickview Product-->	
+<!--End of Quickview Product-->			

@@ -1,0 +1,75 @@
+<%order = @current_order%>
+
+<section class="content products">
+   <div class="container">
+      <article class="product-item product-single" style="     padding: 20px;">
+         <div class="row">
+           
+            <center>
+            <br>
+               <h1>SHOPPING CART</h1>
+               <p>Customer Service Questions? +92 42 3 5241207-8</p>
+            </center>
+            <hr>
+         </div>
+      </article>
+   </div>
+   <section class="container">
+ <div class="row">
+   
+   <div class="col-md-12">
+      <%= render :partial => "cart_table", order: order %>
+<hr>
+   </div>
+
+
+
+
+<div class="col-md-8">
+   
+<br>
+  
+
+                <p class="text-right">Congratulations! Enjoy FREE shipping on your order worth Rs 3000 and Above</p>
+                <p class="text-right">Shipping amount fixed = Rs 100 (Nationwide)</p>
+                <%# else %>
+                <p class="text-right">add more items worth Rs <%##=3000 -%> to  get free shipping</p>
+                
+                <p class="text-right">Shipping amount fixed = Rs 100 (Nationwide)</p>
+               <%##end %>
+
+</div>
+
+   <div class="col-md-4">
+  <br>
+  <aside class="sidebar">
+                  <div class="total">
+                     <p>
+                        <label>Subtotal:</label><!-- --><span><%#= number_to_currency %></span>
+                     </p>
+                     <p>
+                        <label>Shipping:</label><!-- --><span><%##= show_delivery_charges(order) %></span>
+                     </p>
+                     <p class="final">
+                     
+                        <label>Grand Total:</label><!-- --><span><%##= number_to_currency order.total %></span>
+                     </p>
+                  </div>
+               </aside>
+               <br>
+               <a style="     width: 100%;" href="<%#= products_path %>" class="btn btn-default btn-lg" >Continue Shopping</a>
+               <a style="    margin-top: 10px; 
+                  margin-top: 10px;
+                  width: 100%;
+                  background: #40B313;
+                  color: #fff;   width: 100%;" href="<%#= checkout_path %>" class="btn btn-default btn-lg" data-no-turbolink =true>Continue to Checkout</a>
+
+                <center>
+                  <%##= link_to 'Empty Cart', basket_path, :method => :delete, :class=>"btn btn-link" %>
+                  <div class="all_clear"></div>
+                  
+               </center>
+   </div>
+ </div>
+
+

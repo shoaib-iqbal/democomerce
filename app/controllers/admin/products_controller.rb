@@ -22,13 +22,12 @@ class Admin::ProductsController < AdminController
       end
      
     end
-
-     respond_to do |format|
-        format.js {}
-        format.html
+     # respond_to do |format|
+     #    format.js {}
+     #    format.html
         
 
-      end
+     #  end
 
   end
 

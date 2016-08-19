@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
 
- resources :carts , only: [:index, :new]
+ resources :carts 
  resources :products, only: [:show, :index]
  resources :admin, only: [:index]
   # get 'delimg', to: 'admin_products#delimg' , as: :delimgpath

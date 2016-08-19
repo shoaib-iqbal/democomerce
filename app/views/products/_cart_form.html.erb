@@ -1,0 +1,64 @@
+<form method="post" id="cart_form" action="">
+	<p class="shop-select">
+		<label>Size</label>
+		<select>
+			<option value="volvo">S</option>
+			<option value="saab">M</option>
+			<option value="mercedes">L</option>
+		</select> 										
+	</p>	
+	<p class="shop-select">
+		<label>Color</label>
+		<select>
+			<option value="volvo">Black</option>
+			<option value="saab">White</option>
+		</select> 										
+	</p>
+	<div class="product-attributes clearfix">
+		<span id="quantity-wanted-p" class="pull-left">
+			<span class="dec qtybutton">-</span>
+			<input type="text" class="cart-plus-minus-box" id="product_quantity" value="1">
+			<span class="inc qtybutton">+</span>	
+		</span>
+		<span>
+			<button type="submit" class="cart-btn">
+				<i class="fa fa-shopping-cart"></i>
+				<span>Add to Cart</span>
+
+			</button>
+			<!-- <a  onclick="document.getElementById('cart_form').submit()" class="cart-btn"> -->
+			<!-- <i class="fa fa-shopping-cart"></i>
+			<span>Add to Cart</span></a> -->
+		</span>
+		<%= hidden_field_tag "product_id" , @product.id%>
+		<div class="usefull-link-block">
+			<ul>
+				<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+				<li><a href="#"><i class="fa fa-print"></i></a></li>
+				<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</form>
+<script>
+
+	$("#cart_form").submit(function(e) {
+		e.preventDefault();
+		var q= $('#product_quantity').val();
+		var product_id = $('#product_id').val();
+	  
+	   $.ajax({
+
+	   url: '/carts',
+	   method: "POST",
+     data: {"product_id" : product_id,"quantity" : q},
+     format : 'js',
+     success: function() {
+     		alert('order has created')
+	      
+	     }
+	   });
+	});
+
+
+</script
