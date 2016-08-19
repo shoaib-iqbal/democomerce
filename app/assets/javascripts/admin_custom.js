@@ -13,3 +13,4 @@ function fetch_specfic_vendor_items(path,id)
    });
 }
 
+ $('.select').select2();

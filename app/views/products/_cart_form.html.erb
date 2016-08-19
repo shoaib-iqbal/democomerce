@@ -1,12 +1,16 @@
 <form method="post" id="cart_form" action="">
-	<p class="shop-select">
-		<label>Size</label>
-		<select>
-			<option value="volvo">S</option>
-			<option value="saab">M</option>
-			<option value="mercedes">L</option>
-		</select> 										
-	</p>	
+	<%if @product.sizes.present?%>
+		<p class="shop-select">
+			<label>Size</label>
+			<select>
+				
+				<% @product.sizes.each do |size| %>
+	            	<option value="<%=size.id%>"><%=size.name%></option>
+	        
+	        	<%end%>
+			</select> 										
+		</p>	
+	<%end%>
 	<p class="shop-select">
 		<label>Color</label>
 		<select>

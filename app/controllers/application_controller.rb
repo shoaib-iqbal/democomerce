@@ -8,8 +8,7 @@ class ApplicationController < ActionController::Base
 
 
   def load_cart
-  #byebug
-@current_order = Order.find_by_number(session['order_number'])
+	@current_order = Order.find_by_number(session['order_number'])
   	
   end
 end

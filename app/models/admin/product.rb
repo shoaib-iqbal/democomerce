@@ -2,6 +2,7 @@ module Admin
 	class Product < ActiveRecord::Base
 		self.table_name = 'admin_products'
 		has_many :images , dependent: :destroy
+		has_many :line_items
 		belongs_to :user
 		has_and_belongs_to_many :sizes
 		# has_attached_file :avatar, styles: {thumbnail: "60x60#"}

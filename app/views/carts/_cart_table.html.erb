@@ -1,6 +1,6 @@
 <div>
-<%# if order.order_items.present? %>
-  <%# order.order_items.each do |item| %>
+<% if @current_order.line_items.present? %>
+  <% @current_order.line_items.each do |item| %>
 
      <div class=" col-md-2 col-sm-12 col-xs-12">
           <img class="img-responsive center-block" src='<%#= cart_item_image(item.ordered_item) %>' width='200px' height='98px;' alt='Not found' alt="" draggable="false">
@@ -8,7 +8,7 @@
      <div class="col-md-10 col-sm-12 col-xs-12 order-item padding-top-30">
        
           <div class="col-md-2 col-sm-12 col-xs-12 order-size allan " >
-              <h3> <%#= item.ordered_item.get_name %> <br><strong><%#= number_to_currency item.unit_price %> 
+              <h3> <%= item.get_name %> <br><strong><%#= number_to_currency item.unit_price %> 
                <small>
                <!-- PKR -->
                </small>
@@ -46,8 +46,8 @@
      
 
      
-  <%# end %>
-<%# else %>
+  <% end %>
+<% else %>
   <div class="text-center"><h3>Your cart is empty.</h3></div>
-<%# end %>
+<% end %>
 </div>
