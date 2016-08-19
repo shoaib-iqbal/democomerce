@@ -79,9 +79,11 @@
 						                    </a>
                                             <div id="cart_list" class="cart-list">
                                                 <div class="product">
-                                                    <div class="cart-single-product">
+                                                    <%if @current_order.present? %>
+                                                        <% @current_order.line_items.each do |item| %>
+                                                            <div class="cart-single-product">
                                                         <a class="product-image" href="#">
-                                                            <img src="/assets/1.jpg" alt="">
+                                                            <img src="<%=item.product.images.first.avatar.url(:thumbnail) rescue ''%>" alt="">
                                                         </a>
                                                         <div class="product-details">
                                                             <a href="#" class="remove">
@@ -95,42 +97,26 @@
                                                                 <a href="#" class="cart-block-product-name" title="Faded Short Sleeves T-shirt">Faded...</a>
                                                             </div>
                                                             <div class="product-atributes">
-                                                                <a href="#" title="Product detail">S, Orange</a>
+                                                                <a href="#" title="Product detail">S, <%= item.get_name %></a>
                                                             </div>
                                                             <div class="prices">
-                                                                <span class="price">£ 16.84</span>
+                                                                <span class="price">£ <%= item.total %></span>
                                                             </div>
                                                         </div>                                                
-                                                    </div>
-                                                    <div class="cart-single-product">
-                                                        <a class="product-image" href="#">
-                                                            <img src="/assets/2.jpg" alt="">
-                                                        </a>
-                                                        <div class="product-details">
-                                                            <a href="#" class="remove">
-                                                                <i class="fa fa-times-circle"></i>
-                                                            </a>
-                                                            <div class="product-name">
-                                                                <span class="quantity-formated">
-                                                                    <span class="quantity">2</span>
-                                                                    X
-                                                                </span>
-                                                                <a href="#" class="cart-block-product-name" title="Faded Short Sleeves T-shirt">Printed Dr...</a>
                                                             </div>
-                                                            <div class="product-atributes">
-                                                                <a href="#" title="Product detail">S, Orange</a>
-                                                            </div>
-                                                            <div class="prices">
-                                                                <span class="price">£ 64.23</span>
-                                                            </div>
-                                                        </div>                                                
-                                                    </div>												
+                                                        <%end%>
+                                                  <%end%>											
                                                 </div>
                                                 <div class="cart-prices">
                                                     <div class="cart-prices-line first-line"></div>
                                                     <div class="cart-prices-line last-line">
-                                                        <span>Total</span>
-                                                        <span class="price pull-right">£ 48.04</span>
+                                                        <span>Total &nbsp;</span>
+                                                        <span class="price pull-right">
+                                                            <%if @current_order.present?%>
+                                                                <%= @current_order.sub_total %>
+                                                                <%end%>
+                                                                    
+                                                        </span>
                                                     </div>
                                                 </div>
                                                 <p class="cart-buttons">
