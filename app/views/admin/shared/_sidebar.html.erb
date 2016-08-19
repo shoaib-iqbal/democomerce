@@ -248,6 +248,12 @@
                         <li>
                             <a href="/admin/products/new">New Product</a>
                         </li>
+                        <li>
+                            <a href="/admin/colors">All colors</a>
+                        </li>
+                        <li>
+                            <a href="/admin/colors/new">create color</a>
+                        </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
@@ -265,7 +271,7 @@
                     <!-- /.nav-second-level -->
                 </li>
                 <!-- links for Vendors -->
-                <%if current_user.has_role? :superadmin%>
+                <%if current_user.superadmin? %>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Vendors<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

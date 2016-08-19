@@ -26,7 +26,7 @@
                                 <%=f.text_field :description ,class: 'form-control', placeholder: 'deccribe'%>
                             </div>
                             <div class="file_field">
-                                <%=f.label :Images%>
+                                <%=f.label :images%>
                                  <%= f.fields_for :image do |images_form| %>
                                    <%= images_form.file_field :avatar , multiple: true,class: 'form-control'%>
                                  <% end %>
@@ -57,7 +57,10 @@
                                 <%= f.select :size_ids, options_from_collection_for_select(Admin::Size.all, :id,:name,f.object.size_ids),{}, :multiple => true ,:class=> 'select form-control' ,:id => 'select'%>
                             </div>
 
-
+                            <div class="form-group">
+                              <%= f.label :colors %>
+                                <%= f.select :color_ids, options_from_collection_for_select(Admin::Color.all, :id,:name,f.object.color_ids),{}, :multiple => true ,:class=> 'select form-control' %>
+                            </div>
                            
 
 

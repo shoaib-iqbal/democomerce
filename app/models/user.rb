@@ -5,5 +5,12 @@ class User < ActiveRecord::Base
   has_many :products,class_name: 'Admin::Product'
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+   def superadmin?
+   	if self and self.has_role? :superadmin
+   		return true
+   	else
+   		return false
+   	end
+   end
 end
  

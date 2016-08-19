@@ -1,0 +1,36 @@
+<div class="dataTable_wrapper">
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-vendors">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+                <th>Tools</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <% @admin_colors.each do |color| %>
+
+            <tr class="odd gradeX">
+                <td><%= color.name %></td>
+                <td><%= color.value %></td>
+                <td class="center">
+                    <span><%= link_to '', edit_admin_product_path(color),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
+                    <span>
+                        <%= link_to '',  admin_product_path(color),  method: :delete, data: { confirm: 'Are you sure?' } ,class: "fa fa-trash icon_link with-tip no-text"%>
+                    </span>
+                </td>
+            </tr>
+
+        <% end %>                                                                             
+        </tbody>
+    </table>
+</div>
+<!-- /.table-responsive -->
+<script>
+    $(document).ready(function() {
+        $('#dataTables-vendors').DataTable({
+                responsive: true
+        });
+    });
+</script>

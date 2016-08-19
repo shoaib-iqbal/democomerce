@@ -18,6 +18,7 @@
 		<div id="wrapper">
 			<%= render :partial => '/admin/shared/sidebar' %>
 			<div id="page-wrapper">
+			<p id="notice"><%= notice %></p>
 				<%= yield %>
 			</div>
 			<%= javascript_include_tag 'all_admin' %>

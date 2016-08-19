@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  resources :orders
   devise_for :vendor_admins
-  namespace :admin do
-    resources :sizes
-  end
   namespace :admin do
     resources :users
     resources :products
+    resources :colors
+    resources :sizes
     end
   devise_for :users, :controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,7 +13,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
 
- resources :carts 
+ resources :carts
+ resources :orders 
  resources :products, only: [:show, :index]
  resources :admin, only: [:index]
   # get 'delimg', to: 'admin_products#delimg' , as: :delimgpath

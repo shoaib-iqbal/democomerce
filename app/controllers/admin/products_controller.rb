@@ -56,7 +56,7 @@ class Admin::ProductsController < AdminController
     respond_to do |format|
       if @admin_product.save
         
-        if params[:admin_product][:image][:avatar]
+        if  params[:admin_product][:image] and params[:admin_product][:image][:avatar]
            params[:admin_product][:image][:avatar].each { |image|
             @admin_product.images.create(avatar: image)
           }
@@ -122,6 +122,6 @@ class Admin::ProductsController < AdminController
       if current_user.has_role? :vendoradmin
         params[:admin_product][:user_id] = current_user.id
       end
-       params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_pric, images_attributes: [:avatar => []], size_ids: [])
+       params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_pric, images_attributes: [:avatar => []], size_ids: [],color_ids: [] )
     end
 end

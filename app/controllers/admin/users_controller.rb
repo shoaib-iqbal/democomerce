@@ -27,8 +27,8 @@ class Admin::UsersController < AdminController
    @user = User.new(admin_user_params)
 
     respond_to do |format|
-      if@user.save
-        format.html { redirect_to admin_users_path, notice: 'Product was successfully created.' }
+      if @user.save
+        format.html { redirect_to admin_users_path, notice: 'Vendor was successfully created.' }
         format.json { render :show, status: :created, location:@user }
       else
         format.html { render :new }
@@ -41,8 +41,9 @@ class Admin::UsersController < AdminController
   # PATCH/PUT /admin/users/1.json
   def update
     respond_to do |format|
-      if@user.update(admin_user_params)
-        format.html { redirect_to admin_users_path, notice: 'Product was successfully updated.' }
+    	byebug
+      if @user.update(admin_user_params)
+        format.html { redirect_to admin_users_path, notice: 'Vendor was successfully updated.' }
         format.json { render :show, status: :ok, location:@user }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class Admin::UsersController < AdminController
   def destroy
    @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_path, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to admin_users_path, notice: 'Vendor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +71,6 @@ class Admin::UsersController < AdminController
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_user_params
    
-       params.require(:user).permit(:name,:location,:email,:password)
+       params.require(:user).permit(:name,:location,:email)
     end
 end

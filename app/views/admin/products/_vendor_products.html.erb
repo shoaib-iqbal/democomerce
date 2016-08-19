@@ -7,6 +7,7 @@
                 <th>Discounted Price</th>
                 <th>Description</th>
                 <th>Sizes</th>
+                <th>Color</th>
                 <th>Picture</th>
                 <th>Vendor</th>
                 <th>Tools</th>
@@ -30,11 +31,19 @@
                     
                 </td>
                 <td class="center">
+                <% for color in product.colors %>
+                    <%= color.name %>
+                <%end%>
+
+                
+                    
+                </td>
+                <td class="center">
                     <%# for image in product.images %>
                       <%#= image_tag image.avatar.url(:thumbnail) %>
                     <%#end%>
                     <%#= product.images.first %>
-                    <%= image_tag product.images.first.avatar.url(:thumbnail) %>
+                    <%= image_tag product.images.first.avatar.url(:thumbnail) rescue '' %>
                 </td>
                 <td><%= product.user.name %></td>
                 <td class="center">
