@@ -1,0 +1,1 @@
+json.partial! "admin_sizes/admin_size", admin_size: @admin_size

@@ -170,17 +170,16 @@
 								<div class="single-product">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="product-img">
-											<a href="product-simple.html" title="<%= product.name %>">
+											<a href="<%=product_path(product.id)%>" title="<%= product.name %>">
 												<%if product.images.present? %>
-													<%=image_tag product.images.first.avatar.url(:sidebar)%>
+													<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block", style:  "max-height:200px"%>
 												<%end%>
-												
-											</a>		                                    
+											</a>  		                                    
 										</div>                                        
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="product-content">
-											<h5><a href="product-simple.html" title="Faded Short Sleeves T-shirt"><%= product.name %></a></h5>
+											<h5><a href="<%=product_path(product.id)%>" title="<%= product.name %>"><%= product.name %></a></h5>
 											<!--Product Rating-->
 											<div class="rating-icon">
 												<i class="fa fa-star"></i>

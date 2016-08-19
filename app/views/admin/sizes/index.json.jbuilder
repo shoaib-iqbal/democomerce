@@ -1,0 +1,1 @@
+json.array! @admin_sizes, partial: 'admin_sizes/admin_size', as: :admin_size

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Admin Sizes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+   
+      <th>value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_sizes.each do |admin_size| %>
+      <tr>
+        <td><%= admin_size.name %></td>
+        
+        <td><%= admin_size.value %></td>
+        <td><%= link_to 'Show', admin_size %></td>
+        <td><%= link_to 'Edit', edit_admin_size_path(admin_size) %></td>
+        <td><%= link_to 'Destroy', admin_size, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Size', new_admin_size_path %>
