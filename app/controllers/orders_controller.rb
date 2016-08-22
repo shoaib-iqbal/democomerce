@@ -17,6 +17,10 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def checkout
+    
+  end
+
   # GET /orders/1/edit
   def edit
   end
