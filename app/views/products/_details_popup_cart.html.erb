@@ -1,8 +1,8 @@
 <form method="post" id="cart_form" action="">
 	<%if @product.sizes.present?%>
 		<p class="shop-select">
-			<label>Size</label>
-			<select id="size_id">
+			<label>Size &nbsp; &nbsp;</label>
+			<select id="size_id" style="width:130px;"	>
 				
 				<% @product.sizes.each do |size| %>
 
@@ -14,8 +14,8 @@
 	<%end%>
 	<%if @product.colors.present?%>
 		<p class="shop-select">
-			<label>Color</label>
-			<select  id="color_id">
+			<label>Color &nbsp;</label>
+			<select  id="color_id" style="width:130px;">
 				<% @product.colors.each do |color| %>
 
 		            	<option value="<%=color.id%>" <span><%=color.name%> </span></option>
@@ -25,11 +25,10 @@
 		</p>
 	<%end%>
 	<div class="product-attributes clearfix">
-		<span id="quantity-wanted-p" class="pull-left">
-			<span class="dec qtybutton">-</span>
-			<input type="text" class="cart-plus-minus-box" id="product_quantity" value="1">
-			<span class="inc qtybutton">+</span>	
-		</span>
+	<div class="numbers-row">
+        <input type="number" id="french-hens" value="1" min="1">
+    </div>
+		
 		<span>
 			<button type="submit" class="cart-btn">
 				<i class="fa fa-shopping-cart"></i>
@@ -41,20 +40,22 @@
 			<span>Add to Cart</span></a> -->
 		</span>
 		<%= hidden_field_tag "product_id1" , @product.id%>
-		<div class="usefull-link-block">
-			<ul>
-				<li><a href="#"><i class="fa fa-envelope"></i></a></li>
-				<li><a href="#"><i class="fa fa-print"></i></a></li>
-				<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-			</ul>
-		</div>
+		
 	</div>
 </form>
+
+
+
+
+
+
+
+
 <script>
 
 	$("#cart_form").submit(function(e) {
 		e.preventDefault();
-		var q= $('#product_quantity').val();
+		var q= $('#french-hens').val();
 		 product_id = $('#product_id1').val();
 		 size_id = $('#size_id').val();
 		 color_id = $('#color_id').val();

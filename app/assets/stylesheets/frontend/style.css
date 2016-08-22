@@ -1594,7 +1594,7 @@ h3.footer-widget-title {
 .pd-center-column .shop-select select {
   width: 230px;
 }
-a.cart-btn {
+.cart-btn {
   background: #ffffff none repeat scroll 0 0;
   border: 2px solid #c38749;
   color: #c38749;
@@ -1604,19 +1604,19 @@ a.cart-btn {
   line-height: 38px;
   position: relative;
 }
-a.cart-btn i {
+.cart-btn i {
   font-size: 20px;
   left: 20px;
   position: absolute;
   top: 7px;
 }
-a.cart-btn span {
+.cart-btn span {
   font-size: 12px;
   font-weight: 600;
   padding: 10px 30px 6px 50px;
   text-transform: uppercase;
 }
-a.cart-btn:hover {
+.cart-btn:hover {
   background: #c38749 none repeat scroll 0 0;
   color: #ffffff;
 }

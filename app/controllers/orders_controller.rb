@@ -55,6 +55,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1.json
   def destroy
     session['order_number']=nil
+    session['line_items_count']=0
     # byebug
     @current_order.destroy
     respond_to do |format|

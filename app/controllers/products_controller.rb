@@ -6,6 +6,19 @@ class ProductsController < ApplicationController
 		@top_sellers=Admin::Product.order(created_at: :desc).limit(3)
 		@featured_products=Admin::Product.where(:featured => "true")
 
+		if request.xhr?
+	      if params[:id].present?
+	      	
+	        @product=Admin::Product.find(params[:id])
+	        render :partial => "details_popup"
+	      end
+	     
+	    end
+		respond_to do |format|
+	        format.js {}
+	        format.html
+      	end
+ 
 	end
 
 

@@ -5,7 +5,7 @@ class Admin::ProductsController < AdminController
   # GET /admin/products.json
   def index
     # @admin_products = Admin::Product.all
-        
+    
     if current_user.has_role? :superadmin
       @admin_products = Admin::Product.all
     else
@@ -22,12 +22,12 @@ class Admin::ProductsController < AdminController
       end
      
     end
-     respond_to do |format|
-        format.js {}
-        format.html
+     # respond_to do |format|
+     #    format.js {}
+     #    format.html
         
 
-      end
+     #  end
 
   end
 
