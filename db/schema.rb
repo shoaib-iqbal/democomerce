@@ -11,10 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817153753) do
+ActiveRecord::Schema.define(version: 20160822125109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
+    t.string   "address_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "order_id"
+    t.integer  "customer_id"
+  end
+
+  create_table "admin_colors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_colors_products", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "color_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "admin_images", force: :cascade do |t|
     t.string   "avatar_file_name"
@@ -26,6 +51,8 @@ ActiveRecord::Schema.define(version: 20160817153753) do
     t.datetime "updated_at",          null: false
     t.integer  "imageable_id"
     t.string   "imageable_type"
+    t.integer  "avatar_width"
+    t.integer  "avatar_height"
   end
 
   create_table "admin_products", force: :cascade do |t|
@@ -34,12 +61,28 @@ ActiveRecord::Schema.define(version: 20160817153753) do
     t.integer  "price"
     t.integer  "discounted_pric"
     t.string   "description"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "user_id"
+    t.boolean  "featured",            default: false
+  end
+
+  create_table "admin_products_sizes", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "size_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_sizes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "admin_vendor_admins", force: :cascade do |t|
@@ -57,12 +100,33 @@ ActiveRecord::Schema.define(version: 20160817153753) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+  end
+
+  add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
+  add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
+
   create_table "line_items", force: :cascade do |t|
     t.integer  "quantity"
     t.integer  "product_id"
     t.integer  "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "color_id"
+    t.integer  "size_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -77,6 +141,22 @@ ActiveRecord::Schema.define(version: 20160817153753) do
     t.text     "special_instructions"
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
+    t.string   "number"
+    t.string   "phone"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "delivery_name"
+    t.string   "order_notes"
+    t.string   "country"
+    t.string   "country_state"
+    t.string   "city"
+    t.string   "payment_type"
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|

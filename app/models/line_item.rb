@@ -24,11 +24,10 @@ class LineItem < ActiveRecord::Base
 	end
 	
 	def total
-
 		if self.product.discounted_pric.present?
-			return self.quantity*product.discounted_pric
+			return self.quantity* self.product.discounted_pric
 		else 
-			return self.quantity*product.price
+			return self.quantity* self.product.price
 		end
 
 		

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :customers
+  resources :customers
   devise_for :vendor_admins
   namespace :admin do
     resources :users
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   # get 'delimg', to: 'admin_products#delimg' , as: :delimgpath
  root 'home#index'
  match "checkout", to: "orders#checkout", as: "checkout", via: [:get]
+  match "checkout/details", to: "orders#details", as: "checkout_details", via: [:get, :patch, :post]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

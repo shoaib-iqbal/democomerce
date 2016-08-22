@@ -1,0 +1,51 @@
+<br><br><br>
+<section class="content products">
+   <div class="container">
+      <article class="product-item product-single" style="     padding: 20px;">
+         <div class="row">
+            <br>
+            <center>
+               <h1>CONTINUE TO CHECKOUT</h1>
+            </center>
+            <hr>
+         </div>
+      </article>
+   </div>
+   <br><br><br>
+   <section class="container">
+      <div class="col-md-12">
+         <div class="col-md-6">
+            <div class="signin-half" style=" border: solid 1px #ddd;padding: 20px;">
+               <h3> NEW CUSTOMERS</h3>
+               <br>
+               <p>You can purchase as a guest. You will just need to indicate the<br> essential details to place your order.</p>
+               <br>
+               <p>Register Now to save your details for future purchases.</p>
+               <br><br>
+               <a href="<%= checkout_details_path %>" class="btn btn-default btn-lg">CHECKOUT AS GUEST</a>
+               <a href="/customers/sign_up" class="btn btn-default btn-lg">SIGN UP</a>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="signin-half no-padding" style=" border: solid 1px #ddd;padding: 20px;">
+               <h3>RETURNING CUSTOMERS</h3>
+               <div >
+                  <%= form_for(:user, url: checkout_details_path, html: {"data-parsley-validate" => true} ) do |f| %>
+                    <%#= devise_error_messages! %>
+                     <span style="font-size: 18px;">Email address* </span>
+                     <%= f.email_field :email, :autocomplete=> :off, autofocus: true, :class=>"input-checkout", :placeholder=>"Enter Email address", :required=>true %>
+                     <span style="font-size: 18px;">Password* </span>
+                     <%= f.password_field :password, :autocomplete=> :off , :class=>"input-checkout", :placeholder=>"Enter Password", :required=>true %>
+                     <div style="     margin-bottom: 28px;"></div>
+                     <button  style="background: #000;
+                        color: #fff;
+                        border: none;" class="btn btn-default btn-lg" type="submit">Sign in</button>
+                     <a class="pull-right" href="#">Forgot Password?</a>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <br><br> <br><br> <br><br>
+</section>

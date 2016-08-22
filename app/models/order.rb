@@ -1,8 +1,14 @@
 class Order < ActiveRecord::Base
     has_many :line_items
+    belongs_to :customer
+     accepts_nested_attributes_for :customer, reject_if: :all_blank, allow_destroy: true
+    #accepts_nested_attributes_for :customer
+    has_many :addresses
+    accepts_nested_attributes_for :addresses
     ORDER_NUMBER_LENGTH  = 9
     ORDER_NUMBER_LETTERS = false
     ORDER_NUMBER_PREFIX  = 'R'
+    PAYMENT_TYPES = ["Cash On Delivery"]
 
     before_validation :generate_order_number, on: :create
 

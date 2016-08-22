@@ -41,6 +41,47 @@ class OrdersController < ApplicationController
     end
   end
 
+  def checkout
+    byebug
+    if current_customer
+      redirect_to checkout_details_path
+    else
+      @customer  = Customer.new
+    end
+
+  end
+
+  def details
+      if params[:user].present?
+       login_user(params)
+      
+    else
+      @current_order.addresses.build 
+      if request.patch?
+        if @current_order.update(order_params)
+           @current_order.state = 'complete'
+           @current_order.save
+           session['order_number']=nil
+          redirect_to '/'
+      end
+      end
+    end
+  end
+
+
+
+  def login_user(params)
+  customer = Customer.find_by_email(params[:user][:email])
+  if customer.present?
+     if customer.valid_password?(params[:user][:password])
+      sign_in(:customer, user)
+      redirect_to checkout_details_path, :notice => "Signed in successfully."
+      return
+     end
+  end
+    redirect_to checkout_path, :alert => "Email or Password is invalid."
+end
+
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
@@ -76,6 +117,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.fetch(:order, {})
+      params.require(:order).permit(:email_address,:country,:country_state,:city,:phone,:first_name,:order_notes,:last_name,:delivery_name, addresses_attributes: [:id, :address1, :address2, :_destroy])
     end
 end
