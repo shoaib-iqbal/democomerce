@@ -27,7 +27,7 @@ class LineItem < ActiveRecord::Base
 		if self.product.discounted_pric.present?
 			return self.quantity* self.product.discounted_pric
 		else 
-			return self.quantity* self.product.price
+			return self.quantity* self.product.price rescue '0'
 		end
 
 		
