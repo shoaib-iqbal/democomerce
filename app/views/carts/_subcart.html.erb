@@ -38,7 +38,7 @@
             <div class="cart-prices-line last-line">
                 <span>Total &nbsp;</span>
                 <span class="price pull-right">
-                    <%if @current_order.line_items.present?%>
+                    <%if @current_order and  @current_order.line_items.present?%>
                         <%= @current_order.sub_total %>
                         <%end%>
                             

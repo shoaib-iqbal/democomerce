@@ -54,7 +54,7 @@
 
 
 
-				<% @admin_products.each do |product| %>
+				<% @featured_products.each do |product| %>
 
 					<!--Single Product -->
 					<div class="col-md-3 col-sm-6">
@@ -105,7 +105,7 @@
 									<%if product.discounted_pric?%>
 									<span class="new-price">£ <%= product.discounted_pric %></span>
 									<%end%>
-										<span class="old-price"><%=product.price  %></span>
+									<span class="old-price"><%=product.price  %></span>
 									
 								</div>
 							</div>
@@ -139,133 +139,106 @@
 		</div>	 
         <div class="row">
 			<div class="deal-area-list indicator-button">
-				<!--Deal Single Product -->
-				<div class="deal-single-product">
-					<div class="row">
-						<div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
-						   <div class="left-item">
-								<!--Product Image-->
-								<a href="product-simple.html" title="Printed Summer Dress">
-									<img src="/assets/featured/2.jpg" alt="">
-								</a>
-								<span class="new-label">New</span>
-								<span class="sale-label">Sale!</span>
-								<!--Product Cuntdown-->
-								<div class="product-cuntdown">
-									<div class="timer">
-										<div data-countdown="2016/06/01"></div>
-									</div>	
+				<% @admin_deal_of_days.each do |deal| %>
+					<!--Deal Single Product -->
+					<div class="deal-single-product">
+						<div class="row">
+							<div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
+							   <div class="left-item" style="min-height: 347px;">
+									<!--Product Image-->
+									<a href="<%=product_path(deal.product.id)%>" title="<%= deal.product.name %>">
+										
+										<%if deal.product.images.present? %>
+											<%=image_tag deal.product.images.first.avatar.url(:large)%>
+                                        <%else%>
+                                            <img src="/assets/featured/1.jpg"/>
+										<%end%> 
+									</a>
+									<span class="new-label">New</span>
+									<%if deal.product.discounted_pric?%>
+										<span class="sale-label">Sale!</span>
+									<%end%>
+									<!--Product Cuntdown-->
+									<div class="product-cuntdown">
+										<div class="timer">
+											<div data-countdown="<%= deal.expiry_time%>"></div>
+										</div>	
+									</div>
+								</div>
+							</div>
+							<div class="deal-product-content col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<h5><a href="<%=product_path(deal.product.id)%>" title="<%= deal.product.name %>"><span><%= deal.product.name %></span></a></h5>
+								<!--Product Rating-->
+								<div class="rating-icon">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<p><%= truncate(deal.product.description ,:length => 100)%></p>
+								<!--Product Price-->
+								<div class="product-price">
+									<%if deal.product.discounted_pric?%>
+									<span class="new-price">£ <%= deal.product.discounted_pric %></span>
+									<%end%>
+									<span class="old-price"><%=deal.product.price  %></span>
+								</div>
+								<!--Product Action-->
+								<div class="deal-product-action">
+									<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+									<a  title="Quick view"  >
+									<i class="fa fa-expand" onclick="getProductDetail(this)">
+									<%= hidden_field_tag :product_id,{}, :value=>"#{deal.product.id}"  %></i>
+									</a>
 								</div>
 							</div>
 						</div>
-						<div class="deal-product-content col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<h5><a href="product-simple.html" title="Printed Dress">Printed Summer Dress</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<p>Long printed dress with thin adjustable straps. V-neckline and wiring under the bust with...</p>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 34.78</span>
-								<span class="old-price">£ 36.61</span>
-							</div>
-							<!--Product Action-->
-							<div class="deal-product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>	   
-				<!--Deal Single Product -->
+					</div>	   
+				<%end%>
 				<div class="deal-single-product">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="left-item">
-								<!--Product Image-->
-								<a href="product-simple.html" title="Printed Chiffon Dress">
-									<img src="/assets/featured/4.jpg" alt="">
-								</a>
-								<span class="new-label">New</span>
-								<!--Product Cuntdown-->
-								<div class="product-cuntdown">
-									<div class="timer">
-										<div data-countdown="2016/09/01"></div>
-									</div>	
-								</div>									
+							<div class="row">
+								<div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
+								   <div class="left-item">
+										<!--Product Image-->
+										<a href="product-simple.html" title="Printed Summer Dress">
+											<img src="assets/featured/2.jpg" alt="">
+										</a>
+										<span class="new-label">New</span>
+										<span class="sale-label">Sale!</span>
+										<!--Product Cuntdown-->
+										<div class="product-cuntdown">
+											<div class="timer">
+												<div data-countdown="2016/06/01"></div>
+											</div>	
+										</div>
+									</div>
+								</div>
+								<div class="deal-product-content col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<h5><a href="product-simple.html" title="Printed Dress">Printed Summer Dress</a></h5>
+									<!--Product Rating-->
+									<div class="rating-icon">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+									<p>Long printed dress with thin adjustable straps. V-neckline and wiring under the bust with...</p>
+									<!--Product Price-->
+									<div class="product-price">
+										<span class="new-price">£ 34.78</span>
+										<span class="old-price">£ 36.61</span>
+									</div>
+									<!--Product Action-->
+									<div class="deal-product-action">
+										<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+										<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+									</div>
+								</div>
 							</div>
-						</div>								
-						<div class="deal-product-content col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<h5><a href="product-simple.html" title="Printed Chiffon Dress">Printed Chiffon Dress</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<p>Long printed dress with thin adjustable straps. V-neckline and wiring under the bust with...</p>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 21.65</span>
-								<span class="old-price">£ 24.60</span>
-							</div>
-							<!--Product Action-->
-							<div class="deal-product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>  
-				<!--Deal Single Product -->
-				<div class="deal-single-product">
-					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="left-item">
-								<!--Product Image-->
-								<a href="product-simple.html" title="Faded Short Sleeves T-shirt">
-									<img src="/assets/featured/7.jpg" alt="">
-								</a>
-								<span class="new-label">New</span>
-								<!--Product Cuntdown-->
-								<div class="product-cuntdown">
-									<div class="timer">
-										<div data-countdown="2016/06/01"></div>
-									</div>	
-								</div>									
-							</div>
-						</div>							
-						<div class="deal-product-content col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<h5><a href="product-simple.html" title="Faded Short Sleeves T-shirt">Faded Short Sleeves T-shirt</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<p>Faded short sleeves t-shirt with high neckline. Soft and stretchy material for a comfortable...</p>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 16.84</span>
-								<span class="old-price">£ 19.81</span>
-							</div>
-							<!--Product Action-->
-							<div class="deal-product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-					</div>
-				</div> 
+				</div>	  
+				
 			</div>
         </div>
     </div>
@@ -280,258 +253,77 @@
         <div class="row">
 			<!--Product List Start-->
 			<div class="featured-product-list indicator-style">
-				<!--Single Product -->
-				<div class="col-md-3 col-sm-6">
-					<div class="single-product">
-						<!--product Content-->
-						<div class="product-img-content">
-							<!--Product Image-->
-							<div class="product-img">
-								<a href="product-simple.html" title="Printed Dress">
-									<img src="/assets/featured/1.jpg" alt="">
-								</a>		                                    
+				
+
+
+				<% @unfeatured_products.each do |product| %>
+
+					<!--Single Product -->
+					<div class="col-md-3 col-sm-6">
+						<div class="single-product">
+							<!--product Content-->
+							<div class="product-img-content">
+								<!--Product Image-->
+								<div class="product-img">
+									<a href="<%=product_path(product.id)%>" title="<%= product.name %>">
+										<%if product.images.present? %>
+											<%=image_tag product.images.first.avatar.url(:large)%>
+                                        <%else%>
+                                            <img src="/assets/featured/1.jpg"/>
+										<%end%> 
+
+									</a>		                                    
+								</div>
+								<span class="new-label">New</span>
+								<%if product.discounted_pric?%>
+									<span class="sale-label">Sale!</span>
+								<%end%>
+								
+
+								<!--Product Action-->
+								<div class="product-action"> 
+									<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+									<a  title="Quick view"  >
+									<i class="fa fa-expand" onclick="getProductDetail(this)">
+									<%= hidden_field_tag :product_id,{}, :value=>"#{product.id}"  %></i>
+									</a>
+								</div>
 							</div>
-							<span class="new-label">New</span>
-							<!--Product Action-->
-							<div class="product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-						<div class="product-content">
-							<h5><a href="product-simple.html" title="Printed Dress">Printed Dress</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 61.19</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Single Product -->
-				<div class="col-md-3 col-sm-6">
-					<div class="single-product">
-						<!--product Content-->
-						<div class="product-img-content">
-							<!--Product Image-->
-							<div class="product-img">
-								<a href="product-simple.html" title="Printed Summer Dress">
-									<img src="/assets/featured/2.jpg" alt="">
-								</a>		                                    
-							</div>
-							<span class="new-label">New</span>
-							<span class="sale-label">Sale!</span>
-							<!--Product Action-->
-							<div class="product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-						<div class="product-content">
-							<h5><a href="product-simple.html" title="Printed Summer Dress">Printed Summer Dress</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 34.78</span>
-								<span class="old-price">£ 36.61</span>
+							<div class="product-content">
+								<h5 class="clearfix">
+									<div class="pull-left"><a href="<%=product_path(product.id)%>" title="<%= product.name %>"><%= product.name %></a></div>
+									<div class="pull-right"><a href="/products?vendor=<%= product.user.id %>" title="<%= product.user.name %>"><%= product.user.name%></a></div>
+								</h5>
+								<!--Product Rating-->
+								<div class="rating-icon">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<!--Product Price-->
+								<div class="product-price">
+									<%if product.discounted_pric?%>
+									<span class="new-price">£ <%= product.discounted_pric %></span>
+									<%end%>
+									<span class="old-price"><%=product.price  %></span>
+									
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!--Single Product -->
-				<div class="col-md-3 col-sm-6">
-					<div class="single-product">
-						<!--product Content-->
-						<div class="product-img-content">
-							<!--Product Image-->
-							<div class="product-img">
-								<a href="product-simple.html" title="Printed Summer Dress">
-									<img src="/assets/featured/3.jpg" alt="">
-								</a>		                                    
-							</div>
-							<span class="new-label">New</span>
-							<!--Product Action-->
-							<div class="product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-						<div class="product-content">
-							<h5><a href="product-simple.html" title="Printed Summer Dress">Printed Summer Dress</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 36.60</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Single Product -->
-				<div class="col-md-3 col-sm-6">
-					<div class="single-product">
-						<!--product Content-->
-						<div class="product-img-content">
-							<!--Product Image-->
-							<div class="product-img">
-								<a href="product-simple.html" title="Printed Chiffon Dress">
-									<img src="/assets/featured/4.jpg" alt="">
-								</a>		                                    
-							</div>
-							<span class="new-label">New</span>
-							<!--Product Action-->
-							<div class="product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-						<div class="product-content">
-							<h5><a href="product-simple.html" title="Printed Chiffon Dress">Printed Chiffon Dress</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 21.65</span>
-								<span class="old-price">£ 24.60</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Single Product -->
-				<div class="col-md-3 col-sm-6">
-					<div class="single-product">
-						<!--product Content-->
-						<div class="product-img-content">
-							<!--Product Image-->
-							<div class="product-img">
-								<a href="product-simple.html" title="Printed Dress">
-									<img src="/assets/featured/5.jpg" alt="">
-								</a>		                                    
-							</div>
-							<span class="new-label">New</span>
-							<!--Product Action-->
-							<div class="product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-						<div class="product-content">
-							<h5><a href="product-simple.html" title="Printed Dress">Printed Dress</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 31.20</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Single Product -->
-				<div class="col-md-3 col-sm-6">
-					<div class="single-product">
-						<!--product Content-->
-						<div class="product-img-content">
-							<!--Product Image-->
-							<div class="product-img">
-								<a href="product-simple.html" title="Blouse">
-									<img src="/assets/featured/6.jpg" alt="">
-								</a>		                                    
-							</div>
-							<span class="new-label">New</span>
-							<!--Product Action-->
-							<div class="product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-						<div class="product-content">
-							<!--Product Name-->
-							<h5><a href="product-simple.html" title="Blouse">Blouse</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 32.40</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Single Product -->
-				<div class="col-md-3 col-sm-6">
-					<div class="single-product">
-						<!--product Content-->
-						<div class="product-img-content">
-							<!--Product Image-->
-							<div class="product-img">
-								<a href="product-simple.html" title="Faded Short Sleeves T-shirt">
-									<img src="/assets/featured/7.jpg" alt="">
-								</a>		                                    
-							</div>
-							<span class="new-label">New</span>
-							<!--Product Action-->
-							<div class="product-action">
-								<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-								<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
-							</div>
-						</div>
-						<div class="product-content">
-							<!--Product Name-->
-							<h5><a href="product-simple.html" title="Faded Short Sleeves T-shirt">Faded Short Sleeves T-shirt</a></h5>
-							<!--Product Rating-->
-							<div class="rating-icon">
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-								<i class="fa fa-star"></i>
-							</div>
-							<!--Product Price-->
-							<div class="product-price">
-								<span class="new-price">£ 16.84</span>
-								<span class="old-price">£ 19.81</span>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--Single Product End-->
+					<!--Single Product -->
+				
+
+				<% end %> 
+
+
+
+
+
+
+
 			</div>
 			<!--Product List Start-->
         </div>	

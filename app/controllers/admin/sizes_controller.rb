@@ -4,7 +4,12 @@ class Admin::SizesController < AdminController
   # GET /admin/sizes
   # GET /admin/sizes.json
   def index
-    @admin_sizes = Admin::Size.all
+    if current_user.has_role? :vendoradmin
+        @admin_sizes = Admin::Size.all.where(:user_id => current_user.id)
+    else
+        @admin_sizes = Admin::Size.all
+    end
+            
   end
 
   # GET /admin/sizes/1
@@ -28,7 +33,7 @@ class Admin::SizesController < AdminController
 
     respond_to do |format|
       if @admin_size.save
-        format.html { redirect_to @admin_size, notice: 'Size was successfully created.' }
+        format.html { redirect_to admin_sizes_url, notice: 'Size was successfully created.' }
         format.json { render :show, status: :created, location: @admin_size }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class Admin::SizesController < AdminController
   def update
     respond_to do |format|
       if @admin_size.update(admin_size_params)
-        format.html { redirect_to @admin_size, notice: 'Size was successfully updated.' }
+        format.html { redirect_to admin_sizes_url, notice: 'Size was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_size }
       else
         format.html { render :edit }
@@ -69,6 +74,9 @@ class Admin::SizesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_size_params
-      params.require(:admin_size).permit(:name, :value)
+      if current_user.has_role? :vendoradmin
+        params[:admin_size][:user_id] = current_user.id
+      end
+      params.require(:admin_size).permit(:name, :value,:user_id)
     end
 end

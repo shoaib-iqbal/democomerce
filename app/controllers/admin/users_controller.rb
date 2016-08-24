@@ -30,6 +30,7 @@ class Admin::UsersController < AdminController
         format.html { redirect_to admin_users_url, notice: 'Vendor was successfully created.' }
         format.json { render :show, status: :created, location:@user }
       else
+        flash[:notice] = @user.errors.full_messages.to_sentence
         format.html { render :new }
         format.json { render json:@user.errors, status: :unprocessable_entity }
       end

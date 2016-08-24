@@ -15,9 +15,9 @@
                 <td><%= color.name %></td>
                 <td><%= color.value %></td>
                 <td class="center">
-                    <span><%= link_to '', edit_admin_product_path(color),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
+                    <span><%= link_to '', edit_admin_color_path(color),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
                     <span>
-                        <%= link_to '',  admin_product_path(color),  method: :delete, data: { confirm: 'Are you sure?' } ,class: "fa fa-trash icon_link with-tip no-text"%>
+                        <%= link_to '',  admin_color_path(color),  method: :delete, data: { confirm: 'Are you sure?' } ,class: "fa fa-trash icon_link with-tip no-text"%>
                     </span>
                 </td>
             </tr>

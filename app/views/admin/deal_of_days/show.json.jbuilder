@@ -1,0 +1,1 @@
+json.partial! "admin_deal_of_days/admin_deal_of_day", admin_deal_of_day: @admin_deal_of_day

@@ -769,7 +769,7 @@ span.old-price {
 /*  7.	Deal Area CSS
 /*----------------------------------------*/
 .deal-area {
-  background: rgba(0, 0, 0, 0) url("img/deal-bg.jpg") no-repeat fixed center center / cover ;
+  background: rgba(0, 0, 0, 0) url("/assets/deal-bg.jpg") no-repeat fixed center center / cover ;
   position: relative;
 }
 .deal-area::before {

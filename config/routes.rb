@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :deal_of_days
+  end
   devise_for :customers
   resources :customers
   devise_for :vendor_admins
@@ -11,6 +14,9 @@ Rails.application.routes.draw do
     resources :store_settings
     end
   devise_for :users, :controllers => {:registrations => "registrations"}
+   devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -22,8 +28,10 @@ Rails.application.routes.draw do
  resources :products, only: [:show, :index]
  resources :admin, only: [:index]
   # get 'delimg', to: 'admin_products#delimg' , as: :delimgpath
- root 'home#index'
- match "checkout", to: "orders#checkout", as: "checkout", via: [:get]
+  match "home/set_session" ,to: "home#change_languages", as: "languagepath", via: [:get]
+  match "admin/get_color_and_size" ,to: "admin/products#get_size_and_color_of_product", as: "getsizecolor", via: [:get]
+  root 'home#index'
+  match "checkout", to: "orders#checkout", as: "checkout", via: [:get]
   match "checkout/details", to: "orders#details", as: "checkout_details", via: [:get, :patch, :post]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
