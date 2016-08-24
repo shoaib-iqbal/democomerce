@@ -7,6 +7,14 @@ class User < ActiveRecord::Base
   has_many :colors,class_name: 'Admin::Color'
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+   
+   geocoded_by :full_street_address, latitude: :lat, longitude: :lng
+   after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
+   def full_street_address
+     #convert address to geocoded values
+     "#{self.location}"
+   end
+
    def superadmin?
    	if self and self.has_role? :superadmin
    		return true
