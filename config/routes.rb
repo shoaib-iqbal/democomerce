@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :colors
     resources :sizes
     resources :orders
+    resources :store_settings
     end
   devise_for :users, :controllers => {:registrations => "registrations"}
    devise_scope :user do

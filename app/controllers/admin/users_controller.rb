@@ -25,10 +25,9 @@ class Admin::UsersController < AdminController
   # POST /admin/users.json
   def create
    @user = User.new(admin_user_params)
-
     respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_users_path, notice: 'Vendor was successfully created.' }
+        format.html { redirect_to admin_users_url, notice: 'Vendor was successfully created.' }
         format.json { render :show, status: :created, location:@user }
       else
         flash[:notice] = @user.errors.full_messages.to_sentence
@@ -42,7 +41,6 @@ class Admin::UsersController < AdminController
   # PATCH/PUT /admin/users/1.json
   def update
     respond_to do |format|
-    	byebug
       if @user.update(admin_user_params)
         format.html { redirect_to admin_users_path, notice: 'Vendor was successfully updated.' }
         format.json { render :show, status: :ok, location:@user }
@@ -71,7 +69,7 @@ class Admin::UsersController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_user_params
-   
-       params.require(:user).permit(:name,:location,:email)
+      params[:user][:password] = '12345678'
+      params.require(:user).permit(:name,:location,:email,:password)
     end
 end
