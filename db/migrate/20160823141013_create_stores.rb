@@ -6,5 +6,5 @@ class CreateStores < ActiveRecord::Migration
       t.timestamps null: false
     end
   end
-  Store.create
+  #Store.create
 end

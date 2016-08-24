@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     resources :sizes
     resources :orders
     resources :store_settings
-    end
+  end
   devise_for :users, :controllers => {:registrations => "registrations"}
-   devise_scope :user do
+  devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   # The priority is based upon order of creation: first created -> highest priority.
