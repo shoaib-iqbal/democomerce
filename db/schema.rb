@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822125109) do
+ActiveRecord::Schema.define(version: 20160823165540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160822125109) do
     t.string   "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "admin_colors_products", force: :cascade do |t|
@@ -39,6 +40,13 @@ ActiveRecord::Schema.define(version: 20160822125109) do
     t.integer  "color_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_deal_of_days", force: :cascade do |t|
+    t.integer  "product_id"
+    t.datetime "expiry_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "admin_images", force: :cascade do |t|
@@ -54,6 +62,18 @@ ActiveRecord::Schema.define(version: 20160822125109) do
     t.integer  "avatar_width"
     t.integer  "avatar_height"
   end
+
+  create_table "admin_product_translations", force: :cascade do |t|
+    t.integer  "admin_product_id", null: false
+    t.string   "locale",           null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "name"
+    t.string   "description"
+  end
+
+  add_index "admin_product_translations", ["admin_product_id"], name: "index_admin_product_translations_on_admin_product_id", using: :btree
+  add_index "admin_product_translations", ["locale"], name: "index_admin_product_translations_on_locale", using: :btree
 
   create_table "admin_products", force: :cascade do |t|
     t.string   "name"
@@ -83,21 +103,7 @@ ActiveRecord::Schema.define(version: 20160822125109) do
     t.string   "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "admin_vendor_admins", force: :cascade do |t|
-    t.string   "name"
-    t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "admin_vendors", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -125,8 +131,8 @@ ActiveRecord::Schema.define(version: 20160822125109) do
     t.integer  "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "color_id"
     t.integer  "size_id"
+    t.integer  "color_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -169,6 +175,12 @@ ActiveRecord::Schema.define(version: 20160822125109) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "currency",   default: "USD", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
