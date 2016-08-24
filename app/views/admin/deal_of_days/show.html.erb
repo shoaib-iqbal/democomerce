@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @admin_deal_of_day.product_id %>
+</p>
+
+<p>
+  <strong>Expiry time:</strong>
+  <%= @admin_deal_of_day.expiry_time %>
+</p>
+
+<%= link_to 'Edit', edit_admin_deal_of_day_path(@admin_deal_of_day) %> |
+<%= link_to 'Back', admin_deal_of_days_path %>

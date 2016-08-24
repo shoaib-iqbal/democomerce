@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    byebug
+ 
     if current_customer
       redirect_to checkout_details_path
     else
@@ -102,7 +102,10 @@ end
     session['order_number']=nil
     session['line_items_count']=0
     # byebug
-    @current_order.destroy
+    if @current_order and @current_order.line_items.present?
+
+      @current_order.destroy
+    end
     respond_to do |format|
       format.html { redirect_to root_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }

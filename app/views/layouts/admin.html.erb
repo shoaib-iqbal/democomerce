@@ -18,7 +18,11 @@
 		<div id="wrapper">
 			<%= render :partial => '/admin/shared/sidebar' %>
 			<div id="page-wrapper">
-			<p id="notice"><%= notice %></p>
+			<% flash.each do |key, value| %>
+		        <div class="alert alert-<%= key %>"><%= value %></div>
+		    <% end %>
+
+			
 				<%= yield %>
 			</div>
 			<%= javascript_include_tag 'all_admin' %>

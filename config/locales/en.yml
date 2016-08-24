@@ -22,11 +22,12 @@
 # en:
 #   hello: "Hello world"
 
-
+ 
 en:
   welcome:
     title: "Welcome"
-    paragraph: "Thank you for visiting our store. Please browse through the products below and buy some stuff. You'll love the unique quality and workmanship put into these items."
+    paragraph: "Welcome in english."
   products:
+
     title: "Products"
     released: "Released"

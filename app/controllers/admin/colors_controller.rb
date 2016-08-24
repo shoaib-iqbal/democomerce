@@ -14,7 +14,12 @@ class Admin::ColorsController < AdminController
 
   # GET /admin/colors/new
   def new
-    @admin_color = Admin::Color.new
+    
+    if current_user.has_role? :vendoradmin
+        @admin_color = Admin::Color.all.where(:user_id => current_user.id)
+    else
+        @admin_color = Admin::Color.new
+    end
   end
 
   # GET /admin/colors/1/edit
@@ -28,7 +33,7 @@ class Admin::ColorsController < AdminController
 
     respond_to do |format|
       if @admin_color.save
-        format.html { redirect_to @admin_color, notice: 'Color was successfully created.' }
+        format.html { redirect_to admin_colors_url, notice: 'Color was successfully created.' }
         format.json { render :show, status: :created, location: @admin_color }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class Admin::ColorsController < AdminController
   def update
     respond_to do |format|
       if @admin_color.update(admin_color_params)
-        format.html { redirect_to @admin_color, notice: 'Color was successfully updated.' }
+        format.html { redirect_to admin_colors_url, notice: 'Color was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_color }
       else
         format.html { render :edit }
@@ -69,7 +74,10 @@ class Admin::ColorsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_color_params
-     params.require(:admin_color).permit(:name, :value,)
+      if current_user.has_role? :vendoradmin
+        params[:admin_color][:user_id] = current_user.id
+      end
+     params.require(:admin_color).permit(:name, :value,:user_id)
 
-    end
+  end
 end

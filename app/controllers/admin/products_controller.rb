@@ -22,12 +22,12 @@ class Admin::ProductsController < AdminController
       end
      
     end
-     # respond_to do |format|
-     #    format.js {}
-     #    format.html
+     respond_to do |format|
+        format.js {}
+        format.html
         
 
-     #  end
+      end
 
   end
 
@@ -108,6 +108,19 @@ class Admin::ProductsController < AdminController
     respond_to do |format|
       format.html { redirect_to admin_products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def get_size_and_color_of_product
+  
+    @current_user_colors = Admin::Color.where(:user_id => params[:vendor])
+    @current_user_Size = Admin::Size.where(:user_id => params[:vendor])
+    
+
+
+    respond_to do |format|
+      format.js {}
+      format.html
     end
   end
 

@@ -11,3 +11,15 @@ function getProductDetail(element) {
       }
   });
 }
+function changelanguage(selected_language){
+
+
+	$.ajax({
+      url: 'home/set_session?lang='+selected_language,
+      method: 'GET',
+      success: function (data) {
+        
+         window.location.reload();
+      }
+  });
+}

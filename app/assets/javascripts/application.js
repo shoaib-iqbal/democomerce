@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require cocoon
-//= require chosen-jquery
+
 //= require jquery
 //= require jquery_ujs

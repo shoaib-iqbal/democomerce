@@ -15,7 +15,8 @@ private
   end
 
   	def set_user_language
-    	I18n.locale = session['I18n.locale'] rescue 'en'
+    	I18n.locale = session['language'].present? ? session['language'] : :en 
+      # byebug
   	end
 
 

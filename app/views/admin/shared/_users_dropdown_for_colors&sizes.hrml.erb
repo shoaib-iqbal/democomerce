@@ -1,0 +1,11 @@
+
+<div style="">
+    <select  class="form-control select" style="width:40%" ">
+        
+        <% @users.each do |user| %>
+            <option value="<%=user.id%>"><%=user.name%></option>
+        
+        <%end%>
+    </select>
+</div>
+

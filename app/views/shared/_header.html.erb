@@ -7,19 +7,24 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="header-default pull-left">
-								<p><%= t 'welcome.paragraph' %></p>
+								<p style="position:relative; top:9px;"><%= t 'welcome.paragraph' %></p>
 							</div>
 						</div>
 						<div class="col-lg-9 col-md-9 col-sm-12">
 							<div class="header-top-right pull-right">
 								
 								<div class="header-user-info pull-right">
-									<a href="#" title="check out">
+									<a href="#" title="">
 									   <i class="fa fa-share-square-o"></i> 
-									 <SELECT>
-									 <OPTION>English</OPTION>
-									 <OPTION>Arebaic</OPTION>
-									 </SELECT>
+										<select onchange="changelanguage(this.value)">
+											<%if session['language'] == "en" %>
+												<option selected value="en">English</option>
+												<option value="wk">Arebaic</option>
+											<%else%>
+												<option  value="en">English</option>
+												<option selected value="wk">Arebaic</option>
+											<%end%>
+										</select>
 									</a
 									<% if current_user %>
                     <a href="#" title="account">

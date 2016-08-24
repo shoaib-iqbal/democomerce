@@ -1,23 +1,26 @@
+
+
 <div class="dataTable_wrapper">
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-vendors">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Value</th>
+                
+                <th>Product Name</th>
+                <th>Expiry Time</th>
                 <th>Tools</th>
             </tr>
         </thead>
         <tbody>
 
-        <% @admin_colors.each do |color| %>
+        <% @admin_deal_of_days.each do |deal| %>
 
             <tr class="odd gradeX">
-                <td><%= color.name %></td>
-                <td><%= color.value %></td>
+                <td><%= deal.product.name %></td>
+                <td><%= deal.expiry_time %></td>
                 <td class="center">
-                    <span><%= link_to '', edit_admin_color_path(color),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
+                    <span><%= link_to '', edit_admin_deal_of_day_path(deal),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
                     <span>
-                        <%= link_to '',  admin_color_path(color),  method: :delete, data: { confirm: 'Are you sure?' } ,class: "fa fa-trash icon_link with-tip no-text"%>
+                        <%= link_to '',  admin_deal_of_day_url(deal),  method: :delete, data: { confirm: 'Are you sure?' } ,class: "fa fa-trash icon_link with-tip no-text"%>
                     </span>
                 </td>
             </tr>

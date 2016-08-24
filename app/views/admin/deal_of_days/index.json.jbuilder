@@ -1,0 +1,1 @@
+json.array! @admin_deal_of_days, partial: 'admin_deal_of_days/admin_deal_of_day', as: :admin_deal_of_day
