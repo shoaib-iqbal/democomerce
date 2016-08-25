@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :admin do
     resources :deal_of_days
   end
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
 
  resources :carts
  resources :orders 
+ resources :vendors
  resources :products, only: [:show, :index]
  resources :admin, only: [:index]
   # get 'delimg', to: 'admin_products#delimg' , as: :delimgpath

@@ -1,0 +1,43 @@
+<hr>
+<br><br>
+<div class="container">
+  <div class="section-title">
+    <h4>Vendors</h4>
+  </div>
+  <% if @vendors.present? %>
+    <% @vendors.each do |vendor| %>
+      <div class="row vendors-list">
+        <div class="col-md-6 vendor-blocks">
+          <img src="https://thumb-3do.s3.envato.com/files/199657172/thumb.jpg" class="img-responsive pull-left vendor-image">
+          <div class="more-info">
+            <div class="name">
+              <h4><a href="#"><%= vendor.name %></a></h4>
+            </div>
+            <div class="txt">Lorem ipsum dolor sit amet, consectetur</div>
+            <div class="rating">0 Ratings</div>
+          </div>
+        </div>
+        <div class="col-md-3 delivery-info">
+          <div><i class="fa fa-map-marker fa-fw"></i><%= vendor.location %></div>
+          <div><i class="fa fa-truck fa-fw"></i> Free Delivery (Min £10)</div>
+          <div><i class="fa fa-location-arrow fa-fw"></i> Distance: <%=get_distance(vendor, params) %> Km</div>
+        </div>
+        <div class="col-md-3">
+          <div class="pre-order">
+            <a href="#">OPEN: 17:00<br>PRE-ORDER
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="dimmed">
+      <br>
+    <% end %>
+  <% end %>
+
+
+  <div class="text-center">
+    <a href="#">Load More...</a>
+  </div>
+</div>
+<br><br><br>
+

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
    
    geocoded_by :full_street_address, latitude: :lat, longitude: :lng
    after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
+
    def full_street_address
      #convert address to geocoded values
      "#{self.location}"

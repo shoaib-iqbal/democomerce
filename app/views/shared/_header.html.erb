@@ -76,14 +76,16 @@
 					                        <i class="fa fa-search"></i>
 					                    </a>
                               <div class="header-bottom-search">
-                                <form class="search-box" action="#" method="POST">
-                                  <div>
-                                    <input type="text" value="" placeholder="Search" autocomplete="off">
-                                    <button class="btn btn-search" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                  </div>
-                                </form>						            
+                                <%= form_tag('/vendors', method: :get,:id=>"search_form", :class=>"search-box") do %>
+                                <div>
+                                  <%= text_field_tag :search, nil, placeholder: "Search ..." %>
+                                  <%= hidden_field_tag :latitude,{}, :value=>"", :id=>"latitude"  %>
+                                  <%= hidden_field_tag :longitude,{}, :value=>"", :id=>"longitude"  %>
+                                  <button class="btn btn-search" type="submit">
+                                      <i class="fa fa-search"></i>
+                                  </button>
+                                </div>
+                                <% end %>
                               </div>
 						                </li>
 						                <li>
@@ -146,3 +148,29 @@
 			</div>
 		</div>		
 		<!-- Mobile Menu End -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("#search").focusin(function(){
+        getLocation();
+      });
+  });
+
+  function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+  }
+
+  function showPosition(position) {
+      var latitude  = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+       if (latitude && longitude) {
+        $("#latitude").val(latitude);
+        $("#longitude").val(longitude);
+       }
+  }
+</script>
