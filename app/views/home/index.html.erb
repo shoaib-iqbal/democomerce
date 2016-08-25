@@ -17,22 +17,22 @@
             <div class="col-lg-4 col-md-4  col-sm-4 col-xs-12">
                 <div class="single-item">
                     <i class="pe-7s-download"></i>
-                    <h4>FREE SHIPPING</h4>
-                    <p>All order on products</p>
+                    <h4><%= t 'welcome.freeshipping' %></h4>
+                    <p><%= t 'welcome.Allorderonproducts' %></p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4  col-sm-4 col-xs-12">
                 <div class="single-item">
                     <i class="pe-7s-refresh-2"></i>
-                    <h4>FREE RETURNS</h4>
-                    <p>Only in 30 days</p>
+                    <h4><%= t 'welcome.FREERETURNS' %></h4>
+                    <p><%= t 'welcome.Onlyin30days' %></p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4  col-sm-4 col-xs-12">
                 <div class="single-item">
                     <i class="pe-7s-chat"></i>
-                    <h4>SUPPORT 24/7</h4>
-                    <p>Active support</p>
+                    <h4><%= t 'welcome.SUPPORT24/7' %></h4>
+                    <p><%= t 'welcome.Activesupport' %></p>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
 <div class="featured-area section-padding">
     <div class="container">
 		<div class="section-title">
-			<h4>Featured products</h4>
+			<h4><%= t 'welcome.featured' %></h4>
 		</div>
         <div class="row">
 			<!--Product List Start-->
@@ -72,9 +72,9 @@
 
 									</a>		                                    
 								</div>
-								<span class="new-label">New</span>
-								<%if product.discounted_pric?%>
-									<span class="sale-label">Sale!</span>
+								<span class="new-label"><%= t 'welcome.new' %></span>
+								<%if product.discounted_price?%>
+									<span class="sale-label">!<%= t 'welcome.sale' %></span>
 								<%end%>
 								
 
@@ -102,10 +102,12 @@
 								</div>
 								<!--Product Price-->
 								<div class="product-price">
-									<%if product.discounted_pric?%>
-									<span class="new-price">£ <%= product.discounted_pric %></span>
+									<%if product.discounted_price?%>
+									<span class="new-price"> <%= show_price(product.discounted_price) %> </span>
+									<span class="old-price"><%=show_price(product.price ) %></span>
+									<%else%>
+									<span class="new-price"><%=show_price(product.price)  %></span>
 									<%end%>
-									<span class="old-price"><%=product.price  %></span>
 									
 								</div>
 							</div>
@@ -135,7 +137,7 @@
 <div class="deal-area section-padding">
     <div class="container">
 		<div class="section-title white">
-			<h4>Deal of the day</h4>
+			<h4><%= t 'welcome.dealofday' %></h4>
 		</div>	 
         <div class="row">
 			<div class="deal-area-list indicator-button">
@@ -154,9 +156,9 @@
                                             <img src="/assets/featured/1.jpg"/>
 										<%end%> 
 									</a>
-									<span class="new-label">New</span>
-									<%if deal.product.discounted_pric?%>
-										<span class="sale-label">Sale!</span>
+									<span class="new-label"><%= t 'welcome.new' %></span>
+									<%if deal.product.discounted_price?%>
+										<span class="sale-label">!<%= t 'welcome.sale' %></span>
 									<%end%>
 									<!--Product Cuntdown-->
 									<div class="product-cuntdown">
@@ -179,10 +181,12 @@
 								<p><%= truncate(deal.product.description ,:length => 100)%></p>
 								<!--Product Price-->
 								<div class="product-price">
-									<%if deal.product.discounted_pric?%>
-									<span class="new-price">£ <%= deal.product.discounted_pric %></span>
+									<%if deal.product.discounted_price?%>
+									<span class="new-price"> <%= show_price(deal.product.discounted_price) %> </span>
+									<span class="old-price"><%=show_price(deal.product.price ) %></span>
+									<%else%>
+									<span class="new-price"><%=show_price(deal.product.price)  %></span>
 									<%end%>
-									<span class="old-price"><%=deal.product.price  %></span>
 								</div>
 								<!--Product Action-->
 								<div class="deal-product-action">
@@ -204,8 +208,8 @@
 										<a href="product-simple.html" title="Printed Summer Dress">
 											<img src="assets/featured/2.jpg" alt="">
 										</a>
-										<span class="new-label">New</span>
-										<span class="sale-label">Sale!</span>
+										<span class="new-label"><%= t 'welcome.new' %></span>
+										<span class="sale-label">!<%= t 'welcome.sale' %></span>
 										<!--Product Cuntdown-->
 										<div class="product-cuntdown">
 											<div class="timer">
@@ -248,7 +252,7 @@
 <div class="featured-area section-padding">
     <div class="container">
 		<div class="section-title">
-			<h4>New products</h4>
+			<h4><%= t 'welcome.newproducts' %></h4>
 		</div>
         <div class="row">
 			<!--Product List Start-->
@@ -274,9 +278,9 @@
 
 									</a>		                                    
 								</div>
-								<span class="new-label">New</span>
-								<%if product.discounted_pric?%>
-									<span class="sale-label">Sale!</span>
+								<span class="new-label"><%= t 'welcome.new' %></span>
+								<%if product.discounted_price?%>
+									<span class="sale-label">!<%= t 'welcome.sale' %></span>
 								<%end%>
 								
 
@@ -304,10 +308,14 @@
 								</div>
 								<!--Product Price-->
 								<div class="product-price">
-									<%if product.discounted_pric?%>
-									<span class="new-price">£ <%= product.discounted_pric %></span>
+									<div class="product-price">
+									<%if product.discounted_price?%>
+									<span class="new-price"> <%= show_price(product.discounted_price) %> </span>
+									<span class="old-price"><%=show_price(product.price ) %></span>
+									<%else%>
+									<span class="new-price"><%=show_price(product.price)  %></span>
 									<%end%>
-									<span class="old-price"><%=product.price  %></span>
+								</div>
 									
 								</div>
 							</div>

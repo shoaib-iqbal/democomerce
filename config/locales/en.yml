@@ -24,10 +24,29 @@
 
  
 en:
-  welcome:
-    title: "Welcome"
+  welcome: 
     paragraph: "Welcome in english."
-  products:
-
-    title: "Products"
-    released: "Released"
+    home: "HOME"
+    arabic: "العربية"
+    signin: "Sign in"
+    myaccount: "My account"
+    account: "Account"
+    signout: "Sign Out"
+    checkout: "Check out"
+    home: "Home"
+    shop: "SHOP"
+    aboutus: "ABOUT US"
+    blog: "BLOG"
+    contactus: "Contact Us"
+    freeshipping: "FREE SHIPPING"
+    Allorderonproducts: "All order on products"
+    FREERETURNS: "FREE RETURNS"
+    Onlyin30days: "Only in 30 days"
+    SUPPORT24/7: "SUPPORT 24/7"
+    Activesupport: "Active support"
+    featured: "Featured products"
+    dealofday: "صفقة اليوم"
+    new: "NEW"
+    sale: "SALE"
+    newproducts: "New products"
+  

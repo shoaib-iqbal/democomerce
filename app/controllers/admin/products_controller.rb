@@ -47,6 +47,7 @@ class Admin::ProductsController < AdminController
   # GET /admin/products/1/edit
   def edit
     @admin_product.images.build 
+    
   end
 
   # POST /admin/products
@@ -135,6 +136,6 @@ class Admin::ProductsController < AdminController
       if current_user.has_role? :vendoradmin
         params[:admin_product][:user_id] = current_user.id
       end
-       params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_pric, images_attributes: [:avatar => []], size_ids: [],color_ids: [] )
+       params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_price, images_attributes: [:avatar => []], size_ids: [],color_ids: [] )
     end
 end

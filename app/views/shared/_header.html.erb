@@ -15,37 +15,32 @@
 								
 								<div class="header-user-info pull-right">
 
-									<a href="/carts" title="check out">
+								
 
-									   <i class="fa fa-share-square-o"></i> 
+									   
 										<select onchange="changelanguage(this.value)">
-											<%if session['language'] == "en" %>
-												<option selected value="en">English</option>
-												<option value="wk">Arebaic</option>
-											<%else%>
-												<option  value="en">English</option>
-												<option selected value="wk">Arebaic</option>
-											<%end%>
+												<option <%=@lang == "en"?  'selected' : ''%> value="en">English</option>
+												<option <%=@lang == "ar" ? 'selected' : ''%> value="ar"> <%= t 'welcome.arabic' %> </option>
 										</select>
-									</a
+									
 									<% if current_user %>
-                    <a href="#" title="account">
-  									   <i class="fa fa-user"></i> 
-  									   My account
-  									</a>
-  									<a href="/users/sign_out" title="Sign out">
-  									   <i class="fa fa-unlock-alt"></i> 
-  									   Sign out
-  									</a>
-                  <%else%>
-                    <a href="/users/sign_in" title="Sign in">
-                       <i class="fa fa-unlock-alt"></i> 
-                       Sign in
-                    </a>
-                  <%end%>
-									<a href="/carts" title="check out">
+	                    				<a href="#" title="<%= t 'welcome.account' %>">
+	  									   <i class="fa fa-user"></i> 
+	  									   <%= t 'welcome.myaccount' %>
+	  									</a>
+	  									<a href="/users/sign_out" title="<%= t 'welcome.signout' %>">
+	  									   <i class="fa fa-unlock-alt"></i> 
+	  									   <%= t 'welcome.signout' %>
+	  									</a>
+					                <%else%>
+					                    <a href="/users/sign_in" title="<%= t 'welcome.signin' %>">
+					                       <i class="fa fa-unlock-alt"></i> 
+					                       <%= t 'welcome.signin' %>
+					                    </a>
+					                <%end%>
+									<a href="/carts" title="<%= t 'welcome.checkout' %>">
 									   <i class="fa fa-share-square-o"></i> 
-									   Check out
+									   <%= t 'welcome.checkout' %>
 									</a>
 								</div>
 							</div>
@@ -108,11 +103,11 @@
 							<div class="mainmenu">
 								<nav>
 									<ul>
-										<li><a href="/">Home</a></li>
-										<li><a href="/products">Shop</a></li>
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="#">Blog</a></li>
-										<li><a href="contact.html">Contact Us</a></li>
+										<li><a href="/"><%= t 'welcome.home' %></a></li>
+										<li><a href="/products"><%= t 'welcome.shop' %></a></li>
+										<li><a href="about.html"><%= t 'welcome.aboutus' %></a></li>
+										<li><a href="#"><%= t 'welcome.blog' %></a></li>
+										<li><a href="contact.html"><%= t 'welcome.contactus' %></a></li>
 									</ul>
 								</nav>
 							</div>
@@ -133,11 +128,11 @@
 						<div class="mobile-menu">
 							<nav id="dropdown">
 								<ul>
-									    <li><a href="index.html">Home</a></li>
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="#">Blog</a></li>
-										<li><a href="contact.html">Contact Us</a></li>
+									    <li><a href="/"><%= t 'welcome.home' %></a></li>
+										<li><a href="/products"><%= t 'welcome.shop' %></a></li>
+										<li><a href="about.html"><%= t 'welcome.aboutus' %></a></li>
+										<li><a href="#"><%= t 'welcome.blog' %></a></li>
+										<li><a href="contact.html"><%= t 'welcome.contactus' %></a></li>
 								</ul>
 							</nav>
 						</div>

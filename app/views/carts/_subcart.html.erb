@@ -5,31 +5,31 @@
             <%if @current_order.present? %>
                 <% @current_order.line_items.each do |item| %>
                     <div class="cart-single-product">
-                <a class="product-image" href="#">
-                    <img src="<%=item.product.images.first.avatar.url(:thumbnail) rescue ''%>" alt="">
-                </a>
-                <div class="product-details">
-                    
-                    <%= link_to cart_path(item), method: :delete, confirm: 'Delete?', class: 'remove', 'data-message' => 'Are you sure?', 'data-severity' => 'danger', :remote => true do %>
-                    <i class="fa fa-times-circle"></i>
-                    <%end%>
+                    <a class="product-image" href="#">
+                        <img src="<%=item.product.images.first.avatar.url(:thumbnail) rescue ''%>" alt="">
+                    </a>
+                    <div class="product-details">
+                        
+                        <%= link_to cart_path(item), method: :delete, confirm: 'Delete?', class: 'remove', 'data-message' => 'Are you sure?', 'data-severity' => 'danger', :remote => true do %>
+                        <i class="fa fa-times-circle"></i>
+                        <%end%>
 
-                    
-                    <div class="product-name">
-                        <span class="quantity-formated">
-                            <span class="quantity"><span><%= item.quantity %></span></span>
-                            X
-                        </span>
-                        <a href="/products/<%=item.product.id%>" class="cart-block-product-name" title="Faded Short Sleeves T-shirt"><%= item.get_name %></a>
-                    </div>
-                    <div class="product-atributes">
-                        <a href="/products/<%=item.product.id%>" title="<%= item.get_name %>"> <%= item.get_name %></a>
-                    </div>
-                    <div class="prices">
-                        <span class="price">£ <%= item.total %></span>
-                    </div>
-                </div>                                                
-                    </div>
+                        
+                        <div class="product-name">
+                            <span class="quantity-formated">
+                                <span class="quantity"><span><%= item.quantity %></span></span>
+                                X
+                            </span>
+                            <a href="/products/<%=item.product.id%>" class="cart-block-product-name" title="Faded Short Sleeves T-shirt"><%= item.get_name %></a>
+                        </div>
+                        <div class="product-atributes">
+                            <a href="/products/<%=item.product.id%>" title="<%= item.get_name %>"> <%= item.get_name %></a>
+                        </div>
+                        <div class="prices">
+                            <span class="price">£ <%= item.total %></span>
+                        </div>
+                    </div>                                                
+                </div>
                 <%end%>
           <%end%>                                           
         </div>

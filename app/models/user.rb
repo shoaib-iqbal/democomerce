@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :colors,class_name: 'Admin::Color'
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  translates :name, :location
+  
    def superadmin?
    	if self and self.has_role? :superadmin
    		return true

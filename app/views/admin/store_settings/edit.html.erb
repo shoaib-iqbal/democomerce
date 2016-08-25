@@ -3,7 +3,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Basic Form Elements
+                Select Currency Form
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -13,7 +13,8 @@
                             
                             <div class="form-group">
                                <%=f.label :currency%>
-                               <%=f.select :currency,  currency_codes,class: 'form-control select' %>
+                               <br>
+                               <%=f.select :currency,  currency_codes, class: 'form-control' , placeholder: 'Enter name' %>
                                 <%#=f.text_field :currency ,class: 'form-control', placeholder: 'Enter name'%>
                             </div>
                             <%= f.submit 'Submit Button', class: "btn btn-default" %>

@@ -8,7 +8,7 @@ class LineItem < ActiveRecord::Base
 	end
 
 	def get_image
-		Admin::Product.where(:id => self.product_id).first.images.first.avatar.url rescue''
+		Admin::Product.where(:id => self.product_id).first.images.first.avatar.url(:thumbnail) rescue''
 	end
 
 	def get_size
@@ -24,8 +24,8 @@ class LineItem < ActiveRecord::Base
 	end
 	
 	def total
-		if self.product.discounted_pric.present?
-			return self.quantity* self.product.discounted_pric
+		if self.product.discounted_price.present?
+			return self.quantity* self.product.discounted_price
 		else 
 			return self.quantity* self.product.price rescue '0'
 		end

@@ -14,7 +14,7 @@
 				</a>                                            
 			</div>
 			<span class="new-label">New</span>
-			<%if product.discounted_pric?%>
+			<%if product.discounted_price?%>
 				<span class="sale-label">Sale!</span>
 			<%end%>
 			<!--Product Action-->
@@ -39,8 +39,8 @@
 			<!--Product Price-->
 			<div class="product-price">
 				<span class="new-price">£ <%= product.price %></span>
-				<%if product.discounted_pric?%>
-					<span class="old-price"><%=product.discounted_pric  %></span>
+				<%if product.discounted_price?%>
+					<span class="old-price"><%=product.discounted_price  %></span>
 				<%end%>
 			</div>
 		</div>

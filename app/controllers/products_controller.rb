@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
 		@product=Admin::Product.find(params[:id])
 		@vendor_product = Admin::Product.where(:user_id => @product.user_id)
 		
-		@top_sellers=Admin::Product.order(created_at: :desc).limit(3)
+		@top_sellers=Admin::Product.order(created_at: :desc)
+
 		@featured_products=Admin::Product.where(:featured => "true")
 
 		if request.xhr?

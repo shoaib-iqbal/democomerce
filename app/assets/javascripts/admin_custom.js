@@ -13,6 +13,7 @@ function fetch_specfic_vendor_items(path,id)
 }
 
  $('.select').select2();
+ $('#store_currency').select2();
 
 
 function changelanguage(selected_language){

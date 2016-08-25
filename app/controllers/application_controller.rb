@@ -8,16 +8,17 @@ class ApplicationController < ActionController::Base
 
 
 
+    def set_user_language
+      @lang = session['language'].present? ? session['language'] : :en 
+      I18n.locale = @lang
+      # byebug
+    end
+
 private
   def load_cart
 	@current_order = Order.find_by_number(session['order_number'])
   	
   end
-
-  	def set_user_language
-    	I18n.locale = session['language'].present? ? session['language'] : :en 
-      # byebug
-  	end
 
 
 end

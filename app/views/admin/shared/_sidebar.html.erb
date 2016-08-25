@@ -14,13 +14,8 @@
     <ul class="nav navbar-top-links navbar-right">
         <li>        
         <select class="form-control" onchange="changelanguage(this.value)">
-            <%if session['language'] == "en" %>
-                <option selected value="en">English</option>
-                <option value="wk">Arebaic</option>
-            <%else%>
-                <option  value="en">English</option>
-                <option selected value="wk">Arebaic</option>
-            <%end%>
+            <option <%=@lang == "en"?  'selected' : ''%> value="en">English</option>
+            <option <%=@lang == "ar" ? 'selected' : ''%> value="ar"> <%= t 'welcome.arabic' %> </option>
         </select>
         </li>    
         <li class="dropdown">
