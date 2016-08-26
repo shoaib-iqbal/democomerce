@@ -1,13 +1,13 @@
 class VendorsController < ApplicationController
   def index
+    @vendors = User.with_role :vendoradmin
     if params[:latitude].present? and params[:longitude].present?
-      vendors = User.with_role :vendoradmin
-      if vendors.present?
+      if @vendors.present?
         # Vendors within 10 Km
-        vendors = vendors.near([params[:latitude], params[:longitude]], 10)
-        products = find_products(vendors, params[:search])
+        @vendors = @vendors.near([params[:latitude], params[:longitude]], 10)
+        products = find_products(@vendors, params[:search])
         vendors_ids = products.collect(&:user_id) if products.present?
-        return @vendors = User.where(id: vendors_ids)
+        @vendors = User.where(id: vendors_ids)
       end
     end
   end
