@@ -20,15 +20,14 @@ class ProductsController < ApplicationController
 	        format.html
       	end
  
-	end
+  end
 
-
-
-	def index
-		if params[:vendor]
-			@vendor_product = Admin::Product.where(:user_id => params[:vendor])
-		else
-			@vendor_product = Admin::Product.all
-		end	
-	end
+  def index
+    if params[:vendor]
+      @vendor_product = Admin::Product.where(:user_id => params[:vendor])
+    else
+      @vendor_product = Admin::Product.all
+    end 
+  end
+  
 end

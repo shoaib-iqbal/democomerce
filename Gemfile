@@ -8,6 +8,8 @@ gem 'globalize', '~> 5.0.0'
 gem 'pg'
 gem "rolify"
 
+gem 'geocoder'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
