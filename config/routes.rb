@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :deal_of_days
   end
-  devise_for :customers
+  devise_for :customers , :controllers => { :registrations => 'customers2' }
   resources :customers
   devise_for :vendor_admins
   namespace :admin do
@@ -31,9 +31,11 @@ Rails.application.routes.draw do
   match "home/set_session" ,to: "home#change_languages", as: "languagepath", via: [:get]
   match "admin/get_color_and_size" ,to: "admin/products#get_size_and_color_of_product", as: "getsizecolor", via: [:get]
   root 'home#index'
+  
+  match "line_items/changequantity", to: "line_items#adjust_quantity", as: "changequantity", via: [:get]
   match "checkout", to: "orders#checkout", as: "checkout", via: [:get]
   match "checkout/details", to: "orders#details", as: "checkout_details", via: [:get, :patch, :post]
-  # Example of regular route:
+  match "checkout/confirmationpage", to: "orders#confirmation_page", as: "confirmation_message", via: [:get, :patch, :post]
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

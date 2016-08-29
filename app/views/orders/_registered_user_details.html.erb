@@ -1,158 +1,225 @@
 <% @order = @current_order%>
 
-<br><br><br>
-<section class="content products">
-   <div class="container">
-      <article class="product-item product-single" style="     padding: 20px;">
-         <div class="row">
-            <br>
-            <center>
-               <h1>CHECKOUT</h1>
-            </center>
-            <hr>
-         </div>
-      </article>
-   </div>
-   <div  class="container">
+
+
+<hr>
+<br><br>
+<%= form_for @order, :url => checkout_details_path, html: {"data-parsley-validate" => true} do |f| %>
+<div class="container">
+  
+  <div class="row">
+    
+    <div class="section-title">
+      <h4>Checkout</h4>
+    </div>
+
+  <div class="col-md-8 forms">
+    <!--////////////////-->
+
+    <div class="row">
+
       <div class="col-md-12">
-         <div >
-         <%= form_for @order, :url => checkout_details_path, html: {"data-parsley-validate" => true} do |f| %>
-            <div class="signin-half col-md-8 ">
-               <div class="col-md-12">
-                  <h3>Contact Details</h3>
-                  <br>
-               </div>
-               <div class="col-md-6"> 
-                  <span class="checkout-bulit">Email Address*</span>
-                  <%= f.text_field :email, :class=>"input-checkout", :placeholder=>"Email Address", :value=>current_customer.try(:email) , :required=>true %>
-               </div>
-               <div class="col-md-6">  
-                  <span class="checkout-bulit">Contact Number*</span>
-                  <%= f.text_field :phone, :class=>"input-checkout", :placeholder=>"0321-xxxxxxx / 0423-xxxxxxx" , :value=>current_user.try(:customer).try(:mobile), :required=>true, :pattern=>"^([0|\+[0-9]{1,5})?([1-9][0-9]{9})$" %>
-               </div>
-               <div style="clear:both"></div>
-               <br>
-               <div class="col-md-6"> 
-                  <span class="checkout-bulit">First Name*</span>
-                  <%= f.text_field :first_name, :class=>"input-checkout", :placeholder=>"Enter First Name" , :value=>current_user.try(:customer).try(:first_name), :required=>true %>
-
-               </div>
-               <div class="col-md-6">  
-                  <span class="checkout-bulit">Last Name*</span>
-                  <%= f.text_field :last_name, :class=>"input-checkout", :placeholder=>"Enter Last Name" , :value=>current_user.try(:customer).try(:last_name), :required=>true %>
-               </div>
-               <div style="clear:both"></div>
-               <hr>
-               <div id="address-type" class="col-md-12">
-                  <h3>Delivery Details</h3>
-                  <%#= f.hidden_field_tag separate_delivery_address, :value=>true %>
-                  <br>
-                  <div class="col-md-3">
-                     <%= radio_button_tag(:address, "current") %>
-                     <%= label_tag(:current, "Current Address") %>
-                  </div>
-                  <div class="col-md-3">
-                     <%= radio_button_tag(:address, "permanent") %>
-                     <%= label_tag(:permanent, "Permanent Address") %>
-                  </div>
-                  <div class="col-md-3">
-                     <%= radio_button_tag(:address, "other") %>
-                     <%= label_tag(:other, "Other Address") %>
-                  </div>
-                  <div>
-
-                   <br>
-                   <br>
-                   <br>
-                  </div>
-               </div>
-
-
-
-               <br>
-               <div class="col-md-6">
-                  <span class="checkout-bulit">Delivery Name*</span>
-                  <%= f.text_field :delivery_name, :class=>"input-checkout", :placeholder=>"Delivery Name" , :required=>true %>
-               </div>
-               <div class="col-md-6">
-                  <span class="checkout-bulit">Country*</span>
-                  <%= f.text_field :country, :class=>"input-checkout", :placeholder=>"country" , :required=>true %>
-                  <%#= f.collection_select :delivery_country_id, Shoppe::Country.ordered, :id, :name,{},{ :include_blank => true, :class=>"input-checkout", :required=>true} %>
-               </div>
-               <div class="col-md-6">
-                  <span class="checkout-bulit">State*</span>
-                  <%= f.text_field :country_state, :class=>"input-checkout", :placeholder=>"State" , :required=>true %>
-                  <%#= f.collection_select :delivery_country_id, Shoppe::Country.ordered, :id, :name,{},{ :include_blank => true, :class=>"input-checkout", :required=>true} %>
-               </div>
-               <div class="col-md-6">
-                  <span class="checkout-bulit">City*</span>
-                  <%= f.text_field :city, :class=>"input-checkout", :placeholder=>"City" , :required=>true %>
-                  <%#= f.collection_select :delivery_country_id, Shoppe::Country.ordered, :id, :name,{},{ :include_blank => true, :class=>"input-checkout", :required=>true} %>
-               </div>
-               <div style="clear:both"></div>
-               <br>
-               <div class="col-md-6"> 
-                  <span class="checkout-bulit">Address*</span>
-                  
-                  <%= f.fields_for :addresses do |add| %>
-                  <%= add.text_area :address1, :class=>"input-checkout", :placeholder=>"Enter Address1", :style=>"min-height: 80px;" , :required=>true %>
-                  <%end%>
-               </div>
-               
-               
-               <div style="clear:both"></div>
-               <hr>
-               <div class="col-md-6">
-                  <h3>Payment Method</h3>
-               </div>
-               <div style="clear:both"></div>
-               <br>
-               <div class="col-md-6">
-                  <span class="checkout-bulit">Payment Type*</span>
-                  <%#= f.select :payment_method, Order::PAYMENT_TYPES, {:prompt=>"Select Payment Type"}, {class: "input-checkout", :required=>true}%>
-               </div>            
-                <div style="clear:both"></div>
-                <br>
-
-               <div class="col-md-6"> 
-                  <span class="checkout-bulit">Order Notes</span>
-                  <%= f.text_area :order_notes, :class=>"input-checkout", :placeholder=>"Order notes", :style=>"min-height: 80px;" %>
-               </div>
-               <div class="col-md-6"> </div>
-               <div style="clear:both"></div>
-               <hr>
-              <div class="col-md-6"> 
-                 <%#= f.check_box :terms_of_service, :'data-parsley-required'=>"true" %>
-                 <span class="checkout-bulit">I agree to the Terms & Conditions.</span>
-              </div>
-              <div style="clear:both"></div>
-              <br>
-              <div class="col-md-6"> 
-                 <%= f.submit 'Order Now', :class=>"btn btn-default btn-lg" %>
-              </div>
-           </div>
-         <% end %>
-            <!-- ..................................................... -->
-            <%#= render "order_summary", order:@order %>
-         </div>
+        <h4>Contact Details</h4><br>
       </div>
-   </div>
-</section>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Email Address*</label>
+          <%= f.text_field :email, :class=>"form-control", :placeholder=>"Email Address", :value=>current_customer.try(:email) , :required=>true %>
+          
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Contact Number*</label>
+          <%= f.number_field :mobile_number, :class=>"form-control", :placeholder=>"Email Address", :value=>current_customer.try(:mobile_number) , :required=>true %>
+          
+        </div>
+      </div>
+    </div>
 
-<script type="text/javascript">
-    setTimeout(function(){ $("#address_current").click(); }, 150);
-   $(document).ready(function(){
-       $('#address-type input[type="radio"]').click(function(){
-         var addressType = $(this).val();
-            $.ajax({
-              url: '/get_order_address',
-              data: {"address_type" : addressType},
-              method: 'get',
-              type: 'js',
-              success: function(data) {
-               // alert("success")
-              }
-            });
-       });
-   });
-</script>
+    <div class="row">
+      <div class="col-md-12">
+        <br><h4>Delivery Details</h4><br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>First Name*</label>
+          <%= f.text_field :first_name, :class=>"form-control", :placeholder=>"Email Address", :value=>current_customer.try(:first_name) , :required=>true %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Last Name*</label>
+          <%= f.text_field :last_name, :class=>"form-control", :placeholder=>"Email Address", :value=>current_customer.try(:last_name) , :required=>true %>
+        </div>
+      </div>
+      <%= f.fields_for :addresses do |add| %>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label>Address*</label>
+            <%= add.text_field :address, :class=>"form-control", :placeholder=>"address", :value=>current_customer.addresses.first.try(:address) , :required=>true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Country*</label>
+            <%= add.text_field :country, :class=>"form-control", :placeholder=>"address", :value=>current_customer.addresses.first.try(:country) , :required=>true %>
+          </div>
+        </div>
+      
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>State*</label>
+            <%= add.text_field :country_state, :class=>"form-control", :placeholder=>"address", :value=>current_customer.addresses.first.try(:country_state) , :required=>true %>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>City*</label>
+            <%= add.text_field :city, :class=>"form-control", :placeholder=>"address", :value=>current_customer.addresses.first.try(:city) , :required=>true %>
+          </div>
+        </div>
+
+      </div>
+    <%end%>
+
+    <div class="row">
+      <div class="col-md-12">
+        <br><h4>Order Notes</h4><br>
+        <%= f.text_area :order_notes, :class=>"form-control", :placeholder=>"Order Notes" , :required=>true %>
+      </div>
+    </div>
+
+   
+
+    <div class="row">
+      <div class="col-md-12">
+        <br><h4>Payment Method</h4>
+        Cash on Delivery.
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- <div class="col-md-6">
+        <div class="form-group">
+          <label>Card Number</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>CVC</label>
+          <input type="text" class="form-control" placeholder="">
+        </div>
+      </div> -->
+
+      <div class="col-md-6">
+        <!-- <div class="form-group">
+          <label>Expiration Date</label>
+          
+          <div class="row">
+            <div class="col-sm-4">
+              <label>Month</label>    
+              <input type="text" class="form-control" placeholder="MM" maxlength="2">
+            </div>
+            <div class="col-sm-8">
+              <label>Year</label>   
+              <input type="text" class="form-control" placeholder="YYYY" maxlength="4">
+            </div>
+          </div>
+          
+
+        </div> -->
+      </div>
+
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> I agree to the terms of use
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      
+
+      <div class="col-md-12">
+      <br>
+        <button class="btn btn-success btn-lg">ORDER NOW</button>
+      </div>
+
+    </div>
+
+    <!--////////////////-->
+  </div>
+
+  <div class="col-md-4">
+    <% if @current_order and @current_order.line_items.present? %>  
+      <div class="summary-box">
+        <h4>Order Summary</h4>
+        <hr class="dimmed">
+          <% @current_order.line_items.each do |item| %>
+
+            <div class="media">
+              <a class="pull-left" href="<%=product_path(item.product.id)%>"><img class="media-object" src="<%= item.get_image %>" style="max-width: 72px;" class="img-responsive"></a>
+              <div class="media-body">
+                  <h4 class="media-heading"><a href="<%=product_path(item.product.id)%>"><%= item.get_name %></a></h4>
+                  <h5 class="media-heading"> Price: 
+                    <%if item.product.discounted_price.present?%>
+                      <%= show_price(item.product.discounted_price) %>
+                   <%else%>
+                      <%= show_price(item.product.price) %>
+                   <%end%>
+
+                  </h5>
+                  <div>Qty: <strong><%= item.quantity %></strong></div>
+              </div>
+            </div>
+          <%end%>
+
+          
+          </div>
+        <hr class="dimmed">
+        <div class="row">
+          <div class="col-xs-6 text-right">Subtotal:</div>
+          <div class="col-xs-6 text-right">
+            <%if @current_order.present?%>
+              <%= show_price(@current_order.sub_total) %>
+            <%end%>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 text-right">Shipping:</div>
+          <div class="col-xs-6 text-right">Free</div>
+        </div>
+        <hr class="dimmed">
+        <div class="row">
+          <div class="col-xs-6 text-right">Grand Total:</div>
+          <div class="col-xs-6 text-right">
+            <%if @current_order.present?%>
+              <%= show_price(@current_order.sub_total) %>
+            <%end%>
+
+          </div>
+        </div>  
+      </div>
+    <%end%>
+  </div>
+  </div>
+</div>
+<br><br><br><br>
+<% end %>

@@ -6,4 +6,5 @@ class Customer < ActiveRecord::Base
   belongs_to :user
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  accepts_nested_attributes_for :addresses
 end

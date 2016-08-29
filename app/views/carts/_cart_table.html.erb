@@ -1,4 +1,8 @@
-<table class="table table-hover">
+<% if @current_order and @current_order.line_items.present? %>      
+  <div class="container">
+    <div class="row">
+      <div class="table-responsive forms">
+        <table class="table table-hover">
     <thead>
         <tr>
             <th>Product</th>
@@ -22,7 +26,7 @@
                   </div>
                </td>
                <td class="col-sm-1 col-md-1 text-center">
-               <input type="number" min="1" class="form-control" value="<%= item.quantity %>">
+               <input type="number" min="1" class="form-control" onchange="quantitychange(this.value,<%= item.id%>)" value="<%= item.quantity %>">
                </td>
                <td class="col-sm-1 col-md-1 text-center">
                <strong>
@@ -34,17 +38,16 @@
                </strong></td>
                <td class="col-sm-1 col-md-1 text-center"><strong><%= show_price(item.total) %></strong></td>
                <td class="col-sm-1 col-md-1 text-right">
-                  <a type="button" class="btn btn-danger remove-item">
-                      <span class="glyphicon glyphicon-remove"></span>
-                      <%= link_to cart_path(item), method: :delete, confirm: 'Delete?', class: '', 'data-message' => 'Are you sure?', 'data-severity' => 'danger', :remote => true do %>
-                        
+                  
+                      <%= link_to cart_path(item), method: :delete, confirm: 'Delete?', class: 'btn btn-danger remove-item', 'data-message' => 'Are you sure?', 'data-severity' => 'danger', :remote => true do %>
+                        <span class="glyphicon glyphicon-remove"></span>
                         <%end%>
-                  </a>
+                 
                </td>
            </tr>
         <%end%>
        
-        </tr> -->
+        </tr> 
         <tr>
             <td>   </td>
             <td>   </td>
@@ -53,7 +56,7 @@
             <td class="text-right"><h5>
             <strong>
                <%if @current_order.present?%>
-                  <%= @current_order.sub_total %>
+                  <%= show_price(@current_order.sub_total) %>
                <%end%>
             </strong></h5></td>
         </tr>
@@ -72,7 +75,7 @@
             <td class="text-right"><h3>
             <strong>
                <%if @current_order.present?%>
-                  <%= @current_order.sub_total %>
+                  <%= show_price(@current_order.sub_total) %>
                <%end%>
 
             </strong></h3></td>
@@ -93,4 +96,18 @@
 
         </tr>
     </tbody>
-</table>
+        </table>
+      </div>
+    </div>
+  </div>      
+<%else%>
+ <center>
+    <br>
+    <h1>CART EMPTY</h1>
+    <a type="button" class="btn btn-default" href="/">
+        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+    </a>
+  </center><br><br>
+
+ <br><br>
+<%end%>

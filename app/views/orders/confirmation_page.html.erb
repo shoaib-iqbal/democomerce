@@ -1,0 +1,98 @@
+<hr>
+<br><br>
+
+<div class="container">
+	
+	<div class="row">
+		
+		<div class="section-title">
+			<h4>Checkout</h4>
+		</div>
+
+	<div class="col-md-8 forms">
+
+		<h4>Contact Details</h4>
+		<label>Mobile Number: </label>
+		<%=current_customer.mobile_number%><br>
+		<label>Phone Number: </label>
+		<%=current_customer.phone_number%><br>
+
+		<h4>Shipping Address</h4>
+
+		<p>address: <%=@current_order.addresses.last.address%></p>
+		<p>city: <%=@current_order.addresses.last.city%></p>
+		<p>state: <%=@current_order.addresses.last.country_state%></p>
+		<p>country: <%=@current_order.addresses.last.country%></p>
+
+		
+		
+		<br><br>
+
+		<a href="/checkout/confirmationpage" class="btn btn-success">Complete Order</a>
+		<%= link_to 'Cancel Order', order_path(@current_order),
+            method: :delete, data: { confirm: 'Are you sure?' } ,class: 'btn btn-danger'%>
+		
+
+	</div>
+
+	<div class="col-md-4">
+    <% if @current_order and @current_order.line_items.present? %>  
+      <div class="summary-box">
+        <h4>Order Summary</h4>
+        <hr class="dimmed">
+          <% @current_order.line_items.each do |item| %>
+
+            <div class="media">
+              <a class="pull-left" href="<%=product_path(item.product.id)%>"><img class="media-object" src="<%= item.get_image %>" style="max-width: 72px;" class="img-responsive"></a>
+              <div class="media-body">
+                  <h4 class="media-heading"><a href="<%=product_path(item.product.id)%>"><%= item.get_name %></a></h4>
+                  <h5 class="media-heading"> Price: 
+                    <%if item.product.discounted_price.present?%>
+                      <%= show_price(item.product.discounted_price) %>
+                   <%else%>
+                      <%= show_price(item.product.price) %>
+                   <%end%>
+
+                  </h5>
+                  <div>Qty: <strong><%= item.quantity %></strong></div>
+              </div>
+            </div>
+          <%end%>
+
+          
+          </div>
+        <hr class="dimmed">
+        <div class="row">
+          <div class="col-xs-6 text-right">Subtotal:</div>
+          <div class="col-xs-6 text-right">
+            <%if @current_order.present?%>
+              <%= show_price(@current_order.sub_total) %>
+            <%end%>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 text-right">Shipping:</div>
+          <div class="col-xs-6 text-right">Free</div>
+        </div>
+        <hr class="dimmed">
+        <div class="row">
+          <div class="col-xs-6 text-right">Grand Total:</div>
+          <div class="col-xs-6 text-right">
+            <%if @current_order.present?%>
+              <%= show_price(@current_order.sub_total) %>
+            <%end%>
+
+          </div>
+        </div>  
+      </div>
+    <%end%>
+  </div>
+
+
+	</div>
+
+</div>
+
+<br><br><br><br>
+		

@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
      accepts_nested_attributes_for :customer, reject_if: :all_blank, allow_destroy: true
     #accepts_nested_attributes_for :customer
     has_many :addresses
-    accepts_nested_attributes_for :addresses
+    accepts_nested_attributes_for :addresses ,reject_if: proc{ |attributes| attributes['addresses'].blank?}
     ORDER_NUMBER_LENGTH  = 9
     ORDER_NUMBER_LETTERS = false
     ORDER_NUMBER_PREFIX  = 'R'

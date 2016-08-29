@@ -1,3 +1,7 @@
 $("#subcart").html('<%=  j render(:partial => 'subcart', :object => @current_order) %>');
+if ($("#main_cart")!= null){
+	$("#main_cart").html('<%=  j render(:partial => 'cart_table', :object => @current_order) %>');
+}
+
 $('#cart_products_count').html('<%=@current_order.line_items.count rescue '0'%>')
 

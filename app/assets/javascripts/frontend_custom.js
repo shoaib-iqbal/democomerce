@@ -23,3 +23,13 @@ function changelanguage(selected_language){
       }
   });
 }
+function quantitychange(quantity, line_item_id)
+{
+  $.ajax({
+      url: 'line_items/changequantity?quantity='+quantity+'&line_item_id='+line_item_id,
+      method: 'GET',
+      success: function (data) {
+        $("#main_cart").html(data);
+      }
+  });
+}

@@ -5,26 +5,11 @@
 </center>
 
 <hr><br><br>
-      
-<% if @current_order and @current_order.line_items.present? %>      
-<div class="container">
-    <div class="row">
-        <div class="table-responsive forms">
-            <%= render 'cart_table' %>
-        </div>
-    </div>
-</div>      
-<%else%>
-   <center>
-      <br>
-      <h1>CART EMPTY</h1>
-      <a type="button" class="btn btn-default" href="/">
-          <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-      </a>
-   </center><br><br>
+<div id="main_cart">
+   <%= render 'cart_table' %>
+</div> 
 
-   <br><br>
-<%end%>
+ 
 <br><br><br><br>
 
 

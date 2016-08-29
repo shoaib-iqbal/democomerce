@@ -52,29 +52,37 @@ class OrdersController < ApplicationController
   end
 
   def details
-      if params[:user].present?
-       login_user(params)
+    if params[:user].present?
+     login_user(params)
       
     else
-      @current_order.addresses.build 
+    # byebug
+      if @current_order.addresses.blank?
+        @current_order.addresses.build
+      end 
       if request.patch?
+        
         if @current_order.update(order_params)
-           @current_order.state = 'complete'
-           @current_order.save
-           session['order_number']=nil
-          redirect_to '/'
-      end
+            render :template => 'orders/confirmation_page'
+           
+        end
       end
     end
   end
-
+  def confirmation_page
+     @current_order.state = 'complete'
+     @current_order.customer=current_customer if current_customer
+     @current_order.save
+     session['order_number']=nil
+     redirect_to '/'
+  end
 
 
   def login_user(params)
   customer = Customer.find_by_email(params[:user][:email])
   if customer.present?
      if customer.valid_password?(params[:user][:password])
-      sign_in(:customer, user)
+      sign_in(:customer, customer)
       redirect_to checkout_details_path, :notice => "Signed in successfully."
       return
      end
@@ -120,6 +128,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:email_address,:country,:country_state,:city,:phone,:first_name,:order_notes,:last_name,:delivery_name, addresses_attributes: [:id, :address1, :address2, :_destroy])
+      
+      params.require(:order).permit(:email_address,:country,:country_state,:city,:phone,:first_name,:order_notes,:last_name,:delivery_name, addresses_attributes: [:id,:address_type,:address,:country,:country_state,:city ])
     end
 end
