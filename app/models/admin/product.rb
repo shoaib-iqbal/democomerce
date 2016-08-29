@@ -3,7 +3,7 @@ module Admin
 		self.table_name = 'admin_products'
 		has_many :images , dependent: :destroy
 		has_many :line_items
-		has_many :deal_of_days ,:class_name => 'Admin::DealOfDay'
+		has_many :deal_of_days ,:class_name => 'Admin::DealOfDay',dependent: :destroy
 		belongs_to :user
 		has_and_belongs_to_many :sizes, class_name: 'Admin::Size'
 		has_and_belongs_to_many :colors, class_name: 'Admin::Color'

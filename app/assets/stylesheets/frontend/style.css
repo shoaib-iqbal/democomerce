@@ -3770,3 +3770,11 @@ p.alert {
 .no-border {border:none !important;}
 .lang-drop .dropdown-menu {border-radius: 0; margin-top: 10px;}
 /*custom ends*/
+
+
+.all_products_fix_images .product-img { height:350px !important; line-height: 340px !important; display: flex; align-items: center; overflow:hidden; vertical-align:middle; text-align:center; }
+.all_products_fix_images .product-img a { margin:auto !important; vertical-align:middle; display:inline-block; }
+.all_products_fix_images .product-img a:hover {background-color: transparent !important;}
+.all_products_fix_images .product-img img { max-height:350px !important; margin:auto !important; vertical-align:middle; display:inline-block;width:auto !important; }
+
+.form-control, .form-control:hover, .form-control:focus {cursor: default !important;}

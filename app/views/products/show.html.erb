@@ -143,7 +143,7 @@
 								<!-- Single Product -->
 								<div class="single-product">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="product-img"  style="height:117px;">
+										<div class="product-img">
 											<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
 												<%if product.images.present? %>
 													<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block"%>
@@ -191,7 +191,7 @@
 								<!-- Single Product -->
 								<div class="single-product">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="product-img"  style="height:117px;">
+										<div class="product-img"  >
 											<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
 												<%if product.images.present? %>
 													<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block"%>
@@ -232,10 +232,10 @@
 								<!-- Single Product -->
 								<div class="single-product">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-										<div class="product-img" style="height:117px;">
+										<div class="product-img">
 											<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
 												<%if product.images.present? %>
-													<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block"%>
+													<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block" ,:style => 'height:154px;'%>
 												<%end%>
 											</a>  		                                    
 										</div>                                        
@@ -328,7 +328,7 @@
 		<%end%>
         <div class="row">
 			<!--Product List Start-->
-			<div class="featured-product-list indicator-style">
+			<div class="featured-product-list indicator-style all_products_fix_images">
 
 				<%@vendor_product.limit(6).each do |product|%>
 					<!--Single Product -->

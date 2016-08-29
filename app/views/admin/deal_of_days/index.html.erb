@@ -11,13 +11,13 @@
             <div class="panel-heading">
                 <div <%if current_user.superadmin? %>style="float:left;"<%end%> class="panel-heading">All Deals  </div>
                 <%if current_user.superadmin? %>
-                    <%=render :partial => '/admin/shared/users_dropdown'%>
+                    <%=render :partial => 'users_list_deals'%>
                 <%end%>
                 
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div  id="vendor_products">
+                <div  id="vendor_deals">
                     <%=render :partial => 'dealsdetails'%>
                     <!-- /.table-responsive -->
                 </div>

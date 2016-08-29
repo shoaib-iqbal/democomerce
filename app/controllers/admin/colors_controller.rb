@@ -4,7 +4,15 @@ class Admin::ColorsController < AdminController
   # GET /admin/colors
   # GET /admin/colors.json
   def index
-    @admin_colors = Admin::Color.all
+    if current_user.has_role? :superadmin
+      @admin_colors = Admin::Color.all
+    else
+      @admin_colors = Admin::Color.where(:user_id => current_user.id)
+    end
+
+
+
+
     if request.xhr?
       if params[:user_id].present?
         @admin_colors = Admin::Color.where(:user_id => params[:user_id])
@@ -28,11 +36,11 @@ class Admin::ColorsController < AdminController
   # GET /admin/colors/new
   def new
     
-    if current_user.has_role? :vendoradmin
-        @admin_color = Admin::Color.all.where(:user_id => current_user.id)
-    else
+    # if current_user.has_role? :vendoradmin
+    #     @admin_color = Admin::Color.all.where(:user_id => current_user.id)
+    # end
         @admin_color = Admin::Color.new
-    end
+    # end
   end
 
   # GET /admin/colors/1/edit

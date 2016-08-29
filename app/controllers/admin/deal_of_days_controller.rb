@@ -6,6 +6,25 @@ class Admin::DealOfDaysController < AdminController
   # GET /admin/deal_of_days.json
   def index
     @admin_deal_of_days = Admin::DealOfDay.all
+
+
+
+    
+    if request.xhr?
+      if params[:user_id].present?
+        vednor_product_ids = Admin::Product.where(:user_id => params[:user_id]).collect(&:id)
+
+        @admin_deal_of_days = Admin::DealOfDay.where(:product_id => vednor_product_ids)
+        
+      else
+        @admin_deal_of_days = Admin::DealOfDay.all
+      end
+    end
+
+    respond_to do |format|
+        format.js {}
+        format.html
+    end
   end
 
   # GET /admin/deal_of_days/1
