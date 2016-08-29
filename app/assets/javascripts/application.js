@@ -13,11 +13,19 @@
 
 //= require jquery
 //= require jquery_ujs
-    function initialize() {
-        alert('sdd')
 
-input = document.getElementById('select_location');
- autocomplete = new google.maps.places.Autocomplete(input);
-}
+//     function initialize() {
+//         alert('sdd')
 
-google.maps.event.addDomListener(window, 'load', initialize);
+// input = document.getElementById('select_location');
+//  autocomplete = new google.maps.places.Autocomplete(input);
+// }
+
+// google.maps.event.addDomListener(window, 'load', initialize);
+
+
+$(function(){
+  $('#filters').change(function(e){
+    $('#submit').click();
+  });
+});

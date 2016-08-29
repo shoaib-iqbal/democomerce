@@ -29,381 +29,99 @@
 <!-- Breadcrumbs Area End -->
 <!-- All Product Side Bar Area Start -->
 <div class="all-product-sidebar-area section-padding2">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-3">
-                <aside class="widget-title hidden-xs">
-                    <p>Filter</p>
-                </aside>
-                <div class="widet-filter-button-mobile text-right visible-xs">
-                	<a href="javascript:void(0)" class="filter-button-shop">Filter</a>
+  <div class="container">
+    <div class="row">
+        <%= render "sidebar" %>
+      <div class="col-xs-12 col-sm-9">
+        <img src="/assets/bedroom.jpg" class="hidden-xs" alt="" />
+        <h1 class="page-heading section-padding2">
+          <span class="cat-name pull-left">Bedroom </span>
+          <span class="heading-counter pull-right">There are 7 products.</span>
+        </h1>
+        <div class="shop-item-filter">
+          <div class="shop-tab clearfix">
+            <!-- Nav tabs -->
+            <ul class="tab-menu" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab"><i class="fa fa-th-large"></i></a>
+              </li>
+              <li role="presentation">
+                <a href="#list" aria-controls="list" role="tab" data-toggle="tab"><i class="fa fa-th-list"></i></a>
+              </li>
+            </ul>
+            <div class="shop-tab-selectors pull-right">
+              <%=form_tag products_path, method: 'get', id: "sorting", :remote=>true do%>
+                <div class="single-shop-form single-shop-show pull-left">
+                  <label>Sort by</label>
+                  <div class="shop-select">
+                  
+                    <%= select_tag 'sort_by', options_for_select(Admin::Product::SORT_OPTIONS.collect{ |v| [v.last, v.first] }) %>
+
+                    <input type="submit" value="Submit">
+                  
+                  </div>
                 </div>
-                <div class="left-widget-content  indicator-banner">
-                    <aside class="enabled-filters widget">
-                        <h3 class="widget-subtitle">Enabled filters:</h3>
-                        <ul>
-                            <li>Size: S
-                                <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-                            </li>
-                            <li>Color: Beige
-                                <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-                            </li>
-                            <li>
-                                Price: £ 36.09 - £ 61.00 
-                            </li>
-                        </ul>
-                    </aside>
-                    <aside class="left-widget-price widget">
-                        <h3 class="widget-subtitle">Price</h3>
-                        <div class="info-widget">
-                            <div class="price-filter">
-                                <div class="price-slider-amount">
-                                    <label>Range:</label>
-                                    <input type="text" id="amount" name="price"  placeholder="Add Your Price" />
-                                </div>
-                                <div id="slider-range"></div>
-                            </div>                                    
-                        </div>
-                    </aside>
-                    <aside class="left-widget-size widget">
-                        <h3 class="widget-subtitle">Size</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">S (4)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">M (5)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">L (3)</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
-                    <aside class="left-widget-color widget">
-                        <h3 class="widget-subtitle">Color</h3>
-                        <div class="widget-info">
-                            <ul>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Beige (4)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">White (5)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Yellow (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Pink (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Black (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Blue (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Green (3)</a>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <a href="#">Orange (3)</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </aside>
+                <div class="single-shop-form pull-left">
+                  <label>Show</label>
+                  <div class="shop-select">
+                    <select>
+                      <option selected="selected">12</option>
+                      <option>6</option>
+                    </select>
+                  </div>
                 </div>
-                <div class="banner-image hidden-xs">
-                    <a href="#">
-                        <img alt="" src="assets/banner/28.jpg">
-                    </a>
+                <div class="single-shop-form pul-right">
+                  <button type="submit">
+                  <span>Compare (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
+                  </button>                     
                 </div>
+              <% end %>
             </div>
-            <div class="col-xs-12 col-sm-9">
-				<img src="/assets/bedroom.jpg" class="hidden-xs" alt="" />
-				<h1 class="page-heading section-padding2">
-					<span class="cat-name pull-left">Bedroom </span>
-					<span class="heading-counter pull-right">There are 7 products.</span>
-				</h1>
-				<div class="shop-item-filter">
-					<div class="shop-tab clearfix">
-                        <!-- Nav tabs -->
-                        <ul class="tab-menu" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab"><i class="fa fa-th-large"></i></a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#list" aria-controls="list" role="tab" data-toggle="tab"><i class="fa fa-th-list"></i></a>
-                            </li>
-                        </ul>
-						<div class="shop-tab-selectors pull-right">
-							<form action="#">
-								<div class="single-shop-form single-shop-show pull-left">
-									<label>Sort by</label>
-									<div class="shop-select">
-										<select>
-											<option selected="selected">--</option>
-											<option>Price: Lowest first</option>
-											<option>Price: Highest first</option>
-											<option>Product Name: A to Z</option>
-											<option>Product Name: Z to A</option>
-											<option>In stock</option>
-											<option>Reference: Lowest first</option>
-											<option>Reference: Highest first</option>
-										</select>
-									</div>
-								</div>
-								<div class="single-shop-form pull-left">
-									<label>Show</label>
-									<div class="shop-select">
-										<select>
-											<option selected="selected">12</option>
-											<option>6</option>
-										</select>
-									</div>
-								</div>
-								<div class="single-shop-form pul-right">
-								<button type="submit">
-									<span>Compare (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
-								</button>											
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane active" id="grid">
-						<div class="row">
-							<%=render :partial => 'products'%>
-						</div>
-					</div>
-					<div role="tabpanel" class="tab-pane" id="list">
-						<div class="row">
-							<%=render :partial => 'listview'%>
-						</div>
-					</div>
-				</div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="pagination-content">
-                            <p class="pull-left">Showing 1 - 10 of 10 items</p>
-                            <div class="pagination-button pull-right">
-                                <ul class="pagination">
-                                    <li class="pagination-previous" id="pagination-previous-bottom">
-                                        <a href="#"><i class="fa fa-chevron-left"></i>Previous</a>
-                                    </li>
-                                    <li><a href="#"><span>1</span></a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li class="pagination-next" id="pagination-next-bottom">
-                                        <a href="#">Next<i class="fa fa-chevron-right"></i></a>
-                                    </li>
-                                </ul>
-                                <button class="show-pagi">Show all</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-			</div>
+          </div>
         </div>
+        <div class="clearfix"></div>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="grid">
+            <div class="row">
+              <div id="products">
+                <%=render :partial => 'products'%>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="list">
+            <div class="row">
+              <div id="listview_products">
+                <%=render :partial => 'listview_products'%>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="pagination-content">
+              <p class="pull-left">Showing 1 - 10 of 10 items</p>
+              <div class="pagination-button pull-right">
+                <ul class="pagination">
+                  <li class="pagination-previous" id="pagination-previous-bottom">
+                    <a href="#"><i class="fa fa-chevron-left"></i>Previous</a>
+                  </li>
+                  <li><a href="#"><span>1</span></a></li>
+                  <li><a href="#">2</a></li>
+                  <li class="pagination-next" id="pagination-next-bottom">
+                    <a href="#">Next<i class="fa fa-chevron-right"></i></a>
+                  </li>
+                </ul>
+                <button class="show-pagi">Show all</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- All Product Side Bar Area End -->
-<!--Brand Area Start-->
-<div class="brand-area section-padding2">
-    <div class="container">
-        <div class="row">		            
-            <div class="brand-list">
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="#"><img src="assets/brand/1.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="#"><img src="assets/brand/2.jpg" alt=""></a>
-                    </div>
-                </div> 
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="#"><img src="assets/brand/3.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="#"><img src="assets/brand/4.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="#"><img src="assets/brand/5.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="#"><img src="assets/brand/6.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href="#"><img src="assets/brand/7.jpg" alt=""></a>
-                    </div>
-                </div>                      
-            </div>
-        </div>
-    </div>
-</div>
-<!--Brand Area End-->
-<!--Footer Area Start-->
-<div class="footer-area">
-    <!--Footer Top Area Start-->
-    <div class="footer-top section-padding2">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6 col-sm-3 col-md-3">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">Categories</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="shop.html">Bedroom</a></li>
-                            <li><a href="shop.html">Livingroom</a></li>
-                            <li><a href="shop.html">Lighting</a></li>
-                            <li><a href="shop.html">Accessories</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3 col-md-3">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">Information</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="shop.html">Specials</a></li>
-                            <li><a href="shop.html">New products</a></li>
-                            <li><a href="shop.html">Best sellers</a></li>
-                            <li><a href="shop.html">Our stores</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3 col-md-3">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">My account</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="#">My orders</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">My addresses</a></li>
-                            <li><a href="#">My personal info</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3 col-md-3">
-                    <div class="footer-top-menu">
-                        <h3 class="footer-widget-title">EXTRAS</h3>
-                        <ul class="toggle-footer">
-                            <li><a href="#">Orders & Returns</a></li>
-                            <li><a href="#">Search Terms</a></li>
-                            <li><a href="#">Advance Search</a></li>
-                            <li><a href="#">Affiliates</a></li>
-                            <li><a href="#">Group Sales</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Footer Top Area Start-->
-    <!--Footer Middle Area Start-->
-    <div class="footer-middle section-padding2">
-        <div class="container">
-            <div class="row">
-                <div class="footer-border-right col-lg-5 col-md-5 col-sm-6 col-xs-12 ">
-                    <div class="footer-middle-content">
-                        <a href="index.html"><img src="assets/logo_footer.png" alt=""></a>
-                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.</p>
-                        <div class="social-icon">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="contact-area">
-                        <h3 class="footer-widget-title">CONTACT US</h3>
-						<div class="footer-info contact">
-							<ul class="toggle-footer">
-								<li>
-									<i class="fa fa-map-marker"></i>
-									<p>Marmora Road, Glasgow <br /> 89 GR, New York</p>
-								</li>
-								<li>
-									<i class="fa fa-phone"></i>
-									<p>Telephone: (+1) 855-456-3229 <br />Fax: (+1) 844-667-3229</p>
-								</li>
-								<li>
-									<i class="fa fa-envelope-o"></i>
-									Email: admin@yahoo.com
-								</li>
-								<li>
-									<i class="fa fa-globe"></i>
-								   Website: www.example.com
-								</li>
-							</ul>								
-						</div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 hidden-sm">
-                    <div class="time-area">
-                        <h3 class="footer-widget-title">OPENING TIME</h3>
-                        <ul class="toggle-footer">
-                            <li>
-                                <span class="pull-left">Monday - Friday</span>
-                                <span class="pull-right">9:00 - 22:00</span>
-                            </li>
-                            <li>
-                                <span class="pull-left">Saturday</span>
-                                <span class="pull-right">10:00 - 24:00</span>
-                            </li>
-                            <li>
-                                <span class="pull-left">Sunday</span>
-                                <span class="pull-right">12:00 - 24:00</span>
-                            </li>
-                        </ul>
-                        <div class="paypal">
-                            <img src="assets/paypal.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Footer Middle Area Start-->
-    <!--Footer Bottom Area Start-->
-    <div class="footer-bottom-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-					<p>Copyright <a href="#" target="_blank">Techverx</a> All rights reserved.</p>						
-				</div>
-            </div>
-        </div>
-    </div>
-    <!--Footer Bottom Area End-->
-</div>
-<!--Footer Area End-->
+
 <!--Quickview Product Start -->
 <div id="quickview-wrapper">
     <!-- Modal -->
