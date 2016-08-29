@@ -12,7 +12,10 @@ module Admin
 		accepts_nested_attributes_for :images ,reject_if: proc{ |attributes| attributes['avatar'].blank?}
 		accepts_nested_attributes_for :sizes
 		accepts_nested_attributes_for :colors 
+		extend FriendlyId
+  		friendly_id :name, use: :slugged
 		translates :name, :description
+
 	 	
 
 	end

@@ -9,7 +9,7 @@ def currency_codes
   end
   def show_price(price)
   	unit = Store.first.currency rescue 'USD'
-    return Money.new(price*100, unit).format
+    return Money.new(price*100, unit).format rescue 0
   end
 
   def is_selected

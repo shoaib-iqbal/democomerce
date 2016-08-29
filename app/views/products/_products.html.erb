@@ -5,7 +5,7 @@
 		<div class="product-img-content">
 			<!--Product Image-->
 			<div class="product-img">
-				<a href="<%=product_path(product.id)%>" title="<%= product.name %>">
+				<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
 					<%if product.images.present? %>
 						<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block", style:  "max-height:200px"%>  
                     <%else%>
@@ -25,7 +25,7 @@
 		</div>
 		<div class="product-content">
 			<h5 class="clearfix">
-				<div class="pull-left"><a href="<%=product_path(product.id)%>" title="<%= product.name %>"><%= product.name %></a></div>
+				<div class="pull-left"><a href="<%=product_path(product.slug)%>" title="<%= product.name %>"><%= product.name %></a></div>
 				<div class="pull-right"><a href="/products?vendor=<%= product.user.id %>" title="<%= product.user.name %>"><span><%= product.user.name %></span></a></div>
 			</h5>
 			<!--Product Rating-->

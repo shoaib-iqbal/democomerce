@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 	def show
-		@product=Admin::Product.find(params[:id])
+		@product=Admin::Product.friendly.find(params[:id])
 		@vendor_product = Admin::Product.where(:user_id => @product.user_id)
 		
 		@top_sellers=Admin::Product.order(created_at: :desc)
@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
 		if request.xhr?
 	      if params[:id].present?
 	      	
-	        @product=Admin::Product.find(params[:id])
+	        @product=Admin::Product.friendly.find(params[:id])
 	        render :partial => "details_popup"
 	      end
 	     

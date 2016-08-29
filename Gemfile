@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 gem "cocoon"
 gem 'country_state_select'
+gem 'friendly_id', '~> 5.1.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 gem 'money-rails'
