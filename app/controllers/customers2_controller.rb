@@ -4,7 +4,7 @@ class Customers2Controller < Devise::RegistrationsController
 
 	# super
 	# resource.addresses.build
-	build_resource({})
+    build_resource({})
     resource.addresses.build
     respond_with self.resource
 
@@ -13,8 +13,11 @@ class Customers2Controller < Devise::RegistrationsController
 
     build_resource(sign_up_params)
 
-    resource.save
-    redirect_to root_url
+    if resource.save
+      sign_in(:customer, resource)
+      byebug
+      redirect_to request.referer
+    end
   end
 
 

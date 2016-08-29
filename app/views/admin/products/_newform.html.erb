@@ -49,7 +49,7 @@
 
                             <div class="form-group">
                                <%= f.label :Vendor %>
-                               <%= f.select "user_id", options_from_collection_for_select(User.all, :id,:name,f.object.user_id),{ prompt: 'Select a Vendor'} ,:class=> 'form-control select', :id=> 'select',:onchange => 'saim(this.value)' %>
+                               <%= f.select "user_id", options_from_collection_for_select(User.all, :id,:name,f.object.user_id),{ prompt: 'Select a Vendor'} ,:class=> 'form-control select', :id=> 'select',:onchange => 'get_vendors(this.value)' %>
                                                             
                             </div>
                             <div class="form-group">

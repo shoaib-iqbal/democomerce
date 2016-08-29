@@ -16,11 +16,11 @@
                             </div>
                             <div class="form-group">
                                <%=f.label :email%>
-                                <%=f.text_field :email ,class: 'form-control', placeholder: 'Enter Email'%>
+                                <%=f.text_field :email ,class: 'form-control', placeholder: 'Enter Email',:require => true%>
                             </div>
                             <div class="form-group">
                                 <%=f.label :location %>
-                                 <%=f.text_field :location ,class: 'form-control ',:id=> 'select_location' %>
+                                 <%=f.text_field :location ,class: 'form-control ',:id=> 'select_location' ,:require => true%>
                             </div>
                            
                             

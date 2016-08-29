@@ -29,7 +29,7 @@ function changelanguage(selected_language){
   });
 }
 
-function saim(value){
+function get_vendors(value){
   $.ajax({
       url: '/admin/get_color_and_size?vendor='+value,
       method: 'GET',
