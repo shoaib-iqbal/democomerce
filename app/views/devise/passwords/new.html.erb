@@ -3,13 +3,40 @@
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-  </div>
+<div class="container forms">
+	
+	<br><br>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+	<div class="section-title">
+		<h4>Login</h4>
+	</div>
 
-<%= render "devise/shared/links" %>
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Email*</label>
+				<%= f.email_field :email, required: true,autofocus: true,class: 'form-control' %>
+			</div>
+		</div>
+
+		<%= f.button :submit, "Send me reset password instructions" ,class: "button btn primaray" %>
+	</div>
+
+
+<div class="container text-center">
+	
+	Already have an account? <a href="" data-toggle="modal" data-target="#signinmodal">Login</a><br>
+		<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+	  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+	<% end -%>
+
+
+</div>
+<%end%>
+<br><br><br><br>
+
+
+
+
+
