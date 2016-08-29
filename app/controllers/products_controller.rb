@@ -23,7 +23,6 @@ class ProductsController < ApplicationController
   end
 
   def index
-    byebug
     if params[:vendor].present?
       products = Admin::Product.where(:user_id => params[:vendor])
       @products = Admin::Product.filter_search(params, products)
