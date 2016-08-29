@@ -2,21 +2,33 @@
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr>
+                <th>First Name</th>
                 <th>Date</th>
                 <th>Number</th>
-                <th>state</th>
-                <th>total</th>
+                <th>State</th>
+                <th>Payment State</th>
+                <th>Shipment State</th>
+                <th>Customer Email</th>
+                <th>Total</th>
                 <th>Tools</th>
             </tr>
         </thead>
         <tbody>
 
         <% @orders.each do |order| %>
-
+            
             <tr class="odd gradeX">
+
+                <td><%= order.first_name%></td>
                 <td><%= order.created_at %></td>
-                <td><%= order.number %></td>
+                <td>
+                    <%= link_to order.number,  admin_order_path(order), class: ""%>
+
+                </td>
                 <td><%= order.state rescue '' %></td>
+                <td><%= order.payment_state%></td>
+                <td><%= order.shipment_state%></td>
+                <td><%=order.customer.email rescue ''%></td>
                  <td>$<%= order.sub_total %></td>
                 <td class="center">
                     <span><%#= link_to '', edit_admin_order_path(order),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
