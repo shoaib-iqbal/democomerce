@@ -36,8 +36,8 @@ class Order < ActiveRecord::Base
 	def sub_total
 		total=0
 		self.line_items.each do |item| 
-			if item.product.discounted_price.present?
-				total+= item.quantity*item.product.discounted_price
+			if item.product and item.product.discounted_price.present?
+				total+= item.quantity*item.product.discounted_price rescue '0'
 			else 
 				total+= item.quantity*item.product.price rescue 0
 			end
