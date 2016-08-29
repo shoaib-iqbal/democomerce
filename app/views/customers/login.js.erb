@@ -1,0 +1,7 @@
+<%if current_customer%>
+window.location.reload();
+<%else%>
+$('#error').show();
+setTimeout(function(){ $('#error').hide();
+; }, 3000);
+<%end%>
