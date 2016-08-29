@@ -15,35 +15,31 @@
 								
 								<div class="header-user-info pull-right">
 										<span class="dropdown lang-drop">
-		                                    <a href="#" class="dropdown-toggle no-border" data-toggle="dropdown">
+		                                    
 		                                       <i class="fa fa-globe"></i> 
-		                                       language
-		                                    </a>
-		                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-		                                        <li><a href="#">English</a></li>
-		                                        <li><a href="#">Arabic</a></li>
-		                                        <li><a href="#">French</a></li>
-		                                     </ul>
+		                                      
+		                                    
+		                                    
 		                                </span>
 								
 
 									   
-										<select class="" onchange="changelanguage(this.value)">
+										<select title="Click to Change Language" class="lang-drop" onchange="changelanguage(this.value)">
 												<option <%=@lang == "en"?  'selected' : ''%> value="en">English</option>
 												<option <%=@lang == "ar" ? 'selected' : ''%> value="ar"> <%= t 'welcome.arabic' %> </option>
 										</select>
 									
 									<% if current_customer %>
-	                    				<a href="#" title="<%= t 'welcome.account' %>">
+	                    				<a href="#" title="<%= t 'welcome.account' %>" dir="rtl">
 	  									   <i class="fa fa-user"></i> 
 	  									   <%= t 'welcome.myaccount' %>
-	  									</a>
-	  									<a href="/customers/sign_out" title="<%= t 'welcome.signout' %>">
+	  									</a >
+	  									<a href="/customers/sign_out" title="<%= t 'welcome.signout' %>" dir="rtl">
 	  									   <i class="fa fa-unlock-alt"></i> 
 	  									   <%= t 'welcome.signout' %>
 	  									</a>
 					                <%else%>
-					                	<a href="#" title= "<%= t 'welcome.signin' %>" data-toggle="modal" data-target="#signinmodal">
+					                	<a href="#" title= "<%= t 'welcome.signin' %>" data-toggle="modal" data-target="#signinmodal" dir="rtl">
 									   		<i class="fa fa-unlock-alt"></i> 
 									   		<%= t 'welcome.signin' %>
 										</a>

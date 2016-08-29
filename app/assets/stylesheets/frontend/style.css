@@ -3778,3 +3778,6 @@ p.alert {
 .all_products_fix_images .product-img img { max-height:350px !important; margin:auto !important; vertical-align:middle; display:inline-block;width:auto !important; }
 
 .form-control, .form-control:hover, .form-control:focus {cursor: default !important;}
+.lang-drop{ border: none; background-color: #fff; }
+.header-top-right a:hover{ background-color: #fff !important; }
+.mainmenu ul li a:hover{color: #f3ceb1;}
