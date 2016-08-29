@@ -1,7 +1,8 @@
-class Customers2Controller < Devise::RegistrationsController
+class CustomersRegistrationController < Devise::RegistrationsController
 
   def new
 
+    session['redirect_path_after_signup'] = request.referer
 	# super
 	# resource.addresses.build
     build_resource({})
@@ -16,7 +17,9 @@ class Customers2Controller < Devise::RegistrationsController
     if resource.save
       sign_in(:customer, resource)
       byebug
-      redirect_to request.referer
+      redirect_to session['redirect_path_after_signup']
+    else
+      render :nothing => true
     end
   end
 

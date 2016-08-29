@@ -52,6 +52,7 @@ class OrdersController < ApplicationController
   end
 
   def details
+    # byebug
     if params[:user].present?
      login_user(params)
       

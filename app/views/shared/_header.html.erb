@@ -14,11 +14,21 @@
 							<div class="header-top-right pull-right">
 								
 								<div class="header-user-info pull-right">
-
+										<span class="dropdown lang-drop">
+		                                    <a href="#" class="dropdown-toggle no-border" data-toggle="dropdown">
+		                                       <i class="fa fa-globe"></i> 
+		                                       language
+		                                    </a>
+		                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		                                        <li><a href="#">English</a></li>
+		                                        <li><a href="#">Arabic</a></li>
+		                                        <li><a href="#">French</a></li>
+		                                     </ul>
+		                                </span>
 								
 
 									   
-										<select onchange="changelanguage(this.value)">
+										<select class="" onchange="changelanguage(this.value)">
 												<option <%=@lang == "en"?  'selected' : ''%> value="en">English</option>
 												<option <%=@lang == "ar" ? 'selected' : ''%> value="ar"> <%= t 'welcome.arabic' %> </option>
 										</select>

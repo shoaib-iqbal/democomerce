@@ -9,6 +9,20 @@ class Admin::SizesController < AdminController
     else
         @admin_sizes = Admin::Size.all
     end
+    
+    if request.xhr?
+      if params[:user_id].present?
+        @admin_sizes = Admin::Size.where(:user_id => params[:user_id])
+        
+      else
+        @admin_sizes = Admin::Size.all
+      end
+    end
+
+    respond_to do |format|
+        format.js {}
+        format.html
+    end
             
   end
 

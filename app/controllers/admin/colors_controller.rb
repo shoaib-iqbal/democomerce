@@ -5,6 +5,19 @@ class Admin::ColorsController < AdminController
   # GET /admin/colors.json
   def index
     @admin_colors = Admin::Color.all
+    if request.xhr?
+      if params[:user_id].present?
+        @admin_colors = Admin::Color.where(:user_id => params[:user_id])
+        
+      else
+        @admin_colors = Admin::Color.all
+      end
+    end
+
+    respond_to do |format|
+        format.js {}
+        format.html
+    end
   end
 
   # GET /admin/colors/1

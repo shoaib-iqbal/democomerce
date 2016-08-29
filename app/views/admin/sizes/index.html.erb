@@ -11,12 +11,12 @@
             <div class="panel-heading">
                 <div <%if current_user.superadmin? %>style="float:left;"<%end%> class="panel-heading">All Products  </div>
                 <%if current_user.superadmin? %>
-                    <%=render :partial => '/admin/shared/users_dropdown'%>
+                    <%=render :partial => 'users_list_sizes'%>
                 <%end%>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <div  id="vendor_products">
+                <div  id="vendor_sizes">
                     <%=render :partial => 'vendor_sizes'%>
                     <!-- /.table-responsive -->
                 </div>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :deal_of_days
   end
-  devise_for :customers , :controllers => { :registrations => 'customers2' }
+  devise_for :customers , :controllers => { :registrations => 'customers_registration' }
   resources :customers
   devise_for :vendor_admins
   namespace :admin do

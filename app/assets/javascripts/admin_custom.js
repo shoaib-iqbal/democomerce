@@ -12,8 +12,38 @@ function fetch_specfic_vendor_items(path,id)
    });
 }
 
- $('.select').select2();
- $('#store_currency').select2();
+
+function fetch_specfic_vendor_colors(path,id)
+{
+  $.ajax({
+   url: path,
+     data: {"user_id" : id},
+      type: "get",
+      format : 'js',
+     success: function() {
+
+      
+     }
+   });
+}
+
+
+function fetch_specfic_vendor_sizes(path,id)
+{
+  $.ajax({
+   url: path,
+     data: {"user_id" : id},
+      type: "get",
+      format : 'js',
+     success: function() {
+
+      
+     }
+   });
+}
+
+$('.select').select2();
+$('#store_currency').select2();
 
 
 function changelanguage(selected_language){
