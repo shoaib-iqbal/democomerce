@@ -1,16 +1,12 @@
-<h2>Forgot your password?</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-<%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-<%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-<%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+<%= render 'layouts/error_messages', object: resource %>
 <div class="container forms">
 	
 	<br><br>
 
 	<div class="section-title">
-		<h4>Login</h4>
+		<h4>Forgot your password?</h4>
 	</div>
 
 	<div class="row">
