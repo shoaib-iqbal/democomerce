@@ -57,7 +57,6 @@ class OrdersController < ApplicationController
      login_user(params)
       
     else
-    # byebug
       if @current_order.addresses.blank?
         @current_order.addresses.build
       end 

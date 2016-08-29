@@ -37,6 +37,21 @@ class CustomersController < ApplicationController
     end
   end
 
+  def login
+     customer = Customer.find_by_email(params[:user][:email])
+  if customer.present?
+     if customer.valid_password?(params[:user][:password])
+      sign_in(:customer, customer)
+      #redirect_to checkout_details_path, :notice => "Signed in successfully."
+      #return
+     end
+  end
+    #redirect_to root_path, :alert => "Email or Password is invalid."
+    respond_to do |format|
+      format.js
+    end 
+  end
+
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
   devise_for :customers , :controllers => { :registrations => 'customers_registration' }
   resources :customers
+
   devise_for :vendor_admins
   namespace :admin do
     resources :users
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => {:registrations => "registrations"}
   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+   get 'logout' => 'devise/sessions#destroy'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
   match "home/set_session" ,to: "home#change_languages", as: "languagepath", via: [:get]
   match "admin/get_color_and_size" ,to: "admin/products#get_size_and_color_of_product", as: "getsizecolor", via: [:get]
   root 'home#index'
-  
+  match 'signin', to: "customers#login", via: [:post]
   match "line_items/changequantity", to: "line_items#adjust_quantity", as: "changequantity", via: [:get]
   match "checkout", to: "orders#checkout", as: "checkout", via: [:get]
   match "checkout/details", to: "orders#details", as: "checkout_details", via: [:get, :patch, :post]
