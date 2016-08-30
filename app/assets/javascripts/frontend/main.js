@@ -179,15 +179,21 @@
 ------------------------------ */  
 	  $( "#slider-range" ).slider({
 	   range: true,
-	   min: 40,
-	   max: 600,
-	   values: [ 60, 570 ],
+	   min: 9,
+	   max: 9000,
+	   values: [ 9, 9000 ],
 	   slide: function( event, ui ) {
 		$( "#amount" ).val( "£" + ui.values[ 0 ] + " - £" + ui.values[ 1 ] );
-	   }
+	   },
+     stop: function( event, ui ){
+      $( "#min_price" ).val(ui.values[ 0 ]);
+      $( "#max_price" ).val(ui.values[ 1 ]);
+      $('#submit').click();
+     }
+
 	  });
 	  $( "#amount" ).val( "£" + $( "#slider-range" ).slider( "values", 0 ) +
-	   " - £" + $( "#slider-range" ).slider( "values", 1 ) );  
+	   " - £" + $( "#slider-range" ).slider( "values", 1 ) );
 	 
  
  

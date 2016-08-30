@@ -16,8 +16,28 @@ module Admin
   		friendly_id :name, use: :slugged
 		translates :name, :description
 
-	 	
+    SORT_OPTIONS = [["asc_price", "Price: Lowest first"], ["desc_price", "Price: Highest first"], ["asc_name", "Product Name: A to Z"], ["desc_name", "Product Name: Z to A"], ["in_stock", "In Stock"]]
 
-	end
+    def self.filter_search(params, products)
+      products = products.find_by_colors(products, params[:colors_ids]) if params[:colors_ids].present?
+      products = products.find_by_sizes(products, params[:sizes_ids]) if params[:sizes_ids].present?
+      products = products.find_by_price(products, params[:min_price], params[:max_price]) if params[:min_price].present? and params[:max_price].present?
+      return products
+    end
+
+
+    def self.find_by_colors(products, colors_ids)
+      products = products.joins(:colors).where("admin_colors_products.color_id IN (?)", colors_ids).try(:uniq)
+    end
+
+    def self.find_by_sizes(products, sizes_ids)
+      products = products.joins(:sizes).where("admin_products_sizes.size_id IN (?)", sizes_ids).try(:uniq)
+    end
+
+    def self.find_by_price(products, min_price, max_price)
+      products = products.where("price >= ? AND price <= ?", min_price, max_price)
+    end
+
+  end
 end
  

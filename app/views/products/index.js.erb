@@ -1,0 +1,10 @@
+
+<% if @products.present? %>
+  $('#products').html("<%=j render(:partial => 'products', :object => @products) %>");
+
+  $('#listview_products').html("<%=j render(:partial => 'listview_products', :object => @products) %>");
+<% else %>
+  $('#products').html("<h1 class='text-center'>No Results Found</h1>");
+
+  $('#listview_products').html("<h1 class='text-center'>No Results Found</h1>");
+<% end %>

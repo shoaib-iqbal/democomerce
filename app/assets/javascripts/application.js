@@ -13,3 +13,9 @@
 
 //= require jquery
 //= require jquery_ujs
+
+$(function(){
+  $('#filters').change(function(e){
+    $('#submit').click();
+  });
+});
