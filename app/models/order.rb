@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
      accepts_nested_attributes_for :customer, reject_if: :all_blank, allow_destroy: true
     #accepts_nested_attributes_for :customer
     has_many :addresses
-    accepts_nested_attributes_for :addresses ,reject_if: proc{ |attributes| attributes['addresses'].blank?}
+    accepts_nested_attributes_for :addresses 
     ORDER_NUMBER_LENGTH  = 9
     ORDER_NUMBER_LETTERS = false
     ORDER_NUMBER_PREFIX  = 'R'
@@ -43,5 +43,14 @@ class Order < ActiveRecord::Base
 			end
 		end
 		return total
+	end
+
+	def full_address
+		address = self.addresses.last
+		if address.present?
+			"#{address.address},#{address.city},#{address.country_state},#{address.country}"
+		else
+		"No address fond"
+		end		
 	end
 end

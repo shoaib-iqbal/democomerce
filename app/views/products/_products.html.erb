@@ -21,7 +21,10 @@
 			<!--Product Action-->
 			<div class="product-action">
 				<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-				<a href="#" title="Quick view" data-toggle="modal" data-target="#productModal"><i class="fa fa-expand"></i></a>
+				<a  title="Quick view"  >
+					<i class="fa fa-expand" onclick="getProductDetail(this)">
+					<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>
+				</a>
 			</div>
 		</div>
 		<div class="product-content">
@@ -43,6 +46,7 @@
 				<%if product.discounted_price?%>
 					<span class="old-price"><%= show_price(product.discounted_price)  %></span>
 				<%end%>
+
 			</div>
 		</div>
 	</div>									

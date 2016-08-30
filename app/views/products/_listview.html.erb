@@ -1,0 +1,62 @@
+<div class="all_products_fix_images">
+	<% @vendor_product.each do |product| %>
+		<div class="single-shop-product">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 col-md-4">
+				   <div class="left-item">
+						<!--Product Image-->
+						<a href="<%=product_path(product.id)%>" title="<%= product.name %>">
+							<%if product.images.present? %>
+								<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block"%>
+							<%end%>
+						</a> 
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-7 col-md-8">
+					<div class="deal-product-content ">
+						<h5><a href="<%=product_path(product.id)%>" title="<%= product.name %>"><%= product.name %></a></h5>
+						<!--Product Price-->
+						<div class="product-price">
+							<span class="new-price"> <%= show_price(product.price) %></span>
+							<%if product.discounted_price?%>
+								<span class="old-price"><%= show_price(product.discounted_price)  %></span>
+							<%end%>
+						</div>
+						<!--Product Rating-->
+						<div class="rating-icon">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+						</div>
+						<!--Product Action-->
+						<p><%= product.description %></p>
+						<div class="availability">
+							<span>In stock</span>
+						</div>
+						<div class="deal-product-action">
+							<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+							<a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
+							</a>
+							<a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
+							</a>
+							<a  title="Quick view"  >
+							<i class="fa fa-expand" onclick="getProductDetail(this)">
+							<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>											
+		</div>
+	<% end %> 
+
+
+
+</div>
+
+
+
+
+
