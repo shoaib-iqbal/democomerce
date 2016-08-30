@@ -14,6 +14,7 @@ class AdminController < ApplicationController
 		
 		else
   		render :text => 'Who are you to doing this? :)'
+		sign_out current_user 
 		end
 	end
 

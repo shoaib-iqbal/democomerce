@@ -13,11 +13,3 @@
 
 //= require jquery
 //= require jquery_ujs
-    function initialize() {
-        alert('sdd')
-
-input = document.getElementById('select_location');
- autocomplete = new google.maps.places.Autocomplete(input);
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);

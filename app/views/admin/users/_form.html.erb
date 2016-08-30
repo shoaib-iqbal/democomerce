@@ -18,10 +18,21 @@
                                <%=f.label :email%>
                                 <%=f.text_field :email ,class: 'form-control', placeholder: 'Enter Email',:require => true%>
                             </div>
+                            <%if params[:action] == 'new'%>
+                            <div class="form-group">
+                               <%=f.label :password%>
+                                <%=f.text_field :password ,class: 'form-control', placeholder: 'Eneter password',:require => true , :minlength=> 6%>
+                            </div>
+                            <%end%>
                             <div class="form-group">
                                 <%=f.label :location %>
                                  <%=f.text_field :location ,class: 'form-control ',:id=> 'select_location' ,:require => true%>
                             </div>
+                             <div class="form-group">
+                            <%if current_user.has_role? 'superadmin' %>
+                    				<%= f.select "role_ids", options_for_select(Role.all.collect{ |u| [u.name, u.id]}, :selected=> f.object.roles.first.id), {:class =>"form-control"} %>
+                							<%end%>
+                							</div>
                            
                             
                             
@@ -46,5 +57,13 @@
 <!-- /.row -->
 
 <script type="text/javascript">
+function initialize() {
+ 
+
+input = document.getElementById('select_location');
+ autocomplete = new google.maps.places.Autocomplete(input);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
     
 </script>

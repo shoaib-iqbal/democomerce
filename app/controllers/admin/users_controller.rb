@@ -41,7 +41,7 @@ class Admin::UsersController < AdminController
   # PATCH/PUT /admin/users/1.json
   def update
     respond_to do |format|
-      if @user.update(admin_user_params)
+      if @user.update(edit_admin_user_params)
         format.html { redirect_to admin_users_path, notice: 'Vendor was successfully updated.' }
         format.json { render :show, status: :ok, location:@user }
       else
@@ -69,7 +69,10 @@ class Admin::UsersController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_user_params
-      params[:user][:password] = '12345678'
-      params.require(:user).permit(:name,:location,:email,:password)
+      params[:user][:password_confirmation] = params[:user][:password]
+      params.require(:user).permit(:name,:location,:email,:password,:password_confirmation, :role_ids)
+    end
+    def edit_admin_user_params
+      params.require(:user).permit(:name,:location,:email, :role_ids)
     end
 end

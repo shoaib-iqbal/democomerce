@@ -80,4 +80,30 @@ Rails.application.configure do
   config.serve_static_assets = true
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
   config.assets.compile = true
+
+
+
+
+
+
+
+
+
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'demoecommerce.herokuapp.com' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => "gmail.com",
+      :authentication => :login,
+      :user_name            => "shoaib@gems.techverx.com",
+      :password             => "techverx123",
+      :authentication       => :plain,
+      :enable_starttls_auto => true
+  }
 end
