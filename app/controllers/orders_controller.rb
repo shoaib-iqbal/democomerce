@@ -57,9 +57,10 @@ class OrdersController < ApplicationController
      login_user(params)
       
     else
-      if @current_order.addresses.blank?
+      # byebug
+      #if @current_order.addresses.blank?
         @current_order.addresses.build
-      end 
+      #end 
       if request.patch?
         
         if @current_order.update(order_params)
@@ -129,6 +130,6 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       
-      params.require(:order).permit(:email_address,:country,:country_state,:city,:phone,:first_name,:order_notes,:last_name,:delivery_name, addresses_attributes: [:id,:address_type,:address,:country,:country_state,:city ])
+      params.require(:order).permit(:email_address,:email,:country,:country_state,:city,:phone,:first_name,:order_notes,:last_name,:delivery_name, addresses_attributes: [:id,:address_type,:address,:country,:country_state,:city ])
     end
 end
