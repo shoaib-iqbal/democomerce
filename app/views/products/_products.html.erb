@@ -39,9 +39,9 @@
 			</div>
 			<!--Product Price-->
 			<div class="product-price">
-				<span class="new-price">£ <%= product.price %></span>
+				<span class="new-price"> <%= show_price(product.price) %></span>
 				<%if product.discounted_price?%>
-					<span class="old-price"><%=product.discounted_price  %></span>
+					<span class="old-price"><%= show_price(product.discounted_price)  %></span>
 				<%end%>
 			</div>
 		</div>
