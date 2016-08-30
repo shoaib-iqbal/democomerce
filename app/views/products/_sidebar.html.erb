@@ -17,10 +17,11 @@
             <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
           </li>
           <li>
-            Price: £ 36.09 - £ 61.00 
+            Price: <%=store_unit%> 36.09 - <%=store_unit%> 61.00 
           </li>
         </ul>
       </aside>
+       <%=hidden_field_tag 'symbol',"#{store_unit}" %>
       <aside class="left-widget-price widget">
         <h3 class="widget-subtitle">Price</h3>
         <div class="info-widget">
