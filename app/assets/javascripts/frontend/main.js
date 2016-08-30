@@ -184,10 +184,13 @@
 	   values: [ 9, 9000 ],
 	   slide: function( event, ui ) {
 		$( "#amount" ).val( "£" + ui.values[ 0 ] + " - £" + ui.values[ 1 ] );
+
 	   },
      stop: function( event, ui ){
       $( "#min_price" ).val(ui.values[ 0 ]);
       $( "#max_price" ).val(ui.values[ 1 ]);
+      console.log($( "#amount" ).val());
+      $('#price_range_show').html('Price: '+ $('#amount').val())
       $('#submit').click();
      }
 

@@ -3781,3 +3781,8 @@ p.alert {
 .lang-drop{ border: none; background-color: #fff; }
 .header-top-right a:hover{ background-color: #fff !important; }
 .mainmenu ul li a:hover{color: #f3ceb1;}
+
+.admin_product_name{
+  text-transform: capitalize !important;
+
+}

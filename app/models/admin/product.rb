@@ -19,6 +19,7 @@ module Admin
     SORT_OPTIONS = [["asc_price", "Price: Lowest first"], ["desc_price", "Price: Highest first"], ["asc_name", "Product Name: A to Z"], ["desc_name", "Product Name: Z to A"], ["in_stock", "In Stock"]]
 
     def self.filter_search(params, products)
+
       products = products.find_by_colors(products, params[:colors_ids]) if params[:colors_ids].present?
       products = products.find_by_sizes(products, params[:sizes_ids]) if params[:sizes_ids].present?
       products = products.find_by_price(products, params[:min_price], params[:max_price]) if params[:min_price].present? and params[:max_price].present?
@@ -37,6 +38,22 @@ module Admin
     def self.find_by_price(products, min_price, max_price)
       products = products.where("price >= ? AND price <= ?", min_price, max_price)
     end
+
+    def self.other_filter_sort(products,sort)
+      puts case sort
+       when 'asc_name'
+         products = products.sort_by( &:name)
+       when 'desc_name'
+         products = products.sort_by( &:name).reverse
+       when 'desc_price'
+         products = products.sort_by( &:price).reverse
+       when 'asc_price'
+         products = products.sort_by( &:price)
+       else
+
+      end 
+    return products
+  end
 
   end
 end

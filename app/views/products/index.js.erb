@@ -8,3 +8,19 @@
 
   $('#listview_products').html("<h1 class='text-center'>No Results Found</h1>");
 <% end %>
+
+
+
+
+<% if @selected_sizes.present? %>
+	$('#selected_filters_sizes').html("<%=j render(:partial => 'filters_list_sizes', :object => @selected_sizes) %>");
+<%else%>
+	$('#selected_filters_sizes').html("No Size Selected");
+<%end%>
+
+
+<% if @selected_colors.present? %>
+	$('#selected_filters_colors').html("<%=j render(:partial => 'filters_list_colors', :object => @selected_colors) %>");
+<%else%>
+	$('#selected_filters_colors').html("No Color Selected");
+<%end%>

@@ -6,21 +6,29 @@
     <a href="javascript:void(0)" class="filter-button-shop">Filter</a>
   </div>
   <%=form_tag products_path, method: 'get', id: "filters", :remote=>true do%>
+  <input type="hidden" name="sorting_order" id="sorting_order" value="">
     <div class="left-widget-content  indicator-banner">
-      <aside class="enabled-filters widget">
-        <h3 class="widget-subtitle">Enabled filters:</h3>
-        <ul>
-          <li>Size: S
-            <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-          </li>
-          <li>Color: Beige
-            <a href="#" title="Cancel"><i class="fa fa-remove pull-right"></i></a>
-          </li>
-          <li>
-            Price: <%=store_unit%> 36.09 - <%=store_unit%> 61.00 
-          </li>
-        </ul>
-      </aside>
+        <div id="selected_filters">
+          <aside class="enabled-filters widget">
+            <h3 class="widget-subtitle">Enabled filters:</h3>
+            <ul>
+              <div id="selected_filters_sizes">
+                <li>No Size Selected
+                  
+                </li>
+              </div>
+              <div id="selected_filters_colors">
+              <li>No Color Selected
+                
+              </li>
+              </div>
+              <li id="price_range_show">
+
+                Price: <%=store_unit%> 9 - <%=store_unit%> 9000
+              </li>
+            </ul>
+          </aside>
+        </div>
        <%=hidden_field_tag 'symbol',"#{store_unit}" %>
       <aside class="left-widget-price widget">
         <h3 class="widget-subtitle">Price</h3>
@@ -43,7 +51,7 @@
           <%@sizes.each do |size|%>
             <li>
               <%= check_box_tag "checkbox_#{size.id}_#{size.name}", "#{size.id}",false, id:"checkbox_#{size.id}_#{size.name}", :name=>"sizes_ids[]"%>
-              <a href="#"><%=size.name%> (<%= size.products.count %>)</a>
+              <%=size.name%> (<%= size.products.count %>)
             </li>
           <% end %>
           </ul>
@@ -56,7 +64,7 @@
           <%@colors.each do |color|%>
               <li>
                 <%= check_box_tag "checkbox_#{color.id}_#{color.name}", "#{color.id}",false, id:"checkbox_#{color.id}_#{color.name}", :name=>"colors_ids[]"%>
-                <a href="#"><%=color.name%> (<%= color.products.count %>)</a>
+                <%=color.name%> (<%= color.products.count %>)
               </li>
             <% end %>
           </ul>

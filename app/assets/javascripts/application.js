@@ -16,6 +16,25 @@
 
 $(function(){
   $('#filters').change(function(e){
+
+
     $('#submit').click();
+
+   //  sa=$('#min_price').val();
+  	// alert(sa);
   });
+
 });
+
+function remove_filter(name,id)
+{
+	$('#checkbox_'+id+'_'+name).prop('checked', false);
+	$('#submit').click();
+}
+//$('#amount').val()
+
+function sort_order(value){
+	$('#sorting_order').val(value);
+
+	$('#submit').click();
+}

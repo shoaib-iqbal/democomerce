@@ -1,0 +1,7 @@
+
+	  <% @selected_colors.each do |color| %>
+	  		<li>Color: <%=color.name%>
+			    <span onclick="remove_filter('<%=color.name%>','<%=color.id%>')" title="Cancel"><i class="fa fa-remove pull-right"></i></span>
+			</li>
+	  <%end%>
+ 

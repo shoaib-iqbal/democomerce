@@ -23,6 +23,8 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @selected_sizes = Admin::Size.where(id: params[:sizes_ids]) if params[:sizes_ids].present?
+    @selected_colors = Admin::Color.where(id: params[:colors_ids]) if params[:colors_ids].present?
     if params[:vendor].present?
       products = Admin::Product.where(:user_id => params[:vendor])
       @products = Admin::Product.filter_search(params, products)
@@ -36,6 +38,18 @@ class ProductsController < ApplicationController
       @sizes = Admin::Size.all
       @colors = Admin::Color.all
     end 
+    
+      if params[:sorting_order].present?
+        @products = Admin::Product.other_filter_sort(@products, params[:sorting_order])
+      end
+
+
+
+
+    respond_to do |format|
+          format.js {}
+          format.html
+    end
   end
   
 end
