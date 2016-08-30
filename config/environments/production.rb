@@ -106,4 +106,12 @@ Rails.application.configure do
       :authentication       => :plain,
       :enable_starttls_auto => true
   }
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[Error] ",
+    :sender_address => %{"Exception Notification" <admin@cargo.com>},
+    :exception_recipients => %w{shoaib@gems.techverx.com saim@gems.techverx.com}
+  }
+  
 end

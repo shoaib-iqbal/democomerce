@@ -22,6 +22,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'money-rails'
 gem 'simple_form'
+gem 'exception_notification'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem "paperclip", "~> 5.0.0"
