@@ -3786,3 +3786,10 @@ p.alert {
   text-transform: capitalize !important;
 
 }
+
+
+
+.pagination>.active>a{
+      background-color: #fff;
+      color: #c38749 !important;
+}
