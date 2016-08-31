@@ -176,14 +176,15 @@
  
 /*----------------------------
  price-slider active
------------------------------- */  
+------------------------------ */ 
+
 	  $( "#slider-range" ).slider({
 	   range: true,
-	   min: 9,
-	   max: 9000,
-	   values: [ 9, 9000 ],
+	   min: min_price,
+	   max: max_price,
+	   values: [ min_price, max_price ],
 	   slide: function( event, ui ) {
-		$( "#amount" ).val( "£" + ui.values[ 0 ] + " - £" + ui.values[ 1 ] );
+		$( "#amount" ).val( unit + ui.values[ 0 ] + " - "+unit + ui.values[ 1 ] );
 
 	   },
      stop: function( event, ui ){
@@ -195,8 +196,8 @@
      }
 
 	  });
-	  $( "#amount" ).val( "£" + $( "#slider-range" ).slider( "values", 0 ) +
-	   " - £" + $( "#slider-range" ).slider( "values", 1 ) );
+	  $( "#amount" ).val( unit + $( "#slider-range" ).slider( "values", 0 ) +
+	   " - "+unit + $( "#slider-range" ).slider( "values", 1 ) );
 	 
  
  

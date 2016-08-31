@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   match "checkout", to: "orders#checkout", as: "checkout", via: [:get]
   match "checkout/details", to: "orders#details", as: "checkout_details", via: [:get, :patch, :post]
   match "checkout/confirmationpage", to: "orders#confirmation_page", as: "confirmation_message", via: [:get, :patch, :post]
+  match "/aboutus", to: "statics#about_us", as: "aboutus", via: [:get, :patch, :post]
+  match "/contactus", to: "statics#contact_us", as: "contactus", via: [:get, :patch, :post]
+  
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

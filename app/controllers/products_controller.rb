@@ -14,11 +14,14 @@ class ProductsController < ApplicationController
           render :partial => "details_popup"
         end
        
-      end
+    end
+    @min_price=Admin::Product.minimum("price")
+    @max_price=Admin::Product.maximum("price")
+
     respond_to do |format|
-          format.js {}
-          format.html
-        end
+      format.js {}
+      format.html
+    end
  
   end
 
@@ -39,12 +42,13 @@ class ProductsController < ApplicationController
       @colors = Admin::Color.all
     end 
     
-      if params[:sorting_order].present?
-        @products = Admin::Product.other_filter_sort(@products, params[:sorting_order])
-      end
+    if params[:sorting_order].present?
+      @products = Admin::Product.other_filter_sort(@products, params[:sorting_order])
+    end
 
 
-
+    @min_price=Admin::Product.minimum("price")
+    @max_price=Admin::Product.maximum("price")
 
     respond_to do |format|
           format.js {}

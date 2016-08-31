@@ -11,15 +11,8 @@
                         <li>
                             <span>></span>
                         </li>
-                        <li><a href="index.html" title="Lighting">Lighting</a></li>
-                        <li>
-                            <span>></span>
-                        </li>
-                        <li><a href="index.html" title="Categories 01">Categories 01</a></li>
-                        <li>
-                            <span>></span>
-                        </li>
-                        <li>Washing machine 1</li>
+                        
+                        <li>Shop</li>
                     </ul>
                 </div>
             </div>
@@ -35,7 +28,7 @@
       <div class="col-xs-12 col-sm-9">
         <img src="/assets/bedroom.jpg" class="hidden-xs" alt="" />
         <h1 class="page-heading section-padding2">
-          <span class="cat-name pull-left">Bedroom </span>
+          <span class="cat-name pull-left">Products </span>
           <span class="heading-counter pull-right">There are 7 products.</span>
         </h1>
         <div class="shop-item-filter">
@@ -175,3 +168,9 @@
     </div>
 </div>
 <!--End of Quickview Product-->	
+
+<%unit = store_unit%>
+<script type="text/javascript">
+  
+  set_max_min_price(<%=@max_price%>,<%=@min_price%>,'<%=store_unit%>')
+</script>

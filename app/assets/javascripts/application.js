@@ -38,3 +38,8 @@ function sort_order(value){
 
 	$('#submit').click();
 }
+function set_max_min_price(max,min,un){
+	min_price = min;
+	max_price = max;
+	unit = un;
+}
