@@ -25,3 +25,5 @@ $('#paginator').html('<%= escape_javascript(paginate(@products, :remote => true)
 <%else%>
 	$('#selected_filters_colors').html("No Color Selected");
 <%end%>
+
+$('.uniq').html("There are is <%=@total_products.count%> products")

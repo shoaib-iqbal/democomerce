@@ -36,7 +36,8 @@ class ProductsController < ApplicationController
       @colors = Admin::Color.all.where(:user_id => params[:vendor])
     else
       products = Admin::Product.all
-      @products = Admin::Product.filter_search(params, products).page(params[:page]).per(5)
+      @total_products = Admin::Product.filter_search(params, products)
+      @products = @total_products.page(params[:page]).per(5)
       
       @sizes = Admin::Size.all
       @colors = Admin::Color.all

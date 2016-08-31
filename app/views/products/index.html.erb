@@ -21,7 +21,7 @@
 </div>
 <!-- Breadcrumbs Area End -->
 <!-- All Product Side Bar Area Start -->
-<div class="all-product-sidebar-area section-padding2">
+<div class="all-product-sidebar-area section-padding2" id="test">
   <div class="container">
     <div class="row">
         <%= render "sidebar" %>
@@ -29,7 +29,7 @@
         <img src="/assets/bedroom.jpg" class="hidden-xs" alt="" />
         <h1 class="page-heading section-padding2">
           <span class="cat-name pull-left">Products </span>
-          <span class="heading-counter pull-right">There are 7 products.</span>
+          <span class="heading-counter pull-right uniq">There are <%=@total_products.count%> products.</span>
         </h1>
         <div class="shop-item-filter">
           <div class="shop-tab clearfix">
@@ -89,6 +89,7 @@
             </div>
           </div>
         </div>
+        
          <div id="paginator">
           <%= paginate @products, :remote => true %>
          </div>
@@ -123,5 +124,15 @@
 <%unit = store_unit%>
 <script type="text/javascript">
   
-  set_max_min_price(<%=@max_price%>,<%=@min_price%>,'<%=store_unit%>')
+  set_max_min_price(<%=@max_price%>,<%=@min_price%>,'<%=store_unit%>');
+
+
+</script>
+<script type="text/javascript">
+  
+  $('#paginator').bind('DOMNodeInserted DOMNodeRemoved', function(event) {
+     // $(window).scrollTop(380);
+     $('html, body').animate({scrollTop:380}, 'slow');
+    
+});
 </script>

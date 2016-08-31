@@ -3780,7 +3780,7 @@ p.alert {
 .form-control, .form-control:hover, .form-control:focus {cursor: default !important;}
 .lang-drop{ border: none; background-color: #fff; }
 .header-top-right a:hover{ background-color: #fff !important; }
-.mainmenu ul li a:hover{color: #f3ceb1;}
+
 
 .admin_product_name{
   text-transform: capitalize !important;
@@ -3792,4 +3792,7 @@ p.alert {
 .pagination>.active>a{
       background-color: #fff;
       color: #c38749 !important;
+}
+a:hover{
+  background-color: transparent !important;
 }
