@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  protect_from_forgery with: :null_session
+  
   def show
     @product=Admin::Product.friendly.find(params[:id])
     @vendor_product = Admin::Product.where(:user_id => @product.user_id)
@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
       
 
     end
-@products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(5)
+@products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(15)
 
     @min_price=Admin::Product.minimum("price")
     @max_price=Admin::Product.maximum("price")

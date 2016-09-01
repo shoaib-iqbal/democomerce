@@ -1,8 +1,8 @@
 class CartsController < ApplicationController
-	skip_before_action :create
+	
 
 	def index
-		
+		byebug
 	end
 	def create
 		product = Admin::Product.find_by_id(params[:product_id])

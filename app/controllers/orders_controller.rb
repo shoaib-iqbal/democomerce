@@ -74,6 +74,17 @@ class OrdersController < ApplicationController
      @current_order.state = 'complete'
      @current_order.customer=current_customer if current_customer
      @current_order.save
+
+     # users=User.with_role :superadmin
+     # users.each do |user|
+     #    UserMailer.order_confirmation(@current_order, user.email).deliver
+
+
+     # end
+
+
+
+
      session['order_number']=nil
      redirect_to '/'
   end

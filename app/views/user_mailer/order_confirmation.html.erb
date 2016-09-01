@@ -1,0 +1,71 @@
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="100%" align="center" bgcolor="#eeeeee" valign="top" style="padding:20px;">
+      <table style="width:100%;" cellpadding="20" cellspacing="0">
+        <tr>
+          <td bgcolor="#fff" style="font-size:14px; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 10px !important;">
+            <strong>Dear Customer,</strong>
+            <br><br>
+            Please review and retain the following order information for your records.
+            <br><br>
+            <strong>Order Summary</strong>
+            <br><br>                              
+          	<table width="100%" cellpadding="10" border="1" cellspacing="0" style="font-size:11px; font-family:Gotham, 'Helvetica Neue', Helvetica, Arial, sans-serif;">  
+              <thead>
+                <tr>
+                  <th align="left" bgcolor="#ccc">#</th>
+                  <th align="center" bgcolor="#ccc">ID</th>
+                  <th align="left" bgcolor="#ccc">PRODUCT</th>
+                  <th align="center" bgcolor="#ccc">QUANTITY</th>
+                  <th align="center" bgcolor="#ccc">UNIT PRICE</th>
+                  <th align="center" bgcolor="#ccc">PRICE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @order.line_items.each_with_index do |item, index| %>
+                  <tr>
+                    <td align="left" valign="top"><%= index %>
+                    </td>
+                    <td align="center" valign="top"><%= item.product.name %>
+                    </td>
+                    <td align="left" valign="top"> <%= item.product.name %>
+                    <%= item.product.name %></td>
+                    <td align="center" valign="top" style="text-align: center;">
+                    	<strong><%=item.quantity%></strong>
+                    </td>
+                    <td align="center" valign="top">
+                    	<strong><%= item.product.price %></strong>
+                    </td>
+                    <td align="center" valign="top"><%= item.product.name %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+
+            </table>
+            <br>
+            <div style="width:100%; text-align:right;">
+              Sub Total: <%= @order.sub_total %>
+              <br>
+              <br>
+
+                  "total" <%= @order.sub_total %>
+                  <br>
+                  <br>
+                  
+                </div>
+
+                <br>
+                Thank you for your business.
+                <br>
+                <div class="image">
+                  <a href=<%=@url %>><img src="<%=@logo_url%>" alt=""></a>
+                </div>
+
+              </td>
+            </tr>
+        	</table>
+
+        </td>    
+    	</tr>
+		</table>
