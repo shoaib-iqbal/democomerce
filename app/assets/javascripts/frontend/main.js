@@ -19,16 +19,32 @@
 		$(".first-languages").css("display","none");
 		$("#cart_list").css("display","none");
     });
-    $(".mini-cart-icon").on('click', function(){
+    
+
+    $(".mini-cart-icon").on('mouseover', function(){
+    	$("#cart_list").show();
+    	toggle_cart();
+    });
+        $(".mini-cart-icon").on('click', function(){
     	$("#cart_list").slideToggle();
+    	toggle_cart();
+    });
+
+    $("#cart_list").on('mouseleave', function(){
+    	$("#cart_list").hide();
+    	toggle_cart();
+    });
+
+    function toggle_cart(){
+    	// $("#cart_list").slideToggle();
         $(".header-bottom-search").css("display","none");
 		$(".first-currencies").css("display","none");
 		$(".first-languages").css("display","none");
-    });
+    }
 
  /** Filter Shop Page ***/
   $(".filter-button-shop").click(function() {
- $(".left-widget-content").toggle();
+ 	$(".left-widget-content").toggle();
    });
  /* Search Letter */
 	jQuery("#search-letter").on('focus', function(){

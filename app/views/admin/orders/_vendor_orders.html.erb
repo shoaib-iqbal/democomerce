@@ -2,6 +2,7 @@
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
             <tr>
+                <th style="display:none;"></th>
                 <th>First Name</th>
                 <th>Date</th>
                 <th>Number</th>
@@ -18,7 +19,7 @@
         <% @orders.each do |order| %>
             
             <tr class="odd gradeX">
-
+            <td style="display: none;"></td>
                 <td><%= order.first_name%></td>
                 <td><%= order.created_at %></td>
                 <td>
@@ -29,7 +30,14 @@
                 <td><%= order.payment_state%></td>
                 <td><%= order.shipment_state%></td>
                 <td><%=order.customer.email rescue ''%></td>
-                 <td>$<%= order.sub_total %></td>
+                 <td><%=store_unit%>
+                 <%if current_user.superadmin?%>
+                 <%=order.sub_total %>
+                 <%else%>
+                 <%= order.vendor_based_sum(current_user) %>
+                 <%end%>
+                     
+                 </td>
                 <td class="center">
                     <span><%#= link_to '', edit_admin_order_path(order),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
                     <span>

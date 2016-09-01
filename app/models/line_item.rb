@@ -1,5 +1,6 @@
 class LineItem < ActiveRecord::Base
 	belongs_to :order
+	belongs_to :user
 	belongs_to :product , class_name: 'Admin::Product'
 
 	def get_name

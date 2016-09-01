@@ -118,7 +118,16 @@
   </div>
 </div>
 <!-- All Product Side Bar Area End -->
-
+<!--Quickview Product Start -->
+<div id="quickview-wrapper">
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            
+        </div>
+    </div>
+</div>
+<!--End of Quickview Product--> 
 <!--End of Quickview Product-->	
 
 <%unit = store_unit%>
@@ -130,9 +139,12 @@
 </script>
 <script type="text/javascript">
   
-  $('#paginator').bind('DOMNodeInserted DOMNodeRemoved', function(event) {
-     // $(window).scrollTop(380);
-     $('html, body').animate({scrollTop:380}, 'slow');
+  $('#paginator').bind('DOMNodeInserted DOMNodeRemoved', function(e) {
+      //$(window).scrollTop(380);
+      
+     $('html, body').animate({scrollTop:380}, 'fast');
     
-});
+  });
+
+
 </script>

@@ -2,6 +2,7 @@
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-vendors">
         <thead>
             <tr>
+            <th style="display: none;"></th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Discounted Price</th>
@@ -18,6 +19,7 @@
         <% @admin_products.each do |product| %>
 
             <tr class="odd gradeX">
+            <td style="display: none;"></td>
                 <td><%= product.name %></td>
                 <td><%= product.price %></td>
                 <td><%= product.discounted_price %></td>

@@ -33,6 +33,18 @@ class Order < ActiveRecord::Base
 	  end
 	end
 
+	def vendor_based_sum(user_id)
+		total=0
+		line_items = self.line_items.where(user_id: user_id)
+		line_items.each do |item| 
+			if item.product and item.product.discounted_price.present?
+				total+= item.quantity*item.product.discounted_price rescue '0'
+			else 
+				total+= item.quantity*item.product.price rescue 0
+			end
+		end
+		return total
+	end
 	def sub_total
 		total=0
 		self.line_items.each do |item| 
@@ -48,9 +60,19 @@ class Order < ActiveRecord::Base
 	def full_address
 		address = self.addresses.last
 		if address.present?
-			"#{address.address},#{address.city},#{address.country_state},#{address.country}"
+			"#{address.address}, #{address.city}, #{address.country_state}, #{address.country}"
 		else
-		"No address fond"
+		"No address found"
 		end		
+	end
+
+	def permanent_address
+		address = self.customer.addresses.first
+		
+		if address.present?
+			"#{address.address}, #{address.city}, #{address.country_state}, #{address.country}"
+		else
+		"No address found"
+		end	
 	end
 end

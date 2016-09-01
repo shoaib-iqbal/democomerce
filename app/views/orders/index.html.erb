@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%if @orders.present? %>
 <h1>Listing Orders</h1>
 
 <table>
@@ -23,3 +23,4 @@
 <br>
 
 <%= link_to 'New Order', new_order_path %>
+<%end%>

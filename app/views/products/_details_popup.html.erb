@@ -29,8 +29,18 @@
                             <div class="price-box">
                                 <p class="price">
                                     <span class="special-price">
-                                        <span class="new-price">£ <%= @product.discounted_price %></span>
-                                        <span class="old-price">£ <%= @product.price %></span>
+                                        <%if @product.discounted_price.present?%>
+                                        <span class="new-price"><%= show_price(@product.discounted_price) %>
+                                            
+                                        </span>
+                                        <span class="old-price"><%= show_price(@product.price) %>
+                                            
+                                        </span>
+                                        <%else%>
+                                            <span class="new-price"><%= show_price(@product.price) %>
+                                            
+                                        </span>
+                                        <%end%>
                                         <!-- <span class="amount">$132.00</span> -->
                                     </span>
                                 </p>

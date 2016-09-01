@@ -15,6 +15,7 @@ $('#paginator').html('<%= escape_javascript(paginate(@products, :remote => true)
 
 <% if @selected_sizes.present? %>
 	$('#selected_filters_sizes').html("<%=j render(:partial => 'filters_list_sizes', :object => @selected_sizes) %>");
+	$('#paginator').html('<%= escape_javascript(paginate(@products, :remote => true).to_s) %>');
 <%else%>
 	$('#selected_filters_sizes').html("No Size Selected");
 <%end%>
@@ -22,6 +23,7 @@ $('#paginator').html('<%= escape_javascript(paginate(@products, :remote => true)
 
 <% if @selected_colors.present? %>
 	$('#selected_filters_colors').html("<%=j render(:partial => 'filters_list_colors', :object => @selected_colors) %>");
+	$('#paginator').html('<%= escape_javascript(paginate(@products, :remote => true).to_s) %>');
 <%else%>
 	$('#selected_filters_colors').html("No Color Selected");
 <%end%>

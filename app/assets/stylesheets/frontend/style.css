@@ -3796,3 +3796,7 @@ p.alert {
 a:hover{
   background-color: transparent !important;
 }
+.btn-default:focus, .btn-default:hover, .btn-warning:focus, .btn-warning:hover, .btn-success:focus, .btn-success:hover {
+    background-color: #e0e0e0;
+     background-position: 0px 0px !important ; 
+}

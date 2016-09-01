@@ -50,7 +50,7 @@ module Admin
        when 'asc_price'
          products = products.sort_by( &:price)
        else
-
+        products=products
       end 
     return products
   end
