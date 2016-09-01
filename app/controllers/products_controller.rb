@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.js {}
       format.html
-      format.json{}
+      # format.json{}
     end
  
   end
@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
           format.js {}
           format.html
-          format.json{}
+          # format.json{}
     end
   end
   

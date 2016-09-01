@@ -6,7 +6,7 @@ gem 'rails', '4.2.6'
 gem 'globalize', '~> 5.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-gem 'rails-api'
+# gem 'rails-api'
 gem "rolify"
 gem 'delayed_job_active_record'
 gem 'geocoder'

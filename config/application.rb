@@ -25,10 +25,10 @@ module DemoStore
     config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets','fonts')
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.fallbacks = true
-    config.action_dispatch.default_headers.merge!({
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => '*'
-    })
+    # config.action_dispatch.default_headers.merge!({
+    #   'Access-Control-Allow-Origin' => '*',
+    #   'Access-Control-Request-Method' => '*'
+    # })
     config.active_job.queue_adapter = :delayed_job
   end
 end

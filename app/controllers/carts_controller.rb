@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 	
 
 	def index
-		byebug
+		
 	end
 	def create
 		product = Admin::Product.find_by_id(params[:product_id])
