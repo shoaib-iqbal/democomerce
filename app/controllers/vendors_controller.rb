@@ -1,6 +1,6 @@
 class VendorsController < ApplicationController
   def index
-    @vendors = User.with_role :vendoradmin
+    @vendors = User.all
     if params[:latitude].present? and params[:longitude].present?
       if @vendors.present?
         # Vendors within 10 Km
