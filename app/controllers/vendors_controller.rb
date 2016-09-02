@@ -21,7 +21,7 @@ private
 
       ids = near_vendors.collect(&:id)
        # products = Admin::Product.where(user_id: ids).where("LOWER(admin_products.name) LIKE ?" , "%#{search}%".downcase)
-      return products = Admin::Product.where(user_id: ids).where(name: , search)
+      return products = Admin::Product.where(user_id: ids).where(name:  search)
     end
   end
 
