@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 gem 'globalize', '~> 5.0.0'
+gem 'aws-sdk', '~> 2.3'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # gem 'rails-api'

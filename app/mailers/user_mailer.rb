@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   	@order = order
   	
   	@url = "http://localhost:3000"
-  	@logo_url = "http://localhost:3000/system/admin/images/avatars/000/000/037/large/16.jpg?1471448977"
+  	@logo_url = "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=150&h=150"
   	mail(to: email, subject: 'Order Detail')
   	
   end
@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
   	@order = order
   	
   	@url = "http://localhost:3000"
-  	@logo_url = "http://localhost:3000/system/admin/images/avatars/000/000/037/large/16.jpg?1471448977"
+  	@logo_url = "https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=150&h=150"
   	mail(to: email, subject: 'New Order Placed, Order Detail')
   end
 end

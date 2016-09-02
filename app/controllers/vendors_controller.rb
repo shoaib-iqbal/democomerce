@@ -4,7 +4,7 @@ class VendorsController < ApplicationController
     if params[:latitude].present? and params[:longitude].present?
       if @vendors.present?
         # Vendors within 10 Km
-        @vendors = @vendors.near([params[:latitude], params[:longitude]], 100)
+        @vendors = @vendors.near([params[:latitude], params[:longitude]], 10)
         products = find_products(@vendors, params[:search])
         vendors_ids = products.collect(&:user_id) if products.present?
         @vendors = User.where(id: vendors_ids)
