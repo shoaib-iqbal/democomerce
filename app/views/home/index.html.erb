@@ -296,7 +296,7 @@
 							<div class="product-content">
 								<h5 class="clearfix">
 									<div class="pull-left"><a href="<%=product_path(product.slug)%>" title="<%= product.name %>"><%= product.name %></a></div>
-									<div class="pull-right"><a href="/products?vendor=<%= product.user.id %>" title="<%= product.user.name %>"><%= product.user.name%></a></div>
+									<div class="pull-right"><a href="/products?vendor=<%= product.user.id %>" title="<%= product.user.name %>"><%= product.user.name rescue''%></a></div>
 								</h5>
 								<!--Product Rating-->
 								<div class="rating-icon">
