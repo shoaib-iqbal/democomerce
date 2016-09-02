@@ -20,7 +20,8 @@ private
     if near_vendors.present? and search.present?
 
       ids = near_vendors.collect(&:id)
-      return products = Admin::Product.where(user_id: ids).where("LOWER(admin_products.name) LIKE ?" , "%#{search}%".downcase)
+       # products = Admin::Product.where(user_id: ids).where("LOWER(admin_products.name) LIKE ?" , "%#{search}%".downcase)
+      return products = Admin::Product.where(user_id: ids).where(name: , search)
     end
   end
 
