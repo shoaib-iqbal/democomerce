@@ -2,7 +2,7 @@
 	<%if @product.sizes.present?%>
 		<p class="shop-select">
 			<label>Size &nbsp; &nbsp;</label>
-			<select id="size_id" style="width:130px;"	>
+			<select id="size_id" style="width:190px;"	>
 				
 				<% @product.sizes.each do |size| %>
 
@@ -15,7 +15,7 @@
 	<%if @product.colors.present?%>
 		<p class="shop-select">
 			<label>Color &nbsp;</label>
-			<select  id="color_id" style="width:130px;">
+			<select  id="color_id" style="width:190px;">
 				<% @product.colors.each do |color| %>
 
 		            	<option value="<%=color.id%>" <span><%=color.name%> </span></option>

@@ -48,7 +48,7 @@
                   <label>Sort by</label>
                   <div class="shop-select">
                   
-                    <%= select_tag 'sort_by', options_for_select(Admin::Product::SORT_OPTIONS.collect{ |v| [v.last, v.first] }) , :onchange => 'sort_order(this.value)' %>
+                    <%= select_tag 'sort_by', options_for_select(Admin::Product::SORT_OPTIONS.collect{ |v| [v.last, v.first] }),prompt: 'Select a Filter' , :onchange => 'sort_order(this.value)' %>
 
                    
                   
@@ -132,9 +132,19 @@
 
 <%unit = store_unit%>
 <script type="text/javascript">
-  
+   // $( document ).ready(function() {
+        console.log( "document loaded" );
+ 
   set_max_min_price(<%=@max_price%>,<%=@min_price%>,'<%=store_unit%>');
-
+  function set_max_min_price(max,min,un){
+  console.log('products')
+  min = min
+  min_price = typeof min!== 'undefined' ? min : 0;
+  max_price = typeof max!== 'undefined' ? max : 10000;
+  unit = typeof un!== 'undefined' ? un : '$';
+  
+}
+   // });
 
 </script>
 <script type="text/javascript">

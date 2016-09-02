@@ -22,7 +22,7 @@
                 </tr>
               </thead>
               <tbody>
-                <% @order.line_items.each_with_index do |item, index| %>
+                <% @order.each_with_index do |item, index| %>
                   <tr>
                     <td align="left" valign="top"><%= index %>
                     </td>
@@ -45,11 +45,11 @@
             </table>
             <br>
             <div style="width:100%; text-align:right;">
-              Sub Total: <%= @order.sub_total %>
+              Sub Total: <%#= @order.sub_total %>
               <br>
               <br>
 
-                  "total" <%= @order.sub_total %>
+                  "total" <%#= @order.sub_total %>
                   <br>
                   <br>
                   

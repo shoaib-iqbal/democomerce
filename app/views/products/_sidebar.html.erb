@@ -47,12 +47,16 @@
         <h3 class="widget-subtitle">Size</h3>
         <div class="widget-info">
           <ul>
+          <%if @sizes.present?%>
           <%@sizes.each do |size|%>
             <li>
               <%= check_box_tag "checkbox_#{size.id}_#{size.name}", "#{size.id}",false, id:"checkbox_#{size.id}_#{size.name}", :name=>"sizes_ids[]"%>
               <%=size.name%> (<%= size.products.count %>)
             </li>
           <% end %>
+          <%else%>
+            no size present
+          <%end%>
           </ul>
         </div>
       </aside>
@@ -60,16 +64,21 @@
         <h3 class="widget-subtitle">Color</h3>
         <div class="widget-info">
           <ul>
+          <%if @colors.present?%>
           <%@colors.each do |color|%>
               <li>
                 <%= check_box_tag "checkbox_#{color.id}_#{color.name}", "#{color.id}",false, id:"checkbox_#{color.id}_#{color.name}", :name=>"colors_ids[]"%>
                 <%=color.name%> (<%= color.products.count %>)
               </li>
             <% end %>
+            <%else%>
+            no color present
+            <%end%>
           </ul>
         </div>
       </aside>
     </div>
+    <%= hidden_field_tag 'vendor',{}, :value=>"#{params[:vendor]}"  %>
     <%= submit_tag "Filter", :id => 'submit', class: "hidden"%>
   <% end %>
 

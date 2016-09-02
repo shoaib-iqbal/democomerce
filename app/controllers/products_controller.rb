@@ -22,12 +22,13 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.js {}
       format.html
-      # format.json{}
+      format.json{}
     end
  
   end
 
   def index
+
     @selected_sizes = Admin::Size.where(id: params[:sizes_ids]) if params[:sizes_ids].present?
     @selected_colors = Admin::Color.where(id: params[:colors_ids]) if params[:colors_ids].present?
     if params[:vendor].present?
@@ -54,7 +55,7 @@ class ProductsController < ApplicationController
       
 
     end
-@products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(15)
+    @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(6)
 
     @min_price=Admin::Product.minimum("price")
     @max_price=Admin::Product.maximum("price")
@@ -62,7 +63,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
           format.js {}
           format.html
-          # format.json{}
+          format.json{}
     end
   end
   

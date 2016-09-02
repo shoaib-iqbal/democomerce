@@ -73,7 +73,7 @@
 						<!-- BX Slider Navigation -->
 					</div>
 				</div>
-			</div>users
+			</div>
 			<div class="col-lg-5 col-md-5 col-sm-7">
 				<div class="pd-center-column">
 					<h2><%= @product.name %></h2>
@@ -341,6 +341,7 @@
 									<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
 										<%if product.images.present? %>
 											<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block", style:  "max-height:200px"%>
+
 										<%end%>
 									</a>                                            
 								</div>
@@ -355,8 +356,8 @@
 									</a>
 									<a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
 									</a>
-									<a  title="Quick view"  >
-									<i class="fa fa-expand" onclick="getProductDetail(this)">
+									<a  title="Quick view"  onclick="getProductDetail(this)">
+									<i class="fa fa-expand" >
 									<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>
 									</a>
 								</div>
@@ -463,12 +464,4 @@
 <div id="quickview-wrapper">
    	
 </div>
-<!--End of Quickview Product-->			
-
-<script type="text/javascript">
-  max_price=<%=@max_price%>;
-  min_price=<%=@min_price%>;
-  set_max_min_price(<%=@max_price%>,<%=@min_price%>,'<%=store_unit%>');
-
-
-</script>
+<!--End of Quickview Product-->

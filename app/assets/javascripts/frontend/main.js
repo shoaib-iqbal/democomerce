@@ -192,8 +192,10 @@
  
 /*----------------------------
  price-slider active
------------------------------- */ 
+------------------------------ */
+if (window.location.pathname == '/products' ){
 
+console.log('main')
 	  $( "#slider-range" ).slider({
 	   range: true,
 	   min: min_price,
@@ -216,7 +218,7 @@
 	   " - "+unit + $( "#slider-range" ).slider( "values", 1 ) );
 	 
  
- 
+ }
 /*-------------------------
 	showlogin toggle function
 --------------------------*/

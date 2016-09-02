@@ -1,21 +1,29 @@
 class OrdersController < ApplicationController
+  before_action :check_session_order
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
-  def index
-    @orders = Order.all
+  # def index
+  #   @orders = Order.all
+  # end
+
+
+  def check_session_order
+    if @current_order.blank?
+      redirect_to '/'
+    end
   end
 
   # GET /orders/1
   # GET /orders/1.json
-  def show
-  end
+  # def show
+  # end
 
-  # GET /orders/new
-  def new
-    @order = Order.new
-  end
+  # # GET /orders/new
+  # def new
+  #   @order = Order.new
+  # end
 
   def checkout
     
@@ -75,13 +83,14 @@ class OrdersController < ApplicationController
      @current_order.customer=current_customer if current_customer
      @current_order.save
 
-     # users=User.with_role :superadmin
-     # users.each do |user|
-     #    UserMailer.order_confirmation(@current_order, user.email).deliver
-
-
-     # end
-
+     users=User.with_role :superadmin
+     users.each do |user|
+        UserMailer.order_confirmation(@current_order, user.email).deliver rescue ''
+     end
+     @current_order.line_items.group_by(&:user_id).each do |user,lineitems|
+      emailaddress=User.find(user).email
+      UserMailer.order_confirmation_vendor(lineitems, emailaddress).deliver rescue''
+     end
 
 
 

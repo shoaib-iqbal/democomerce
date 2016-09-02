@@ -80,9 +80,9 @@
 
 								<!--Product Action-->
 								<div class="product-action"> 
-									<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-									<a  title="Quick view"  >
-									<i class="fa fa-expand" onclick="getProductDetail(this)">
+									<a  title="<%= t 'welcome.addtocart' %>" onclick="getProductDetail(this)"><i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i></a>
+									<a  title="<%= t 'welcome.quickview' %>"  onclick="getProductDetail(this)" >
+									<i class="fa fa-expand">
 									<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>
 									</a>
 								</div>
@@ -190,9 +190,9 @@
 								</div>
 								<!--Product Action-->
 								<div class="deal-product-action">
-									<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-									<a  title="Quick view"  >
-									<i class="fa fa-expand" onclick="getProductDetail(this)">
+									<a onclick="getProductDetail(this)" title="<%= t 'welcome.addtocart' %>"><i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{deal.product.slug}"  %></i></a>
+									<a  title="<%= t 'welcome.quickview' %>"  onclick="getProductDetail(this)">
+									<i class="fa fa-expand" >
 									<%= hidden_field_tag :product_id,{}, :value=>"#{deal.product.slug}"  %></i>
 									</a>
 								</div>
@@ -286,9 +286,9 @@
 
 								<!--Product Action-->
 								<div class="product-action"> 
-									<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-									<a  title="Quick view"  >
-									<i class="fa fa-expand" onclick="getProductDetail(this)">
+									<a  title="<%= t 'welcome.addtocart' %>" onclick="getProductDetail(this)"><i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i></a>
+									<a  title="<%= t 'welcome.quickview' %>"  onclick="getProductDetail(this)" >
+									<i class="fa fa-expand">
 									<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>
 									</a>
 								</div>

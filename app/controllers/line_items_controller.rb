@@ -4,9 +4,14 @@ class LineItemsController < ApplicationController
 
 		
 		if line_item.update_attributes(quantity: params[:quantity])
-			render :partial => '/carts/cart_table'
-		 end
+			# render :partial => '/carts/cart_table'
+		end
 		
+		respond_to do |format|
+	      format.js {}
+	      format.html
+	      format.json{}
+	    end
 	end
 
 end

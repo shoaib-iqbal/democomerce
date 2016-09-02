@@ -134,9 +134,16 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_product_params
+      
+      if params[:admin_product][:name].present?
+        string=params[:admin_product][:name]
+        params[:admin_product][:name] = string.slice(0,1).capitalize + string.slice(1..-1)
+      end
+
       if current_user.has_role? :vendoradmin
         params[:admin_product][:user_id] = current_user.id
       end
+      
        params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_price, images_attributes: [:avatar => []], size_ids: [],color_ids: [] )
     end
 end
