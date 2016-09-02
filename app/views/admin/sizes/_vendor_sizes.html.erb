@@ -4,6 +4,7 @@
             <tr>
                 <th>Name</th>
                 <th>Value</th>
+                <th>Vendor name</th>
                 <th>Tools</th>
             </tr>
         </thead>
@@ -14,6 +15,7 @@
             <tr class="odd gradeX">
                 <td><%= size.name %></td>
                 <td><%= size.value %></td>
+                <td><%= size.user.name %></td>
                 <td class="center">
                     <span><%= link_to '', edit_admin_size_path(size),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
                     <span>
