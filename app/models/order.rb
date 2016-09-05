@@ -33,6 +33,8 @@ class Order < ActiveRecord::Base
 	  end
 	end
 
+
+
 	def vendor_based_sum(user_id)
 		total=0
 		line_items = self.line_items.where(user_id: user_id)
@@ -56,6 +58,7 @@ class Order < ActiveRecord::Base
 		end
 		return total
 	end
+
 
 	def full_address
 		address = self.addresses.last

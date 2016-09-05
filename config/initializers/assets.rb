@@ -11,6 +11,7 @@ Rails.application.config.assets.precompile += %w( admin.css )
 Rails.application.config.assets.precompile += %w( all_admin.js )
 Rails.application.config.assets.precompile += %w( select2.min.js )
 Rails.application.config.assets.precompile += %w( frontend/modernizr-2.8.3.min.js )
+Rails.application.config.assets.precompile += %w( frontend/gen_validatorv4.js )
 Rails.application.config.assets.precompile += %w( frontend/product_index.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

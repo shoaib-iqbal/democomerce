@@ -19,8 +19,9 @@
 *= require frontend/jquery-1.11.3
 *= require frontend/jquery.easing
 *= require frontend/jquery.flexslider
-
+*= require frontend/gen_validatorv4
 *= require frontend_custom
+
 
 
 */

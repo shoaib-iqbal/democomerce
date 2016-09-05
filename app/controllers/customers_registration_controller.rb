@@ -16,6 +16,7 @@ class CustomersRegistrationController < Devise::RegistrationsController
 
     if resource.save
       sign_in(:customer, resource)
+   
       redirect_to session['redirect_path_after_signup']
     else
       render :nothing => true
