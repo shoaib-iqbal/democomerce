@@ -1,5 +1,7 @@
 module Admin
 	class Product < ActiveRecord::Base
+    include PgSearch
+    multisearchable :against => [:name, :user]
 		self.table_name = 'admin_products'
 		has_many :images , dependent: :destroy
 		has_many :line_items

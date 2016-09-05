@@ -55,6 +55,10 @@ class ProductsController < ApplicationController
       
 
     end
+    if params[:vendor] and params[:search].present?
+      p_ids = PgSearch.multisearch(params[:search]).map(&:searchable_id)
+      @products = Admin::Product.where(id: p_ids,user_id: params[:vendor])
+    end
     @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(6)
 
     @min_price=Admin::Product.minimum("price")

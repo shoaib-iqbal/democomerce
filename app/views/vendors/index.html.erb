@@ -11,7 +11,7 @@
           <img src="https://thumb-3do.s3.envato.com/files/199657172/thumb.jpg" class="img-responsive pull-left vendor-image">
           <div class="more-info">
             <div class="name">
-              <h4><a href="<%= products_path(vendor: vendor.id) %>"><%= vendor.name %></a></h4>
+              <h4><a href="<%= products_path(vendor: vendor.id) %>&search=<%=params[:search]%>"><%= vendor.name %></a></h4>
             </div>
             <div class="txt">Lorem ipsum dolor sit amet, consectetur</div>
             <div class="rating">0 Ratings</div>
