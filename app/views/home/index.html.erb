@@ -1204,45 +1204,7 @@
 <!--News Letter Area End-->	
 <!--Testimonial Area Start-->
 <div class="testimonial-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <!--Testimonial List-->
-                <div class="testimonial-list indicator-button">
-                    <!--Single Testimonial-->
-                    <div class="single-testimonial">
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
-                        <div class="testimonial-img">
-                            <img src="/assets/testimonial/1.jpg" alt="">
-                        </div>
-                        <div class="testimonial-title">
-                            <h4>Bootexpert<span>-</span> demo@demo.com</h4>
-                        </div>
-                    </div>
-                    <!--Single Testimonial-->
-                    <div class="single-testimonial">
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
-                        <div class="testimonial-img">
-                            <img src="/assets/testimonial/2.jpg" alt="">
-                        </div>
-                        <div class="testimonial-title">
-                            <h4>Bootexpert <span>-</span> demo@demo.com</h4>
-                        </div>
-                    </div>
-                    <!--Single Testimonial-->
-                    <div class="single-testimonial">
-                        <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.</p>
-                        <div class="testimonial-img">
-                            <img src="/assets/testimonial/3.jpg" alt="">
-                        </div>
-                        <div class="testimonial-title">
-                            <h4>Bootexpert <span>-</span> demo@demo.com</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<%= render :partial => '/shared/testimonial', :local => {:testimonials => @testimonials}%>
 </div>
 <!--Testimonial Area End-->
 <!--Brand Area Start-->

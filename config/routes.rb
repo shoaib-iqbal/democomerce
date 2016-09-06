@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    resources :deal_of_days
-  end
   devise_for :customers , :controllers => { :registrations => 'customers_registration' }
   resources :customers
 
@@ -14,6 +11,8 @@ Rails.application.routes.draw do
     resources :sizes
     resources :orders
     resources :store_settings
+    resources :testimonials
+    resources :deal_of_days
   end
   devise_for :users, :controllers => {:registrations => "registrations"}
   devise_scope :user do

@@ -37,15 +37,15 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
 
 
-  config.paperclip_defaults = {
-    storage: :s3,
-    s3_credentials: {
-      bucket: 'commerceassets',
-      access_key_id: 'AKIAI2MENQUJ46FQ6LIA',
-      secret_access_key: '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',
-      s3_region: 'us-east-1',
-    }
-  }
+  # config.paperclip_defaults = {
+  #   storage: :s3,
+  #   s3_credentials: {
+  #     bucket: 'commerceassets',
+  #     access_key_id: 'AKIAI2MENQUJ46FQ6LIA',
+  #     secret_access_key: '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',
+  #     s3_region: 'us-east-1',
+  #   }
+  # }
 
 
 
