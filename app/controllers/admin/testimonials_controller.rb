@@ -33,7 +33,7 @@ class Admin::TestimonialsController < AdminController
 
     respond_to do |format|
       if @admin_testimonial.save
-        format.html { redirect_to @admin_testimonial, notice: 'Testimonial was successfully created.' }
+        format.html { redirect_to admin_testimonials_url, notice: 'Testimonial was successfully created.' }
         format.json { render :show, status: :created, location: @admin_testimonial }
       else
         format.html { render :new }
