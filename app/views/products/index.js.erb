@@ -4,6 +4,7 @@
 
   $('#listview_products').html("<%=j render(:partial => 'listview_products', :object => @products) %>");
 $('#paginator').html('<%= escape_javascript(paginate(@products, :remote => true).to_s) %>');
+$("html, body").animate({ scrollTop: $('.cat-name').offset().top }, 500);
 <% else %>
   $('#products').html("<h1 class='text-center'>No Results Found</h1>");
 

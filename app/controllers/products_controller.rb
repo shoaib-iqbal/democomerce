@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
        @products = Admin::Product.joins(:translations).with_translations(I18n.locale).where("LOWER(admin_product_translations.name) LIKE ?", "%#{params[:search]}%".downcase).where(:user_id => params[:vendor])
       #@products = Admin::Product.where(id: p_ids,user_id: params[:vendor])
     end
-    @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(6)
+    @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(4)
 
     @min_price=Admin::Product.minimum("price")
     @max_price=Admin::Product.maximum("price")

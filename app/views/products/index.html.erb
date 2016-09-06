@@ -28,8 +28,8 @@
       <div class="col-xs-12 col-sm-9">
         <img src="/assets/bedroom.jpg" class="hidden-xs" alt="" />
         <h1 class="page-heading section-padding2">
-          <span class="cat-name pull-left">Products </span>
-          <span class="heading-counter pull-right uniq">There are <%=@total_products.count%> products.</span>
+          <span class="cat-name pull-left"><%= t 'welcome.products' %> </span>
+          <span class="heading-counter pull-right uniq"><%= t 'welcome.thereare' %> <%=@total_products.count%> <%= t 'welcome.products' %> .</span>
         </h1>
         <div class="shop-item-filter">
           <div class="shop-tab clearfix">
@@ -45,7 +45,7 @@
             <div class="shop-tab-selectors pull-right">
               <%=form_tag products_path, method: 'get', id: "sorting", :remote=>true do%>
                 <div class="single-shop-form single-shop-show pull-left">
-                  <label>Sort by</label>
+                  <label><%= t 'welcome.sortby' %> </label>
                   <div class="shop-select">
                   
                     <%= select_tag 'sort_by', options_for_select(Admin::Product::SORT_OPTIONS.collect{ |v| [v.last, v.first] }),prompt: 'Select a Filter' , :onchange => 'sort_order(this.value)' %>
@@ -55,7 +55,7 @@
                   </div>
                 </div>
                 <div class="single-shop-form pull-left">
-                  <label>Show</label>
+                  <label><%= t 'welcome.show' %> </label>
                   <div class="shop-select">
                     <select>
                       <option selected="selected">12</option>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="single-shop-form pul-right">
                   <button type="submit">
-                  <span>Compare (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
+                  <span><%= t 'welcome.compare' %>  (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
                   </button>                     
                 </div>
               <% end %>
@@ -170,12 +170,12 @@
 </script>
 <script type="text/javascript">
   
-  $('#paginator').bind('DOMNodeInserted DOMNodeRemoved', function(e) {
-      //$(window).scrollTop(380);
-      
-     $('html, body').animate({scrollTop:380}, 'fast');
+  // $('#paginator').bind('DOMNodeInserted', function(e) {
+  //     // $(window).scrollTop(380);
+  //     $("html, body").animate({ scrollTop: $('.cat-name').offset().top }, 1000);
+  //    // $('window').animate({scrollTop:380});
     
-  });
+  // });
 
 
 </script>

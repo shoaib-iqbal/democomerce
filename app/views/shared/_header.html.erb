@@ -79,7 +79,7 @@
                               <div class="header-bottom-search">
                                 <%= form_tag('/vendors', method: :get,:id=>"search_form", :class=>"search-box") do %>
                                 <div>
-                                  <%= text_field_tag :search, nil, placeholder: "Search ..." %>
+                                  <%= text_field_tag :search, nil, placeholder: "Search Product" %>
                                   <%= hidden_field_tag :latitude,{}, :value=>"", :id=>"latitude"  %>
                                   <%= hidden_field_tag :longitude,{}, :value=>"", :id=>"longitude"  %>
                                   <button class="btn btn-search" type="submit">

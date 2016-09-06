@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :products,class_name: 'Admin::Product'
   has_many :sizes,class_name: 'Admin::Size'
   has_many :colors,class_name: 'Admin::Color'
+  has_many :categories,class_name: 'Admin::Category'
   has_many :line_items
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

@@ -1,14 +1,17 @@
 
+
+
+
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Colors
+                Categories
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <%= form_for(@admin_color) do |f| %>
+                        <%= form_for(@admin_category) do |f| %>
 
                             
                             <div class="form-group">
@@ -16,20 +19,23 @@
                                 <%=f.text_field :name ,class: 'form-control', placeholder: 'Enter name' , required: 'true'%>
                             </div>
                             
-                            <div class="form-group">
-                               <%=f.label :value%>
-                                <%=f.text_field :value ,class: 'form-control', placeholder: 'Enter value', required: 'true'%>
-                            </div>
+                         
                             <%# if current_user.has_role? :superadmin %>
                                 <!-- <div class="form-group"> -->
                                    <%#=f.label :Vendor%>
                                     <%#= f.select "user_id", options_from_collection_for_select(User.all, :id,:name,f.object.user_id),{} ,:class=> 'form-control select', :id=> 'select' %>
                                 <!-- </div> -->
                             <%#end%>
+                            <div class="file_field">
+                                <%=f.label :image%>
+                                 <%= f.fields_for :image do |images_form| %>
+                                   <%= images_form.file_field :avatar , class: 'form-control'%>
+                                 <% end %>
+                            </div><br>
 
-                            <%= f.submit 'Submit Button', class: "btn btn-default" %>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                            <a  href="/admin/colors" class="btn btn-default">Back</a>
+                            <%= f.submit 'Submit', class: "btn btn-default" %>
+                           
+                            <a  href="/admin/categories" class="btn btn-default">Back</a>
                         <%end%>
                     </div>
                     <!-- /.col-lg-6 (nested) -->

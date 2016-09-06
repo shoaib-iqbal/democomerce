@@ -116,7 +116,7 @@ class Admin::ProductsController < AdminController
   
     @current_user_colors = Admin::Color.where(:user_id => params[:vendor])
     @current_user_Size = Admin::Size.where(:user_id => params[:vendor])
-    
+    @current_user_categories = Admin::Category.where(:user_id => params[:vendor])
 
 
     respond_to do |format|
@@ -144,6 +144,6 @@ class Admin::ProductsController < AdminController
         params[:admin_product][:user_id] = current_user.id
       end
       
-       params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_price, images_attributes: [:avatar => []], size_ids: [],color_ids: [] )
+       params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_price, images_attributes: [:avatar => []], category_ids: [], size_ids: [],color_ids: [] )
     end
 end

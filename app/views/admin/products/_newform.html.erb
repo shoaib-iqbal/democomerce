@@ -46,21 +46,29 @@
                             </div>
 
                           
-
+                            <%if current_user.has_role? :superadmin%>
                             <div class="form-group">
                                <%= f.label :Vendor %>
                                <%= f.collection_select 'user_id', User.all, :id, :name, {prompt: 'Select a Vendor'}, { required: true ,:class=> 'form-control select',:onchange => 'get_vendors(this.value)'} %>
                                <%#= f.select "user_id", options_from_collection_for_select(User.all, :id,:name,f.object.user_id),{ prompt: 'Select a Vendor',require: 'true'} ,:class=> 'form-control select', :id=> 'select',:onchange => 'get_vendors(this.value)'  %>
                                                             
                             </div>
+                            <%end%>
+
+
                             <div class="form-group">
                               <%= f.label :sizes %>
-                                <%= f.select :size_ids, {},{}, :multiple => true ,:class=> 'select form-control' ,:id => 'vendor_sizes'%>
+                                <%= f.select :size_ids, options_from_collection_for_select(current_user.sizes, :id,:name,f.object.size_ids),{}, :multiple => true ,:class=> 'select form-control' ,:id => 'vendor_sizes'%>
                             </div>
 
                             <div class="form-group">
                               <%= f.label :colors %>
-                                <%= f.select :color_ids, {},{}, :multiple => true ,:class=> 'select form-control',:id => 'vendor_colors' %>
+                                <%= f.select :color_ids, options_from_collection_for_select(current_user.colors, :id,:name,f.object.size_ids),{}, :multiple => true ,:class=> 'select form-control',:id => 'vendor_colors' %>
+                            </div>
+
+                            <div class="form-group">
+                              <%= f.label :categories %>
+                                <%= f.select :category_ids, options_from_collection_for_select(current_user.categories, :id,:name,f.object.size_ids),{}, :multiple => true ,:class=> 'select form-control',:id => 'vendor_categories' %>
                             </div>
                            
 
@@ -76,7 +84,7 @@
                             </div>
                             
 
-                            <div><p><%= f.submit 'Submit Button', class: "btn btn-default" %>
+                            <div><p><%= f.submit 'Submit', class: "btn btn-default" %>
                             
                             <button type="reset" class="btn btn-default">Reset Button</button></p></div>
                         <%end%>

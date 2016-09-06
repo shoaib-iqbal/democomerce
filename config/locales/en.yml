@@ -51,4 +51,20 @@ en:
     newproducts: "New products"
     addtocart: "Add To Cart"
     quickview: "Quick View"
-  
+    filter: "Filter"
+    enabledfilters: "Enabled filters:"
+    products: "products"
+    thereare: "There are"
+    sortby: "Sort by"
+    compare: "COMPARE"
+    nosizepresent: "no size present"
+    nocolorpresent: "no color present"
+    size: "Size"
+    color: "Color"
+    nosizeselected: "No Size Selected"
+    nocolorselected: "No Color Selected"
+    show: "Show"
+    price: "Price"
+    range: "Range"
+
+    

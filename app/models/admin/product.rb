@@ -1,9 +1,14 @@
 module Admin
 	class Product < ActiveRecord::Base
     include PgSearch
-    multisearchable :against => [:name, :user]
+    multisearchable :against => [:name, :user_id],  using: {
+      tsearch: { prefix: true},
+      trigram: {}
+    }
+
 		self.table_name = 'admin_products'
-		has_many :images , dependent: :destroy
+    has_and_belongs_to_many :categories, class_name: 'Admin::Category'
+		has_many :images ,as: :imageable, dependent: :destroy
 		has_many :line_items
 		has_many :deal_of_days ,:class_name => 'Admin::DealOfDay',dependent: :destroy
 		belongs_to :user
@@ -14,6 +19,7 @@ module Admin
 		accepts_nested_attributes_for :images ,reject_if: proc{ |attributes| attributes['avatar'].blank?}
 		accepts_nested_attributes_for :sizes
 		accepts_nested_attributes_for :colors 
+    accepts_nested_attributes_for :categories
 		extend FriendlyId
   		friendly_id :name, use: :slugged
 		translates :name, :description

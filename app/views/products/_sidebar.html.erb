@@ -1,40 +1,40 @@
 <div class="col-xs-12 col-sm-3">
   <aside class="widget-title hidden-xs">
-    <p>Filter</p>
+    <p><%= t 'welcome.filter' %> </p>
   </aside>
   <div class="widet-filter-button-mobile text-right visible-xs">
-    <a href="javascript:void(0)" class="filter-button-shop">Filter</a>
+    <a href="javascript:void(0)" class="filter-button-shop"><%= t 'welcome.filter' %> </a>
   </div>
   <%=form_tag products_path, method: 'get', id: "filters", :remote=>true do%>
   <input type="hidden" name="sorting_order" id="sorting_order" value="">
     <div class="left-widget-content  indicator-banner">
         <div id="selected_filters">
           <aside class="enabled-filters widget">
-            <h3 class="widget-subtitle">Enabled filters:</h3>
+            <h3 class="widget-subtitle"><%= t 'welcome.enabledfilters' %> </h3>
             <ul>
               <div id="selected_filters_sizes">
-                <li>No Size Selected
+                <li><%= t 'welcome.nosizeselected' %> 
                   
                 </li>
               </div>
               <div id="selected_filters_colors">
-              <li>No Color Selected
+              <li><%= t 'welcome.nocolorselected' %> 
                 
               </li>
               </div>
               <li id="price_range_show">
 
-                Price: <%=store_unit%> <%=@min_price%> - <%=store_unit%> <%=@max_price%>
+                <%= t 'welcome.price' %>: <%=store_unit%> <%=@min_price%> - <%=store_unit%> <%=@max_price%>
               </li>
             </ul>
           </aside>
         </div>
       <aside class="left-widget-price widget">
-        <h3 class="widget-subtitle">Price</h3>
+        <h3 class="widget-subtitle"><%= t 'welcome.price' %> </h3>
         <div class="info-widget">
           <div class="price-filter">
             <div class="price-slider-amount">
-              <label>Range:</label>
+              <label><%= t 'welcome.range' %></label>
               <input type="text" id="amount" name="price"  placeholder="Add Your Price" readonly="true" />
               <%= hidden_field_tag(:min_price, "") %>
               <%= hidden_field_tag(:max_price, "") %>
@@ -44,7 +44,7 @@
         </div>
       </aside>
       <aside class="left-widget-size widget">
-        <h3 class="widget-subtitle">Size</h3>
+        <h3 class="widget-subtitle"><%= t 'welcome.size' %> </h3>
         <div class="widget-info">
           <ul>
           <%if @sizes.present?%>
@@ -55,13 +55,13 @@
             </li>
           <% end %>
           <%else%>
-            no size present
+            <%= t 'welcome.nosizepresent' %> 
           <%end%>
           </ul>
         </div>
       </aside>
       <aside class="left-widget-color widget">
-        <h3 class="widget-subtitle">Color</h3>
+        <h3 class="widget-subtitle"><%= t 'welcome.color' %> </h3>
         <div class="widget-info">
           <ul>
           <%if @colors.present?%>
@@ -72,7 +72,7 @@
               </li>
             <% end %>
             <%else%>
-            no color present
+            <%= t 'welcome.nocolorpresent' %> 
             <%end%>
           </ul>
         </div>

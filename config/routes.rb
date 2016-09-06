@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :customers , :controllers => { :registrations => 'customers_registration' }
   resources :customers
 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :store_settings
     resources :testimonials
+    resources :categories
     resources :deal_of_days
   end
   devise_for :users, :controllers => {:registrations => "registrations"}

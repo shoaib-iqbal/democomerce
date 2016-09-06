@@ -11,6 +11,8 @@ class VendorsController < ApplicationController
         vendors_ids = products.collect(&:user_id) if products.present?
         @vendors = User.where(id: vendors_ids)
       end
+    byebug
+      
   end
 
 
@@ -19,6 +21,7 @@ private
 
   def find_products(near_vendors, search)
     if near_vendors.present? and search.present?
+
   
       ids = near_vendors.collect(&:id)
       #p_ids = PgSearch.multisearch(search).map(&:searchable_id)
@@ -28,6 +31,7 @@ private
        # products = Admin::Product.where(user_id: ids).where("LOWER(admin_products.name) LIKE ?" , "%#{search}%".downcase)
       #products = Admin::Product.where(user_id: ids).where(id:  p_ids)
       return products 
+
     end
   end
 
