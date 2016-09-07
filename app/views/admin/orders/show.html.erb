@@ -28,7 +28,7 @@
                           <div class="media">
                               <a class="pull-left" href="<%=product_path(item.product.id) rescue ''%>"><img class="media-object" src="<%= item.get_image %>" style="max-width: 72px;" class="img-responsive"></a>
                               <div class="media-body">
-                                  <h4 class="media-heading"><a href="<%=product_path(item.product.id) rescue ''%>"><%= item.get_name %></a></h4>
+                                  <h4 class="media-heading"><a href="<%=product_path(item.product.slug) rescue ''%>"><%= item.get_name %></a></h4>
                                   <h5 class="media-heading"> by <a href="/products?vendor=<%= item.product.user.id  %>"><%=item.product.user.name%></a></h5>
                                   <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
                               </div>
