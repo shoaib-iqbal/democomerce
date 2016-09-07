@@ -12,21 +12,21 @@
                             
                             <div class="form-group">
                                <%=f.label :name%>
-                                <%=f.text_field :name ,class: 'form-control', placeholder: 'Enter name' ,:require => true %>
+                                <%=f.text_field :name ,class: 'form-control', placeholder: 'Enter name', required: 'true'  %>
                             </div>
                             <div class="form-group">
                                <%=f.label :email%>
-                                <%=f.text_field :email ,class: 'form-control', placeholder: 'Enter Email',:require => true%>
+                                <%=f.email_field :email ,class: 'form-control', placeholder: 'Enter Email', required: 'true'%>
                             </div>
                             <%if params[:action] == 'new'%>
                             <div class="form-group">
                                <%=f.label :password%>
-                                <%=f.text_field :password ,class: 'form-control', placeholder: 'Eneter password',:require => true , :minlength=> 6%>
+                                <%=f.text_field :password ,class: 'form-control', placeholder: 'Eneter password', required: 'true', :minlength=> 6%>
                             </div>
                             <%end%>
                             <div class="form-group">
                                 <%=f.label :location %>
-                                 <%=f.text_field :location ,class: 'form-control ',:id=> 'select_location' ,:require => true%>
+                                 <%=f.text_field :location ,class: 'form-control ',:id=> 'select_location' , required: 'true'%>
                             </div>
                              <div class="form-group">
                             <%if current_user.has_role? 'superadmin' %>
