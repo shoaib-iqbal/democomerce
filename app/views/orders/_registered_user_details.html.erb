@@ -24,20 +24,14 @@
       
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="form-group">
           <label>Email Address*</label>
           <%= f.text_field :email, :class=>"form-control", :placeholder=>"Email Address", :value=>current_customer.try(:email) , :required=>true %>
           
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Contact Number*</label>
-          <%= f.text_field :mobile_number, :class=>"form-control", :placeholder=>"Mobile Number", :value=>current_customer.try(:mobile_number) , :required=>true %>
-          
-        </div>
-      </div>
+      
     </div>
 
     <div class="row">
@@ -66,6 +60,7 @@
             <%= add.text_field :address, :class=>"form-control", :placeholder=>"address", :value=>current_customer.addresses.first.try(:address) , :required=>true %>
           </div>
         </div>
+
       </div>
 
       <div class="row">
@@ -90,6 +85,13 @@
             <%= add.text_field :city, :class=>"form-control", :placeholder=>"address", :value=>current_customer.addresses.first.try(:city) , :required=>true %>
           </div>
         </div>
+        <div class="col-md-6">
+        <div class="form-group">
+          <label>Contact Number*</label>
+          <%= add.phone_field :mobile_number, :class=>"form-control", :placeholder=>"Mobile Number", :value=>current_customer.try(:mobile_number) , :required=>true %>
+          
+        </div>
+      </div>
 
       </div>
     <%end%>

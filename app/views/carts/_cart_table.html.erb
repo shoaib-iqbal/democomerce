@@ -26,7 +26,7 @@
                   </div>
                </td>
                <td class="col-sm-1 col-md-1 text-center">
-               <input type="number" min="1" class="form-control" onchange="quantitychange(this.value,<%= item.id%>)" value="<%= item.quantity %>">
+               <input type="number" min="1" max="2147483646" class="form-control" onchange="quantitychange(this.value,<%= item.id%>)" value="<%= item.quantity %>">
                </td>
                <td class="col-sm-1 col-md-1 text-center">
                <strong>
