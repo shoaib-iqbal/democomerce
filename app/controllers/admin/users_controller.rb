@@ -1,6 +1,7 @@
 class Admin::UsersController < AdminController
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
   before_filter :is_super_admin?
+  let :superadmin, :all
   # GET /admin/users
   # GET /admin/users.json
   def is_super_admin?

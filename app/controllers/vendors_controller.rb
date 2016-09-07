@@ -11,7 +11,6 @@ class VendorsController < ApplicationController
         vendors_ids = products.collect(&:user_id) if products.present?
         @vendors = User.where(id: vendors_ids)
       end
-    byebug
       
   end
 
