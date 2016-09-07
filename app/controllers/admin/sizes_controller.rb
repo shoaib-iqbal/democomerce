@@ -88,9 +88,12 @@ class Admin::SizesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_size_params
-      if current_user.has_role? :vendoradmin
-        params[:admin_size][:user_id] = current_user.id
-      end
+      # if current_user.has_role? :vendoradmin
+      #   params[:admin_size][:user_id] = current_user.id
+      # end
+      # if params[:admin_size][:user_id]==nil
+        params[:admin_size][:user_id]=current_user.id
+      # end
       params.require(:admin_size).permit(:name, :value,:user_id)
     end
 end

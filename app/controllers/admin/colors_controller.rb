@@ -95,9 +95,13 @@ class Admin::ColorsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_color_params
-      if current_user.has_role? :vendoradmin
+      # if current_user.has_role? :vendoradmin
         params[:admin_color][:user_id] = current_user.id
-      end
+      # end
+      # if params[:admin_color][:user_id]==nil
+      #   params[:admin_color][:user_id]=current_user.id
+      # end
+
      params.require(:admin_color).permit(:name, :value,:user_id)
 
   end

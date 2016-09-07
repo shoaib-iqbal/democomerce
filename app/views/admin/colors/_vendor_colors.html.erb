@@ -15,7 +15,7 @@
             <tr class="odd gradeX">
                 <td><%= color.name %></td>
                 <td><%= color.value %></td>
-                <td><%= color.user.name %></td>
+                <td><%= color.user.name  rescue 'admin'%></td>
                 <td class="center">
                     <span><%= link_to '', edit_admin_color_path(color),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
                     <span>

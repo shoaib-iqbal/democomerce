@@ -15,7 +15,7 @@
 
             <tr class="odd gradeX">
                 <td><%= category.name %></td>
-                <td><%= category.user.name %></td>
+                <td><%= category.user.name rescue 'admin'%></td>
 
                 <td><%= image_tag category.image.avatar.url(:thumbnail) rescue '' %></td>
                 <td class="center">
