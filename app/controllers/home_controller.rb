@@ -8,7 +8,6 @@ class HomeController < ApplicationController
 
 		@testimonials = Admin::Testimonial.all
 
-		
 		if Admin::Category.second and Admin::Category.second.products.present? 
 			@category_two= Admin::Category.second.products.order("RANDOM()") 
 			@category_two_name=Admin::Category.second.name

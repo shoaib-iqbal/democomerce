@@ -7,7 +7,7 @@ class Admin::ProductsController < AdminController
     # @admin_products = Admin::Product.all
     
     if current_user.has_role? :superadmin
-      @admin_products = Admin::Product.all
+      @admin_products = Admin::Product.all.sort_by_update
     else
       @admin_products = Admin::Product.where(:user_id => current_user.id)
     end
@@ -54,14 +54,24 @@ class Admin::ProductsController < AdminController
   # POST /admin/products.json
   def create
     @admin_product = Admin::Product.new(admin_product_params)
+    
+
     respond_to do |format|
       if @admin_product.save
         
-        if  params[:admin_product][:image] and params[:admin_product][:image][:avatar]
-           params[:admin_product][:image][:avatar].each { |image|
-            @admin_product.images.create(avatar: image)
-          }
-        end
+        if  params[:skip_crop].blank? and params[:image_data].present? and params[:admin_product][:image].length ==1
+          image_st = params[:image_data].split(',')[1]
+          decoded_data = Base64.decode64(image_st)
+          data = StringIO.new(decoded_data)
+          @admin_product.images.create(avatar: data)
+        else
+
+          if params[:admin_product][:image] and params[:admin_product][:image][:avatar]
+              params[:admin_product][:image][:avatar].each { |image|
+                @admin_product.images.create(avatar: image)
+              }
+          end
+          end
 
         format.html { redirect_to admin_products_url, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @admin_product }
@@ -76,22 +86,21 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /admin/products/1.json
   def update
     respond_to do |format|
-
       if @admin_product.update(admin_product_params)
+        if  params[:skip_crop].blank? and params[:image_data].present?
+          image_st = params[:image_data].split(',')[1]
+          decoded_data = Base64.decode64(image_st)
+          data = StringIO.new(decoded_data)
+          @admin_product.images.create(avatar: data)
+        else
+
           if params[:admin_product][:image] and params[:admin_product][:image][:avatar]
               params[:admin_product][:image][:avatar].each { |image|
                 @admin_product.images.create(avatar: image)
               }
           end
-          @admin_product.update(admin_product_params)
-         
-          # if params[:admin_product][:size_ids]
-          #   params[:admin_product][:size_ids].each {|size|
-          #     @admin_product.sizes.create(name: size)
-          #   }
-
-          # end
-
+          end
+          #@admin_product.update(admin_product_params)
 
         format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_product }
@@ -144,6 +153,6 @@ class Admin::ProductsController < AdminController
         params[:admin_product][:user_id] = current_user.id
       end
       
-       params.require(:admin_product).permit(:id, :description, :name,:avatar,:featured,:price,:user_id,:discounted_price, images_attributes: [:avatar => []], category_ids: [], size_ids: [],color_ids: [] )
+       params.require(:admin_product).permit(:id, :description, :name,:featured,:price,:user_id,:discounted_price, images_attributes: [:name, :avatar => []], category_ids: [], size_ids: [],color_ids: [] )
     end
 end

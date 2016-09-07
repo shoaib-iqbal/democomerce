@@ -5,7 +5,9 @@ module Admin
       tsearch: { prefix: true},
       trigram: {}
     }
-
+    scope :sort_by_update, -> { order(updated_at: :desc) }
+    validates_numericality_of :price, :greater_than => 0, :less_than => 2147483646
+    validates_numericality_of :discounted_price, :greater_than => 0, :less_than => 2147483646, :allow_blank => true
 		self.table_name = 'admin_products'
     has_and_belongs_to_many :categories, class_name: 'Admin::Category'
 		has_many :images ,as: :imageable, dependent: :destroy
@@ -16,7 +18,7 @@ module Admin
 		has_and_belongs_to_many :colors, class_name: 'Admin::Color'
 		# has_attached_file :avatar, styles: {thumbnail: "60x60#"}
 		# validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-		accepts_nested_attributes_for :images ,reject_if: proc{ |attributes| attributes['avatar'].blank?}
+		accepts_nested_attributes_for :images
 		accepts_nested_attributes_for :sizes
 		accepts_nested_attributes_for :colors 
     accepts_nested_attributes_for :categories
