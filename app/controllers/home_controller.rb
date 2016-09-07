@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 
 		
 		
-		if Admin::Category.second.products.present? 
+		if Admin::Category.second and Admin::Category.second.products.present? 
 			@category_two= Admin::Category.second.products.order("RANDOM()").limit(9) 
 			@category_two_name=Admin::Category.second.name
 		else
@@ -21,7 +21,7 @@ class HomeController < ApplicationController
 
 
 
-		if Admin::Category.third.products.present? 
+		if Admin::Category.third and Admin::Category.third.products.present? 
 			@category_three= Admin::Category.third.products.order("RANDOM()").limit(9)
 			@category_three_name=Admin::Category.third.name
 		else
@@ -31,7 +31,7 @@ class HomeController < ApplicationController
 		end
 
 
-		if Admin::Category.first.products.present? 
+		if Admin::Category.first and Admin::Category.first.products.present? 
 			@category_one= Admin::Category.first.products.order("RANDOM()").limit(9) 
 			@category_one_name=Admin::Category.first.name
 		else

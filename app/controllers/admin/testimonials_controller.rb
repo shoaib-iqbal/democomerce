@@ -29,22 +29,20 @@ class Admin::TestimonialsController < AdminController
   # POST /admin/testimonials
   # POST /admin/testimonials.json
   def create
-    image_st = params[:image_data].split(',')[1]
-    decoded_data = Base64.decode64(image_st)
-    data = StringIO.new(decoded_data)
-    avatar =  admin_testimonial_params['image_attributes'].first
-    byebug
-    if params[:skip_crop] == "true"
-       @admin_testimonial = Admin::Testimonial.new(admin_testimonial_params)
+    if params[:skip_crop].blank? and params[:image_data].present?
+      image_st = params[:image_data].split(',')[1]
+      decoded_data = Base64.decode64(image_st)
+      data = StringIO.new(decoded_data)
+      @testimonial = Admin::Testimonial.new(name: admin_testimonial_params['name'],description: admin_testimonial_params['description'])
+      @testimonial.build_image
+      @testimonial.image.avatar = data
+      
     else
-       @admin_testimonial = Admin::Testimonial.create(name: admin_testimonial_params['name'])
-          # @admin_testimonial.image.avatar = data
+      @testimonial = Admin::Testimonial.new(admin_testimonial_params)
     end
 
     respond_to do |format|
-      if @admin_testimonial.save
-        byebug
-        @admin_testimonial.image.create(avatar: data)
+      if @testimonial.save
         format.html { redirect_to admin_testimonials_url, notice: 'Testimonial was successfully created.' }
         format.json { render :show, status: :created, location: @admin_testimonial }
       else
@@ -57,17 +55,16 @@ class Admin::TestimonialsController < AdminController
   # PATCH/PUT /admin/testimonials/1
   # PATCH/PUT /admin/testimonials/1.json
   def update
-    
-    image_st = params[:image_data].split(',')[1]
-    decoded_data = Base64.decode64(image_st)
-    data = StringIO.new(decoded_data)
     # avatar =  admin_testimonial_params['image_attributes'].first
-    byebug
-    if params[:skip_crop] == "true"
-      @testimonial = @admin_testimonial.update(admin_testimonial_params)
+    if params[:skip_crop].blank? and params[:image_data].present?
+      image_st = params[:image_data].split(',')[1]
+      decoded_data = Base64.decode64(image_st)
+      data = StringIO.new(decoded_data)
+      @testimonial = @admin_testimonial.image.update(avatar: data)
+      @testimonial =  @admin_testimonial.update(name: admin_testimonial_params["name"],description:  admin_testimonial_params["description"])
+      
     else
-       @testimonial = @admin_testimonial.image.update(avatar: data)
-      @testimonial =  @testimonial.update(name: admin_testimonial_params["name"],description:  admin_testimonial_params["description"])
+      @testimonial = @admin_testimonial.update(admin_testimonial_params)
     end
     respond_to do |format|
       if @testimonial

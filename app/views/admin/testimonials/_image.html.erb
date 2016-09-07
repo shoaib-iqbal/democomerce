@@ -1,89 +1,46 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>cropit</title>
- 
 
-    <style>
-      .cropit-preview {
-        background-color: #f8f8f8;
-        background-size: cover;
-        border: 5px solid #ccc;
-        border-radius: 3px;
-        margin-top: 7px;
-        width: 263px;
-        height: 348px;
-      }
-
-      .cropit-preview-image-container {
-        cursor: move;
-      }
-
-      .cropit-preview-background {
-        opacity: .2;
-        cursor: auto;
-      }
-
-      .image-size-label {
-        margin-top: 10px;
-      }
-
-      input, .export {
-        /* Use relative position to prevent from being covered by image background */
-        position: relative;
-        z-index: 10;
-        display: block;
-      }
-
-      button {
-        margin-top: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="image-editor">
-      <!-- <input type="file" class="cropit-image-input"> -->
-      <div class="file_field">
-            <%=f.label :image%>
-             <%= f.fields_for :image do |images_form| %>
-              <% if @admin_testimonial.image.avatar.exists? %>
-                  <%= image_tag @admin_testimonial.image.avatar.url(:thumbnail) %>
-               <% end %>
-               <%= images_form.file_field :avatar ,class: 'form-control cropit-image-input'%>
-             <% end %>
-             <br>
-        </div>
-      <div class="cropit-preview"></div>
-      <div class="image-size-label">
-        Resize image
-      </div>
-      <input type="range" class="cropit-image-zoom-input">
-      <input type="hidden" name="image_data" class="hidden-image-data" />
-        <input type="hidden" name="skip_crop" class="skip_crop" />
-      </div>
-       <div class="skip"> <a href="#"  id="solution0" class="btn btn-primary" style="color: #fff;">Skip Cropping</a></div>
-      <button class="rotate-ccw">Rotate counterclockwise</button>
-      <button class="rotate-cw">Rotate clockwise</button>
-
-      <!-- <button class="export">Export</button> -->
-    </div>
+<div class="image-editor">
+  <!-- <input type="file" class="cropit-image-input"> -->
+  <div class="file_field">
+    <%=f.label :image%>
+     <%= f.fields_for :image do |images_form| %>
+      <% if @admin_testimonial.image.avatar.exists? %>
+          <%= image_tag @admin_testimonial.image.avatar.url(:thumbnail) %>
+       <% end %>
+       <%= images_form.file_field :avatar ,class: 'form-control cropit-image-input'%>
+     <% end %>
+     <br>
+  </div>
+  <div class="cropit-preview"></div>
+  <div class="image-size-label">
+    Resize image
+  </div>
+  <input type="range" class="cropit-image-zoom-input">
+  <input type="hidden" name="image_data" class="hidden-image-data" />
+    <input type="hidden" name="skip_crop" class="skip_crop" />
+  </div>
+  <br>
+    <button class="rotate-ccw">Rotate counterclockwise</button>
+    <button class="rotate-cw">Rotate clockwise</button>
+    <br><br>
+    <div class="skip"> <a href="#"  id="solution0" class="btn btn-primary" style="color: #fff;">Skip Cropping</a></div>
+    <br>
 
     <script>
       $(function() {
         $('.image-editor').cropit({
-          exportZoom: 1.25,
-          imageBackground: true,
+          exportZoom: 0.5,
+          imageBackground: false,
           imageBackgroundBorderWidth: 20,
-          imageState: {
-            src: 'http://lorempixel.com/500/400/',
-          },
         });
 
         $('.rotate-cw').click(function() {
           $('.image-editor').cropit('rotateCW');
+          return false;
         });
         $('.rotate-ccw').click(function() {
           $('.image-editor').cropit('rotateCCW');
+          return false;
         });
 
         // $('.export').click(function() {
@@ -97,18 +54,35 @@
         type: 'image/jpeg',
         originalSize: true,
         quality: 0.5,
-        smallImage: 'false'
+        smallImage: 'true'
       });
       console.dir(imageData);
       $('.hidden-image-data').val(imageData);
       // Print HTTP request params
-      var formValue = $(this).serialize();
-      $('#result-data').text(formValue);
+      // var formValue = $(this).serialize();
+      // $('#result-data').text(formValue);
       // Prevent the form from actually submitting
       // return false;
     });
 
 $(document).ready(function(){
+
+
+
+  var _URL = window.URL || window.webkitURL;
+$("#admin_testimonial_image_attributes_avatar").change(function (e) {
+    var file, img;
+    if ((file = this.files[0])) {
+        img = new Image();
+        img.onload = function () {
+            if (this.width <= 263 || this.height <= 348)
+            alert("Please upload a larger image to crop");
+          $(".skip a").click();
+
+        };
+        img.src = _URL.createObjectURL(file);
+    }
+});
  
   $(".skip a").on('click',function(e){
     $('.skip').hide();
@@ -116,9 +90,10 @@ $(document).ready(function(){
     $('.cropit-preview').hide();
     $('.image-size-label').hide();
     $('.cropit-image-zoom-input').hide();
+    $('.rotate-ccw').hide();
+    $('.rotate-cw').hide();
+    return false;
   });
 });
       
-    </script>
-  </body>
-</html>
+</script>
