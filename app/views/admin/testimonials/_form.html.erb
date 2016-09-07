@@ -20,16 +20,8 @@
                                <%=f.label :description%>
                                 <%=f.text_area :description ,class: 'form-control', placeholder: 'Enter value', required: 'true'%>
                             </div>
-                            <div class="file_field">
-                                <%=f.label :image%>
-                                 <%= f.fields_for :image do |images_form| %>
-   									<% if @admin_testimonial.image.avatar.exists? %>
-      									<%= image_tag @admin_testimonial.image.avatar.url(:thumbnail) %>
-   									 <% end %>
-                                   <%= images_form.file_field :avatar ,class: 'form-control'%>
-                                 <% end %>
-                                 <br>
-                            </div>
+                            <%= render :partial =>'image', :locals => {:f => f}%>
+                            
                             <%= f.submit 'Submit', class: "btn btn-default" %>
                             <button type="reset" class="btn btn-default">Reset Button</button>
                             <a  href="/admin/testimonials" class="btn btn-default">Back</a>

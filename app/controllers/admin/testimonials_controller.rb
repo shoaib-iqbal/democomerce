@@ -29,10 +29,22 @@ class Admin::TestimonialsController < AdminController
   # POST /admin/testimonials
   # POST /admin/testimonials.json
   def create
-    @admin_testimonial = Admin::Testimonial.new(admin_testimonial_params)
+    image_st = params[:image_data].split(',')[1]
+    decoded_data = Base64.decode64(image_st)
+    data = StringIO.new(decoded_data)
+    avatar =  admin_testimonial_params['image_attributes'].first
+    byebug
+    if params[:skip_crop] == "true"
+       @admin_testimonial = Admin::Testimonial.new(admin_testimonial_params)
+    else
+       @admin_testimonial = Admin::Testimonial.create(name: admin_testimonial_params['name'])
+          # @admin_testimonial.image.avatar = data
+    end
 
     respond_to do |format|
       if @admin_testimonial.save
+        byebug
+        @admin_testimonial.image.create(avatar: data)
         format.html { redirect_to admin_testimonials_url, notice: 'Testimonial was successfully created.' }
         format.json { render :show, status: :created, location: @admin_testimonial }
       else
@@ -45,8 +57,20 @@ class Admin::TestimonialsController < AdminController
   # PATCH/PUT /admin/testimonials/1
   # PATCH/PUT /admin/testimonials/1.json
   def update
+    
+    image_st = params[:image_data].split(',')[1]
+    decoded_data = Base64.decode64(image_st)
+    data = StringIO.new(decoded_data)
+    # avatar =  admin_testimonial_params['image_attributes'].first
+    byebug
+    if params[:skip_crop] == "true"
+      @testimonial = @admin_testimonial.update(admin_testimonial_params)
+    else
+       @testimonial = @admin_testimonial.image.update(avatar: data)
+      @testimonial =  @testimonial.update(name: admin_testimonial_params["name"],description:  admin_testimonial_params["description"])
+    end
     respond_to do |format|
-      if @admin_testimonial.update(admin_testimonial_params)
+      if @testimonial
         format.html { redirect_to admin_testimonials_url, notice: 'Testimonial was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_testimonial }
       else
@@ -74,6 +98,7 @@ class Admin::TestimonialsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_testimonial_params
+      # byebug
       params.require(:admin_testimonial).permit(:name, :description, image_attributes: [:name, :avatar])
   end
 end
