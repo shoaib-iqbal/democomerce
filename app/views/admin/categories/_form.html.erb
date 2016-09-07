@@ -29,7 +29,7 @@
                             <div class="file_field">
                                 <%=f.label :image%>
                                  <%= f.fields_for :image do |images_form| %>
-                                   <%= images_form.file_field :avatar , class: 'form-control'%>
+                                   <%= images_form.file_field :avatar , class: 'form-control' , required: 'true'%>
                                  <% end %>
                             </div><br>
 

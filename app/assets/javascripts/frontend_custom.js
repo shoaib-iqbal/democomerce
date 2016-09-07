@@ -25,12 +25,19 @@ function changelanguage(selected_language){
 }
 function quantitychange(quantity, line_item_id)
 {
-  $.ajax({
+  if (quantity<2147483646)
+  {
+    $.ajax({
       url: 'line_items/changequantity?quantity='+quantity+'&line_item_id='+line_item_id,
       method: 'GET',
       success: function (data) {
         // $("#main_cart").html(data);
       }
-  });
+    });
+  }
+  else
+  {
+    alert("quantity should be less than 2147483646");
+  }
 }
 
