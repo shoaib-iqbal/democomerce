@@ -68,7 +68,7 @@
 	owl active Featured products 
 ------------------------------ */  
   $(".featured-product-list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: true, 
 	  slideSpeed:2000,
 	  pagination:false,
 	  navigation:true,	  
@@ -85,7 +85,7 @@
 	owl active Featured products 
 ------------------------------ */  
   $(".featured-product-list2").owlCarousel({
-      autoPlay: false, 
+      autoPlay: true, 
 	  slideSpeed:2000,
 	  pagination:false,
 	  navigation:true,	  
@@ -102,7 +102,7 @@
 	owl active Deal products 
 ------------------------------ */  
   $(".deal-area-list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: true, 
 	  slideSpeed:2000,
 	  pagination:true,
 	  navigation:false,	  
@@ -117,8 +117,8 @@
 	owl active Category products 
 ------------------------------ */  
   $(".category-container-list").owlCarousel({
-      autoPlay: false, 
-	  slideSpeed:2000,
+      autoPlay: true, 
+	  slideSpeed:1000,
 	  pagination:false,
 	  navigation:false,	  
       singleItem : true
@@ -128,7 +128,7 @@
 	owl active Testimonial 
 ------------------------------ */  
   $(".testimonial-list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: true, 
 	  slideSpeed:2000,
 	  pagination:true,
 	  navigation:false,	  
@@ -139,7 +139,7 @@
 	owl active Brand Area 
 ------------------------------ */  
   $(".brand-list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: true, 
 	  slideSpeed:2000,
 	  pagination:false,
 	  navigation:false,	  
@@ -154,7 +154,7 @@
 	owl active Blog Area 
 ------------------------------ */  
   $(".blog-list").owlCarousel({
-      autoPlay: false, 
+      autoPlay: true, 
 	  slideSpeed:2000,
 	  pagination:false,
 	  navigation:true,	  
