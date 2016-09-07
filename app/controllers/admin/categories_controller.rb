@@ -99,9 +99,12 @@ class Admin::CategoriesController < AdminController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_category_params
-     if current_user.has_role? :vendoradmin
+     # if current_user.has_role? :vendoradmin
         params[:admin_category][:user_id] = current_user.id
-      end
+      #end
+      #if params[:admin_category][:user_id]== nil
+        #params[:admin_category][:user_id]
+      #end
      params.require(:admin_category).permit(:name,:user_id, image_attributes: [:name, :avatar])
 
   end
