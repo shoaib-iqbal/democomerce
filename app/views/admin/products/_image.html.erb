@@ -5,7 +5,7 @@
   <div class="file_field">
       <%=f.label :images%>
        <%= f.fields_for :image do |images_form| %>
-         <%= images_form.file_field :avatar , multiple: true,class: 'form-control cropit-image-input'%>
+         <%= images_form.file_field :avatar , multiple: true,class: 'form-control cropit-image-input croped_image'%>
        <% end %>
   </div>
 
@@ -70,16 +70,19 @@ $(document).ready(function(){
   // var numFiles = $("input:file", this)[0].files.length;
 
   var _URL = window.URL || window.webkitURL;
-  $("#admin_product_image_avatar").change(function (e) {
+  $(".croped_image").change(function (e) {
       var file, img;
-      var total_images = $("#admin_product_image_avatar")[0].files.length
+      var total_images = $(".croped_image")[0].files.length
       if ((file = this.files[0]) && total_images == 1) {
           img = new Image();
           img.onload = function () {
-              if (this.width <= 263 || this.height <= 348)
+            console.log(this.width)
+            console.log(this.height)
+              if (this.width <= 263 || this.height <= 348){
+              
               alert("Please upload a larger image to crop");
             $(".skip a").click();
-
+          }
           };
           img.src = _URL.createObjectURL(file);
       }

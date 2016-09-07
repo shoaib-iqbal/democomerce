@@ -75,9 +75,10 @@ $("#admin_testimonial_image_attributes_avatar").change(function (e) {
     if ((file = this.files[0])) {
         img = new Image();
         img.onload = function () {
-            if (this.width <= 263 || this.height <= 348)
+            if (this.width <= 263 || this.height <= 348){
             alert("Please upload a larger image to crop");
           $(".skip a").click();
+        }
 
         };
         img.src = _URL.createObjectURL(file);
