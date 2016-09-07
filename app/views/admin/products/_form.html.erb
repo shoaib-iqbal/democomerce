@@ -25,12 +25,10 @@
                                <%=f.label :description%>
                                 <%=f.text_field :description ,class: 'form-control', placeholder: 'deccribe' , required: 'true'%>
                             </div>
-                            <div class="file_field">
-                                <%=f.label :images%>
-                                 <%= f.fields_for :image do |images_form| %>
-                                   <%= images_form.file_field :avatar , multiple: true,class: 'form-control'%>
-                                 <% end %>
-                            </div><br>
+                             <%= render :partial =>'image', :locals => {:f => f}%>
+                            
+
+                            <br>
                             
                             
                             <div class="form-group">
