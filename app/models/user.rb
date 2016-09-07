@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
      #convert address to geocoded values
      "#{self.location}"
    end
+     def clearance_levels
+    # Array of role names
+    roles.pluck(:name)
+  end
 
    def superadmin?
    	if self and self.has_role? :superadmin
