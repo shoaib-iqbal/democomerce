@@ -33,6 +33,7 @@ Rails.application.routes.draw do
  resources :admin, only: [:index]
   # get 'delimg', to: 'admin_products#delimg' , as: :delimgpath
   match "home/set_session" ,to: "home#change_languages", as: "languagepath", via: [:get]
+  match "/home/newsletter" ,to: "statics#news_subscriber", as: "newssubscriber", via: [:post]
   match "admin/get_color_and_size" ,to: "admin/products#get_size_and_color_of_product", as: "getsizecolor", via: [:get]
   root 'home#index'
   match 'signin', to: "customers#login", via: [:post]

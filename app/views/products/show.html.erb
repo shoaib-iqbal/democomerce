@@ -35,9 +35,12 @@
 							<%if @product.images.present? %>
 								<% @product.images.each_with_index do |image,index|%>
 									<%if index == 0%>
-										<div class="tab-pane active" id="view<%=index+1%>">
+										<div class="tab-pane active all_products_fix_images" id="view<%=index+1%>">
 											<a class="venobox" href="<%= image.avatar.url(:original) %>" data-gall="gallery" title="">
-											<img src="<%= image.avatar.url(:large) %>" alt=""><span>View larger<i class="fa fa-search-plus"></i></span></a>
+											<div class="product-img">
+											<img src="<%= image.avatar.url(:large) %>" alt="" class="center-block img-responsive">
+											</div>
+											<span>View larger<i class="fa fa-search-plus"></i></span></a>
 										</div>
 									<%else%>
 										<div class="tab-pane " id="view<%=index+1%>">
@@ -134,7 +137,7 @@
 				</div>
 				<!-- Category List -->
 				<div class="row">
-					<div class="category-container-list">
+					<div class="category-container-list sec-partial">
 						<%= render :partial => 'home/slider_single_product' ,:locals => {:items => @top_sellers}%>		
 					</div>
 				</div>

@@ -26,7 +26,7 @@
                    <tr>
                        <td class="col-sm-8 col-md-6">
                           <div class="media">
-                              <a class="pull-left" href="<%=product_path(item.product.id) rescue ''%>"><img class="media-object" src="<%= item.get_image %>" style="max-width: 72px;" class="img-responsive"></a>
+                              <a class="pull-left" href="<%=product_path(item.product.id) rescue ''%>"><img class="media-object" src="<%= item.get_image %>" style="max-width: 72px;" class="img-responsive center-block"></a>
                               <div class="media-body">
                                   <h4 class="media-heading"><a href="<%=product_path(item.product.id) rescue ''%>"><%= item.get_name %></a></h4>
                                   <h5 class="media-heading"> by <a href="/products?vendor=<%= item.product.user.id  %>"><%=item.product.user.name%></a></h5>
@@ -112,13 +112,22 @@
                 <p>
                     <table>
                         <tr>
-                            <td><b>Billing Address:</b></td>
+                            <td><b style="position:relative; bottom: 15px;">Billing Address:</b></td>
                             <td><p><%=@order_detail.full_address%></p><hr></td>
+
+                            
+                        </tr>
+
+                        <tr>
+                            <td><b style="position:relative; bottom: 15px;">Permanent Address:</b></td>
+                            <td><p><%=@order_detail.permanent_address%></p><hr></td>
                             
                         </tr>
                         <tr>
-                            <td><b>Permanent Address:</b></td>
-                            <td><p><%=@order_detail.permanent_address%></p></td>
+                            <td><b style="position:relative; bottom: 15px;">Mobile Number:</b></td>
+                           
+                            <td><p><%=@order_detail.addresses.last.mobile_number%></p><hr></td>
+                            
                             
                         </tr>
                     </table>

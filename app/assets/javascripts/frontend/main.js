@@ -69,7 +69,7 @@
 ------------------------------ */  
   $(".featured-product-list").owlCarousel({
       autoPlay: true, 
-	  slideSpeed:2000,
+	  slideSpeed:1500,
 	  pagination:false,
 	  navigation:true,	  
       items : 4,
@@ -86,7 +86,7 @@
 ------------------------------ */  
   $(".featured-product-list2").owlCarousel({
       autoPlay: true, 
-	  slideSpeed:2000,
+	  slideSpeed:1500,
 	  pagination:false,
 	  navigation:true,	  
       items : 3,
@@ -105,6 +105,7 @@
       autoPlay: true, 
 	  slideSpeed:2000,
 	  pagination:true,
+	  
 	  navigation:false,	  
       items : 2,
       itemsDesktop : [1199,2],
@@ -119,7 +120,7 @@
   $(".category-container-list").owlCarousel({
       autoPlay: true, 
 	  slideSpeed:1000,
-	  pagination:false,
+	  pagination:true,
 	  navigation:false,	  
       singleItem : true
   });

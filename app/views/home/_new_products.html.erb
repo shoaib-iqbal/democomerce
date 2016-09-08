@@ -1,0 +1,88 @@
+<div class="featured-area section-padding">
+    <div class="container">
+		<div class="section-title">
+			<h4><%= t 'welcome.newproducts' %></h4>
+		</div>
+        <div class="row">
+			<!--Product List Start-->
+			<div class="featured-product-list indicator-style all_products_fix_images">
+				
+
+
+				<% @unfeatured_products.each do |product| %>
+
+					<!--Single Product -->
+					<div class="col-md-3 col-sm-6">
+						<div class="single-product">
+							<!--product Content-->
+							<div class="product-img-content">
+								<!--Product Image-->
+								<div class="product-img">
+									<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
+										<%if product.images.present? %>
+											<%=image_tag product.images.first.avatar.url(:large)%>
+                                        <%else%>
+                                            <img src="http://s3.amazonaws.com/commerceassets/admin/images/avatars/000/000/089/large/data?1473265319"/>
+										<%end%> 
+
+									</a>		                                    
+								</div>
+								<span class="new-label"><%= t 'welcome.new' %></span>
+								<%if product.discounted_price?%>
+									<span class="sale-label">!<%= t 'welcome.sale' %></span>
+								<%end%>
+								
+
+								<!--Product Action-->
+								<div class="product-action"> 
+									<a  title="<%= t 'welcome.addtocart' %>" onclick="getProductDetail(this)"><i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i></a>
+									<a  title="<%= t 'welcome.quickview' %>"  onclick="getProductDetail(this)" >
+									<i class="fa fa-expand">
+									<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>
+									</a>
+								</div>
+							</div>
+							<div class="product-content">
+								<h5 class="clearfix">
+									<div class="pull-left"><a href="<%=product_path(product.slug)%>" title="<%= product.name %>"><%= product.name %></a></div>
+									<div class="pull-right"><a href="/products?vendor=<%= product.user.id rescue''%>" title="<%= product.user.name rescue'' %>"><%= product.user.name rescue''%></a></div>
+								</h5>
+								<!--Product Rating-->
+								<div class="rating-icon">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<!--Product Price-->
+								<div class="product-price">
+									<div class="product-price">
+									<%if product.discounted_price?%>
+									<span class="new-price"> <%= show_price(product.discounted_price) %> </span>
+									<span class="old-price"><%=show_price(product.price ) %></span>
+									<%else%>
+									<span class="new-price"><%=show_price(product.price)  %></span>
+									<%end%>
+								</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Single Product -->
+				
+
+				<% end %> 
+
+
+
+
+
+
+
+			</div>
+			<!--Product List Start-->
+        </div>	
+    </div>
+</div>

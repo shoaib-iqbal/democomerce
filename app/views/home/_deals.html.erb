@@ -1,0 +1,74 @@
+<div class="deal-area section-padding">
+    <div class="container">
+		<div class="section-title white">
+			<h4><%= t 'welcome.dealofday' %></h4>
+		</div>	 
+        <div class="row">
+			<div class="deal-area-list indicator-button all_products_fix_images">
+				<% @admin_deal_of_days.each do |deal| %>
+					<!--Deal Single Product -->
+					<div class="deal-single-product">
+						<div class="row">
+							<div class="col-lg-6 col-md-6  col-sm-6 col-xs-12">
+							   <div class="left-item" >
+									<!--Product Image-->
+									<div class="product-img">
+									<a href="<%=product_path(deal.product.slug)%>" title="<%= deal.product.name %>">
+										
+										<%if deal.product.images.present? %>
+											<%=image_tag deal.product.images.first.avatar.url(:large), class: 'center-block img-responsive'%>
+                                        <%else%>
+                                            <img src="/assets/featured/1.jpg"/>
+										<%end%> 
+									</a>
+									</div>
+									<span class="new-label"><%= t 'welcome.new' %></span>
+									<%if deal.product.discounted_price?%>
+										<span class="sale-label">!<%= t 'welcome.sale' %></span>
+									<%end%>
+									<!--Product Cuntdown-->
+									<div class="product-cuntdown">
+										<div class="timer">
+											<div data-countdown="<%= deal.expiry_time%>"></div>
+										</div>	
+									</div>
+								</div>
+							</div>
+							<div class="deal-product-content col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<h5><a href="<%=product_path(deal.product.slug)%>" title="<%= deal.product.name %>"><span><%= deal.product.name %></span></a></h5>
+								<!--Product Rating-->
+								<div class="rating-icon">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<p><%= truncate(deal.product.description ,:length => 100)%></p>
+								<!--Product Price-->
+								<div class="product-price">
+									<%if deal.product.discounted_price?%>
+									<span class="new-price"> <%= show_price(deal.product.discounted_price) %> </span>
+									<span class="old-price"><%=show_price(deal.product.price ) %></span>
+									<%else%>
+									<span class="new-price"><%=show_price(deal.product.price)  %></span>
+									<%end%>
+								</div>
+								<!--Product Action-->
+								<div class="deal-product-action">
+									<a onclick="getProductDetail(this)" title="<%= t 'welcome.addtocart' %>"><i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{deal.product.slug}"  %></i></a>
+									<a  title="<%= t 'welcome.quickview' %>"  onclick="getProductDetail(this)">
+									<i class="fa fa-expand" >
+									<%= hidden_field_tag :product_id,{}, :value=>"#{deal.product.slug}"  %></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>	   
+				<%end%>
+					  
+				
+			</div>
+        </div>
+    </div>
+</div>
