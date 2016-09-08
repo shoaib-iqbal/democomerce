@@ -29,9 +29,6 @@
 				<div class="single-product-image"> 
 					<div id="content-eleyas">
 						<div id="my-tab-content" class="tab-content">
-
-
-
 							<%if @product.images.present? %>
 								<% @product.images.each_with_index do |image,index|%>
 									<%if index == 0%>
@@ -56,20 +53,16 @@
 
 						</div>
 						<div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
-
-
 							<%if @product.images.present? %>
 								<% @product.images.each_with_index do |image,index|%>
 									<%if index == 0%>
 										
-										<div class="pro-view active"><a href="#view<%=index+1%>" data-toggle="tab"><img src="<%= image.avatar.url(:small) %>" alt=""></a></div>
+										<div class="pro-view active"><a href="#view<%=index+1%>" data-toggle="tab"><img src="<%= image.avatar.url(:thumbnail) %>" alt=""></a></div>
 									<%else%>
-										<div class="pro-view "><a href="#view<%=index+1%>" data-toggle="tab"><img src="<%= image.avatar.url(:small) %>" alt=""></a></div>
+										<div class="pro-view "><a href="#view<%=index+1%>" data-toggle="tab"><img src="<%= image.avatar.url(:thumbnail) %>" alt=""></a></div>
 									<%end%>
-	
 								<%end%>
 							<%end%>
-						
 						</div>
 						<!-- BX Slider Navigation -->
 						<div class="outside">
@@ -108,18 +101,18 @@
 					</div>
 						<%= render :partial => 'cart_form' %>
 					<p class="socialsharing-product">
-						<button type="button" class="btn btn-default btn-twitter">
+						<a type="button" target="_blank" href="http://<%=get_social_link("twitter_link")%>" class="btn btn-default btn-twitter">
 							<i class="fa fa-twitter"></i>Tweet
-						</button>
-						<button type="button" class="btn btn-default btn-facebook">
+						</a>
+						<a  target="_blank" href="http://<%=get_social_link("facebook_link")%>"   type="button" class="btn btn-default btn-facebook">
 							<i class="fa fa-facebook"></i> Share
-						</button>
-						<button type="button" class="btn btn-default btn-google-plus">
+						</a >
+						<a  target="_blank" href="http://<%=get_social_link("google_link")%>"  type="button" class="btn btn-default btn-google-plus">
 							<i class="fa fa-google-plus"></i> Google+
-						</button>
-						<button type="button" class="btn btn-default btn-pinterest">
+						</a >
+						<a  target="_blank"  href="http://<%=get_social_link("pintrest_link")%>" type="button" class="btn btn-default btn-pinterest">
 							<i class="fa fa-pinterest"></i> Pinterest
-						</button>
+						</a >
 					</p>	
 					<div id="product-comments-block-extra">
 						<ul class="comments-advices">
@@ -312,25 +305,7 @@
 </div>
 <!--Brand Area End-->
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog" style="margin-top: 100px;">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      
-      <div class="modal-body text-center">
-        <p>Do you want to Continue Shopping or Go to Cart?</p>
-        <br>        
-          <button type="submit" class="btn btn-default" data-dismiss="modal" onclick="location.href='/carts'">Go to Cart</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
-        <br>
-      </div>
-      
-    </div>
-
-  </div>
-</div>
+<%= render :partial => 'go_to_cart'%>
 
 <!--Quickview Product Start -->
 <div id="quickview-wrapper">

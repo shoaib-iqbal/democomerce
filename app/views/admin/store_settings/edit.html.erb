@@ -15,8 +15,50 @@
                             <div class="form-group">
                                <%=f.label :currency%>
                                <br>
-                               <%=f.select :currency,  currency_codes, class: 'form-control' , placeholder: 'Enter name' %>
-                                <%#=f.text_field :currency ,class: 'form-control', placeholder: 'Enter name'%>
+                               <%=f.select :currency,  currency_codes, class: 'form-control' , placeholder: 'Enter currency' %>
+                              
+                            </div>
+                            <div class="form-group">
+                               <%=f.label :facebook_link%>
+                               <br>
+                               <%=f.text_field :facebook_link, class: 'form-control' , placeholder: 'Enter facebook link' %>
+                              
+                            </div>
+                            <div class="form-group">
+                               <%=f.label :twitter_link%>
+                               <br>
+                               <%=f.text_field :twitter_link, class: 'form-control' , placeholder: 'Enter twitter link' %>
+                              
+                            </div>
+                            <div class="form-group">
+                               <%=f.label :pintrest_link%>
+                               <br>
+                               <%=f.text_field :pintrest_link,  class: 'form-control' , placeholder: 'Enter pinterest link' %>
+                              
+                            </div>
+                            <div class="form-group">
+                               <%=f.label :google_link%>
+                               <br>
+                               <%=f.text_field :google_link,   class: 'form-control' , placeholder: 'Enter google link' %>
+                              
+                            </div>
+                            <div class="form-group">
+                               <%=f.label :youtube_link%>
+                               <br>
+                               <%=f.text_field :youtube_link,   class: 'form-control' , placeholder: 'Enter youtube link' %>
+                              
+                            </div>
+                            <div class="form-group">
+                               <%=f.label :contact_email%>
+                               <br>
+                               <%=f.text_field :contact_email,   class: 'form-control' , placeholder: 'Enter contact email' %>
+                              
+                            </div>
+                            <div class="form-group">
+                               <%=f.label :contact_address%>
+                               <br>
+                               <%=f.text_field :contact_address,  class: 'form-control' , placeholder: 'Enter office address' %>
+                              
                             </div>
                             <%= f.submit 'Submit Button', class: "btn btn-default" %>
                             <button type="reset" class="btn btn-default">Reset Button</button>
