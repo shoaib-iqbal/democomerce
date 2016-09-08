@@ -11,6 +11,8 @@
 					<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
 						<%if product.images.present? %>
 							<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block"%>
+						<%else%>
+                            <img src="/assets/featured/1.jpg"/>
 						<%end%>
 					</a>
 						                                    
