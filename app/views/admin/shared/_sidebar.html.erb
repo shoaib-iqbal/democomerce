@@ -27,6 +27,9 @@
                 
                 <%#= link_to "Logout", logout_path %>
                 <li>
+                    <a href="/admin/users/<%=current_user.id%>/edit"><i class="fa fa-user fa-fw"></i> Edit Profile</a>
+                </li>
+                <li>
                     <a href="/logout"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
                 </li>
             </ul>
