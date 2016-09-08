@@ -2,6 +2,7 @@
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-size">
         <thead>
             <tr>
+            <th style="display: none;"></th>
                 <th>Name</th>
                 <th>Value</th>
                 <th>Vendor name</th>
@@ -13,6 +14,7 @@
         <% @admin_sizes.each do |size| %>
 
             <tr class="odd gradeX">
+            <td style="display: none;"></td>
                 <td><%= size.name %></td>
                 <td><%= size.value %></td>
                 <td><%= size.user.name rescue 'admin'%></td>

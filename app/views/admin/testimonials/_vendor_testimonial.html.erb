@@ -2,6 +2,7 @@
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-vendors">
         <thead>
             <tr>
+            <th style="display: none;"></th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Image</th>
@@ -12,6 +13,7 @@
         <% @admin_testimonials.each do |testimonial| %>
 
             <tr class="odd gradeX">
+            <td style="display: none;"></td>
                 <td><%= testimonial.name %></td>
                 <td><%= testimonial.description %></td>
                 <td><%= image_tag testimonial.image.avatar.url(:thumbnail) rescue '' %></td>
