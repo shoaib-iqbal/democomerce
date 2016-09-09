@@ -80,6 +80,20 @@
 	  itemsTablet: [767,2],
 	  itemsMobile: [479,1]
   });
+
+  $("#banner-slider").owlCarousel({
+      autoPlay: true, 
+	  slideSpeed:1500,
+	  pagination:false,
+	  navigation:true,	  
+      items : 4,
+	  /* transitionStyle : "fade", */    /* [This code for animation ] */
+	  navigationText:["<i class='fa fa-angle-double-left'></i>","<i class='fa fa-angle-double-right'></i>"],
+      itemsDesktop : [1199,4],
+	  itemsDesktopSmall : [991,3],
+	  itemsTablet: [767,2],
+	  itemsMobile: [479,1]
+  });
     
  /*----------------------------
 	owl active Featured products 

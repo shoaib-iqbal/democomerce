@@ -21,7 +21,7 @@
 			<%end%>
 			<!--Product Action-->
 			<div class="product-action">
-				<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
+				<a  title="Add to cart"   onclick="getProductDetail(this)"><i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i></a>
 				<a  title="Quick view"  onclick="getProductDetail(this)">
 					<i class="fa fa-expand" >
 					<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>

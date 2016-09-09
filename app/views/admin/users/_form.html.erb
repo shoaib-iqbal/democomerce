@@ -28,6 +28,15 @@
                                 <%=f.label :location %>
                                  <%=f.text_field :location ,class: 'form-control ',:id=> 'select_location' , required: 'true'%>
                             </div>
+
+                            <div class="file_field">
+                                <%=f.label :avatar%>
+                                 <%#= f.fields_for :image do |images_form| %>
+                                   <%= f.file_field :avatar , class: 'form-control' %>
+                                 <%#end %>
+                            </div><br>
+
+
                              <div class="form-group">
                             <%if current_user.has_role? 'superadmin' %>
                     				<%= f.select "role_ids", options_for_select(Role.all.collect{ |u| [u.name, u.id]}, :selected=> f.object.roles.first.try(:id)), {:class =>"form-control"} %>

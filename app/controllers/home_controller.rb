@@ -3,10 +3,16 @@ class HomeController < ApplicationController
 		# @admin_products = Admin::Product.all
 		
 		@featured_products=Admin::Product.where(:featured => "true").order(created_at: :desc)
-		@unfeatured_products=Admin::Product.where(:featured => "false").order(created_at: :desc)
+		@unfeatured_products=Admin::Product.where(:homepage => "true").order(created_at: :desc)
 		@admin_deal_of_days = Admin::DealOfDay.where('expiry_time >= ?', DateTime.now).order('expiry_time')
 
 		@testimonials = Admin::Testimonial.all
+		@categories_all=Admin::Category.all
+		# for brands
+		user_ids = Admin::Product.where.not(user_id: nil).collect(&:user_id).uniq
+		@brands=User.where(id: user_ids)
+		# brands end
+
 
 		if Admin::Category.second and Admin::Category.second.products.present? 
 			@category_two= Admin::Category.second.products.order("RANDOM()") 

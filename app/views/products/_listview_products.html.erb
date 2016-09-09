@@ -6,11 +6,13 @@
 		<div class="col-xs-12 col-sm-5 col-md-4">
 		   <div class="left-item">
 				<!--Product Image-->
-				<a href="<%=product_path(product.id)%>" title="<%= product.name %>">
-					<%if product.images.present? %>
-						<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block"%>
-					<%end%>
-				</a> 
+				<div class="product-img">
+					<a href="<%=product_path(product.id)%>" title="<%= product.name %>">
+						<%if product.images.present? %>
+							<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block"%>
+						<%end%>
+					</a> 
+				</div>
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-7 col-md-8">
@@ -37,10 +39,14 @@
 					<span>In stock</span>
 				</div>
 				<div class="deal-product-action">
-					<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i></a>
-					<a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
+					<a title="Add to cart" onclick="getProductDetail(this)">
+						<i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %>
+							
+						</i>
+						</a>
+					<a title="Add to Wishlist"><i class="fa fa-star"></i>
 					</a>
-					<a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
+					<a title="Add to Compare"><i class="fa fa-files-o"></i>
 					</a>
 					<a  title="Quick view"  >
 					<i class="fa fa-expand" onclick="getProductDetail(this)">

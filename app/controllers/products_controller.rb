@@ -18,7 +18,10 @@ class ProductsController < ApplicationController
     end
     @min_price=Admin::Product.minimum("price")
     @max_price=Admin::Product.maximum("price")
-
+    # for brands
+    user_ids = Admin::Product.where.not(user_id: nil).collect(&:user_id).uniq
+    @brands=User.where(id: user_ids)
+    # brands end
     respond_to do |format|
       format.js {}
       format.html
@@ -59,6 +62,10 @@ class ProductsController < ApplicationController
       #p_ids = PgSearch.multisearch(params[:search]).map(&:searchable_id)
        @products = Admin::Product.joins(:translations).with_translations(I18n.locale).where("LOWER(admin_product_translations.name) LIKE ?", "%#{params[:search]}%".downcase).where(:user_id => params[:vendor])
       #@products = Admin::Product.where(id: p_ids,user_id: params[:vendor])
+    end
+    if params[:category].present?
+      
+      @products=Admin::Category.find(params[:category]).products
     end
     @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(4)
 

@@ -25,10 +25,14 @@ class Admin::UsersController < AdminController
   # GET /admin/users/new
   def new
     @user = User.new
+
+    #@user.build_image
   end
 
   # GET /admin/users/1/edit
   def edit
+   
+
     if current_user.has_role? :vendoradmin and current_user.id != @user.id
       redirect_to '/admin'
 
@@ -100,9 +104,10 @@ class Admin::UsersController < AdminController
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_user_params
       params[:user][:password_confirmation] = params[:user][:password]
-      params.require(:user).permit(:name,:location,:email,:password,:password_confirmation, :role_ids)
+      params.require(:user).permit(:name,:location,:email,:password,:password_confirmation, :role_ids,image_attributes: [:name, :avatar])
     end
     def edit_admin_user_params
-      params.require(:user).permit(:name,:location,:email, :role_ids)
+
+      params.require(:user).permit(:name,:location,:email, :role_ids,:avatar)
     end
 end

@@ -1,32 +1,61 @@
 <div class="banner-area section-padding2">
 	<div class="container">
 		<div class="row">
-			<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="banner-image indicator-banner">
-					<a href="#">
-						<img src="/assets/banner/1.jpg" alt="">
-					</a>
-				</div>
-				<div class="banner-image">
-					<a href="#">
-						<img src="/assets/banner/2.jpg" alt="">
-					</a>
-				</div>
+			<div id="banner-slider">
+				<%@categories_all.each do |cat|%>
+					<div class="single-product">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="banner-image">
+								<a href="/products?category=<%=cat.slug%>">
+									<img src="<%=cat.image.avatar.url(:original) rescue ''%>" alt="">
+								</a>
+							</div>
+						</div>	
+					</div>
+				<%end%>
 			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="banner-image">
-					<a href="#">
-						<img src="/assets/banner/3.jpg" alt="">
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="banner-image">
-					<a href="#">
-						<img src="/assets/banner/4.jpg" alt="">
-					</a>
-				</div>
-			</div>			
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	<div class="banner-image indicator-banner">
+		<a href="#">
+			<img src="/assets/banner/1.jpg" alt="">
+		</a>
+	</div>
+	<div class="banner-image">
+		<a href="#">
+			<img src="/assets/banner/2.jpg" alt="">
+		</a>
+	</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	<div class="banner-image">
+		<a href="#">
+			<img src="/assets/banner/3.jpg" alt="">
+		</a>
+	</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+	<div class="banner-image">
+		<a href="#">
+			<img src="/assets/banner/4.jpg" alt="">
+		</a>
+	</div>
+</div>	 -->

@@ -32,12 +32,12 @@
                             
                             
                             <div class="form-group">
-                              <%=f.label :Previous_Images%><br>
-                              <%= f.fields_for :images do |asset_fields| %>
+                              Previous_Images<br>
+                              <%f.object.images.each do |img| %>
 
-                                <% unless asset_fields.object.new_record? %>
-                                  <%= link_to image_tag(asset_fields.object.avatar.url(:thumbnail)), 
-                                              asset_fields.object.avatar.url(:original) %>
+                                <% unless f.object.new_record? %>
+                                  <%= link_to image_tag(img.avatar.url(:thumbnail)), 
+                                              img.avatar.url(:original) %>
 
                                 <% end %>
                               <% end %>
@@ -75,6 +75,15 @@
                                 <div class="checkbox">
                                     <label>
                                         <%= f.check_box :featured %> Featured <br />
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Home Page</label>
+                                <div class="checkbox">
+                                    <label>
+                                        <%= f.check_box :homepage %> Show on home page <br />
                                     </label>
                                 </div>
                             </div>
