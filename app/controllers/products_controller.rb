@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
       #@products = Admin::Product.where(id: p_ids,user_id: params[:vendor])
     end
     if params[:category].present?
-      byebug
+     
       @products = Admin::Category.find(params[:category]).products
       ids=Admin::Category.find(params[:category]).products.collect(&:user_id).uniq
       @sizes = Admin::Size.all.where(:user_id => ids)
