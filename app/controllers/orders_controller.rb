@@ -80,6 +80,7 @@ class OrdersController < ApplicationController
   end
   def confirmation_page
      @current_order.state = 'complete'
+     @current_order.guest_token = SecureRandom.base64(24)
      @current_order.customer=current_customer if current_customer
      @current_order.save
 
@@ -142,6 +143,7 @@ end
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
