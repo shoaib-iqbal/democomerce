@@ -59,7 +59,7 @@ class ProductsController < ApplicationController
       #@products = Admin::Product.where(id: p_ids,user_id: params[:vendor])
     end
     if params[:category].present?
-      
+      byebug
       @products = Admin::Category.find(params[:category]).products
       ids=Admin::Category.find(params[:category]).products.collect(&:user_id).uniq
       @sizes = Admin::Size.all.where(:user_id => ids)
@@ -72,8 +72,8 @@ class ProductsController < ApplicationController
     end
     @total_products=@products.count
     # byebug
-    @min_price = @products.sort_by(&:price).first.price
-    @max_price = @products.sort_by(&:price).reverse.first.price
+    @min_price = @products.sort_by(&:price).first.price rescue '0'
+    @max_price = @products.sort_by(&:price).reverse.first.price rescue '0'
     @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(4)
 
     respond_to do |format|
