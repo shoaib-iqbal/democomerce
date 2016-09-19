@@ -3823,6 +3823,13 @@ a:hover{
 .sec-partial .all_products_fix_images_small .product-img_small img { max-height:155px !important; margin:auto !important; vertical-align:middle; display:inline-block;width:auto !important; }
 
 
+.banners .all_products_fix_images_small .product-img_small { height:390px !important; line-height: 380px !important; display: flex; align-items: center; overflow:hidden; vertical-align:middle; text-align:center; }
+.banners .all_products_fix_images_small .product-img_small a { margin:auto !important; vertical-align:middle; display:inline-block; }
+.banners .all_products_fix_images_small .product-img_small a:hover {background-color: transparent !important;}
+.banners .all_products_fix_images_small .product-img_small img { max-height:390px !important; margin:auto !important; vertical-align:middle; display:inline-block;width:auto !important; }
+
+
+
 a:hover .fa {color:#c38749 !important;}
 
 .animated {
