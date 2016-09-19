@@ -9,7 +9,7 @@ class LineItem < ActiveRecord::Base
 	end
 
 	def get_image
-		Admin::Product.where(:id => self.product_id).first.images.first.avatar.url(:thumbnail) rescue''
+		Admin::Product.where(:id => self.product_id).first.images.first.avatar.url(:thumbnail) rescue'http://s3.amazonaws.com/commerceassets/admin/images/avatars/000/000/089/large/data?1473265319'
 	end
 
 	def get_size
