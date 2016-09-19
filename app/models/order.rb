@@ -78,4 +78,12 @@ class Order < ActiveRecord::Base
 		"No address found"
 		end	
 	end
+
+	def create_token
+        self.guest_token ||= loop do
+          random_token = SecureRandom.urlsafe_base64(nil, false)
+          break random_token unless self.class.exists?(guest_token: random_token)
+        
+      end
+    end
 end
