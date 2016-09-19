@@ -3837,3 +3837,13 @@ a:hover .fa {color:#c38749 !important;}
     font-size: 24px;
     color: #c38749;
 }
+.forget_btn{
+  color: #fff !important;
+}
+.forget_btn:hover {color: #fff !important; background-image: none !important; background-color: #286090 !important;}
+
+.cancel_btn{
+  color: #fff !important;
+}
+
+.cancel_btn:hover {color: #fff !important; background-image: none !important; background-color: #d9534f !important;}
