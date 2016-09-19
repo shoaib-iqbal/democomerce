@@ -46,7 +46,10 @@ class Admin::ProductsController < AdminController
 
   # GET /admin/products/1/edit
   def edit
-    @admin_product.images.build 
+    # byebug
+    unless @admin_product.images.present?
+      @admin_product.images.build 
+    end
     
   end
 
@@ -86,6 +89,7 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /admin/products/1.json
   def update
     respond_to do |format|
+     
       if @admin_product.update(admin_product_params)
         if  params[:skip_crop].blank? and params[:image_data].present?
           image_st = params[:image_data].split(',')[1]
@@ -95,11 +99,12 @@ class Admin::ProductsController < AdminController
         else
 
           if params[:admin_product][:image] and params[:admin_product][:image][:avatar]
+
               params[:admin_product][:image][:avatar].each { |image|
                 @admin_product.images.create(avatar: image)
               }
           end
-          end
+        end
           #@admin_product.update(admin_product_params)
 
         format.html { redirect_to admin_products_url, notice: 'Product was successfully updated.' }
@@ -153,6 +158,6 @@ class Admin::ProductsController < AdminController
         params[:admin_product][:user_id] = current_user.id
       end
       
-       params.require(:admin_product).permit(:id, :description, :name,:featured,:price,:user_id,:discounted_price, images_attributes: [:name, :avatar => []], category_ids: [], size_ids: [],color_ids: [] )
+      params.require(:admin_product).permit(:id,:homepage, :description, :name,:featured,:price,:user_id,:discounted_price, images_attributes: [:name, :avatar => []], category_ids: [], size_ids: [],color_ids: [] )
     end
 end

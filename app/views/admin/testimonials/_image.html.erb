@@ -7,7 +7,7 @@
       <% if @admin_testimonial.image.avatar.exists? %>
           <%= image_tag @admin_testimonial.image.avatar.url(:thumbnail) %>
        <% end %>
-       <%= images_form.file_field :avatar ,class: 'form-control cropit-image-input'%>
+       <%= images_form.file_field :avatar ,class: 'form-control cropit-image-input', required: 'true'%>
      <% end %>
      <br>
   </div>

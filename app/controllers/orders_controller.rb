@@ -80,6 +80,7 @@ class OrdersController < ApplicationController
   end
   def confirmation_page
      @current_order.state = 'complete'
+     @current_order.guest_token = SecureRandom.base64(24)
      @current_order.customer=current_customer if current_customer
      @current_order.save
 
@@ -142,6 +143,7 @@ end
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
@@ -149,7 +151,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      
-      params.require(:order).permit(:email_address,:email,:country,:country_state,:city,:phone,:first_name,:order_notes,:last_name,:delivery_name, addresses_attributes: [:id,:address_type,:address,:country,:country_state,:city ])
+      #byebug
+      params.require(:order).permit(:email_address,:phone,:email,:country,:country_state,:city,:phone,:first_name,:order_notes,:last_name,:delivery_name, addresses_attributes: [:id,:address_type,:address,:country,:country_state,:city ,:mobile_number])
     end
 end

@@ -26,7 +26,7 @@
                             <a href="/products/<%=item.product.id%>" title="<%= item.get_name %>"> <%= item.get_name %></a>
                         </div>
                         <div class="prices">
-                            <span class="price">£ <%= item.total %></span>
+                            <span class="price"> <%= show_price(item.total) %></span>
                         </div>
                     </div>                                                
                 </div>

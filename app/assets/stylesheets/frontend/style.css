@@ -3810,3 +3810,37 @@ a:hover{
 .usefull-link-block ul li a{
   margin: 0 3px;
 }
+
+.all_products_fix_images_small .product-img_small { height:215px !important; line-height: 205px !important; display: flex; align-items: center; overflow:hidden; vertical-align:middle; text-align:center; }
+.all_products_fix_images_small .product-img_small a { margin:auto !important; vertical-align:middle; display:inline-block; }
+.all_products_fix_images_small .product-img_small a:hover {background-color: transparent !important;}
+.all_products_fix_images_small .product-img_small img { max-height:215px !important; margin:auto !important; vertical-align:middle; display:inline-block;width:auto !important; }
+
+
+.sec-partial .all_products_fix_images_small .product-img_small { height:155px !important; line-height: 145px !important; display: flex; align-items: center; overflow:hidden; vertical-align:middle; text-align:center; }
+.sec-partial .all_products_fix_images_small .product-img_small a { margin:auto !important; vertical-align:middle; display:inline-block; }
+.sec-partial .all_products_fix_images_small .product-img_small a:hover {background-color: transparent !important;}
+.sec-partial .all_products_fix_images_small .product-img_small img { max-height:155px !important; margin:auto !important; vertical-align:middle; display:inline-block;width:auto !important; }
+
+
+a:hover .fa {color:#c38749 !important;}
+
+.animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+.stars
+{
+    margin: 20px 0;
+    font-size: 24px;
+    color: #c38749;
+}
+.forget_btn{
+  color: #fff !important;
+}
+.forget_btn:hover {color: #fff !important; background-image: none !important; background-color: #286090 !important;}
+
+
+

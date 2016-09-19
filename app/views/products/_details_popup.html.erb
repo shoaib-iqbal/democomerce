@@ -9,13 +9,13 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-product">
-                        <div class="product-images">
-                            <div class="main-image images">
+                    <div class="modal-product ">
+                        <div class="product-images all_products_fix_images">
+                            <div class="main-image images product-img">
                                 <%if @product.images.present? %>
-                                    <%=image_tag @product.images.first.avatar.url(:large)%>
+                                    <%=image_tag @product.images.first.avatar.url(:large), class: 'img-responsive center-block'%>
                                 <%else%>
-                                    <img src="/assets/featured/1.jpg"/>
+                                    <img src="http://s3.amazonaws.com/commerceassets/admin/images/avatars/000/000/089/large/data?1473265319"/>
                                 <%end%> 
                             </div>
                         </div>
@@ -56,11 +56,11 @@
                                 <div class="widget widget_socialsharing_widget">
                                     <h3 class="widget-title-modal">Share this product</h3>
                                     <ul class="social-icons">
-                                        <li><a target="_blank" title="Facebook" href="#" class="facebook social-icon"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a target="_blank" title="Twitter" href="#" class="twitter social-icon"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a target="_blank" title="Pinterest" href="#" class="pinterest social-icon"><i class="fa fa-pinterest"></i></a></li>
-                                        <li><a target="_blank" title="Google +" href="#" class="gplus social-icon"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a target="_blank" title="LinkedIn" href="#" class="linkedin social-icon"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a target="_blank" title="Facebook" href="http://<%=get_social_link("facebook_link")%>" class="facebook social-icon"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a target="_blank" title="Twitter" href="http://<%=get_social_link("twitter_link")%>" class="twitter social-icon"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a target="_blank" title="Pinterest" href="http://<%=get_social_link("pintrest_link")%>" class="pinterest social-icon"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a target="_blank" title="Google +" href="http://<%=get_social_link("google_link")%>" class="gplus social-icon"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a target="_blank" title="Youtube" href="http://<%=get_social_link("youtube_link")%>" class="linkedin social-icon"><i class="fa fa-youtube"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

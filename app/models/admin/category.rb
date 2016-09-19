@@ -5,4 +5,6 @@ class Admin::Category < ActiveRecord::Base
 	accepts_nested_attributes_for :user
 	accepts_nested_attributes_for :image ,reject_if: proc{ |attributes| attributes['avatar'].blank?}
 	translates :name
+	extend FriendlyId
+	friendly_id :name, use: [:slugged, :finders]
 end

@@ -9,3 +9,4 @@
 Role.create(name: 'vendoradmin')
 user = User.create(:email => 'admin@democommerce.com',:name=> 'superadmin',:password => '12345678',:password_confirmation  => '12345678')
 user.roles<<Role.create(:name=>'superadmin')
+Store.create()

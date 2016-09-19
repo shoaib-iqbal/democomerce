@@ -13,9 +13,9 @@
 
 		<h4>Contact Details</h4>
 		<label>Mobile Number: </label>
-		<%=current_customer.mobile_number%><br>
+		<%=current_customer.mobile_number rescue @current_order.phone%><br>
 		<label>Phone Number: </label>
-		<%=current_customer.phone_number%><br>
+		<%=current_customer.phone_number rescue @current_order.phone%><br>
 
 		<h4>Shipping Address</h4>
 

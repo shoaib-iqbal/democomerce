@@ -34,9 +34,20 @@
                     	<strong><%=item.quantity%></strong>
                     </td>
                     <td align="center" valign="top">
-                    	<strong><%= item.product.price %></strong>
+                    	<strong>
+                      <%if item.product.discounted_price.present?%>
+                        <%=show_price(item.product.discounted_price)%>
+                      <%else%>
+                        <%= show_price(item.product.price) %>
+                      <%end%>
+                      </strong>
                     </td>
-                    <td align="center" valign="top"><%= item.product.name %>
+                    <td align="center" valign="top">
+                      <%if item.product.discounted_price.present?%>
+                        <%=show_price(item.product.discounted_price * item.quantity) %>
+                      <%else%>
+                        <%= show_price(item.product.price * item.quantity )%>
+                      <%end%>
                     </td>
                   </tr>
                 <% end %>
@@ -46,11 +57,11 @@
             <br>
             <div style="width:100%; text-align:right;">
            
-              Sub Total: <%= @total %>
+               Total: <%= show_price(@total) %>
               <br>
               <br>
 
-                  "total" <%= @otal %>
+                  
                   <br>
                   <br>
                   

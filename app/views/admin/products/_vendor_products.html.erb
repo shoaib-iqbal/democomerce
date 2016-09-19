@@ -3,6 +3,7 @@
         <thead>
             <tr>
             <th style="display: none;"></th>
+            
                 <th>Name</th>
                 <th>Price</th>
                 <th>Discounted Price</th>
@@ -21,8 +22,8 @@
             <tr class="odd gradeX">
             <td style="display: none;"></td>
                 <td><%= product.name %></td>
-                <td><%= product.price %></td>
-                <td><%= product.discounted_price %></td>
+                <td><%= show_price(product.price) %></td>
+                <td><%= show_price(product.discounted_price) %></td>
                 <td class="center"><%= product.description %></td>
                 <td class="center">
                 <% for size in product.sizes %>

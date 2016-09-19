@@ -59,20 +59,28 @@
 		 size_id = $('#size_id').val();
 		 color_id = $('#color_id').val();
 
+		 if (parseInt(q) < 2147483647){
+		 	$.ajax({
+
+			   url: '/carts',
+			   method: "POST",
+		       data: {"product_id" : product_id,"quantity" : q,"size_id" : size_id,"color_id" : color_id},
+		       format : 'js',
+		       success: function(data) {
+		 		$('.close').click();    		
+		     	$('#myModal').modal('show');
+
+		 
+			      
+			     }
+			   });
+		 }
+		 else{
+		 	alert("quantity should be less than 2147483647");
+		 	$('#product_quantity').val(1);
+		 }
+
 	  
-	   $.ajax({
-
-	   url: '/carts',
-	   method: "POST",
-       data: {"product_id" : product_id,"quantity" : q,"size_id" : size_id,"color_id" : color_id},
-       format : 'js',
-       success: function(data) {
- 		$('.close').click();    		
-     	$('#myModal').modal('show');
-
- 
-	      
-	     }
-	   });
+	   
 	});
 </script

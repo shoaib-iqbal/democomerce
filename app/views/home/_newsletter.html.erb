@@ -1,0 +1,34 @@
+<div class="news-letter-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-7  col-sm-7 col-xs-12">
+				<div class="banner-image">
+					<a href="#">
+						<img src="/assets/news-letter.jpg" alt="">
+					</a>
+				</div>		                
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div class="letter-box">
+                    <div class="letter-title">
+                        <h4>Newsletter</h4>
+                        <i class="fa fa-envelope-o"></i>
+                    </div>
+                    <p>Subscribe to our email newsletter & receive updates right in your inbox.</p>
+                    <div class=" message">
+                        	
+                        </div>
+                    <%= form_tag("/home/newsletter", method: "post" ,:remote => true,:class => 'search-box')  do %>
+                        <div>
+							<input type="email" name="email_user" id="search-letter" placeholder ="Enter your e-mail">
+                            <button type="submit" id="search-letter-btn" class="btn btn-search">
+                                <i class="fa fa-paper-plane-o"></i>
+                            </button>
+                        </div>
+                    <%end%>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

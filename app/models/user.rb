@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   has_many :colors,class_name: 'Admin::Color'
   has_many :categories,class_name: 'Admin::Category'
   has_many :line_items
+  
+  has_attached_file :avatar, styles: {thumbnail: "170x88"},
+  :reject_if => lambda { |t| t['avatar'].nil? }
+    validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   translates :name, :location

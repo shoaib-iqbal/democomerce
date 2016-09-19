@@ -64,11 +64,11 @@
                         <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit.</p>
                         <div class="social-icon">
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a target="_blank" href="http://<%=get_social_link("facebook_link")%>"><i class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank"  href="http://<%=get_social_link("pintrest_link")%>"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a target="_blank"  href="http://<%=get_social_link("youtube_link")%>"><i class="fa fa-youtube-play"></i></a></li>
+                                <li><a target="_blank"  href="http://<%=get_social_link("twitter_link")%>"><i class="fa fa-twitter"></i></a></li>
+                                <li><a target="_blank"  href="http://<%=get_social_link("google_link")%>"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -80,7 +80,8 @@
 							<ul class="toggle-footer">
 								<li>
 									<i class="fa fa-map-marker"></i>
-									<p>Marmora Road, Glasgow <br /> 89 GR, New York</p>
+									<%=get_social_link("contact_address")%>
+                                    
 								</li>
 								<li>
 									<i class="fa fa-phone"></i>
@@ -88,11 +89,11 @@
 								</li>
 								<li>
 									<i class="fa fa-envelope-o"></i>
-									Email: admin@yahoo.com
+									Email: <%=get_social_link("contact_email")%>
 								</li>
 								<li>
 									<i class="fa fa-globe"></i>
-								   Website: www.example.com
+								   Website: www.demoecommerce.herokuapp.com
 								</li>
 							</ul>								
 						</div>

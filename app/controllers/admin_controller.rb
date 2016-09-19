@@ -3,6 +3,11 @@ class AdminController < ApplicationController
 	before_filter :authenticate_user!
   before_filter :is_admin?
   before_filter :is_super_admin?
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+
+  def record_not_found
+    render '/admin/static/page_not_found' # Assuming you have a template named 'record_not_found'
+  end
 
   
 

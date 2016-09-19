@@ -21,4 +21,9 @@ def currency_codes
     
   end
 
+  def get_social_link(attr_name)
+    link= "Store.last.#{attr_name}" rescue ''
+    return eval(link)
+  end
+
 end
