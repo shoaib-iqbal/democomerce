@@ -52,12 +52,7 @@ class ProductsController < ApplicationController
       @colors = Admin::Color.all
     end 
    
-    if params[:sorting_order].present?
-
-      @products = Admin::Product.other_filter_sort(@products, params[:sorting_order])
-      
-
-    end
+    
     if params[:vendor] and params[:search].present?
       #p_ids = PgSearch.multisearch(params[:search]).map(&:searchable_id)
        @products = Admin::Product.joins(:translations).with_translations(I18n.locale).where("LOWER(admin_product_translations.name) LIKE ?", "%#{params[:search]}%".downcase).where(:user_id => params[:vendor])
@@ -65,12 +60,21 @@ class ProductsController < ApplicationController
     end
     if params[:category].present?
       
-      @products=Admin::Category.find(params[:category]).products
+      @products = Admin::Category.find(params[:category]).products
+      ids=Admin::Category.find(params[:category]).products.collect(&:user_id).uniq
+      @sizes = Admin::Size.all.where(:user_id => ids)
+      @colors = Admin::Color.all.where(:user_id => ids)
     end
-    @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(4)
+    if params[:sorting_order].present?
+      @products = Admin::Product.other_filter_sort(@products, params[:sorting_order])
+      
 
-    @min_price=Admin::Product.minimum("price")
-    @max_price=Admin::Product.maximum("price")
+    end
+    @total_products=@products.count
+    # byebug
+    @min_price = @products.sort_by(&:price).first.price
+    @max_price = @products.sort_by(&:price).reverse.first.price
+    @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(4)
 
     respond_to do |format|
           format.js {}

@@ -79,6 +79,7 @@
       </aside>
     </div>
     <%= hidden_field_tag 'vendor',{}, :value=>"#{params[:vendor]}"  %>
+    <%= hidden_field_tag 'category',{}, :value=>"#{params[:category]}"  %>
     <%= submit_tag "Filter", :id => 'submit', class: "hidden"%>
   <% end %>
 
