@@ -113,14 +113,14 @@
                     <table>
                         <tr>
                             <td><b style="position:relative; bottom: 15px;">Billing Address:</b></td>
-                            <td><p><%=@order_detail.full_address%></p><hr></td>
+                            <td><p><%=@order_detail.full_address rescue ''%></p><hr></td>
 
                             
                         </tr>
 
                         <tr>
                             <td><b style="position:relative; bottom: 15px;">Permanent Address:</b></td>
-                            <td><p><%=@order_detail.permanent_address%></p><hr></td>
+                            <td><p><%=@order_detail.permanent_address rescue 'Not Present'%></p><hr></td>
                             
                         </tr>
                         <tr>
@@ -148,22 +148,22 @@
                     <table>
                         <tr>
                             <td ><b>First Name:</b></td>
-                            <td class="padding10"><%=@order_detail.customer.first_name rescue''%></td>
+                            <td class="padding10"><%=@order_detail.customer.first_name rescue @order_detail.first_name rescue 'Nill'%></td>
                             
                         </tr>
                         <tr>
                             <td ><b>Last Name:</b></td>
-                            <td class="padding10"><%=@order_detail.customer.last_name rescue''%></td>
+                            <td class="padding10"><%=@order_detail.customer.last_name rescue @order_detail.last_name rescue 'Nill'%></td>
                             
                         </tr>
                         <tr>
                             <td ><b>Phone Number:</b></td>
-                            <td class="padding10"><%=@order_detail.customer.phone_number rescue''%></td>
+                            <td class="padding10"><%=@order_detail.customer.phone_number rescue @order_detail.phone rescue 'Nill' %></td>
                             
                         </tr>
                         <tr>
                             <td ><b>Mobile Number:</b></td>
-                            <td class="padding10"><%=@order_detail.customer.mobile_number rescue''%></td>
+                            <td class="padding10"><%=@order_detail.customer.mobile_number rescue @order_detail.phone rescue 'Nill'%></td>
                             
                         </tr>
                     </table>
