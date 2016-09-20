@@ -5,6 +5,9 @@ module Admin
       tsearch: { prefix: true},
       trigram: {}
     }
+    pg_search_scope :size_search, :associated_against => {
+      :sizes => [:name],
+    }
     scope :sort_by_update, -> { order(updated_at: :desc) }
     validates_numericality_of :price, :greater_than => 0, :less_than => 2147483646
     validates_numericality_of :discounted_price, :greater_than => 0, :less_than => 2147483646, :allow_blank => true

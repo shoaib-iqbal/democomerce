@@ -18,11 +18,11 @@
 		<%=@current_order.phone rescue 'NILL'%><br>
 
 		<h4>Shipping Address</h4>
-
-		<p><b>address:</b> <%=@current_order.addresses.last.address%></p>
-		<p><b>city:</b> <%=@current_order.addresses.last.city%></p>
-		<p><b>state: </b><%=@current_order.addresses.last.country_state%></p>
-		<p><b>country:</b> <%=@current_order.addresses.last.country%></p>
+    
+		<p><b>address:</b> <%=@current_order.address.address%></p>
+		<p><b>city:</b> <%=@current_order.address.city%></p>
+		<p><b>state: </b><%=@current_order.address.country_state%></p>
+		<p><b>country:</b> <%=@current_order.address.country%></p>
 
 		
 		

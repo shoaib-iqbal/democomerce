@@ -59,9 +59,13 @@ class ProductsController < ApplicationController
       #@products = Admin::Product.where(id: p_ids,user_id: params[:vendor])
     end
     if params[:category].present?
-     
-      @products = Admin::Category.find(params[:category]).products
-      ids=Admin::Category.find(params[:category]).products.collect(&:user_id).uniq
+      category = Admin::Category.find(params[:category])
+      @products = category.products.includes(:sizes)
+      ids = @products.collect(&:user_id).uniq
+      # @products.map()
+      # ids=Admin::Category.find(params[:category]).products.collect(&:id)
+      # p_ids=@products.joins(:sizes).where("admin_products_sizes.product_id IN (?)", ids).collect(&:id).uniq
+      
       @sizes = Admin::Size.all.where(:user_id => ids)
       @colors = Admin::Color.all.where(:user_id => ids)
     end
