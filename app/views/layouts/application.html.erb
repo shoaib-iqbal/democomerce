@@ -13,21 +13,21 @@
 </html>
 
 <script>
-// var x = document.getElementById("demo");
+var x = document.getElementById("demo");
 
-// function getLocation22() {
-//     if (navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(showPosition22);
-//     } else {
-//         x.innerHTML = "Geolocation is not supported by this browser.";
-//     }
-// }
+function getLocation22() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition22);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
 
-// function showPosition22(position) {
-//     x.innerHTML = "Latitude: " + position.coords.latitude +
-//     "<br>Longitude: " + position.coords.longitude;
+function showPosition22(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
 
-// }
+}
 
 
 </script>
