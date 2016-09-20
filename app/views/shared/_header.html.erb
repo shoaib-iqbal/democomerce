@@ -154,19 +154,23 @@
 <script type="text/javascript">
   $(document).ready(function(){
       $("#search").focusin(function(){
+      	console.log("called");
         getLocation();
       });
   });
 
   function getLocation() {
       if (navigator.geolocation) {
+      	console.log("supported");
           navigator.geolocation.getCurrentPosition(showPosition);
+          
       } else {
           x.innerHTML = "Geolocation is not supported by this browser.";
       }
   }
 
   function showPosition(position) {
+  	console.log("there");
       var latitude  = position.coords.latitude;
       var longitude = position.coords.longitude;
 
