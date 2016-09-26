@@ -138,9 +138,9 @@
 								<ul>
 									    <li><a href="/"><%= t 'welcome.home' %></a></li>
 										<li><a href="/products"><%= t 'welcome.shop' %></a></li>
-										<li><a href="about.html"><%= t 'welcome.aboutus' %></a></li>
+										<li><a href="/aboutus"><%= t 'welcome.aboutus' %></a></li>
 										<li><a href="#"><%= t 'welcome.blog' %></a></li>
-										<li><a href="contact.html"><%= t 'welcome.contactus' %></a></li>
+										<li><a href="/contactus"><%= t 'welcome.contactus' %></a></li>
 								</ul>
 							</nav>
 						</div>
@@ -163,9 +163,9 @@
       if (navigator.geolocation) {
       	console.log("supported");
           navigator.geolocation.getCurrentPosition(showPosition);
-          
+
       } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
+          alert("Geolocation is not supported by this browser.");
       }
   }
 
