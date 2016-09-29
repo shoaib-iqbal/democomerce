@@ -48,7 +48,8 @@
                   <label><%= t 'welcome.sortby' %> </label>
                   <div class="shop-select">
                   
-                    <%= select_tag 'sort_by', options_for_select(Admin::Product::SORT_OPTIONS.collect{ |v| [v.last, v.first] }),prompt: 'Select a Filter' , :onchange => 'sort_order(this.value)' %>
+                    <%= select_tag 'sort_by', options_for_select(Admin::Product::SORT_OPTIONS.collect{ |v| [v.last, v.first] }),prompt: 'Select a Filter' , :onchange => "sort_order(this.value,'#{params['search']}')" %>
+
 
                    
                   

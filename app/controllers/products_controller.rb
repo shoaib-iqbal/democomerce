@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
     user_ids = Admin::Product.where.not(user_id: nil).collect(&:user_id).uniq
     @brands=User.where(id: user_ids)
     # brands end
+    
     respond_to do |format|
       format.js {}
       format.html
@@ -74,12 +75,24 @@ class ProductsController < ApplicationController
       
 
     end
+    if params[:search_param] and params[:sorting_order].present?
+     # byebug
+      @products = Admin::Product.joins(:translations).with_translations(I18n.locale).where("LOWER(admin_product_translations.name) LIKE ?", "%#{params[:search_param]}%".downcase).where(:user_id => params[:vendor])
+      @products = Admin::Product.other_filter_sort(@products, params[:sorting_order])
+      
+
+    end
     @total_products=@products.count
     # byebug
     @min_price = @products.sort_by(&:price).first.price rescue '0'
     @max_price = @products.sort_by(&:price).reverse.first.price rescue '0'
-    @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(4)
+    if params[:mobile].present?
 
+    else
+
+        @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(4)
+
+    end
     respond_to do |format|
           format.js {}
           format.html

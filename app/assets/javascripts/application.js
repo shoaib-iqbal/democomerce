@@ -33,8 +33,10 @@ function remove_filter(name,id)
 }
 //$('#amount').val()
 
-function sort_order(value){
+function sort_order(value,search){
 	$('#sorting_order').val(value);
+	$('#search_param').val(search);
+
 
 	$('#submit').click();
 }

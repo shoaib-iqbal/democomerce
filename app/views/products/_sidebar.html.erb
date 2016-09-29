@@ -7,6 +7,7 @@
   </div>
   <%=form_tag products_path, method: 'get', id: "filters", :remote=>true do%>
   <input type="hidden" name="sorting_order" id="sorting_order" value="">
+  <input type="hidden" name="search_param" id="search_param" value="">
     <div class="left-widget-content  indicator-banner">
         <div id="selected_filters">
           <aside class="enabled-filters widget">
