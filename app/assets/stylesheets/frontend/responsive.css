@@ -161,7 +161,13 @@ form.single-shop-form {
 @media (max-width: 767px) {
 .container {width:300px}
 .header-area .header-top {
-  display: none;
+  /*display: none;*/
+}
+.text-right .btn-primary{
+  margin-top: 10px;
+}
+.half-box .btn-default{
+  margin-top: 10px;
 }
 .header-bottom-right-inner {
   padding-bottom: 15px;
@@ -266,14 +272,30 @@ form.single-shop-form {
 .col-100 .banner-image {
   margin: 0;
 }
+.cart-btn span {
+    
+    padding: 10px 10px 6px 50px;
+    
+}
+.tab-menu{
+  float: right;
+}
 .tab-menu ul.nav-tabs > li a {
   font-size: 16px;
   font-weight: 500;
   padding: 0 10px;
+
 }
 .tab-menu ul.nav-tabs > li::before {
   height: 16px;
   top: 6px;
+
+}
+ul.tab-menu li a i {
+  font-size: 20px;
+
+
+
 }
 .post-thumbnail {
   margin: 0 0 20px;
@@ -388,9 +410,7 @@ form.single-shop-form {
   font-size: 11px;
   padding: 5px 0;
 }
-ul.tab-menu li a i {
-  font-size: 20px;
-}
+
 .single-shop-form {
   margin-left: 5px;
 }

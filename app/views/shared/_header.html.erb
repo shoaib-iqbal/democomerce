@@ -143,12 +143,7 @@
 										<li><a href="#"><%= t 'welcome.blog' %></a></li>
 										<li><a href="/contactus"><%= t 'welcome.contactus' %></a></li>
 										<li><a href="/admin">Signin as Vendor</a></li>
-										<li><a> Language &nbsp;
-										<select  title="Click to Change Language" class="lang-drop" onchange="changelanguage(this.value)">
-												<option <%=@lang == "en"?  'selected' : ''%> value="en">English</option>
-												<option <%=@lang == "ar" ? 'selected' : ''%> value="ar"> <%= t 'welcome.arabic' %> </option>
-										</select></a>
-										</li>
+										
 								</ul>
 							</nav>
 						</div>

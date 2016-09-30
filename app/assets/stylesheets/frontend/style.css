@@ -294,6 +294,7 @@ transition: all 300ms ease-in 0s;}
 /*----------------------------------------*/
 .mobile-menu-area {
   display: none;
+  margin-top: -6px !important;
   background: transparent;
 }
 /*.mobile-menu-area {
@@ -313,6 +314,7 @@ transition: all 300ms ease-in 0s;}
   font-weight: 600;
   left: 5%;
   position: absolute;
+
   top: 17px;
 }
 .mean-container .mean-nav ul li:last-child {
@@ -3856,3 +3858,13 @@ a:hover .fa {color:#c38749 !important;}
 }
 
 .cancel_btn:hover {color: #fff !important; background-image: none !important; background-color: #d9534f !important;}
+
+
+.filter-button-shop:visited, .filter-button-shop:active, .filter-button-shop:focus, .filter-button-shop:hover {color:#fff !important; background-color: #000 !important;}
+
+
+.indicator-button .owl-controls .owl-pagination .owl-page span, 
+.indicator-button .owl-controls .owl-pagination .owl-page:hover span {
+    border-color: #999;
+    background: transparent;
+}
