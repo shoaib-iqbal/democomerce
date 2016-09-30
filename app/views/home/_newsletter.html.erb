@@ -11,7 +11,7 @@
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                 <div class="letter-box">
                     <div class="letter-title">
-                        <h4>Newsletter</h4>
+                        <h4><%= t 'welcome.newsletter' %></h4>
                         <i class="fa fa-envelope-o"></i>
                     </div>
                     <p>Subscribe to our email newsletter & receive updates right in your inbox.</p>
@@ -20,7 +20,7 @@
                         </div>
                     <%= form_tag("/home/newsletter", method: "post" ,:remote => true,:class => 'search-box')  do %>
                         <div>
-							<input type="email" name="email_user" id="search-letter" placeholder ="Enter your e-mail">
+							<input type="email" name="email_user" id="search-letter" placeholder ="<%= t 'welcome.enteryouremail' %>">
                             <button type="submit" id="search-letter-btn" class="btn btn-search">
                                 <i class="fa fa-paper-plane-o"></i>
                             </button>

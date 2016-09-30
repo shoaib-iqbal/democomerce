@@ -2,12 +2,12 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only"><%= t 'admin.welcome' %></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/admin">Admin Panel</a>
+        <a class="navbar-brand" href="/admin"><%= t 'admin.adminpanel' %></a>
     </div>
     <!-- /.navbar-header -->
 
@@ -27,10 +27,10 @@
                 
                 <%#= link_to "Logout", logout_path %>
                 <li>
-                    <a href="/admin/users/<%=current_user.id%>/edit"><i class="fa fa-user fa-fw"></i> Edit Profile</a>
+                    <a href="/admin/users/<%=current_user.id%>/edit"><i class="fa fa-user fa-fw"></i> <%= t 'admin.editprofile' %></a>
                 </li>
                 <li>
-                    <a href="/logout"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                    <a href="/logout"><i class="fa fa-sign-out fa-fw"></i><%= t 'welcome.signout' %></a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -44,14 +44,14 @@
             <ul class="nav" id="side-menu">
                 
                 <li>
-                    <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> <%= t 'admin.dashboard' %></a>
                 </li>
                 <!-- links for orders -->
                 <li>
-                    <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> Orders<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> <%= t 'admin.orders' %><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/admin/orders">All order</a>
+                            <a href="/admin/orders"><%= t 'admin.allorders' %></a>
                         </li>
                         
                     </ul>
@@ -59,26 +59,26 @@
                 </li>
                 <!-- links for products -->
                 <li>
-                    <a href="#"><i class="fa glyphicon-th fa-fw"></i> Colors<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa glyphicon-th fa-fw"></i> <%= t 'admin.colors' %><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                        
                         <li>
-                            <a href="/admin/colors">All colors</a>
+                            <a href="/admin/colors"><%= t 'admin.allcolors' %></a>
                         </li>
                         <li>
-                            <a href="/admin/colors/new">create color</a>
+                            <a href="/admin/colors/new"><%= t 'admin.newcolor' %></a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="#"><i class="fa glyphicon-th fa-fw"></i> Products<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa glyphicon-th fa-fw"></i> <%= t 'admin.products' %><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/admin/products">All Products</a>
+                            <a href="/admin/products"><%= t 'admin.allproducts' %></a>
                         </li>
                         <li>
-                            <a href="/admin/products/new">New Product</a>
+                            <a href="/admin/products/new"><%= t 'admin.newproduct' %></a>
                         </li>
                         
                     </ul>
@@ -86,25 +86,25 @@
                 </li>
                  <!-- links for sizes -->
                 <li>
-                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Sizes<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <%= t 'admin.sizes' %><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/admin/sizes">All Sizes</a>
+                            <a href="/admin/sizes"><%= t 'admin.allsizes' %></a>
                         </li>
                         <li>
-                            <a href="/admin/sizes/new">New Size</a>
+                            <a href="/admin/sizes/new"><%= t 'admin.newsize' %></a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                        <a href="#"><i class="fa fa-bell fa-fw"></i> Categories<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-bell fa-fw"></i> <%= t 'admin.categories' %><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/admin/categories">All Categories</a>
+                                <a href="/admin/categories"><%= t 'admin.allcategories' %></a>
                             </li>
                             <li>
-                                <a href="/admin/categories/new">New Category</a>
+                                <a href="/admin/categories/new"><%= t 'admin.newcategory' %></a>
 
                             </li>
                         </ul>
@@ -114,26 +114,26 @@
                 <!-- links for Vendors -->
                 <%if current_user.superadmin? %>
                     <li>
-                        <a href="#"><i class="fa fa-users fa-fw"></i> Vendors<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-users fa-fw"></i> <%= t 'admin.vendors' %><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/admin/users">All Vendors</a>
+                                <a href="/admin/users"><%= t 'admin.allvendors' %></a>
                             </li>
                             <li>
-                                <a href="/admin/users/new">New Vendor</a>
+                                <a href="/admin/users/new"><%= t 'admin.newvendor' %></a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
 
                     <li>
-                        <a href="#"><i class="fa fa-bell fa-fw"></i> Deals<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-bell fa-fw"></i> <%= t 'admin.deals' %><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/admin/deal_of_days">All Deals</a>
+                                <a href="/admin/deal_of_days"><%= t 'admin.alldeals' %></a>
                             </li>
                             <li>
-                                <a href="/admin/deal_of_days/new">New Deal</a>
+                                <a href="/admin/deal_of_days/new"><%= t 'admin.newdeal' %></a>
 
                             </li>
                         </ul>
@@ -142,10 +142,10 @@
                     </li>
                     
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Store Configuration <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <%= t 'admin.storeconfigration' %> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/admin/store_settings/1/edit">Store Settings </a>
+                                <a href="/admin/store_settings/1/edit"><%= t 'admin.storesettings' %> </a>
 
                             </li>
                         </ul>
@@ -153,14 +153,14 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Testimonials <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <%= t 'admin.testimonials' %> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/admin/testimonials">All Testimonials </a>
+                                <a href="/admin/testimonials"><%= t 'admin.alltestimonials' %> </a>
 
                             </li>
                             <li>
-                                <a href="/admin/testimonials/new">Create Testimonial </a>
+                                <a href="/admin/testimonials/new"><%= t 'admin.newtestimonials' %></a>
 
                             </li>
                         </ul>
