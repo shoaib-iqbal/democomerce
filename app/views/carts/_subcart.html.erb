@@ -39,7 +39,7 @@
                 <span>Total &nbsp;</span>
                 <span class="price pull-right">
                     <%if @current_order and  @current_order.line_items.present?%>
-                        <%= @current_order.sub_total %>
+                        <%= show_price(@current_order.sub_total) %>
                         <%end%>
                             
                 </span>

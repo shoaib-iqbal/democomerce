@@ -5,7 +5,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="breadcrumb-single">
                     <ul class="breadcrumbs">
-                        <li><a href="index.html" title="Return to Home">
+                        <li><a href="/" title="Return to Home">
                             <i class="fa fa-home"></i>
                             Home
                         </a></li>
@@ -130,79 +130,10 @@
 </div>
 <!-- Our Team Start -->	
 <!--Brand Area Start-->
-<div class="brand-area section-padding2">
-    <div class="container">
-        <div class="row">		            
-            <div class="brand-list">
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href=""><img src="/assets/brand/1.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href=""><img src="/assets/brand/2.jpg" alt=""></a>
-                    </div>
-                </div> 
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href=""><img src="/assets/brand/3.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href=""><img src="/assets/brand/4.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href=""><img src="/assets/brand/5.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href=""><img src="/assets/brand/6.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="single-brand">
-                        <a href=""><img src="/assets/brand/7.jpg" alt=""></a>
-                    </div>
-                </div>                      
-            </div>
-        </div>
-    </div>
-</div>
+<!--Banner Area Start-->
+<%= render :partial => '/home/brand'%>	
+<!--Banner Area End-->	
 <!--Brand Area End-->
 <!--News Letter Area Start-->	
-<div class="news-letter-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7 col-md-7  col-sm-7 col-xs-12">
-				<div class="banner-image">
-					<a href="#">
-						<img src="/assets/news-letter.jpg" alt="">
-					</a>
-				</div>		                
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                <div class="letter-box">
-                    <div class="letter-title">
-                        <h4>Newsletter</h4>
-                        <i class="fa fa-envelope-o"></i>
-                    </div>
-                    <p>Subscribe to our email newsletter & receive updates right in your inbox.</p>
-                    <form  class="search-box" action="#" method="POST">
-                        <div>
-							<input type="text" name="s" id="search-letter" value="Enter your e-mail">
-                            <button type="submit" id="search-letter-btn" class="btn btn-search">
-                                <i class="fa fa-paper-plane-o"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%= render :partial => '/home/newsletter' %>
 <!--News Letter Area End-->	

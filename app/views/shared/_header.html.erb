@@ -116,6 +116,7 @@
 										<li><a href="/aboutus"><%= t 'welcome.aboutus' %></a></li>
 										<li><a href="#"><%= t 'welcome.blog' %></a></li>
 										<li><a href="/contactus"><%= t 'welcome.contactus' %></a></li>
+										<!-- <li><a href="/admin">Sign in as vendor</a></li> -->
 									</ul>
 								</nav>
 							</div>
@@ -138,9 +139,11 @@
 								<ul>
 									    <li><a href="/"><%= t 'welcome.home' %></a></li>
 										<li><a href="/products"><%= t 'welcome.shop' %></a></li>
-										<li><a href="about.html"><%= t 'welcome.aboutus' %></a></li>
+										<li><a href="/aboutus"><%= t 'welcome.aboutus' %></a></li>
 										<li><a href="#"><%= t 'welcome.blog' %></a></li>
-										<li><a href="contact.html"><%= t 'welcome.contactus' %></a></li>
+										<li><a href="/contactus"><%= t 'welcome.contactus' %></a></li>
+										<li><a href="/admin">Signin as Vendor</a></li>
+										
 								</ul>
 							</nav>
 						</div>
@@ -154,19 +157,23 @@
 <script type="text/javascript">
   $(document).ready(function(){
       $("#search").focusin(function(){
+      	console.log("called");
         getLocation();
       });
   });
 
   function getLocation() {
       if (navigator.geolocation) {
+      	console.log("supported");
           navigator.geolocation.getCurrentPosition(showPosition);
+
       } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
+          alert("Geolocation is not supported by this browser.");
       }
   }
 
   function showPosition(position) {
+  	console.log("there");
       var latitude  = position.coords.latitude;
       var longitude = position.coords.longitude;
 

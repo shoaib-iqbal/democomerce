@@ -3,8 +3,8 @@ class Order < ActiveRecord::Base
     belongs_to :customer
      accepts_nested_attributes_for :customer, reject_if: :all_blank, allow_destroy: true
     #accepts_nested_attributes_for :customer
-    has_many :addresses
-    accepts_nested_attributes_for :addresses 
+    has_one :address
+    accepts_nested_attributes_for :address
     ORDER_NUMBER_LENGTH  = 9
     ORDER_NUMBER_LETTERS = false
     ORDER_NUMBER_PREFIX  = 'R'
@@ -61,7 +61,7 @@ class Order < ActiveRecord::Base
 
 
 	def full_address
-		address = self.addresses.last
+		address = self.address
 		if address.present?
 			"#{address.address}, #{address.city}, #{address.country_state}, #{address.country}"
 		else
@@ -79,11 +79,5 @@ class Order < ActiveRecord::Base
 		end	
 	end
 
-	def create_token
-        self.guest_token ||= loop do
-          random_token = SecureRandom.urlsafe_base64(nil, false)
-          break random_token unless self.class.exists?(guest_token: random_token)
-        
-      end
-    end
+	
 end

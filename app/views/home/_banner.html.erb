@@ -3,9 +3,9 @@
 		<div class="row">
 			<div id="banner-slider">
 				<%@categories_all.each do |cat|%>
-					<div class="single-product">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="banner-image">
+					<div class="single-product banners">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 all_products_fix_images_small">
+							<div class="banner-image product-img_small">
 								<a href="/products?category=<%=cat.slug%>">
 									<img src="<%=cat.image.avatar.url(:original) rescue ''%>" alt="">
 								</a>

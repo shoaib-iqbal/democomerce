@@ -4,15 +4,15 @@
             <tr>
             <th style="display: none;"></th>
             
-                <th>Name</th>
-                <th>Price</th>
-                <th>Discounted Price</th>
-                <th>Description</th>
-                <th>Sizes</th>
-                <th>Color</th>
-                <th>Picture</th>
-                <th>Vendor</th>
-                <th>Tools</th>
+                <th><%= t 'admin.name'%></th>
+                <th><%= t 'welcome.price'%></th>
+                <th><%= t 'admin.discountedprice'%></th>
+                <th><%= t 'admin.desc'%></th>
+                <th><%= t 'admin.sizes'%></th>
+                <th><%= t 'admin.colors'%></th>
+                <th><%= t 'admin.pictures'%></th>
+                <th><%= t 'admin.vendors'%></th>
+                <th><%= t 'admin.tool'%></th>
             </tr>
         </thead>
         <tbody>
@@ -66,7 +66,9 @@
     $(document).ready(function() {
         $('#dataTables-vendors').DataTable({
                 responsive: true,
-                pageLength: 50
+                pageLength: 50,
+                autoWidth: false
+
         });
     });
 </script>

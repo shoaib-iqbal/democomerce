@@ -15,14 +15,14 @@
 		<label>Mobile Number: </label>
 		<%=current_customer.mobile_number rescue @current_order.phone%><br>
 		<label>Phone Number: </label>
-		<%=current_customer.phone_number rescue @current_order.phone%><br>
+		<%=@current_order.phone rescue 'NILL'%><br>
 
 		<h4>Shipping Address</h4>
-
-		<p>address: <%=@current_order.addresses.last.address%></p>
-		<p>city: <%=@current_order.addresses.last.city%></p>
-		<p>state: <%=@current_order.addresses.last.country_state%></p>
-		<p>country: <%=@current_order.addresses.last.country%></p>
+    
+		<p><b>address:</b> <%=@current_order.address.address%></p>
+		<p><b>city:</b> <%=@current_order.address.city%></p>
+		<p><b>state: </b><%=@current_order.address.country_state%></p>
+		<p><b>country:</b> <%=@current_order.address.country%></p>
 
 		
 		
@@ -43,7 +43,7 @@
           <% @current_order.line_items.each do |item| %>
 
             <div class="media">
-              <a class="pull-left" href="<%=product_path(item.product.id)%>"><img class="media-object" src="<%= item.get_image %>" style="max-width: 72px;" class="img-responsive"></a>
+              <a class="pull-left" href="<%=product_path(item.product.id)%>"><img class="media-object" src="<%= item.get_image %>" style="max-width: 72px;max-height: 72px;" class="img-responsive"></a>
               <div class="media-body">
                   <h4 class="media-heading"><a href="<%=product_path(item.product.id)%>"><%= item.get_name %></a></h4>
                   <h5 class="media-heading"> Price: 

@@ -1,14 +1,14 @@
 
 <% if @products.present? %>
-  $('#products').html("<%=j render(:partial => 'products', :object => @products) %>");
+    $('#products').html("<%=j render(:partial => 'products', :object => @products) %>");
 
-  $('#listview_products').html("<%=j render(:partial => 'listview_products', :object => @products) %>");
-$('#paginator').html('<%= escape_javascript(paginate(@products, :remote => true).to_s) %>');
-$("html, body").animate({ scrollTop: $('.widget-title').offset().top }, 1000);
+    $('#listview_products').html("<%=j render(:partial => 'listview_products', :object => @products) %>");
+	$('#paginator').html('<%= escape_javascript(paginate(@products, :remote => true).to_s) %>');
+	$("html, body").animate({ scrollTop: $('.widget-title').offset().top }, 1000);
 <% else %>
-  $('#products').html("<h1 class='text-center'>No Results Found</h1>");
+    $('#products').html("<h1 class='text-center'>No Results Found</h1>");
 
-  $('#listview_products').html("<h1 class='text-center'>No Results Found</h1>");
+    $('#listview_products').html("<h1 class='text-center'>No Results Found</h1>");
 <% end %>
 
 
@@ -29,4 +29,4 @@ $("html, body").animate({ scrollTop: $('.widget-title').offset().top }, 1000);
 	$('#selected_filters_colors').html("No Color Selected");
 <%end%>
 
-$('.uniq').html("There are is <%=@total_products.count%> products")
+$('.uniq').html("There are is <%=@total_products%> products")

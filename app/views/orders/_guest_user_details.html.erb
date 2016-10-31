@@ -58,7 +58,7 @@
           <%= f.text_field :last_name, :class=>"form-control", :placeholder=>"Last Name",  :required=>true %>
         </div>
       </div>
-      <%= f.fields_for :addresses do |add| %>
+      <%= f.fields_for :address do |add| %>
         <div class="col-md-12">
           <div class="form-group">
             <label>Address*</label>
@@ -91,11 +91,7 @@
           </div>
         </div>
         <div class="col-md-6">
-        <div class="form-group">
-          <label>Contact Number*</label>
-          <%= add.phone_field :mobile_number, :class=>"form-control", :placeholder=>"Mobile Number",  :required=>true %>
-          
-        </div>
+        
       </div>
 
       </div>
