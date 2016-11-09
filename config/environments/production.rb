@@ -84,10 +84,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
-      bucket: 'commerceassets',
-      access_key_id: 'AKIAI2MENQUJ46FQ6LIA',
-      secret_access_key: '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',
-      s3_region: 'us-east-1',
+      bucket: ENV["bucket_name"],
+      access_key_id: ENV["s3_access_key_id"],
+      secret_access_key:  ENV["s3_secret_access_key"],
+      s3_region: ENV["s3_region"]
     }
   }
 
