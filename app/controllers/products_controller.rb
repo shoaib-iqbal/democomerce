@@ -90,7 +90,7 @@ class ProductsController < ApplicationController
 
     else
 
-        @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(4)
+        @products = Kaminari.paginate_array(@products,total_count: @products.count).page(params[:page]).per(12)
 
     end
     respond_to do |format|
