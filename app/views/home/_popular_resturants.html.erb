@@ -3,7 +3,7 @@
 
   <% @vendors.each do |vendor|%>
     <div class="item">
-    	<a href="/stores/<%= vendor.id%>"><img src="<%= vendor.avatar.url %>"></a>
+    	<a href="/stores/<%= vendor.id%>"><img src="<%= vendor.avatar.url rescue '/assets/frontend/pic1.png' %>"></a>
     </div>
   <%end%>
   </div>
