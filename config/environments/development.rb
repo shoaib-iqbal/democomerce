@@ -72,7 +72,7 @@ config.action_mailer.smtp_settings = {:address => "localhost", :port => 300}
       :authentication       => :plain,
       :enable_starttls_auto => true
   }
-
+Paperclip::Attachment.default_options[:default_url] = "/assets/avatars/thumbnail/missing.png"
 
 
 

@@ -123,5 +123,6 @@ Rails.application.configure do
     :sender_address => %{"Exception Notification" <admin@cargo.com>},
     :exception_recipients => %w{shoaib@gems.techverx.com saim@gems.techverx.com}
   }
+  Paperclip::Attachment.default_options[:default_url] = "/assets/avatars/thumbnail/missing.png"
   
 end
