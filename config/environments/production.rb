@@ -81,15 +81,15 @@ Rails.application.configure do
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
   config.assets.compile = true
 
-  config.paperclip_defaults = {
-    storage: :s3,
-    s3_credentials: {
-      bucket: ENV["bucket_name"],
-      access_key_id: ENV["s3_access_key_id"],
-      secret_access_key:  ENV["s3_secret_access_key"],
-      s3_region: ENV["s3_region"]
-    }
-  }
+  # config.paperclip_defaults = {
+  #   storage: :s3,
+  #   s3_credentials: {
+  #     bucket: ENV["bucket_name"],
+  #     access_key_id: ENV["s3_access_key_id"],
+  #     secret_access_key:  ENV["s3_secret_access_key"],
+  #     s3_region: ENV["s3_region"]
+  #   }
+  # }
 
 
 
