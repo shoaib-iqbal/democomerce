@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	 <title><%= t 'admin.adminpanel' %></title>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <meta name="description" content="">
+	  <meta name="author" content="">
+
+	    <%= javascript_include_tag :application %>
+
+	  <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'select2.min' %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div id="wrapper">
+			<%= render :partial => '/admin/shared/sidebar' %>
+			<div id="page-wrapper">
+			<% flash.each do |key, value| %>
+		        <div class="alert alert-<%= key %>"><%= value %></div>
+		    <% end %>
+
+			
+				<%= yield %>
+			</div>
+			<%= javascript_include_tag 'all_admin' %>
+
+		</div>
+		<script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true,
+                pageLength: 50
+                
+        });
+
+
+    });
+    
+   
+</script>
+	</body>
+</html>

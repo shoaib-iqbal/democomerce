@@ -1,0 +1,107 @@
+<div class="home-header" style="background-image: url(/assets/frontend/1.jpg);">
+  <div class="homepage-tagline">
+    <div class="homepage-headline">
+      <h1>93 restaurants</h1>
+      <h2>delivering to your door</h2>
+    </div>
+  </div>
+  <div class="location-header">
+    <div class="container">
+      <i class="fa fa-map-marker fa-fw"></i> 
+      <span class="current-location">Johar Town, Block-E, Lahore</span>
+      <a href="#" class="btn btn-primary btn-xs change-location">Change Location</a>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <ol class="breadcrumb">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#">Restaurants</a></li>
+    <li class="active">Johar Town, Lahore</li>
+  </ol>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="margin-top">
+      <div class="col-md-3">
+        <div class="filters">
+          <div class="form-group">
+            <i class="fa fa-search"></i>
+            <input type="text" name="" class="form-control" required="required" placeholder="Search">
+          </div>
+        </div>
+        <div class="filters">
+          <div class="form-group">
+            <i class="fa fa-sort-amount-desc"></i>
+            <select class="form-control">
+              <option value selected="selected">Sort By Relevance</option>
+              <option value="default">Revelance</option>
+              <option value="">Ratings</option>
+              <option>Minimum Order Value</option>
+              <option value="">Free Delivery</option>
+              <option value="">Fastest Delivery</option>
+            </select>
+          </div>
+        </div>
+        
+        <%= render 'side_filters'%>
+
+      </div>
+      <div class="col-md-9">
+
+        <% @vendors.each do |vendor|%>
+          <div class="clickable" >
+            <a href="/products/1">
+              <div class="define-border">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img src="/assets/frontend/califonia-pizza.png" class="img-responsive center-block">
+                  </div>
+                  <div class="col-md-8">
+                    <h4><%= vendor.name%></h4>
+                    <div class="a-tag">
+            <a href="#">Pizza</a></div>
+            <ul class="list-unstyled list-inline">
+            <li><a href="#" style="">$$$</a></li>
+            <li>
+            <i class="fa fa-star fa-fw"></i> 
+            <i class="fa fa-star fa-fw"></i> 
+            <i class="fa fa-star-half-o fa-fw"></i>
+            <i class="fa fa-star-o fa-fw"></i>
+            </li>
+            </ul>
+            <div class="time">Delivers in 45 minutes</div>
+            </div>
+            <div class="vendor__promoted"><span>NEW</span></div>
+            </div>
+            </div>
+            </a>
+          </div>
+        <%end%>
+        
+        <div class="clear"></div>
+        <nav class="text-right">
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+              <a href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="clear20"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clear20"></div>

@@ -1,0 +1,16 @@
+<div class="brand-area section-padding2">
+    <div class="container">
+        <div class="row">		            
+            <div class="brand-list">
+
+                <% @brands.each do |brand|%>
+                <div class="col-md-12">
+                    <div class="single-brand">
+                        <a href="/products?vendor=<%= brand.id %>"><img style="border-radius:100%" src="<%=brand.avatar.url(:thumbnail) rescue ''%>" alt=""></a>
+                    </div>
+                </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

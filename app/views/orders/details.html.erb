@@ -1,0 +1,8 @@
+<% if customer_signed_in? %>
+  <%= render "registered_user_details" %>
+<% else %>
+  <%= render "guest_user_details" %>
+<% end %>
+
+
+

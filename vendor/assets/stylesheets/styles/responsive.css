@@ -1,0 +1,88 @@
+/*less than 319 not needed but still here it is just in case*/
+@media screen and (max-width: 319px) {
+	.home-header {padding:40px 0;}
+	.homepage-tagline h1 {font-size:32px;}
+	.homepage-tagline h2 {font-size:16px;}
+	.homepage-tagline .btn {width:100%;}
+
+	.define-border .col-md-8 h4, .define-border .col-md-8 .a-tag, .define-border .col-md-8 .list-unstyled, .define-border .col-md-8 .time
+	{padding-left:10px; padding-right:10px;}
+	.define-border .col-md-8 .time {margin-bottom:10px;}
+	.define-border img {margin:10px auto;}
+}
+
+/*mobile devices including iphone*/
+@media screen and (min-width: 320px) and (max-width: 479px) {
+	.home-header {padding:40px 0;}
+	.homepage-tagline h1 {font-size:32px;}
+	.homepage-tagline h2 {font-size:16px;}
+	.homepage-tagline .btn {width:100%;}
+
+	.define-border .col-md-8 h4, .define-border .col-md-8 .a-tag, .define-border .col-md-8 .list-unstyled, .define-border .col-md-8 .time
+	{padding-left:10px; padding-right:10px;}
+	.define-border .col-md-8 .time {margin-bottom:10px;}
+	.define-border img {margin:10px auto;}
+}
+
+/*mobile devices*/
+@media screen and (min-width: 480px) and (max-width: 639px) {
+	.home-header {padding:40px 0;}
+	.homepage-tagline .btn {width:100%;}
+
+	.define-border .col-md-8 h4, .define-border .col-md-8 .a-tag, .define-border .col-md-8 .list-unstyled, .define-border .col-md-8 .time
+	{padding-left:10px; padding-right:10px;}
+	.define-border .col-md-8 .time {margin-bottom:10px;}
+	.define-border img {margin:10px auto;}
+}
+
+/*mobiles and tablets*/
+@media screen and (min-width: 640px) and (max-width: 767px) {
+	.home-header {padding:40px 0;}
+	.homepage-tagline .btn {width:100%;}
+
+	.define-border .col-md-8 h4, .define-border .col-md-8 .a-tag, .define-border .col-md-8 .list-unstyled, .define-border .col-md-8 .time
+	{padding-left:10px; padding-right:10px;}
+	.define-border .col-md-8 .time {margin-bottom:10px;}
+	.define-border img {margin:10px auto;}
+}
+
+/*some mobiles and tablets*/
+@media screen and (min-width: 768px) and (max-width: 1003px) {
+	.home-header {padding:40px 0;}
+	
+	.define-border .col-md-8 h4, .define-border .col-md-8 .a-tag, .define-border .col-md-8 .list-unstyled, .define-border .col-md-8 .time
+	{padding-left:10px; padding-right:10px;}
+	.define-border .col-md-8 .time {margin-bottom:10px;}
+	.define-border img {margin:10px auto;}
+}
+
+/*tablets and small displays*/
+@media screen and (min-width: 1004px) and (max-width: 1259px) {
+	.home-header {padding:40px 0;}
+}
+
+/*laptops - MAC*/
+@media screen and (min-width: 1260px) and (max-width: 1279px) {
+
+}
+
+/*laptops - MAC*/
+@media screen and (min-width: 1280px) and (max-width: 1365px) {
+
+}
+
+/*laptops*/
+@media screen and (min-width: 1366px) and (max-width: 1599px) {
+
+}
+
+/*large displays*/
+@media screen and (min-width: 1600px) and (max-width: 1679px) {
+
+}
+
+/*even large displays*/
+@media screen and (min-width: 1680px) {
+
+}
+

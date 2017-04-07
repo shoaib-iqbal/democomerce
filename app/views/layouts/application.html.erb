@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<%= render :partial => "/shared/head" %>
+<body>
+
+
+<!-- <p id="demo"></p> -->
+<%= render :partial => "/shared/header" %>
+<%= yield %>
+<%= render :partial => "/shared/footer" %>
+</body>
+</html>
+<script type="text/javascript">
+  $(document).ready(function(){
+      
+      	console.log("called");
+        rrr=getLocation();
+
+      
+  });
+
+  function getLocation() {
+      if (navigator.geolocation) {
+      	console.log("supported");
+          navigator.geolocation.getCurrentPosition(showPosition);
+
+      } else {
+          alert("Geolocation is not supported by this browser.");
+      }
+  }
+
+  function showPosition(position) {
+  	console.log("there");
+      latitude  = position.coords.latitude;
+      longitude = position.coords.longitude;
+
+       if (latitude && longitude) {
+        $("#latitude").val(latitude);
+        $("#longitude").val(longitude);
+       }
+
+
+       $.ajax({
+           type: "get",
+           url: '/',
+           data: { latitude: latitude, longitude: longitude},
+           success: function(){
+             
+           }
+         });
+
+
+  }
+</script>

@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"><%= t 'admin.allproducts'%></h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div <%if current_user.has_role? 'superadmin'%>style="float:left;"<%end%> class="panel-heading"><%= t 'admin.allproducts'%> </div>
+                <%if current_user.has_role? 'superadmin' %>
+                    <%=render :partial => '/admin/shared/users_dropdown'%>
+                <%end%>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div  id="vendor_products">
+                    <%=render :partial => 'vendor_products'%>
+                    <!-- /.table-responsive -->
+                </div>
+                
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->

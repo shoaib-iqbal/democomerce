@@ -1,0 +1,88 @@
+
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<hr>
+
+<div class="container forms">
+	<%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+	<%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+	<%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+	<br><br>
+
+	<div class="section-title">
+		<h4>Login</h4>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Email*</label>
+				<%= f.email_field :email, required: true,class: 'form-control' %>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Password*</label>
+				<%= f.password_field :password, required: false ,class: 'form-control'%>
+				<!-- <input type="text" class="form-control" , placeholder=""> -->
+			</div>
+		</div>
+		 <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+	</div>
+
+
+       
+ <%= f.button :submit, "Log in",:class =>'btn btn-default' %>
+
+
+</div><br>
+
+
+<div class="container text-center">
+	
+	Already have an account? <a href="" data-toggle="modal" data-target="#signinmodal">Login</a><br>
+		<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+	  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+	<% end -%>
+
+
+</div>
+
+
+<br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+   
+
+  
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

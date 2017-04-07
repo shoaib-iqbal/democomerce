@@ -1,0 +1,275 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only"><%= t 'admin.welcome' %></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/admin"><%= t 'admin.adminpanel' %></a>
+    </div>
+    <!-- /.navbar-header -->
+
+    <ul class="nav navbar-top-links navbar-right">
+        <li>        
+        <select class="form-control" onchange="changelanguage(this.value)">
+            <option <%=@lang == "en"?  'selected' : ''%> value="en">English</option>
+            <option <%=@lang == "ar" ? 'selected' : ''%> value="ar"> <%= t 'welcome.arabic' %> </option>
+        </select>
+        </li>    
+        <!-- /.dropdown -->
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                
+                <%#= link_to "Logout", logout_path %>
+                <li>
+                    <a href="/admin/users/<%=current_user.id%>/edit"><i class="fa fa-user fa-fw"></i> <%= t 'admin.editprofile' %></a>
+                </li>
+                <li>
+                    <a href="/logout"><i class="fa fa-sign-out fa-fw"></i><%= t 'welcome.signout' %></a>
+                </li>
+            </ul>
+            <!-- /.dropdown-user -->
+        </li>
+        <!-- /.dropdown -->
+    </ul>
+    <!-- /.navbar-top-links -->
+
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                
+                <li>
+                    <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> <%= t 'admin.dashboard' %></a>
+                </li>
+                <!-- links for orders -->
+                <li>
+                    <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> <%= t 'admin.orders' %><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/admin/orders"><%= t 'admin.allorders' %></a>
+                        </li>
+                        
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <!-- links for products -->
+                <li>
+                    <a href="#"><i class="fa glyphicon-th fa-fw"></i> <%= t 'admin.colors' %><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                       
+                        <li>
+                            <a href="/admin/colors"><%= t 'admin.allcolors' %></a>
+                        </li>
+                        <li>
+                            <a href="/admin/colors/new"><%= t 'admin.newcolor' %></a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fa glyphicon-th fa-fw"></i> <%= t 'admin.products' %><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/admin/products"><%= t 'admin.allproducts' %></a>
+                        </li>
+                        <li>
+                            <a href="/admin/products/new"><%= t 'admin.newproduct' %></a>
+                        </li>
+                        
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                 <!-- links for sizes -->
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <%= t 'admin.sizes' %><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/admin/sizes"><%= t 'admin.allsizes' %></a>
+                        </li>
+                        <li>
+                            <a href="/admin/sizes/new"><%= t 'admin.newsize' %></a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                        <a href="#"><i class="fa fa-bell fa-fw"></i> <%= t 'admin.categories' %><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admin/categories"><%= t 'admin.allcategories' %></a>
+                            </li>
+                            <li>
+                                <a href="/admin/categories/new"><%= t 'admin.newcategory' %></a>
+
+                            </li>
+                        </ul>
+                        
+                        <!-- /.nav-second-level -->
+                    </li>
+                <!-- links for Vendors -->
+                <%if current_user.superadmin? %>
+                    <li>
+                        <a href="#"><i class="fa fa-users fa-fw"></i> <%= t 'admin.vendors' %><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admin/users"><%= t 'admin.allvendors' %></a>
+                            </li>
+                            <li>
+                                <a href="/admin/users/new"><%= t 'admin.newvendor' %></a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-users fa-fw"></i> <%= t 'admin.vendor_categories' %><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admin/vendor_categories"><%= t 'admin.all vendor Categories' %></a>
+                            </li>
+                            <li>
+                                <a href="/admin/vendor_categories/new"><%= t 'admin.new vendor Categories' %></a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-bell fa-fw"></i> <%= t 'admin.deals' %><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admin/deal_of_days"><%= t 'admin.alldeals' %></a>
+                            </li>
+                            <li>
+                                <a href="/admin/deal_of_days/new"><%= t 'admin.newdeal' %></a>
+
+                            </li>
+                        </ul>
+                        
+                        <!-- /.nav-second-level -->
+                    </li>
+                    
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <%= t 'admin.storeconfigration' %> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admin/store_settings/1/edit"><%= t 'admin.storesettings' %> </a>
+
+                            </li>
+                        </ul>
+                        
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> <%= t 'admin.testimonials' %> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/admin/testimonials"><%= t 'admin.alltestimonials' %> </a>
+
+                            </li>
+                            <li>
+                                <a href="/admin/testimonials/new"><%= t 'admin.newtestimonials' %></a>
+
+                            </li>
+                        </ul>
+                        
+                        <!-- /.nav-second-level -->
+                    </li>
+                <%end%>
+
+<!--                 <li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#">Flot Charts</a>
+                        </li>
+                        <li>
+                            <a href="#">Morris.js Charts</a>
+                        </li>
+                    </ul>
+                   
+                </li> -->
+<!--                 <li>
+                    <a href="#"><i class="fa fa-table fa-fw"></i> Tables</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                </li> -->
+<!--                 <li>
+                    <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#">Panels and Wells</a>
+                        </li>
+                        <li>
+                            <a href="#">Buttons</a>
+                        </li>
+                        <li>
+                            <a href="#">Notifications</a>
+                        </li>
+                        <li>
+                            <a href="#">Typography</a>
+                        </li>
+                        <li>
+                            <a href="#"> Icons</a>
+                        </li>
+                        <li>
+                            <a href="#">Grid</a>
+                        </li>
+                    </ul>
+                    
+                </li> -->
+<!--                 <li>
+                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="#">Second Level Item</a>
+                        </li>
+                        <li>
+                            <a href="#">Second Level Item</a>
+                        </li>
+                        <li>
+                            <a href="#">Third Level <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="#">Third Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Third Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Third Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Third Level Item</a>
+                                </li>
+                            </ul>
+                           
+                        </li>
+                    </ul>
+                  
+                </li> -->
+<!--                 <li class="active">
+                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="active" href="#">Blank Page</a>
+                        </li>
+                        <li>
+                            <a href="#">Login Page</a>
+                        </li>
+                    </ul>
+                   
+                </li> -->
+
+            </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+</nav>

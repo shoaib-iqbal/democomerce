@@ -1,0 +1,62 @@
+<%if @products.present? %>
+<div class="all_products_fix_images">
+<% @products.each do |product| %>
+<div class="col-xs-12 col-sm-6 col-md-4 ">
+	<div class="single-product">
+		<!--product Content-->
+		<div class="product-img-content">
+			<!--Product Image-->
+			<div class="product-img">
+				<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
+					<%if product.images.present? %>
+						<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block", style:  "max-height:200px"%>  
+                    <%else%>
+                        <img src="/assets/featured/1.jpg"/>
+					<%end%>
+				</a>                                            
+			</div>
+			<span class="new-label">New</span>
+			<%if product.discounted_price?%>
+				<span class="sale-label">Sale!</span>
+			<%end%>
+			<!--Product Action-->
+			<div class="product-action">
+				<a  title="Add to cart"   onclick="getProductDetail(this)"><i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i></a>
+				<a  title="Quick view"  onclick="getProductDetail(this)">
+					<i class="fa fa-expand" >
+					<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>
+				</a>
+			</div>
+		</div>
+		<div class="product-content">
+			<h5 class="clearfix">
+				<div class="pull-left"><a href="<%=product_path(product.slug)%>" title="<%= product.name %>"><%= product.name %></a></div>
+				<div class="pull-right"><a href="/products?vendor=<%= product.user.id %>" title="<%= product.user.name %>"><span><%= product.user.name %></span></a></div>
+			</h5>
+			<!--Product Rating-->
+			<div class="rating-icon">
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+				<i class="fa fa-star"></i>
+			</div>
+			<!--Product Price-->
+			<div class="product-price">
+				<span class="new-price"> <%= show_price(product.price) %></span>
+				<%if product.discounted_price?%>
+					<span class="old-price"><%= show_price(product.discounted_price)  %></span>
+				<%end%>
+
+			</div>
+		</div>
+	</div>									
+</div>
+
+
+<% end %>
+
+</div>
+<%else%>
+<h1 class="text-center">No product found</h1>
+<%end%>

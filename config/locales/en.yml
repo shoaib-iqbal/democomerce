@@ -1,0 +1,130 @@
+# # Files in the config/locales directory are used for internationalization
+# # and are automatically loaded by Rails. If you want to use locales other
+# # than English, add the necessary files in this directory.
+# #
+# # To use the locales, use `I18n.t`:
+# #
+# #     I18n.t 'hello'
+# #
+# # In views, this is aliased to just `t`:
+# #
+# #     <%= t('hello') %>
+# #
+# # To use a different locale, set it with `I18n.locale`:
+# #
+# #     I18n.locale = :es
+# #
+# # This would use the information in config/locales/es.yml.
+# #
+# # To learn more, please read the Rails Internationalization guide
+# # available at http://guides.rubyonrails.org/i18n.html.
+
+# en:
+#   hello: "Hello world"
+
+ 
+en:
+  welcome: 
+    paragraph: "Welcome to Store."
+    home: "HOME"
+    arabic: "العربية"
+    signin: "Sign in"
+    myaccount: "My account"
+    account: "Account"
+    signout: "Sign Out"
+    checkout: "Check out"
+    home: "Home"
+    shop: "SHOP"
+    aboutus: "ABOUT US"
+    blog: "BLOG"
+    contactus: "Contact Us"
+    freeshipping: "FREE SHIPPING"
+    Allorderonproducts: "All order on products"
+    FREERETURNS: "FREE RETURNS"
+    Onlyin30days: "Only in 30 days"
+    SUPPORT24/7: "SUPPORT 24/7"
+    Activesupport: "Active support"
+    featured: "Featured products"
+    dealofday: "DEAL OF THE DAY"
+    new: "NEW"
+    sale: "SALE"
+    newproducts: "New products"
+    addtocart: "Add To Cart"
+    quickview: "Quick View"
+    filter: "Filter"
+    enabledfilters: "Enabled filters:"
+    products: "products"
+    thereare: "There are"
+    sortby: "Sort by"
+    compare: "COMPARE"
+    nosizepresent: "no size present"
+    nocolorpresent: "no color present"
+    size: "Size"
+    color: "Color"
+    nosizeselected: "No Size Selected"
+    nocolorselected: "No Color Selected"
+    show: "Show"
+    price: "Price"
+    range: "Range"
+    categories: "CATEGORIES"
+    information: "INFORMATION"
+    myaccount: "MY ACCOUNT"
+    extras: "EXTRAS"
+    newsletter: "NEWSLETTER"
+    enteryouremail: "Enter Your E-mail"
+    fromtheblog: "FROM THE BLOG"
+    openingtime: "OPENING TIME"
+
+  admin:
+    welcome: "Welome to admin panel"
+    adminpanel: "Admin Panel"
+    toogle: "Toogle Navigation"
+    orders: "Orders"
+    allorders: "All Orders"
+    colors: "Colors"
+    allcolors: "All Colors"
+    newcolor: "New Color"
+    products: "Products"
+    allproducts: "All Products"
+    newproduct: "New Product"
+    sizes: "Sizes"
+    allsizes: "All Sizes"
+    newsize: "New Size"
+    categories: "Categories"
+    allcategories: "All Categories"
+    newcategory: "New Category"
+    vendors: "Vendors"
+    allvendors: "All Vendors"
+    newvendor: "New Vendor"
+    deals: "Deals"
+    alldeals: "All Deals"
+    newdeal: "New Deal"
+    storeconfigration: "Store Configration"
+    storesettings: "Store Settings"
+    testimonials: "Testimonials"
+    alltestimonials: "All Testimonials"
+    newtestimonials: "Create Testimonial"
+    editprofile: "Edit Profile"
+    dashboard: "Dashboard"
+    firstname: "First Name"
+    date: "Date"
+    number: "Number"
+    state: "State"
+    paymentstate: "Payment State"
+    shipmentstate: "Shipment State"
+    customeremail: "Customer Email"
+    total: "Total"
+    tool: "Tools"
+    value: "Value"
+    vendorname: "Vendor Name"
+    name: "Name"
+    newadminpro: "New Admin Product"
+    newadmincat: "New Admin Category"
+    newadmindeal: "New Admin Deal Of The Day."
+    storesetting: "Store Setting"
+
+
+
+
+
+    

@@ -1,0 +1,44 @@
+<!--Category Area Start-->
+<div class="category-area">
+    <div class="container">
+        <div class="row">
+        	<%if @category_one.present? %>
+	            <div class="single-cat-list col-lg-4 col-md-4 col-sm-4 col-xs-12">
+					<!-- Category Title -->
+					<h4><%=@category_one_name%></h4>
+					<!-- Category List -->
+					<div class="row">
+						<div class="category-container-list">
+							<%= render :partial => 'slider_single_product',:locals => {:items => @category_one} %>
+						</div>
+					</div>
+				</div>
+			<%end%>
+			<%if @category_two.present? %>
+				<div class="single-cat-list col-lg-4 col-md-4 col-sm-4 col-xs-12">
+					<!-- Category Title -->
+					<h4><%=@category_two_name%></h4>
+					<!-- Category List -->
+					<div class="row">
+						<div class="category-container-list">
+							<%= render :partial => 'slider_single_product',:locals => {:items => @category_two} %>
+						</div>
+					</div>
+				</div>
+			<%end%>
+			<%if @category_three.present? %>
+				<div class="single-cat-list col-lg-4 col-md-4 col-sm-4 col-xs-12">
+					<!-- Category Title -->
+					<h4><%=@category_three_name%></h4>
+					<!-- Category List -->
+					<div class="row">
+						<div class="category-container-list">
+							<%= render :partial => 'slider_single_product',:locals => {:items => @category_three} %>
+						</div>
+					</div>
+				</div>
+			<%end%>
+        </div>
+    </div>
+</div>
+<!--Category Area End-->

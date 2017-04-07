@@ -1,0 +1,270 @@
+
+<!-- Breadcrumbs Area Start -->
+<div class="breadcrumbs-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb-single">
+                    <ul class="breadcrumbs">
+                        <li><a href="/" title="Return to Home">
+                            <i class="fa fa-home"></i>
+                            Home
+                        </a></li>
+                        <li>
+                            <span>></span>
+                        </li>
+                        <li>Sinlge Product Simple</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs Area End -->	
+<!-- Product Simple Area Start -->
+<div class="product-simple-area section-padding2">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-5">
+				<div class="single-product-image"> 
+					<div id="content-eleyas">
+						<div id="my-tab-content" class="tab-content">
+							<%if @product.images.present? %>
+								<% @product.images.each_with_index do |image,index|%>
+									<%if index == 0%>
+										<div class="tab-pane active all_products_fix_images" id="view<%=index+1%>">
+											<a class="venobox" href="<%= image.avatar.url(:original) %>" data-gall="gallery" title="">
+											<div class="product-img">
+											<img src="<%= image.avatar.url(:large) %>" alt="" class="center-block img-responsive">
+											</div>
+											<span>View larger<i class="fa fa-search-plus"></i></span></a>
+										</div>
+									<%else%>
+										<div class="tab-pane " id="view<%=index+1%>">
+											<a class="venobox" href="<%= image.avatar.url(:original) %>" data-gall="gallery" title="">
+											<img src="<%= image.avatar.url(:large) %>" alt=""><span>View larger<i class="fa fa-search-plus"></i></span></a>
+										</div>
+									<%end%>
+	
+								<%end%>
+							<%else%>
+                                <img class="" src="http://s3.amazonaws.com/commerceassets/admin/images/avatars/000/000/089/large/data?1473265319"/>
+							<%end%>
+
+						</div>
+						<div id="viewproduct" class="nav nav-tabs product-view bxslider" data-tabs="tabs">
+							<%if @product.images.present? %>
+								<% @product.images.each_with_index do |image,index|%>
+									<%if index == 0%>
+										
+										<div class="pro-view active"><a href="#view<%=index+1%>" data-toggle="tab"><img src="<%= image.avatar.url(:thumbnail) %>" alt=""></a></div>
+									<%else%>
+										<div class="pro-view "><a href="#view<%=index+1%>" data-toggle="tab"><img src="<%= image.avatar.url(:thumbnail) %>" alt=""></a></div>
+									<%end%>
+								<%end%>
+							<%end%>
+						</div>
+						<!-- BX Slider Navigation -->
+						<div class="outside">
+							<p><span id="slider-prev"></span> <span id="slider-next"></span></p>
+						</div>  
+						<!-- BX Slider Navigation -->
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-5 col-sm-7">
+				<div class="pd-center-column">
+					<h2><%= @product.name %></h2>
+					<div class="media-body">
+						<p class="media-body-title">
+							<%if @product.discounted_price.present?%>
+								<span class="new-price"> <%= show_price(@product.discounted_price) %> </span>
+								<span class="old-price"> <%= show_price(@product.price)%></span>
+							<%else%>
+							<span class="new-price"> <%= show_price(@product.price)%></span>
+							<%end%>
+						</p>
+						<p><label>Reference: </label> <span>demo_2</span></p>
+						<p><label>Condition: </label> <span>New product</span></p>
+					</div>
+					<div class="pd-description">
+						<p>Short-sleeved blouse with feminine draped sleeve detail.</p>
+					</div>
+					<div class="pd-quantity-available">
+						<p id="product-available">
+							<span>297</span>
+							<span>Items</span>
+						</p>
+						<p id="availability">
+							<span>In stock</span>
+						</p>
+					</div>
+						<%= render :partial => 'cart_form' %>
+					<p class="socialsharing-product">
+						<a type="button" target="_blank" href="http://<%=get_social_link("twitter_link")%>" class="btn btn-default btn-twitter">
+							<i class="fa fa-twitter"></i>Tweet
+						</a>
+						<a  target="_blank" href="http://<%=get_social_link("facebook_link")%>"   type="button" class="btn btn-default btn-facebook">
+							<i class="fa fa-facebook"></i> Share
+						</a >
+						<a  target="_blank" href="http://<%=get_social_link("google_link")%>"  type="button" class="btn btn-default btn-google-plus">
+							<i class="fa fa-google-plus"></i> Google+
+						</a >
+						<a  target="_blank"  href="http://<%=get_social_link("pintrest_link")%>" type="button" class="btn btn-default btn-pinterest">
+							<i class="fa fa-pinterest"></i> Pinterest
+						</a >
+					</p>	
+					<div id="">
+						<%= render :partial => 'write_review'%>
+					</div>
+				</div>
+			</div>
+            <div class="section-hidden col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<!-- Category Title -->
+				<div class="sidebar-widget-title">
+					<h4><span>Top sellers</span></h4>
+				</div>
+				<!-- Category List -->
+				<div class="row">
+					<div class="category-container-list sec-partial">
+						<%= render :partial => 'home/slider_single_product' ,:locals => {:items => @top_sellers}%>		
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="p-details-tab">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#more-info" aria-controls="more-info" role="tab" data-toggle="tab">MORE INFO</a></li>
+                        <li role="presentation"><a href="#data" aria-controls="data" role="tab" data-toggle="tab">DATA SHEET</a></li>
+                        <li role="presentation"><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">REVIEWS</a></li>
+                    </ul>
+				</div>
+                <div class="clearfix"></div>
+                <div class="tab-content review">
+                    <div role="tabpanel" class="tab-pane active" id="more-info">
+                        <p><%if @product.description.present? %>
+                        	<%= @product.description %>
+
+                        	<%end%>
+                        </p>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="data">
+                        <table class="table-data-sheet">
+                            <tbody>
+                                <tr class="odd">
+                                    <td>Compositions</td>
+                                    <td>Cotton</td>
+                                </tr>
+                                <tr class="even">
+                                    <td>Styles</td>
+                                    <td>Casual</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td>Properties</td>
+                                    <td>Short Sleeve</td>
+                                </tr>
+                            </tbody>
+                       </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="reviews">
+                        <div id="product-comments-block-tab">
+                            <a href="#" class="comment-btn"><span>Be the first to write your review!</span></a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Product Simple Area End -->
+<!--Featured Area Start-->
+<div class="featured-area section-padding2">
+    <div class="container">
+    	<%if @vendor_product.present?%>
+			<div class="section-title">
+				<h4>products of same vendor: </h4>
+			</div>
+		<%end%>
+        <div class="row">
+			<!--Product List Start-->
+			<div class="featured-product-list indicator-style all_products_fix_images">
+
+				<%@vendor_product.limit(6).each do |product|%>
+					<!--Single Product -->
+					<div class="col-md-3 col-sm-6">
+						<div class="single-product">
+							<!--product Content-->
+							<div class="product-img-content">
+								<!--Product Image-->
+								<div class="product-img">
+									<a href="<%=product_path(product.slug)%>" title="<%= product.name %>">
+										<%if product.images.present? %>
+											<%=image_tag product.images.first.avatar.url(:large), :class => "img-responsive	 center-block", style:  "max-height:200px"%>
+
+										<%else%>
+			                                <img class="" src="http://s3.amazonaws.com/commerceassets/admin/images/avatars/000/000/089/large/data?1473265319"/>
+										<%end%>
+									</a>                                            
+								</div>
+								<span class="new-label">New</span>
+								<%if product.discounted_price?%>
+									<span class="sale-label">Sale!</span>
+								<%end%>
+								<!--Product Action-->
+								<div class="product-action">
+									<a  title="Add to cart"  onclick="getProductDetail(this)"><i class="fa fa-shopping-cart"><%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i></a>
+									<a href="#" title="Add to Wishlist"><i class="fa fa-star"></i>
+									</a>
+									<a href="#" title="Add to Compare"><i class="fa fa-files-o"></i>
+									</a>
+									<a  title="Quick view"  onclick="getProductDetail(this)">
+									<i class="fa fa-expand" >
+									<%= hidden_field_tag :product_id,{}, :value=>"#{product.slug}"  %></i>
+									</a>
+								</div>
+							</div>
+							<div class="product-content">
+								<h5 class="clearfix">
+									<div class="pull-left"><a href="<%=product_path(product.slug)%>" title="<%= product.name %>"><%= product.name %></a></div>
+									<div class="pull-right"><a href="/products?vendor=<%= product.user.id %>" title="<%= product.user.name %>"><%= product.user.name %></a></div>
+								</h5>
+								<!--Product Rating-->
+								<div class="rating-icon">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<!--Product Price-->
+								<div class="product-price">
+									<span class="new-price">£ <%= product.price %></span>
+									<%if product.discounted_price?%>
+										<span class="old-price"><%=product.discounted_price  %></span> 
+									<%end%>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!--Single Product End-->
+				<%end%>
+			</div>
+			<!--Product List Start-->
+        </div>
+    </div>
+</div>
+<!--Featured Area End-->	
+<!--Brand Area Start-->
+<%= render :partial => 'home/brand'%>
+<!--Brand Area End-->
+
+<%= render :partial => 'go_to_cart'%>
+
+<!--Quickview Product Start -->
+<div id="quickview-wrapper">
+   	
+</div>
+<!--End of Quickview Product-->

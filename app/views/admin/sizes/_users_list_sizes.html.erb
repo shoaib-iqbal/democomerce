@@ -1,0 +1,11 @@
+
+<div style="">
+    <select  class="form-control select" style="width:40%" onchange="fetch_specfic_vendor_sizes('/admin/sizes',this.value)">
+        <option value="">All Vendors</option>
+        <% @users.each do |user| %>
+            <option value="<%=user.id%>"><%=user.name%></option>
+        
+        <%end%>
+    </select>
+</div>
+

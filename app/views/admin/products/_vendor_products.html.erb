@@ -1,0 +1,76 @@
+<div class="dataTable_wrapper">
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-vendors">
+        <thead>
+            <tr>
+            <th style="display: none;"></th>
+            
+                <th><%= t 'admin.name'%></th>
+                <th><%= t 'welcome.price'%></th>
+                <th><%= t 'admin.discountedprice'%></th>
+                <th><%= t 'admin.desc'%></th>
+                <th><%= t 'admin.sizes'%></th>
+                <th><%= t 'admin.colors'%></th>
+                <th><%= t 'admin.pictures'%></th>
+                <th><%= t 'admin.vendors'%></th>
+                <th><%= t 'admin.tool'%></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <% @admin_products.each do |product| %>
+
+            <tr class="odd gradeX">
+            <td style="display: none;"></td>
+                <td><%= product.name %></td>
+                <td><%= show_price(product.price) %></td>
+                <td><%= show_price(product.discounted_price) %></td>
+                <td class="center"><%= product.description %></td>
+                <td class="center">
+                <% for size in product.sizes %>
+                    <%= size.name %>
+                <%end%>
+
+                
+                    
+                </td>
+                <td class="center">
+                <% for color in product.colors %>
+                    <%= color.name %>
+                <%end%>
+
+                
+                    
+                </td>
+                <td class="center">
+                    <%# for image in product.images %>
+                      <%#= image_tag image.avatar.url(:thumbnail) %>
+                    <%#end%>
+                    <%#= product.images.first %>
+                    <%= image_tag product.images.first.avatar.url(:thumbnail) rescue '' %>
+                </td>
+                <td><%= product.user.name rescue ''%></td>
+                <td class="center">
+                    <span><%= link_to '', edit_admin_product_path(product),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
+                    <span>
+                        <%if current_user.superadmin? ||  product.user == current_user%>
+                        <%= link_to '',  admin_product_path(product),  method: :delete, data: { confirm: 'Are you sure?' } ,class: "fa fa-trash icon_link with-tip no-text"%>
+                        <%end%>
+                    </span>
+                </td>
+            </tr>
+
+        <% end %>                                                                             
+        </tbody>
+    </table>
+</div>
+<!-- /.table-responsive -->
+<script>
+    $(document).ready(function() {
+        $('#dataTables-vendors').DataTable({
+                responsive: true,
+                pageLength: 50,
+                autoWidth: false
+
+        });
+    });
+</script>

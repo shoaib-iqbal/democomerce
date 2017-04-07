@@ -1,0 +1,4 @@
+
+$('#cart_products_count').html('<%=@current_order.line_items.count rescue '0'%>');
+$("#subcart").html('<%=  j render(:partial => 'subcart', :object => @count) %>');
+

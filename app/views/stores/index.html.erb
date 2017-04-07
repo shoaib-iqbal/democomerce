@@ -1,0 +1,32 @@
+<div class="home-header" style="background-image: url(/assets/frontend/1.jpg);">
+  <%#= render 'store_index_banner_text'%>  
+</div>
+<%= render 'nav_bar'%>
+<div class="container">
+  <div class="row">
+    <div class="margin-top">
+      <div class="col-md-3">
+        <div class="filters">
+          <div class="form-group">
+            <i class="fa fa-search"></i>
+            <input type="text" name="" class="form-control" required="required" placeholder="Search">
+          </div>
+        </div>
+        
+        <%= render 'filter_headings'%>
+        
+        <%= render 'side_filters'%>
+
+      </div>
+      <div class="col-md-9">
+        <div id="all_stores">
+          <%= render 'all_stores'%>
+        </div>
+        <div class="clear"></div>
+        <%= render 'pagination'%>  
+        <div class="clear20"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clear20"></div>

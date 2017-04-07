@@ -1,0 +1,34 @@
+<% @vendors.each do |vendor|%>
+  <div class="clickable" >
+    <a href="/stores/<%=vendor.id%>">
+      <div class="define-border">
+        <div class="row">
+          <div class="col-md-2">
+            <a href="/stores/<%= vendor.id%>"><img src="<%= vendor.avatar.url %>" class="img-responsive center-block"></a> 
+          </div>
+          <div class="col-md-8">
+            <h4><%= vendor.name%></h4>
+            <div class="a-tag">
+            <% if vendor.vendor_category_id %>
+              <% id = vendor.vendor_category_id %>
+              <a href="#"><%= Admin::VendorCategory.find_by_id(id).name%></a>
+            <%end%>
+    </div>
+
+    <ul class="list-unstyled list-inline">
+    <li><a href="#" style="">$$$</a></li>
+    <li>
+    <i class="fa fa-star fa-fw"></i> 
+    <i class="fa fa-star fa-fw"></i> 
+    <i class="fa fa-star-half-o fa-fw"></i>
+    <i class="fa fa-star-o fa-fw"></i>
+    </li>
+    </ul>
+    <div class="time">Delivers in <%= vendor.delivery_time rescue ''%></div>
+    </div>
+    <div class="vendor__promoted"><span>NEW</span></div>
+    </div>
+    </div>
+    </a>
+  </div>
+<%end%>

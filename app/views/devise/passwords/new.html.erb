@@ -1,0 +1,40 @@
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= render 'layouts/error_messages', object: resource %>
+<div class="container forms">
+	
+	<br><br>
+
+	<div class="section-title">
+		<h4>Forgot your password?</h4>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="form-group">
+				<label>Email*</label>
+				<%= f.email_field :email, required: true,autofocus: true,class: 'form-control' %>
+			</div>
+		</div>
+
+		<%= f.button :submit, "Send me reset password instructions" ,class: "button btn primaray" %>
+	</div>
+
+
+<div class="container text-center">
+	
+	Already have an account? <a href="" data-toggle="modal" data-target="#signinmodal">Login</a><br>
+		<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+	  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+	<% end -%>
+
+
+</div>
+<%end%>
+<br><br><br><br>
+
+
+
+
+

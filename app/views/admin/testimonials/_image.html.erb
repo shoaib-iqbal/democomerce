@@ -1,0 +1,100 @@
+
+<div class="image-editor">
+  <!-- <input type="file" class="cropit-image-input"> -->
+  <div class="file_field">
+    <%=f.label :image%>
+     <%= f.fields_for :image do |images_form| %>
+      <% if @admin_testimonial.image.avatar.exists? %>
+          <%= image_tag @admin_testimonial.image.avatar.url(:thumbnail) %>
+       <% end %>
+       <%= images_form.file_field :avatar ,class: 'form-control cropit-image-input', required: 'true'%>
+     <% end %>
+     <br>
+  </div>
+  <div class="cropit-preview"></div>
+  <div class="image-size-label">
+    Resize image
+  </div>
+  <input type="range" class="cropit-image-zoom-input">
+  <input type="hidden" name="image_data" class="hidden-image-data" />
+    <input type="hidden" name="skip_crop" class="skip_crop" />
+  </div>
+  <br>
+    <button class="rotate-ccw">Rotate counterclockwise</button>
+    <button class="rotate-cw">Rotate clockwise</button>
+    <br><br>
+    <div class="skip"> <a href="#"  id="solution0" class="btn btn-primary" style="color: #fff;">Skip Cropping</a></div>
+    <br>
+
+    <script>
+      $(function() {
+        $('.image-editor').cropit({
+          exportZoom: 0.5,
+          imageBackground: false,
+          imageBackgroundBorderWidth: 20,
+        });
+
+        $('.rotate-cw').click(function() {
+          $('.image-editor').cropit('rotateCW');
+          return false;
+        });
+        $('.rotate-ccw').click(function() {
+          $('.image-editor').cropit('rotateCCW');
+          return false;
+        });
+
+        // $('.export').click(function() {
+        //   newimage = $('.image-editor').cropit('export');
+        //   window.open(imageData);
+        // });
+      });
+      $('form').submit(function() {
+      // Move cropped image data to hidden input
+      var imageData = $('.image-editor').cropit('export',{
+        type: 'image/jpeg',
+        originalSize: true,
+        quality: 0.5,
+        smallImage: 'true'
+      });
+      console.dir(imageData);
+      $('.hidden-image-data').val(imageData);
+      // Print HTTP request params
+      // var formValue = $(this).serialize();
+      // $('#result-data').text(formValue);
+      // Prevent the form from actually submitting
+      // return false;
+    });
+
+$(document).ready(function(){
+
+
+
+  var _URL = window.URL || window.webkitURL;
+$("#admin_testimonial_image_attributes_avatar").change(function (e) {
+    var file, img;
+    if ((file = this.files[0])) {
+        img = new Image();
+        img.onload = function () {
+            if (this.width <= 263 || this.height <= 348){
+            alert("Please upload a larger image to crop");
+          $(".skip a").click();
+        }
+
+        };
+        img.src = _URL.createObjectURL(file);
+    }
+});
+ 
+  $(".skip a").on('click',function(e){
+    $('.skip').hide();
+    $('.skip_crop').val("true");
+    $('.cropit-preview').hide();
+    $('.image-size-label').hide();
+    $('.cropit-image-zoom-input').hide();
+    $('.rotate-ccw').hide();
+    $('.rotate-cw').hide();
+    return false;
+  });
+});
+      
+</script>

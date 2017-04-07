@@ -1,0 +1,43 @@
+
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<%= render 'layouts/error_messages', object: resource %>
+<div class="container forms">
+  
+  <br><br>
+
+  <div class="section-title">
+    <h4>Change your password</h4>
+  </div>
+
+  <div class="row">
+<%= f.input :reset_password_token, as: :hidden %>
+  <%= f.full_error :reset_password_token %>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>New Password*</label>
+        <%= f.password_field :password, required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) ,class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Confirm New Password*</label>
+        <%= f.password_field :password_confirmation ,class: 'form-control' %>
+      </div>
+    </div>
+
+    <%= f.button :submit, "Change my password" ,class: "button btn primaray" %>
+  </div>
+
+
+<div class="container text-center">
+  
+  Already have an account? <a href="" data-toggle="modal" data-target="#signinmodal">Login</a><br>
+    <%- if devise_mapping.recoverable?  && controller_name != 'registrations' %>
+    <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+  <% end -%>
+
+
+</div>
+<%end%>
+<br><br><br><br>

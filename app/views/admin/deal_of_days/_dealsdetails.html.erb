@@ -1,0 +1,40 @@
+
+
+<div class="dataTable_wrapper">
+    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-vendors">
+        <thead>
+            <tr>
+                <th style="display: none;"></th>
+                <th>Product Name</th>
+                <th>Expiry Time</th>
+                <th>Tools</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <% @admin_deal_of_days.each do |deal| %>
+
+            <tr class="odd gradeX">
+            <td style="display: none;"></td>
+                <td><%= deal.product.name %></td>
+                <td><%= deal.expiry_time %></td>
+                <td class="center">
+                    <span><%= link_to '', edit_admin_deal_of_day_path(deal),class: "edit fa fa-edit icon_link with-tip no-text", title: "edit" %> </span>
+                    <span>
+                        <%= link_to '',  admin_deal_of_day_url(deal),  method: :delete, data: { confirm: 'Are you sure?' } ,class: "fa fa-trash icon_link with-tip no-text"%>
+                    </span>
+                </td>
+            </tr>
+
+        <% end %>                                                                             
+        </tbody>
+    </table>
+</div>
+<!-- /.table-responsive -->
+<script>
+    $(document).ready(function() {
+        $('#dataTables-vendors').DataTable({
+                responsive: true
+        });
+    });
+</script>

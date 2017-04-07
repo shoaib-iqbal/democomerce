@@ -1,0 +1,1 @@
+json.partial! "admin_vendor_categories/admin_vendor_category", admin_vendor_category: @admin_vendor_category

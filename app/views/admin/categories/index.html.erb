@@ -1,0 +1,34 @@
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header"><%= t 'admin.allcategories'%></h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div <%if current_user.superadmin? %>style="float:left;"<%end%> class="panel-heading"><%= t 'admin.allcategories'%> </div>
+                <%if current_user.superadmin? %>
+                    <%=render :partial => 'category_users_list'%>
+                <%end%>
+                
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div  id="vendor_categoriess">
+                    <%=render :partial => 'vendor_categories'%>
+                    <!-- /.table-responsive -->
+                </div>
+                
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->

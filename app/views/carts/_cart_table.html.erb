@@ -1,0 +1,113 @@
+<% if @current_order and @current_order.line_items.present? %>      
+  <div class="container">
+    <div class="row">
+      <div class="table-responsive forms">
+        <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Total</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+         <% @current_order.line_items.each do |item| %>
+           <tr>
+               <td class="col-sm-8 col-md-6">
+                  <div class="media">
+                      <a class="pull-left" href="<%=product_path(item.product.id)%>"><img class="media-object" src="<%= item.get_image %>" style="max-width: 72px; max-height: 72px;" class="img-responsive"></a>
+                      <div class="media-body">
+                          <h4 class="media-heading"><a href="<%=product_path(item.product.id)%>"><%= item.get_name %></a></h4>
+                          <h5 class="media-heading"> by <a href="/products?vendor=<%= item.product.user.id %>"><%=item.product.user.name%></a></h5>
+                          <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                      </div>
+                  </div>
+               </td>
+               <td class="col-sm-1 col-md-1 text-center">
+               <input type="number" min="1" max="2147483646" class="form-control" onchange="quantitychange(this.value,<%= item.id%>)" value="<%= item.quantity %>">
+               </td>
+               <td class="col-sm-1 col-md-1 text-center">
+               <strong>
+               <%if item.product.discounted_price.present?%>
+                  <%= show_price(item.product.discounted_price) %>
+               <%else%>
+                  <%= show_price(item.product.price) %>
+               <%end%>
+               </strong></td>
+               <td class="col-sm-1 col-md-1 text-center"><strong><%= show_price(item.total) %></strong></td>
+               <td class="col-sm-1 col-md-1 text-right">
+                  
+                      <%= link_to cart_path(item), method: :delete, confirm: 'Delete?', class: 'btn btn-danger remove-item', 'data-message' => 'Are you sure?', 'data-severity' => 'danger', :remote => true do %>
+                        <span class="glyphicon glyphicon-remove"></span>
+                        <%end%>
+                 
+               </td>
+           </tr>
+        <%end%>
+       
+        </tr> 
+        <tr>
+            <td>   </td>
+            <td>   </td>
+            <td>   </td>
+            <td><h5>Subtotal</h5></td>
+            <td class="text-right"><h5>
+            <strong>
+               <%if @current_order.present?%>
+                  <%= show_price(@current_order.sub_total) %>
+               <%end%>
+            </strong></h5></td>
+        </tr>
+        <tr>
+            <td>   </td>
+            <td>   </td>
+            <td>   </td>
+            <td><h5>Estimated shipping</h5></td>
+            <td class="text-right"><h5><strong><%= show_price(0)%></strong></h5></td>
+        </tr>
+        <tr>
+            <td>   </td>
+            <td>   </td>
+            <td>   </td>
+            <td><h3>Total</h3></td>
+            <td class="text-right"><h3>
+            <strong>
+               <%if @current_order.present?%>
+                  <%= show_price(@current_order.sub_total) %>
+               <%end%>
+
+            </strong></h3></td>
+        </tr>
+        <tr>
+            <td colspan="5" class="text-right">
+               <a type="button" class="btn btn-default" href="/">
+                   <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+               </a>
+               
+                <%= link_to 'Empty Cart', order_path(@current_order),
+            method: :delete, data: { confirm: 'Are you sure?' } ,class: 'btn btn-warning'%>
+
+                <a type="button" href="<%= checkout_path %>" class="btn btn-success">
+                   Checkout
+               </a>
+            </td>
+
+        </tr>
+    </tbody>
+        </table>
+      </div>
+    </div>
+  </div>      
+<%else%>
+ <center>
+    <br>
+    <h1>CART EMPTY</h1>
+    <a type="button" class="btn btn-default" href="/">
+        <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+    </a>
+  </center><br><br>
+
+ <br><br>
+<%end%>

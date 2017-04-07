@@ -1,0 +1,1 @@
+json.array! @admin_vendor_categories, partial: 'admin_vendor_categories/admin_vendor_category', as: :admin_vendor_category

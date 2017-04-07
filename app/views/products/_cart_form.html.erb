@@ -1,0 +1,86 @@
+<form method="post" id="cart_form" action="">
+	<%if @product.sizes.present?%>
+		<p class="shop-select">
+			<label>Size</label>
+			<select id="size_id">
+				
+				<% @product.sizes.each do |size| %>
+
+	            	<option value="<%=size.id%>" <span><%=size.name%> </span></option>
+	        
+	        	<%end%>
+			</select> 										
+		</p>	 
+	<%end%>
+	<%if @product.colors.present?%>
+		<p class="shop-select">
+			<label>Color</label>
+			<select  id="color_id">
+				<% @product.colors.each do |color| %>
+
+		            	<option value="<%=color.id%>" <span><%=color.name%> </span></option>
+		        
+		        	<%end%>
+			</select> 										
+		</p>
+	<%end%>
+	<div class="product-attributes clearfix">
+		<span id="quantity-wanted-p" class="pull-left">
+			<span class="dec qtybutton">-</span>
+			<input type="text" class="cart-plus-minus-box" id="product_quantity" value="1">
+			<span class="inc qtybutton">+</span>	
+		</span>
+		<span>
+			<button type="submit" class="cart-btn">
+				<i class="fa fa-shopping-cart"></i>
+				<span>Add to Cart</span>
+
+			</button>
+			<!-- <a  onclick="document.getElementById('cart_form').submit()" class="cart-btn"> -->
+			<!-- <i class="fa fa-shopping-cart"></i>
+			<span>Add to Cart</span></a> -->
+		</span>
+		<%= hidden_field_tag "product_id1" , @product.id%>
+		<div class="usefull-link-block">
+			<ul>
+				<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+				<li><a href="#"><i class="fa fa-print"></i></a></li>
+				<li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</form>
+<script>
+
+	$("#cart_form").submit(function(e) {
+		e.preventDefault();
+		var q= $('#product_quantity').val();
+		 product_id = $('#product_id1').val();
+		 size_id = $('#size_id').val();
+		 color_id = $('#color_id').val();
+
+		 if (parseInt(q) < 2147483647){
+		 	$.ajax({
+
+			   url: '/carts',
+			   method: "POST",
+		       data: {"product_id" : product_id,"quantity" : q,"size_id" : size_id,"color_id" : color_id},
+		       format : 'js',
+		       success: function(data) {
+		 		$('.close').click();    		
+		     	$('#myModal').modal('show');
+
+		 
+			      
+			     }
+			   });
+		 }
+		 else{
+		 	alert("quantity should be less than 2147483647");
+		 	$('#product_quantity').val(1);
+		 }
+
+	  
+	   
+	});
+</script

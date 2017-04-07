@@ -1,0 +1,7 @@
+
+	  <% @selected_sizes.each do |size| %>
+	  		<li>Size: <%=size.name%>
+			    <span onclick="remove_filter('<%=size.name%>','<%=size.id%>')" title="Cancel"><i class="fa fa-remove pull-right poniter-cursor"></i></span>
+			</li>
+	  <%end%>
+ 

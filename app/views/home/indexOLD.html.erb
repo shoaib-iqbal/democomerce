@@ -1,0 +1,64 @@
+<!--Slider Area Start-->
+<%= render :partial => 'slider'%>
+<!--Slider Area End-->
+<!--Service Area Start-->
+<div class="service-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4  col-sm-4 col-xs-12">
+                <div class="single-item">
+                    <i class="pe-7s-download"></i>
+                    <h4><%= t 'welcome.freeshipping' %></h4>
+                    <p><%= t 'welcome.Allorderonproducts' %></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4  col-sm-4 col-xs-12">
+                <div class="single-item">
+                    <i class="pe-7s-refresh-2"></i>
+                    <h4><%= t 'welcome.FREERETURNS' %></h4>
+                    <p><%= t 'welcome.Onlyin30days' %></p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4  col-sm-4 col-xs-12">
+                <div class="single-item">
+                    <i class="pe-7s-chat"></i>
+                    <h4><%= t 'welcome.SUPPORT24/7' %></h4>
+                    <p><%= t 'welcome.Activesupport' %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Service Area End-->
+<!--Featured Area Start-->
+<%= render :partial => 'featured'%>
+<!--Featured Area End-->	
+<!--Deal Area Start-->
+<%= render :partial => 'deals'%>
+<!--Deal Area End-->
+<!--New products Area Start-->
+<%= render :partial => 'new_products'%>
+<!--New products Area End-->
+<!--Banner Area Start-->
+<%= render :partial => 'banner'%>	
+<!--Banner Area End-->		
+<%= render :partial => 'categories'%>	
+<!--News Letter Area Start-->	
+<%= render :partial => 'newsletter' %>
+<!--News Letter Area End-->	
+<!--Testimonial Area Start-->
+<div class="testimonial-area section-padding">
+	<%= render :partial => '/shared/testimonial', :local => {:testimonials => @testimonials}%>
+</div>
+<!--Testimonial Area End-->
+<!--Brand Area Start-->
+<%= render :partial => 'brand' %>
+<!--Brand Area End-->
+<!--Blog Area Start-->
+<%= render :partial => 'blog' %>
+<!--Blog Area End-->
+<div id="quickview-wrapper">
+</div>
+
+<!-- Modal -->
+<%= render :partial => '/products/go_to_cart'%>

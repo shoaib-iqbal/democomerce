@@ -1,0 +1,11 @@
+<% if @current_user_colors  %>
+    $('#vendor_colors').html("<%= escape_javascript options_from_collection_for_select(@current_user_colors, :id, :name) %>");
+<% end %>
+
+<% if @current_user_Size  %>
+    $('#vendor_sizes').html("<%= escape_javascript options_from_collection_for_select(@current_user_Size, :id, :name) %>");
+<% end %>
+
+<% if @current_user_categories  %>
+    $('#vendor_categories').html("<%= escape_javascript options_from_collection_for_select(@current_user_categories, :id, :name) %>");
+<% end %>

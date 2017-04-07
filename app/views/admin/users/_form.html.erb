@@ -1,0 +1,105 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyD24hI0FybV1ubRrC9RmBa3PsBXl1rq86Y&libraries=places&language=<%=@lang%>"></script>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              Vendors
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <%= form_for @user, :url => url_for([:admin, @user]) do |f| %>
+                            
+                            <div class="form-group">
+                               <%=f.label :name%>
+                                <%=f.text_field :name ,class: 'form-control', placeholder: 'Enter name', required: 'true'  %>
+                            </div>
+                            <div class="form-group">
+                               <%=f.label :email%>
+                                <%=f.email_field :email ,class: 'form-control', placeholder: 'Enter Email', required: 'true'%>
+                            </div>
+
+                            <%if current_user.has_role? :superadmin%>
+                              <div class="form-group">
+                                 <%= f.label :Vendor_Category %>
+                                 <%= f.collection_select :vendor_category_id, Admin::VendorCategory.all, :id, :name, prompt: true , :class=> 'form-control select' %>
+                              </div>
+
+                              <div class="form-group">
+                               <%=f.label :Popular%>
+                                <%=f.check_box :popular ,class: '' , :'data-on-text'=> "Yes", :'data-off-text'=> "No"%>
+                              </div>
+                              
+                              <div class="form-group">
+                                <%=f.label :Free_Delivery%>
+                                <%=f.check_box :free_delivery ,class: '' , :'data-on-text'=> "Yes", :'data-off-text'=> "No"%>
+                              </div>
+
+                              <div class="form-group">
+                                <%=f.label :Delivery_time%>
+                                <%=f.text_field :delivery_time ,class: 'form-control ',:id=> 'delivery_time' %>
+                              </div>
+
+                            <%end%>
+
+                            
+                            <%if params[:action] == 'new'%>
+                            <div class="form-group">
+                               <%=f.label :password%>
+                                <%=f.text_field :password ,class: 'form-control', placeholder: 'Eneter password', required: 'true', :minlength=> 6%>
+                            </div>
+                            <%end%>
+                            <div class="form-group">
+                                <%=f.label :location %>
+                                 <%=f.text_field :location ,class: 'form-control ',:id=> 'select_location' , required: 'true'%>
+                            </div>
+
+                            <div class="file_field">
+                                <%=f.label :avatar%>
+                                 <%#= f.fields_for :image do |images_form| %>
+                                   <%= f.file_field :avatar , class: 'form-control' %>
+                                 <%#end %>
+                            </div><br>
+
+
+                             <div class="form-group">
+                            <%if current_user.has_role? 'superadmin' %>
+                    				<%= f.select "role_ids", options_for_select(Role.all.collect{ |u| [u.name, u.id]}, :selected=> f.object.roles.first.try(:id)), {:class =>"form-control"} %>
+                							<%end%>
+                							</div>
+                           
+                            
+                            
+                            
+                            
+                            <%= f.submit 'Submit Button', class: "btn btn-default" %>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                            <a  href="/admin/users" class="btn btn-default">Back</a>
+
+                            
+                        <%end%>
+                    </div>
+                    <!-- /.col-lg-6 (nested) -->
+                    
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+<script type="text/javascript">
+function initialize() {
+ 
+
+input = document.getElementById('select_location');
+ autocomplete = new google.maps.places.Autocomplete(input);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+    
+</script>

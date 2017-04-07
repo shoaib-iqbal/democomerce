@@ -1,0 +1,182 @@
+<div class="breadcrumbs-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcrumb-single">
+                    <ul class="breadcrumbs">
+                        <li><a href="/" title="Return to Home">
+                            <i class="fa fa-home"></i>
+                            Home
+                        </a></li>
+                        <li>
+                            <span>></span>
+                        </li>
+                        
+                        <li>Shop</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumbs Area End -->
+<!-- All Product Side Bar Area Start -->
+<div class="all-product-sidebar-area section-padding2" id="test">
+  <div class="container">
+    <div class="row">
+        <%= render "sidebar" %>
+      <div class="col-xs-12 col-sm-9">
+        <img src="/assets/bedroom.jpg" class="hidden-xs" alt="" />
+        <h1 class="page-heading section-padding2">
+          <span class="cat-name pull-left"><%= t 'welcome.products' %> </span>
+          <span class="heading-counter pull-right uniq"><%= t 'welcome.thereare' %> <%=@total_products%> <%= t 'welcome.products' %> .</span>
+        </h1>
+        <div class="shop-item-filter">
+          <div class="shop-tab clearfix">
+            <!-- Nav tabs -->
+            <ul class="tab-menu" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#grid" aria-controls="grid" role="tab" data-toggle="tab"><i class="fa fa-th-large"></i></a>
+              </li>
+              <li role="presentation">
+                <a href="#list" aria-controls="list" role="tab" data-toggle="tab"><i class="fa fa-th-list"></i></a>
+              </li>
+            </ul>
+            <div class="shop-tab-selectors pull-right">
+              <%=form_tag products_path, method: 'get', id: "sorting", :remote=>true do%>
+                <div class="single-shop-form single-shop-show pull-left">
+                  <label><%= t 'welcome.sortby' %> </label>
+                  <div class="shop-select">
+                  
+                    <%= select_tag 'sort_by', options_for_select(Admin::Product::SORT_OPTIONS.collect{ |v| [v.last, v.first] }),prompt: 'Select a Filter' , :onchange => "sort_order(this.value,'#{params['search']}')" %>
+
+
+                   
+                  
+                  </div>
+                </div>
+                <div class="single-shop-form pull-left">
+                  <label><%= t 'welcome.show' %> </label>
+                  <div class="shop-select">
+                    <select>
+                      <option selected="selected">12</option>
+                      <option>6</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="single-shop-form pul-right">
+                  <button type="submit">
+                  <span><%= t 'welcome.compare' %>  (<strong class="total-compare-val">0</strong>)<i class="fa fa-chevron-right right"></i></span>
+                  </button>                     
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="grid">
+            <div class="row">
+              <div id="products">
+                <%=render :partial => 'products'%>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="list">
+            <div class="row">
+              <div id="listview_products">
+                <%=render :partial => 'listview_products'%>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+         <div id="paginator">
+          <%= paginate @products, :remote => true %>
+         </div>
+<!--         <div class="row">
+          <div class="col-md-12">
+            <div class="pagination-content">
+              <p class="pull-left">Showing 1 - 10 of 10 items</p>
+              <div class="pagination-button pull-right">
+                <ul class="pagination">
+                  <li class="pagination-previous" id="pagination-previous-bottom">
+                    <a href="#"><i class="fa fa-chevron-left"></i>Previous</a>
+                  </li>
+                  <li><a href="#"><span>1</span></a></li>
+                  <li><a href="#">2</a></li>
+                  <li class="pagination-next" id="pagination-next-bottom">
+                    <a href="#">Next<i class="fa fa-chevron-right"></i></a>
+                  </li>
+                </ul>
+                <button class="show-pagi">Show all</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- All Product Side Bar Area End -->
+<!--Quickview Product Start -->
+<div id="quickview-wrapper">
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog" style="margin-top: 100px;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-body text-center">
+        <p>Do you want to Continue Shopping or Go to Cart?</p>
+        <br>        
+          <button type="submit" class="btn btn-default" data-dismiss="modal" onclick="location.href='/carts'">Go to Cart</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
+        <br>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+
+<!--End of Quickview Product--> 
+<!--End of Quickview Product--> 
+
+<%unit = store_unit%>
+<script type="text/javascript">
+   // $( document ).ready(function() {
+        console.log( "document loaded" );
+ 
+  set_max_min_price(<%=@max_price%>,<%=@min_price%>,'<%=store_unit%>');
+  function set_max_min_price(max,min,un){
+  console.log('products')
+  min = min
+  min_price = typeof min!== 'undefined' ? min : 0;
+  max_price = typeof max!== 'undefined' ? max : 10000;
+  unit = typeof un!== 'undefined' ? un : '$';
+  
+}
+   // });
+
+</script>
+<script type="text/javascript">
+  
+  // $('#paginator').bind('DOMNodeInserted', function(e) {
+  //     // $(window).scrollTop(380);
+  //     $("html, body").animate({ scrollTop: $('.cat-name').offset().top }, 1000);
+  //    // $('window').animate({scrollTop:380});
+    
+  // });
+
+
+</script>
