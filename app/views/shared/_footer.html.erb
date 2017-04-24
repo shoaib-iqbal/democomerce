@@ -33,35 +33,16 @@
         </ul>
       </div>
       <div class="form-inline">
+      <%= form_tag("/newsletter", method: "post" ,:class => '')  do %>
         <div class="form-group">
-          <select class="form-control" placeholder="Enter a city">
-            <optgroup label="popular cities">
-            <option value="5">Islamabad</option>
-            <option value="3" selected="selected">Karachi</option>
-            <option value="4">Lahore</option>
-            <option value="6">Rawalpindi</option>
-            </optgroup>
-            <optgroup label="More Cities">
-              <option value="5185">Bahawalpur</option>
-              <option value="12">Faisalabad</option>
-              <option value="14">Gujranwala</option>
-              <option value="13">Hyderabad</option>
-              <option value="15">Jhelum</option>
-              <option value="19">Larkana</option>
-              <option value="30">Mangla</option>
-              <option value="10">Multan</option>
-              <option value="9">Peshawar</option>
-              <option value="32">Quetta</option>
-              <option value="16">Sargodha</option>
-              <option value="11">Sialkot</option>
-              <option value="17">Sukkur</option>
-            </optgroup>
-          </select>
+          <%= select_tag :city, grouped_options_for_select(User::LOCATION_OPTIONS,'Lahore'), class: 'form-control', :placeholder=> "Enter a city" %>
         </div>        
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter E-mail">
+         <input type="email" name="email_user" placeholder ="<%= t 'welcome.enteryouremail' %>"  class="form-control" required>
+          
         </div>
         <button type="submit" class="btn btn-success">Signup now</button>
+        <%end%>
       </div>
       <div class="checkbox">
         <label>

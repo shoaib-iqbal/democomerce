@@ -27,8 +27,8 @@ class StaticsController < ApplicationController
 	def news_subscriber
 		@exist=NewsletterSubscriber.find_by_email(params[:email_user])
 		if @exist.blank?
-		
-			@user=NewsletterSubscriber.new(email: params[:email_user])
+			
+			@user=NewsletterSubscriber.new(email: params[:email_user], city: params[:city])
 			if(@user.save)
 				@message = 'Thank you for subscribing!'
 			else
@@ -41,10 +41,10 @@ class StaticsController < ApplicationController
 		
 
 		respond_to do |format|
-	      format.js {}
-	      format.html
-	      format.json{}
-	    end
+			format.js {}
+			format.html
+			format.json{}
+		end
 
 	end
 end

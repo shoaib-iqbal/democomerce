@@ -14,7 +14,7 @@
 
 //= require jquery
 //= require jquery_ujs
-
+//= require toastr
 $(function(){
   $('#filters').change(function(e){
 

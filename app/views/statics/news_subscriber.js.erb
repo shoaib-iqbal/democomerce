@@ -1,2 +1,1 @@
-$('.message').html('<h2><%=@message%></h2>');
-setTimeout(function(){ $('.message').html('') }, 3000);
+toastr.success("<%=@message%>")
