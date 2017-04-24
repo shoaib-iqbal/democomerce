@@ -9,6 +9,8 @@ class HomeController < ApplicationController
 		  # Vendors within 10 Km
 		  @vendors = @vendors.where(:popular => true)
 		  if params[:latitude].present? and params[:longitude].present?
+		    session[:latitude] = params[:latitude]
+		    session[:longitude] = session[:longitude]
 		    @vendors = @vendors.near([params[:latitude], params[:longitude]], 15, :units => :km)
 		    
 		    	respond_to do |format|
