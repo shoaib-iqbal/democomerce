@@ -6,13 +6,13 @@
       <div class="col-md-6">
         <div class="form-group">
           <!-- <input type="text" name="fullname" value="" class="form-control input-lg" placeholder="Full Name">  -->
-          <%= f.text_field :first_name, :class => 'form-control input-lg' , :placeholder => "Full Name"%> 
+          <%= f.text_field :first_name, :class => 'form-control input-lg' , :placeholder => "Full Name", required: true%> 
         </div>                   
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <!-- <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email"> -->
-          <%= f.email_field :email, :class => 'form-control input-lg' , :placeholder => "Email"%> 
+          <%= f.email_field :email, :class => 'form-control input-lg' , :placeholder => "Email", required: true%> 
                    
          </div>
       </div>
@@ -22,14 +22,14 @@
       <div class="col-md-6">  
         <div class="form-group">
           <!-- <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password"> -->
-          <%= f.password_field :password,:class => 'form-control input-lg', :placeholder => "Password" %>
+          <%= f.password_field :password,:class => 'form-control input-lg', :placeholder => "Password",  required: true%>
         </div>
       </div>
           
       <div class="col-md-6">    
         <div class="form-group">
           <!-- <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password"> -->
-          <%= f.password_field :password_confirmation, :class => 'form-control input-lg', :placeholder => "Confim Password" %>
+          <%= f.password_field :password_confirmation, :class => 'form-control input-lg', :placeholder => "Confim Password", required: true %>
 
         </div> 
       </div>
@@ -38,7 +38,7 @@
     <div>
       <div class="checkbox" name="" required="required">
         <label>
-          <input type="checkbox"> By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.
+          <input type="checkbox" > By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.
         </label>
       </div>
     </div>  

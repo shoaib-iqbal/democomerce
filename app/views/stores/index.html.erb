@@ -1,4 +1,27 @@
+
 <div class="home-header" style="background-image: url(/assets/frontend/1.jpg);">
+    <div class="homepage-tagline">
+      <div class="homepage-headline">
+       <!--  <h1>It's Time to Eat</h1>
+        <h2>Order food from 1500+ restaurants.</h2> -->
+      </div>
+        <div class="homepage-content">
+        <div class="text-center">
+          <div class="form-inline">
+          <%= form_tag('/stores', method: :get,:id=>"search_form", :class=>"search-box") do %>
+            <div class="form-group">
+              <%= select_tag :city, grouped_options_for_select(User::LOCATION_OPTIONS, params[:city]), class: 'form-control', :placeholder=> "Enter a city" %>
+            </div>
+            <div class="form-group user-area">
+              <i class="fa fa-map-marker fa-fw"></i>
+              <%=text_field_tag 'area',params[:area],:class=> "form-control", :placeholder=> "Enter an area"%>
+            </div>
+            <button type="submit" class="btn btn-success">Show Stores</button>
+          <%end%>
+          </div>
+        </div>
+      </div>
+      </div>
   <%#= render 'store_index_banner_text'%>  
 </div>
 <%= render 'nav_bar'%>
@@ -23,7 +46,7 @@
           <%= render 'all_stores'%>
         </div>
         <div class="clear"></div>
-        <%= render 'pagination'%>  
+        <%#= render 'pagination'%>  
         <div class="clear20"></div>
       </div>
     </div>

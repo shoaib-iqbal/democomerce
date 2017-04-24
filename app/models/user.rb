@@ -19,9 +19,13 @@ class User < ActiveRecord::Base
   translates :name, :location
   
    
-   geocoded_by :full_street_address, latitude: :lat, longitude: :lng
-   after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
-
+  geocoded_by :full_street_address, latitude: :lat, longitude: :lng
+  after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
+  #LOCATION_OPTIONS = {'popular cities' =>  [[["Islamabad", "Karachi", "Lahore", "Rawalpindi"]], ['More Cities' => , ["Bahawalpur", "Faisalabad", "Faisalabad", "Gujranwala", "Hyderabad", "Jhelum", "Larkana"]]]}
+  LOCATION_OPTIONS = {
+ "popular cities" => ["Islamabad", "Karachi", "Lahore", "Rawalpindi"],
+ "More Cities" => ["Bahawalpur", "Faisalabad", "Faisalabad", "Gujranwala", "Hyderabad", "Jhelum", "Larkana"]
+}
    def full_street_address
      #convert address to geocoded values
      "#{self.location}"

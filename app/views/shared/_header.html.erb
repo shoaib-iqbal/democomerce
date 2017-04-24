@@ -65,8 +65,7 @@
         <%= form_for( @user , :as => :user, :remote => true ,:url => signin_path(@user)) do |f| %>
           <div id="div1">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-              </button>
+
               <h4 class="modal-title" id="myModalLabel">Login</h4>
               <div class="alert alert-danger" id ="error" style="display: none">
                 <strong>Danger!</strong> Invalid email or password.
@@ -77,12 +76,12 @@
               <div class="col-md-6">
               
                 <div class="form-group">
-                  <%= f.email_field :email,:class => 'form-control'%>  
+                  <%= f.email_field :email,:class => 'form-control', required: true%>  
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <%= f.password_field :password,:class => 'form-control'%>
+                  <%= f.password_field :password,:class => 'form-control', required: true%>
                 </div>
               </div>
             </div>

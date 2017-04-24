@@ -20,3 +20,9 @@
 .image-size-label {
   margin-top: 10px;
 }
+
+
+
+.homepage-tagline h1 {font-weight: 800; text-transform: uppercase; margin:0; padding:0; color: #fff;}
+.homepage-tagline h2 {margin:0 0 10px 0; padding:0; color: #fff; text-transform: uppercase; font-size: 20px;}
+.home-header {background-repeat:no-repeat;  height: 440px; background-size: cover; background-position: 50% 50%; width: 100%; padding:100px 0;}
