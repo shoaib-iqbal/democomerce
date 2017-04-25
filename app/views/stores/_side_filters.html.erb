@@ -1,3 +1,4 @@
+<%=form_tag stores_path, method: 'get', id: "filters", :remote=>true do%>
 <div class="characteristics">
   <div class="filters-title">
     <i class="fa fa-sliders fa-rotate-270"></i> <span>Restaurants</span>
@@ -10,3 +11,5 @@
   </div>
   <%= render 'categories_filter'%>
 </div>
+<button type="submit" id="filter_btn" class="hidden">Submit</button>
+<%end%>

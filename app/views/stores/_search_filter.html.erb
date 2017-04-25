@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
-  
+
   <li>
     <%= link_to 'Free Delivery'.html_safe, stores_path(:free_delivery => true), class: '', :remote=>true, :method => 'get' %>
   </li>
@@ -7,25 +7,35 @@
     <a href="#">
       Deals
     </a>
+    <%= check_box_tag :deals, 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')" %>
   </li>
   <li>
     <a href="#">
       Open Restaurants
     </a>
+    <%= check_box_tag :open, 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')" %>
   </li>
   <li>
     <a href="#">
       Online Payment avaliable
     </a>
+    <%= check_box_tag :online_payment, 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')" %>
   </li>
   <li>
     <a href="#">
       fast delivery
     </a>
+     <%= check_box_tag :fast_delivery, 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')" %>
   </li>
   <li>
     <a href="#">
       Resturants own delivery
     </a>
+    <%= check_box_tag :own_delivery , 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')"%>
   </li>
 </ul>
+<script type="text/javascript">
+  function sort_order(){
+   $('#filter_btn').click()
+  }
+</script>
