@@ -23,6 +23,7 @@ module DemoStore
     #I18n.config.available_locales = :en
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.assets.paths << Rails.root.join('app', 'assets', 'stylesheets','fonts')
+    config.assets.precompile += %w(vendor/assets/images/*)
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.fallbacks = true
     config.action_dispatch.default_headers.merge!({

@@ -1,69 +1,87 @@
-<!--Footer Area Start-->
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="food-ordering">
-        <div class="food-ordering-title">
-          <h4>EateOye: 24/7 free online food ordering</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur.</p>
-        </div>
-         <ul class="list-unstyled list-inline">
-          <li><a href="/aboutus">About</a></li>
-          <li><a href="/contactus">Contact</a></li>
-          <li><a href="/careers">Careers</a></li>
-          <li><a href="/contactus">Help</a></li>
-          <li><a href="#">Terms & Conditions</a></li>
-          <li><a href="/policy">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="newletters-title" >
-        <h4>Subscribe to our newsletter:</h4>
-        <div class="clear10"></div>
-      </div>
-      <div class="newletters-usp">
-        <ul class="newletters-usp-list">
-          <li>Don't miss out on our great offers</li>
-          <li>Receive deals from all our top restaurants via e-mail</li>
-        </ul>
-      </div>
-      <div class="form-inline">
-      <%= form_tag("/newsletter", method: "post" ,:class => '')  do %>
-        <div class="form-group">
-          <%= select_tag :city, grouped_options_for_select(User::LOCATION_OPTIONS,'Lahore'), class: 'form-control', :placeholder=> "Enter a city" %>
-        </div>        
-        <div class="form-group">
-         <input type="email" name="email_user" placeholder ="<%= t 'welcome.enteryouremail' %>"  class="form-control" required>
-          
-        </div>
-        <button type="submit" class="btn btn-success">Signup now</button>
-        <%end%>
-      </div>
-      <div class="checkbox">
-        <label>
-        <input type="checkbox" required="required"> I have read and accepted the 
-          <a href="#">Terms and conditions</a> and <a href="#">Privacy policy</a>
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-<!--////////////////////////////////////////////////////////////////////////-->
-
-
-<!--////////////////////////////////////////////////////////////////////////-->
-<div class="clear40"></div>
-
 <div class="footer">
   <div class="container">
-    Copyrights &copy; 2017 - <a href="#">Eatdot</a> - All Rights Reserved.
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <h4>ABOUT</h4>
+        <ul class="list-unstyled footer-about">
+          <li><i class="fa fa-briefcase"></i> 184 Main Rd E, St Albans VIC 3021, Australia</li>
+          <li><i class="fa fa-envelope-o"></i> <a href="mailto:contact@sonthing.com">contact@sonthing.com</a></li>
+          <li><i class="fa fa-phone"></i> 123-456-789</li>
+        </ul>
+        <ul class="list-unstyled list-inline social">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <h4>WHY BUY FROM US</h4>
+        <ul class="list-unstyled">
+          <li><a href="#">Gift Vouchers</a></li>
+          <li><a href="#">Returns and Exchanges</a></li>
+          <li><a href="#">Shipping Options</a></li>
+          <li><a href="#">Delivery Policy</a></li>
+          <li><a href="#">Help &amp; FAQs</a></li>
+          <li><a href="#">Reward Points</a></li>
+        </ul>
+
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+
+        <h4>MY ACCOUNT</h4>
+
+        <ul class="list-unstyled">
+          <li><a href="#">Sign In</a></li>
+          <li><a href="#">View Cart</a></li>
+          <li><a href="#">My Wishlist</a></li>
+          <li><a href="#">Check Out</a></li>
+          <li><a href="#">Track My Order</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+
+      </div>
+
+      <div class="col-md-3 col-sm-6">
+
+        <h4>SUBSCRIBE</h4>
+
+        <p>Subscribe to our newsletter and receive email updates.</p>
+
+        <div class="form-inline form-sub">
+          <%= form_tag("/newsletter", method: "post" ,:remote => true, id: 'subscribe_form')  do %>
+            <div class="input-group">
+              <%= email_field_tag :email_user,'',placeholder: "Email Address", :required => true, class: 'form-control' %>
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">SUBSCRIBE</button>
+              </span>
+            </div>
+          <%end%>
+        </div>
+
+        <div class="clear20"></div>
+
+        <p><img src="/assets/commerce/payment2.png" class="img-responsive"></p>
+
+        </div>
+    </div>
+  </div>
+  <div class="seperator"></div>
+  <div class="container text-center copyrights">
+    Copyrights &copy; 2017 - <a href="index.html">eCommerce Store</a> - All Rights Reserved. 
+    <div class="clear5"></div>
+    <ul class="list-unstyled list-inline">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms & Conditions</a></li>
+      <li><a href="#">Help</a></li>
+    </ul>
   </div>
 </div>
+
+<%= render 'shared/login_popup'%>
+
 <!--Footer Area End-->
 <%= javascript_include_tag 'all_frontend.js' %>
 

@@ -13,6 +13,9 @@ class VendorsController < ApplicationController
     end
       
   end
+  def show
+    
+  end
 
   private
 

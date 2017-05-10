@@ -1,34 +1,871 @@
-<% @vendors.each do |vendor|%>
-  <div class="clickable" >
-    <a href="/stores/<%=vendor.id%>">
-      <div class="define-border">
-        <div class="row">
-          <div class="col-md-2">
-            <a href="/stores/<%= vendor.id%>"><img src="<%= vendor.avatar.url %>" class="img-responsive center-block"></a> 
-          </div>
-          <div class="col-md-8">
-            <h4><%= vendor.name%></h4>
-            <div class="a-tag">
-            <% if vendor.vendor_category_id %>
-              <% id = vendor.vendor_category_id %>
-              <a href="#"><%= Admin::VendorCategory.find_by_id(id).name%></a>
-            <%end%>
-    </div>
+                <div class="col-md-9">
+                  
+                  <div class="clickable" onclick="window.document.location='stores-detail.html';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-2.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza- Johar Town</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#" style="">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
 
-    <ul class="list-unstyled list-inline">
-    <li><a href="#" style="">$$$</a></li>
-    <li>
-    <i class="fa fa-star fa-fw"></i> 
-    <i class="fa fa-star fa-fw"></i> 
-    <i class="fa fa-star-half-o fa-fw"></i>
-    <i class="fa fa-star-o fa-fw"></i>
-    </li>
-    </ul>
-    <div class="time">Delivers in <%= vendor.delivery_time rescue ''%></div>
-    </div>
-    <div class="vendor__promoted"><span>NEW</span></div>
-    </div>
-    </div>
-    </a>
-  </div>
-<%end%>
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-1.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-3.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-4.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4 >California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-5.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-6.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-7.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-2.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-1.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-3.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-4.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-5.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-6.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-7.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-2.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-1.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-3.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-4.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-5.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-6.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-7.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-2.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-1.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-3.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-4.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-5.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-6.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-7.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-2.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="clickable" onclick="window.document.location='#';">
+                    <div class="define-border">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <img src="/assets/commerce/stores/pic-1.jpg" class="img-responsive center-block">
+                        </div>
+                        <div class="col-md-8">
+                          <h4>California Pizza</h4>
+                          <div class="a-tag"><a href="#">Pizza</a></div>
+                          <ul class="list-unstyled list-inline">
+                            <li><a href="#">$$$</a></li>
+                            <li>
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star fa-fw"></i> 
+                              <i class="fa fa-star-half-o fa-fw"></i>
+                              <i class="fa fa-star-o fa-fw"></i>
+                            </li>
+                          </ul>
+                          <div class="time">Delivers in 45 minutes</div>
+                        </div>
+
+                        <div class="vendor__promoted"><span>NEW</span></div>
+                        
+                        
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                  <div class="clear"></div>
+
+                  <nav class="text-right">
+                    <ul class="pagination">
+                      <li>
+                        <a href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      <li><a href="#">1</a></li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">5</a></li>
+                      <li>
+                        <a href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+
+                  <div class="clear20"></div>
+
+                </div>

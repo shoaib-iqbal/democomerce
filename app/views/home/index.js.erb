@@ -1,17 +1,1 @@
-$('#popular_rest').html("<%= escape_javascript render(:partial => 'home/popular_resturants') %>");
-	$('.owl-carousel').owlCarousel({
-	    loop:true,
-	    margin:10,
-	    nav:true,
-	    responsive:{
-	        0:{
-	            items:1
-	        },
-	        600:{
-	            items:3
-	        },
-	        1000:{
-	            items:5
-	        }
-	    }
-	});
+$('#popular_rest').html("<%= escape_javascript render(:partial => 'home/popular_vendors') %>");

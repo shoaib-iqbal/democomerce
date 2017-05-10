@@ -1,14 +1,13 @@
 <%= render 'banner_with_detail' %>
-<%= render 'store_description' %>
+<%#= render 'store_description' %>
 <div class="container">
-  <div class="section-caption">
-    <h2>
-      Popular Stores
-    </h2>
-  </div>
-  <div id="popular_rest">
-    <%= render 'popular_resturants' %>
-  </div>
+<%= render 'best_seller' %>
 </div>
+<div class="container">
+<%= render 'featured_product' %>
+</div>
+<%= render 'store_description' %>
+<%= render 'popular_vendors' %>
+<div class="clear40"></div>
 <div class="clear40"></div>
 

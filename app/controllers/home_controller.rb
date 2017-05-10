@@ -3,12 +3,18 @@ class HomeController < ApplicationController
 		# @admin_products = Admin::Product.all
 		
 		
-
+		@featured_products=Admin::Product.where(:featured => "true").order(created_at: :desc)
+		@best_selling=Admin::Product.where(:homepage => "true").order(created_at: :desc)
 		@vendors = User.all
 		if @vendors.present?
 		  # Vendors within 10 Km
 		  @vendors = @vendors.where(:popular => true)
 		  if params[:latitude].present? and params[:longitude].present?
+		  	if params[:latitude].first(6) != session[:latitude].first(6) and  params[:longitude].first(6) != session[:longitude].first(6)
+		  		address = User.set_location(params[:latitude],params[:longitude])
+		  	end
+					# query.address
+				session[:address] = address
 		    session[:latitude] = params[:latitude]
 		    session[:longitude] = session[:longitude]
 		    @vendors = @vendors.near([params[:latitude], params[:longitude]], 15, :units => :km)

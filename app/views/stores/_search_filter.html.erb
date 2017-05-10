@@ -1,41 +1,81 @@
-<ul class="list-unstyled">
+<div class="col-md-3">
+ 
+  <div class="filters">
+    <div class="form-group">
+      <i class="fa fa-search"></i>
+      <input type="text" name="" class="form-control" required="required" placeholder="Search">
+    </div>
+  </div>
 
-  <li>
-    <%= link_to 'Free Delivery'.html_safe, stores_path(:free_delivery => true), class: '', :remote=>true, :method => 'get' %>
-  </li>
-  <li>
-    <a href="#">
-      Deals
-    </a>
-    <%= check_box_tag :deals, 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')" %>
-  </li>
-  <li>
-    <a href="#">
-      Open Restaurants
-    </a>
-    <%= check_box_tag :open, 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')" %>
-  </li>
-  <li>
-    <a href="#">
-      Online Payment avaliable
-    </a>
-    <%= check_box_tag :online_payment, 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')" %>
-  </li>
-  <li>
-    <a href="#">
-      fast delivery
-    </a>
-     <%= check_box_tag :fast_delivery, 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')" %>
-  </li>
-  <li>
-    <a href="#">
-      Resturants own delivery
-    </a>
-    <%= check_box_tag :own_delivery , 'yes', false,:onchange => "sort_order(deals,'#{params['search']}')"%>
-  </li>
-</ul>
-<script type="text/javascript">
-  function sort_order(){
-   $('#filter_btn').click()
-  }
-</script>
+  <div class="filters">
+    <div class="form-group">
+      <i class="fa fa-sort-amount-desc"></i>
+      
+      <select class="form-control">
+        <option value selected="selected">Sort By Relevance</option>
+        <option value="default">Revelance</option>
+        <option value="">Ratings</option>
+        <option>Minimum Order Value</option>
+        <option value="">Free Delivery</option>
+        <option value="">Fastest Delivery</option>
+      </select>
+    </div>  
+
+  </div>
+  
+  <div class="characteristics filters-area">
+    
+    <div class="filters-title list-1-js">
+      <i class="fa fa-sliders fa-rotate-270"></i> <span>Filters</span>
+    </div>
+
+    
+    <ul class="list-unstyled">
+      <li>
+        <a href="#">
+          free delivery
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          
+          Deals
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          
+          Open Restaurants
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          
+          Online Payment avaliable
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          
+          fast delivery
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          
+          Resturants own delivery
+        </a>
+      </li>
+    </ul>
+    
+  </div>
+  
+  <div class="characteristics stores-list">
+    
+    <div class="filters-title list-2-js">
+      <i class="fa fa-map-marker"></i> <span>Top Stores</span>
+    </div>
+<%= render 'stores_list'%>
+    
+  </div>
+</div>

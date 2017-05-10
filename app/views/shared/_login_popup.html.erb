@@ -1,0 +1,144 @@
+<!-- Modals ////////////////////////////////////////////////////////////////-->
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <strong class="title-signin"><i class="fa fa-key fa-fw"></i> LOGIN</strong>
+      <strong class="title-signup"><i class="fa fa-user-o fa-fw"></i> SIGN UP</strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+      <div id="div1">
+        
+        <div class="clear20"></div>
+
+        <div class="row">  
+          <div class="col-md-6">
+            <div class="form-group">
+                <input class="form-control" placeholder="E-mail" name="email" type="text">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <input class="form-control" placeholder="Password" name="password" type="password" value="">
+            </div>
+          </div>
+        </div>
+          
+          <div>
+              <div class="checkbox">
+              <label>
+                <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+              </label>
+               <a class="pull-right text-muted" href="#" data-dismiss="modal" 
+               data-toggle="modal" data-target="#forgot-password"><small>Forgot your password?</small></a>
+            </div>
+          </div>
+
+        <div class="clear20"></div>  
+        
+            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+
+            
+
+      </div>
+
+
+            <div class="trigger-signup">
+              <div class="clear10"></div>
+              <div class="text-center">Don't have an account? <a class="link1" href="#"><strong>Sign Up</strong></a></div>
+            </div>
+
+
+
+      <div id="div2">
+
+            <div class="clear20"></div>
+
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="fullname" value="" class="form-control input-lg" placeholder="Full Name"> 
+                  </div>                   
+                </div>
+                 
+                <div class="col-md-6">
+                    <div class="form-group">
+                      <input type="text" name="email" value="" class="form-control input-lg" placeholder="Your Email">
+                     </div>
+                </div>
+
+               </div>
+                
+                <div class="row"> 
+                    
+                  <div class="col-md-6">  
+                    <div class="form-group">
+                      <input type="password" name="password" value="" class="form-control input-lg" placeholder="Password">
+                    </div>
+                  </div>
+                      
+                  <div class="col-md-6">    
+                    <div class="form-group">
+                      <input type="password" name="confirm_password" value="" class="form-control input-lg" placeholder="Confirm Password">     
+                    </div> 
+                  </div>
+
+                </div>
+
+                    <div>
+            <div class="checkbox" name="" required="required">
+                <label>
+                  <input type="checkbox"> By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.
+                </label>
+            </div>
+                    </div>  
+
+                <div class="clear20"></div>
+
+                    <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">Create Account</button>
+
+                    
+
+        </div>
+
+              <div class="trigger-signin">
+                <div class="clear10"></div>
+                <div class="text-center">Already have an account? <a class="link2" href="#"><strong>Sign In</strong></a></div>
+              </div>
+
+
+            </div>
+          </div>
+    </div>
+  </div>
+    <!-- fogot-password modal -->
+  <div class="modal fade" id="forgot-password">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <strong><i class="fa fa-unlock fa-fw"></i> ACCOUNT RECOVERY</strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center; margin-right: 25px; margin-left: 25px;">
+           <p>To reset your password, please enter your e-mail address.<br>In turn, we will send you a password link via mail.</p>
+           <div class="form-group">
+          <input class="form-control" placeholder="Enter Your E-mail" name="email" type="email" required="" autofocus="">
+        </div>
+        
+        <div class="form-group">
+           <input class="btn btn-lg btn-success btn-block" type="submit" value="Send">
+        </div>
+      </div>
+      <div class="modal-footer" style="text-align: center;">
+        <strong>Already Have Account?</strong> 
+        <a class="pointer" data-toggle="modal" data-dismiss="modal" data-target="#login"><strong>Login</strong></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal ///////////////////////////////////////////////////////////////////// -->

@@ -1,28 +1,29 @@
-<div class="home-header" style="background-image: url(/assets/home_banner_1.jpg);">
-      <div class="container">
-      <div class="homepage-tagline">
+<!--////////////////////////////////////////////////////////////////////////-->
+<div class="home-header" style="background-image: url(/assets/commerce/header-img-5.jpg);">
+  <div class="backdrop"></div>
+  <div class="container backdrop-top">
+    <div class="homepage-tagline">
       <div class="homepage-headline">
-        <h1>It's Time to Eat</h1>
-        <h2>Order food from 1500+ restaurants.</h2>
+        <h1>SHOP With Confidence</h1>
+        <h2>Order products from 1500+ stores</h2>
       </div>
       <div class="homepage-content">
         <div class="text-center">
           <div class="form-inline">
-          <%= form_tag('/stores', method: :get,:id=>"search_form", :class=>"search-box") do %>
-            <div class="form-group">
-              <%= select_tag :city, grouped_options_for_select(User::LOCATION_OPTIONS,'Lahore'), class: 'form-control', :placeholder=> "Enter a city" %>
-            
-            </div>
-            <div class="form-group user-area">
-              <i class="fa fa-map-marker fa-fw"></i>
-               <%=text_field_tag 'area','',:class=> "form-control", :placeholder=> "Enter an area"%>
-            </div>
-                  
-            <button type="submit" class="btn btn-success">Show Restaurants</button>
-          <%end%>
+           <%= form_tag('/stores', method: :get,:id=>"search_form", :class=>"search-box") do %>
+              <div class="form-group">
+                <%= select_tag :city, grouped_options_for_select(User::LOCATION_OPTIONS,'Lahore'), class: 'form-control', :placeholder=> "Enter a city" %>
+              </div>
+              <div class="form-group user-area">
+                <i class="fa fa-map-marker fa-fw"></i>
+                <%=text_field_tag 'area','',:class=> "form-control", :placeholder=> "Enter an area"%>
+              </div>
+              <button type="submit" class="btn btn-success">Show Stores</button>
+            <%end%>
           </div>
         </div>
       </div>  
     </div>
   </div>
 </div>
+<!--////////////////////////////////////////////////////////////////////////-->
